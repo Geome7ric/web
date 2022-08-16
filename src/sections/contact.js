@@ -2,7 +2,7 @@
 import { useRef, useState } from 'react';
 import fetch from 'isomorphic-unfetch';
 import { jsx } from 'theme-ui';
-import { Container, Flex, Box, Button, Input, Text, Heading , Textarea } from 'theme-ui';
+import { Container, Flex, Box, Button, Input, Text, Heading , Textarea, Label  } from 'theme-ui';
 
 export default function Subscribe() {
   // 1. Create a reference to the input so we can fetch/clear it's value.
@@ -52,7 +52,7 @@ export default function Subscribe() {
   };
   const subscribe = async (e) => {
     e.preventDefault();
-    // setStatus((prevStatus) => ({ ...prevStatus, submitting: true }));
+    setStatus((prevStatus) => ({ ...prevStatus, submitting: true }));
 
     // 3. Send a request to our API with the user's email address.
     const res = await fetch('https://matias-api.vercel.app/api/contact', {
@@ -70,7 +70,12 @@ export default function Subscribe() {
       method: 'POST', 
       mode: 'no-cors',
     });
-    console.log(res)
+    console.log(res.data)
+    setStatus((prevStatus) => ({ ...prevStatus, submitting: false }));
+    inputEl.current.value = '';
+    inputName.current.value = '';
+    inputText.current.value = '';
+
     //for mailChimp integration
     // const { error } = await res.json();
     // handleMailChimpResponse(
@@ -79,7 +84,7 @@ export default function Subscribe() {
     // );
     // // For sendGrid integration
     // const text = await res.text();
-    // handleSendGridResponse(res.status, text);
+    // handleSendGridResponse(200, 'Success! 🎉 Yor message has been sent.');
   };
   return (
     <section>
@@ -93,25 +98,27 @@ export default function Subscribe() {
               {/* Lorem ipsum dolor sit amet consectetur adipisicing elitsed eiusmod
               tempor incididunt labore dolore. */}
             </Text>
-            <form onSubmit={subscribe} sx="display: flex">                
-                <label htmlFor="email" sx={styles.label}>
-                  Name
-                </label>
-                <Flex >
-                  
-                  <Input
-                    ref={inputName}
-                    id="name"
-                    name="name"
-                    sx={styles.subscribeForm['.input']}
-                    placeholder="Enter your name"
-                  />
-                </Flex>
-                <label htmlFor="email" sx={styles.label}>
-                  Email Address
-                </label>
-                <Flex >
+            <form onSubmit={subscribe} >       
+              <Label  sx={styles.label}>
+                Name
+              </Label >
+              <Flex >
+                <Input
+                  htmlFor="email"
+                  ref={inputName}
+                  id="name"
+                  name="name"
+                  sx={styles.subscribeForm['.input']}
+                  placeholder="Enter your name"
+                />
+              </Flex>
+              <Label  sx={styles.label}>
+                Email Address
+              </Label >
+              <Flex >
+
                 
+              
                 <Input
                   ref={inputEl}
                   id="email"
@@ -119,18 +126,12 @@ export default function Subscribe() {
                   sx={styles.subscribeForm['.input']}
                   placeholder="Enter your email address"
                 />
-
-                <div>
-                  {status.info.error && (
-                    <div className="error">Error: {status.info.msg}</div>
-                  )}
-                  {!status.info.error && status.info.msg && (
-                    <div className="success">{status.info.msg}</div>
-                  )}
-                </div>
                 
               </Flex>
 
+              <Label  sx={styles.label}>
+                Message
+              </Label >
               <Textarea ref={inputText} id="message" name="message" sx={styles.subscribeForm['.textarea']} placeholder="Enter your message" />  
               <Flex >
                 <Button
@@ -156,13 +157,13 @@ export default function Subscribe() {
 
 const styles = {
   label: {
+    justfyContent: 'flex-start',
     color: 'white',
     lineHeight: [1.3, null, null, 1.25],
     fontWeight: '700',
     textAlign: 'left',
     letterSpacing: ['-.5px', null, '-1.5px'],
-    flexDirection: 'row',
-    mb: [2, 3],
+    my: 4
   },
   contentBox: {
     backgroundColor: 'none',

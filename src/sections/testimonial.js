@@ -232,20 +232,20 @@ const styles = {
     fontSize: [1, 2],
     fontWeight: 700,
     mb: [3, null, null, '22px'],
-    color: 'text',
+    color: 'black',
     lineHeight: 1.6,
   },
   description: {
     fontSize: [1, null, null, 2],
     fontWeight: 'normal',
-    color: 'text',
+    color: 'black',
     lineHeight: [1.85, null, 2],
   },
   heading: {
     fontSize: [1, null, null, 2],
     fontWeight: 700,
     mb: '3px',
-    color: 'text',
+    color: 'black',
     lineHeight: 1.3,
   },
   designation: {
