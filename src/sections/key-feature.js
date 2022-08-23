@@ -45,11 +45,11 @@ const data = [
 
 export default function KeyFeature() {
   return (
-    <section sx={{ variant: 'section.keyFeature' }} id="feature">
+    <section sx={{ variant: 'section.keyFeature' }} id="services">
       <Container>
         <SectionHeader
           slogan="What we do"
-          title="Key Features"
+          title="Key Services"
         />
 
         <Grid sx={styles.grid}>

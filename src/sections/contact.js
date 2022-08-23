@@ -87,7 +87,7 @@ export default function Subscribe() {
     // handleSendGridResponse(200, 'Success! 🎉 Yor message has been sent.');
   };
   return (
-    <section>
+    <section id='contact'>
       <Container>
         <Box sx={styles.contentBox}>
           <Box sx={styles.contentBoxInner}>
@@ -222,6 +222,7 @@ const styles = {
       mt: [6, null, null, 3],
       py: 1,
       px: [4, null, 6],
+      minHeight: '150px',
       textAlign: ['center', 'left'],
       '&:focus': {
         boxShadow: '0 0 0 0px',

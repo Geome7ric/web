@@ -10,13 +10,13 @@ export default function Banner() {
     <section sx={styles.banner} id="home">
       <Container sx={styles.banner.container}>
         <Box sx={styles.banner.contentBox}>
-          <Heading as="h1" variant="heroPrimary">
+          <Heading as="h1" variant="heroPrimary" sx={{ marginTop: '40px' }}>
             Transforming business with innovation
           </Heading>
-          <Text as="p" variant="heroSecondary">
+          <Text as="p" variant="heroSecondary" sx={{margin: '20px'}}>
             We make products that make your business better and your customers happy, and we do it with a passion, just like you
           </Text>
-          <Button variant="primary">Contact us</Button>
+          <Button variant="dark">Contact us</Button>
         </Box>
 
         {/* <Box sx={styles.banner.imageBox}>
@@ -31,6 +31,7 @@ const styles = {
   banner: {
     pt: ['200px', '145px', '155px', '170px', null, null, '180px', '215px'],
     pb: [2, null, 0, null, 2, 0, null, 5],
+    height: '100vh',
     position: 'relative',
     zIndex: 2,
     // '&::before': {

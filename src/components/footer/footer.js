@@ -2,7 +2,7 @@
 import { jsx, Box, Grid, Container, Image, Heading, Text } from 'theme-ui';
 import { Link } from 'components/link';
 import data from './footer.data';
-import FooterLogo from 'assets/logos/Geome7ric-HorizontalBLANCO_7azul1.svg';
+import FooterLogo from 'assets/logos/geome7ric-main-whiteletters.svg';
 export default function Footer() {
   return (
     <footer sx={styles.footer}>
@@ -24,7 +24,7 @@ export default function Footer() {
         {/* End of footer widgets area */}
         <Box sx={styles.footer.footerBottomArea}>
           <Link path="/">
-            <Image src={FooterLogo} alt="Logo" />
+            <Image src={FooterLogo} alt="Logo" sx={{height: '50px'}} />
           </Link>
           <Box sx={styles.footer.menus}>
             <nav>
@@ -48,7 +48,7 @@ const styles = {
   footer: {
     footerBottomArea: {
       borderTop: '1px solid',
-      borderTopColor: 'border_color',
+      borderTopColor: 'white',
       display: 'flex',
       pt: [7, null, 8],
       pb: ['40px', null, '100px'],

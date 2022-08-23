@@ -9,7 +9,7 @@ export default function Logo({ src, ...rest }) {
       path="/"
       sx={{
         variant: 'links.logo',
-        height: '50px',
+        height: '40px',
         display: 'flex',
         cursor: 'pointer',
         mr: 15,

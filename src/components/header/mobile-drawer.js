@@ -6,29 +6,24 @@ import { DrawerContext } from '../../contexts/drawer/drawer.context';
 import { IoMdClose, IoMdMenu } from 'react-icons/io';
 import { Link } from 'react-scroll';
 import {
-  FaFacebookF,
-  FaTwitter,
+  FaLinkedin,
   FaGithubAlt,
-  FaDribbble,
+  FaInstagram,
 } from 'react-icons/fa';
 import menuItems from './header.data';
 
 const social = [
   {
-    path: '/',
-    icon: <FaFacebookF />,
+    path: 'https://www.linkedin.com/in/geome7ric',
+    icon: <FaLinkedin />,
   },
   {
-    path: '/',
-    icon: <FaTwitter />,
-  },
-  {
-    path: '/',
+    path: 'https://github.com/orgs/geome7ric',
     icon: <FaGithubAlt />,
   },
   {
-    path: '/',
-    icon: <FaDribbble />,
+    path: 'https://www.instagram.com/geome7ric',
+    icon: <FaInstagram />,
   },
 ];
 
@@ -47,7 +42,7 @@ const MobileDrawer = () => {
       width="320px"
       drawerHandler={
         <Box sx={styles.handler}>
-          <IoMdMenu size="26px" />
+          <IoMdMenu size="26px" color='#fff' />
         </Box>
       }
       open={state.isOpen}
@@ -78,7 +73,7 @@ const MobileDrawer = () => {
             <Box sx={styles.social}>
               {social.map(({ path, icon }, i) => (
                 <Box as="span" key={i} sx={styles.social.icon}>
-                  <Link to={path}>{icon}</Link>
+                  <a href={path} target="_blank">{icon}</a>
                 </Box>
               ))}
             </Box>
@@ -105,7 +100,7 @@ const styles = {
   drawer: {
     width: '100%',
     height: '100%',
-    backgroundColor: 'dark',
+    backgroundColor: 'background',
   },
 
   close: {
@@ -117,6 +112,7 @@ const styles = {
     right: '30px',
     zIndex: '1',
     cursor: 'pointer',
+    backgroundColor: 'white'
   },
 
   content: {
@@ -124,6 +120,7 @@ const styles = {
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    backgroundColor: 'dark',
     pt: '100px',
     pb: '40px',
     px: '30px',

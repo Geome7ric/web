@@ -22,13 +22,16 @@ export default function FeatureCardColumn({
 const styles = {
   card: {
     display: 'flex',
-    alignItems: ['center', 'flex-start'],
+    alignItems: ['center', 'flex-center'],
     flexDirection: 'column',
     mb: -1,
     textAlign: ['center', null, 'left'],
     px: [4, null, 0],
   },
   img: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     mx: ['auto', null, 0],
     ml: ['auto', null, '-13px'],
     mb: -2,
@@ -40,6 +43,7 @@ const styles = {
     flexDirection: 'column',
     title: {
       fontSize: 3,
+      textAlign: ['center', null, 'left'],
       color: 'heading_secondary',
       lineHeight: 1.4,
       fontWeight: 700,
