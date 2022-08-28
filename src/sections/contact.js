@@ -2,13 +2,16 @@
 import { useRef, useState } from 'react';
 import fetch from 'isomorphic-unfetch';
 import { jsx } from 'theme-ui';
+import { validateEmail } from '../../utils/helper.ts'
 import { Container, Flex, Box, Button, Input, Text, Heading , Textarea, Label  } from 'theme-ui';
 
 export default function Subscribe() {
+
   // 1. Create a reference to the input so we can fetch/clear it's value.
   const inputEl = useRef(null);
   const inputName = useRef(null);
   const inputText = useRef(null);
+
   // 2. Hold a status in state to handle the response from our API.
   const [status, setStatus] = useState({
     submitted: false,
@@ -50,9 +53,48 @@ export default function Subscribe() {
       });
     }
   };
+
+
+  const validateForm = () => {
+    
+    if (!inputName.current.value) {
+      setStatus({
+        info: { error: true, msg: 'Please, enter your name.' },
+      });
+      return false;
+    }
+
+    if (!inputEl.current.value || !validateEmail(inputEl.current.value)) {
+      setStatus({
+        info: { error: true, msg: 'Please, enter a valid email address.' },
+      });
+      return false;
+    }
+
+    if (!inputText.current.value) {
+      setStatus({
+        info: { error: true, msg: 'Please, enter your message.' },
+      });
+      return false;
+    }
+
+    return true;
+
+  }
+
   const subscribe = async (e) => {
+
     e.preventDefault();
-    setStatus((prevStatus) => ({ ...prevStatus, submitting: true }));
+    
+    if (!validateForm()) {
+      return 
+    }
+    setStatus({
+      submitting: true,
+      info: { error: false, msg: null },
+    });
+    
+    // setStatus((prevStatus) => ({ ...prevStatus, submitting: true }));
 
     // 3. Send a request to our API with the user's email address.
     const res = await fetch('https://matias-api.vercel.app/api/contact', {
@@ -95,13 +137,13 @@ export default function Subscribe() {
               Contact us
             </Heading>
             <Text as="p" sx={styles.description}>
-              {/* Lorem ipsum dolor sit amet consectetur adipisicing elitsed eiusmod
-              tempor incididunt labore dolore. */}
+              We are always happy to hear from you. Send us a message and we will get back to you as soon as possible.
+              Use the form below to send us a message or use your <a href="mailto:contacto@geome7ric.com">email client</a>              
             </Text>
             <form onSubmit={subscribe} >       
-              <Label  sx={styles.label}>
+              <Label sx={styles.label}>
                 Name
-              </Label >
+              </Label>
               <Flex >
                 <Input
                   htmlFor="email"
@@ -110,6 +152,7 @@ export default function Subscribe() {
                   name="name"
                   sx={styles.subscribeForm['.input']}
                   placeholder="Enter your name"
+                  hint="Enter your name"
                 />
               </Flex>
               <Label  sx={styles.label}>
@@ -133,6 +176,13 @@ export default function Subscribe() {
                 Message
               </Label >
               <Textarea ref={inputText} id="message" name="message" sx={styles.subscribeForm['.textarea']} placeholder="Enter your message" />  
+              {
+                status.info.error && (
+                  <Text as="p" sx={styles.error}>
+                    {status.info.msg}
+                  </Text>
+                )
+              }
               <Flex >
                 <Button
                   sx={styles.subscribeForm['.submit']}
@@ -156,6 +206,13 @@ export default function Subscribe() {
 }
 
 const styles = {
+  error: {
+    fontSize: '14px',
+    fontWeight: 'bold',
+    marginBottom: '10px',
+    marginTop: '10px',
+
+  },
   label: {
     justfyContent: 'flex-start',
     color: 'white',
@@ -163,7 +220,8 @@ const styles = {
     fontWeight: '700',
     textAlign: 'left',
     letterSpacing: ['-.5px', null, '-1.5px'],
-    my: 4
+    my: 4,
+    ml: [3, null, null, 3],
   },
   contentBox: {
     backgroundColor: 'none',
@@ -178,6 +236,7 @@ const styles = {
     px: [3, 5],
   },
   title: {
+    fontFamily: 'ProdigySansBold', 
     fontSize: ['24px', null, '28px', null, null, '32px', null, '36px'],
     color: 'white',
     lineHeight: [1.3, null, null, 1.25],
@@ -199,9 +258,10 @@ const styles = {
     flexDirection: ['column', 'row'],
     '.input': {
       // borderRadius: 50,
-      fontFamily: 'body',
+      fontFamily: 'ProdigySans',
       fontSize: ['14px', null, 2],
       fontWeight: 500,
+      border: '1px solid #fff',
       py: 1,
       px: [4, null, 6],
       // backgroundColor: ['white', 'transparent'],
@@ -216,7 +276,7 @@ const styles = {
       },
     },
     '.textarea': {
-      fontFamily: 'body',
+      fontFamily: 'ProdigySans',
       fontSize: ['14px', null, 2],
       fontWeight: 500,
       mt: [6, null, null, 3],

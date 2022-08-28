@@ -409,7 +409,7 @@ const styles = {
       fontWeight: 500,
       backgroundColor: 'transparent',
       cursor: 'pointer',
-      fontFamily: 'body',
+      fontFamily: 'ProdigySans',
       letterSpacing: '-0.24px',
       transition: 'all 0.3s',
       '&.active': {

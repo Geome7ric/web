@@ -1,12 +1,15 @@
 /** @jsx jsx */
-import { jsx, Box, Grid, Container, Image, Heading, Text } from 'theme-ui';
-import { Link } from 'components/link';
+import { jsx, Box, Grid, Container, Image, Heading, Text, Flex } from 'theme-ui';
+import { Link } from 'react-scroll';
+
+import menuItems from '../header/header.data';
 import data from './footer.data';
 import FooterLogo from 'assets/logos/geome7ric-main-whiteletters.svg';
 export default function Footer() {
   return (
     <footer sx={styles.footer}>
       <Container>
+        
         {/* <Grid sx={styles.widgets}>
           {data.widgets.map((item) => (
             <Box
@@ -21,23 +24,51 @@ export default function Footer() {
             </Box>
           ))}
         </Grid> */}
+
         {/* End of footer widgets area */}
+        
         <Box sx={styles.footer.footerBottomArea}>
-          <Link path="/">
+          <Link to="/">
             <Image src={FooterLogo} alt="Logo" sx={{height: '50px'}} />
           </Link>
-          <Box sx={styles.footer.menus}>
-            <nav>
-              {data.menuItem.map(({ path, label }, i) => (
-                <Link
-                  path={path}
-                  key={i}
-                  label={label}
-                  sx={styles.footer.link}
-                />
-              ))}
-            </nav>
-          </Box>
+          <Text as="p" sx={{color: 'text', fontSize: '1rem'}}>
+                      Prefabricated products, consulting, <br></br>
+            customized products, interventions and more.
+          </Text>
+          <Text as="p" sx={{
+              color: 'text', fontSize: '1rem', 
+              textAlign: 'center',
+              margin: '1rem 0'
+              }}
+              >
+              © {new Date().getFullYear()} Geome7ric
+            </Text>
+          {/* <Flex as="nav" sx={styles.footer}>
+            {menuItems.map(({ path, label }, i) => (
+              <Link
+                to={path}
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                key={i}
+                sx={{
+                  color: 'text',
+                  fontWeight: 'body',
+                  py: 4,
+                  cursor: 'pointer',
+                  mr: 3,
+                  '&.active': {
+                    color: 'primary',
+                  },
+                }}
+              >
+                {label}
+              </Link>
+            ))}
+
+            
+          </Flex> */}
         </Box>
       </Container>
     </footer>

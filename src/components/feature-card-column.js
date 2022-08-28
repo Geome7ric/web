@@ -43,7 +43,7 @@ const styles = {
     flexDirection: 'column',
     title: {
       fontSize: 3,
-      textAlign: ['center', null, 'left'],
+      textAlign: ['center', null, 'center'],
       color: 'heading_secondary',
       lineHeight: 1.4,
       fontWeight: 700,
@@ -53,6 +53,7 @@ const styles = {
       fontSize: 1,
       fontWeight: 400,
       lineHeight: '1.9',
+      textAlign: ['center', null, 'center'],
     },
   },
 };
