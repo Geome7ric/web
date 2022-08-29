@@ -21,11 +21,8 @@ export default function Banner() {
           </Text>
           {/* <Button variant="dark"  >Contact us</Button> */}
           <Box 
-            sx={{
-              
+            sx={{              
               borderRadius: '5px',
-              padding: '10px',
-              margin: '20px',
               display: 'flex',
               width: '100%',
               justifyContent: 'center',
@@ -48,14 +45,15 @@ export default function Banner() {
                 duration={500}
                 sx={{
                   backgroundColor: 'primary',
-                  borderRadius: '5px',
-                  width: '20%',
-                  padding: '5px',
-                  margin: '20px',
+                  borderRadius: '16px',
                 }}
 
               >
-                Contact us
+                <div sx= {{
+                  margin: '8px'
+                }}>
+                  Contact us
+                </div>
               </Link>
           </Box>
         </Box>

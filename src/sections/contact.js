@@ -183,9 +183,19 @@ export default function Subscribe() {
                   </Text>
                 )
               }
-              <Flex >
+              <Flex sx={{
+                justifyContent: 'flex-center',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                flexDirection: 'column',
+                mt: 3,
+
+              }} >
                 <Button
-                  sx={styles.subscribeForm['.submit']}
+                  sx={{
+                    height: '48px',
+                    borderRadius: '16px',
+                  }}
                   disabled={status.submitting}
                   aria-label="Send"
                 >
@@ -295,6 +305,10 @@ const styles = {
     '.submit': {
       flexShrink: 0,
       ml: [0, 2],
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      maxHeight: '12px',
       mt: [20, null, null, 3],
       // backgroundColor: ['text', 'primary'],
       py: ['400px'],
