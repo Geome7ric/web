@@ -124,7 +124,6 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                   id="subject"
                   name="subject"
                   type="text"
-                  required
                   className="appearance-none rounded-md relative 
                   block w-full px-3 py-2 border bg-dark border-white/15 
                   mt-2
