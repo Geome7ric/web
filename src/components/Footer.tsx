@@ -1,0 +1,109 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import Button from "./Button";
+
+const Footer = () => {
+  const scrollToSection = (section: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (section === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <footer className="row-start-3 text-white py-10 mx-16">
+      <div className="container mx-auto  md:px-12 lg:px-16 ">
+        {/* Línea divisoria */}
+        <div className="border-t border-gray-600/25 mt-8 pt-6 text-center text-gray-500 text-sm"></div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Logo y Descripción */}
+          <div>
+            <Image
+              src="/assets/Geome7ric-Horizontal-Color2.svg"
+              alt="Geome7ric"
+              width={164}
+              height={30}
+              className="mb-4"
+            ></Image>
+            <p className="mt-3 text-gray-400">
+              Transformamos negocios con innovación. Creemos en productos que
+              generan impacto y satisfacción.
+            </p>
+          </div>
+
+          {/* Navegación */}
+          <div>
+            <h3 className="text-lg font-medium mb-3">Enlaces</h3>
+            <ul className="space-y-2">
+              <li>
+                <Button
+                  className="hover:text-primary"
+                  onClick={scrollToSection("top")}
+                >
+                  Inicio
+                </Button>
+              </li>
+              <li>
+                <Button
+                  className="hover:text-primary"
+                  onClick={scrollToSection("contact")}
+                >
+                  Contacto
+                </Button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contacto */}
+          <div>
+            <h3 className="text-lg font-medium mb-3">Contacto</h3>
+            <p className="text-gray-400">
+              <Link
+                href="mailto:geome7ric@gmail.com"
+                target="_blank"
+                className="hover:text-primary"
+              >
+                <span>
+                  <span className="mr-2">📧</span>
+                  geome7ric@gmail.com
+                </span>
+              </Link>
+            </p>
+            <p className="text-gray-400 mt-3">
+              <Link
+                href="https://wa.me/542916450794"
+                className="hover:text-accent"
+              >
+                <span>
+                  <span className="mr-2">📞</span>
+                  +54 291 6450794
+                </span>
+              </Link>
+            </p>
+            <div className="flex space-x-4 mt-3">
+              <Link
+                href="https://www.linkedin.com/company/geome7ric"
+                target="_blank"
+                className="hover:text-primary"
+              >
+                🔗 LinkedIn
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Línea divisoria */}
+        <div className="border-t border-gray-600/25 mt-8 pt-6 text-center text-gray-500 text-sm">
+          © {new Date().getFullYear()} Geome7ric. Todos los derechos reservados.
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

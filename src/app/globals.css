@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+.swiper-container {
+  width: 100%;
+  max-width: 100%;
+}
+
+.swiper-slide {
+  width: 100%;
+}
+
+@font-face {
+  font-family: "ProdigySans";
+  src: url("/fonts/prodigy-sans/ProdigySans-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ProdigySansBold";
+  src: url("/fonts/prodigy-sans/ProdigySans-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CurrentRegular";
+  src: url("/fonts/current-regular/FontsFree-Net-Current-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "ProdigySans", sans-serif;
+}
+
+fond-bold {
+  font-family: "ProdigySansBold", sans-serif;
+}
+
+/* Personalizar el scroll */
+html {
+  scroll-behavior: smooth; /* Suaviza el desplazamiento */
+}
+
+::-webkit-scrollbar {
+  width: 8px; /* Ancho del scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a; /* Color del fondo */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color del thumb (barra de desplazamiento) */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color cuando el mouse pasa por encima */
+}
+
+.text-hero {
+  @apply text-5xl md:text-7xl;
+}
+
+.text-hero-sub {
+  @apply text-xl md:text-2xl;
+}
+
+.text-title {
+  @apply text-5xl md:text-6xl;
+}
+
+.text-subtitle {
+  @apply text-2xl md:text-3xl;
+}
+
+.text-button {
+  @apply text-sm md:text-lg;
+}
+
+.text-error {
+  @apply bg-dark text-accent;
+}
