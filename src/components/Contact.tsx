@@ -46,8 +46,8 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
         setFormData({
           name: "",
           email: "",
-          subject,
-          message,
+          subject: "",
+          message: "",
         });
       })
       .catch(() => {
