@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { projects } from "../data";
+import { projects } from "@/app/data";
 
 export default function PortfolioPage() {
   return (
@@ -14,7 +14,7 @@ export default function PortfolioPage() {
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2 max-w-6xl mx-auto">
         {projects.map((project) => (
-          <Link href={`/portfolio/${project.id}`} key={project.id}>
+          <Link href={`portfolio/${project.id}`} key={project.id}>
             <div
               className="text-white 
               hover:transform hover:scale-105

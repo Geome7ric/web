@@ -3,8 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import Button from "./Button";
+import { useTranslations } from "next-intl";
 
 const Footer = () => {
+  const t = useTranslations("");
   const scrollToSection = (section: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     if (section === "top") {
@@ -30,22 +32,19 @@ const Footer = () => {
               height={30}
               className="mb-4"
             ></Image>
-            <p className="mt-3 text-gray-400">
-              Transformamos negocios con innovación. Creemos en productos que
-              generan impacto y satisfacción.
-            </p>
+            <p className="mt-3 text-gray-400">{t("Footer.message")}</p>
           </div>
 
           {/* Navegación */}
           <div>
-            <h3 className="text-lg font-medium mb-3">Enlaces</h3>
+            <h3 className="text-lg font-medium mb-3">{t("common.links")}</h3>
             <ul className="space-y-2">
               <li>
                 <Button
                   className="hover:text-primary"
                   onClick={scrollToSection("top")}
                 >
-                  Inicio
+                  {t("common.home")}
                 </Button>
               </li>
               <li>
@@ -53,7 +52,15 @@ const Footer = () => {
                   className="hover:text-primary"
                   onClick={scrollToSection("contact")}
                 >
-                  Contacto
+                  {t("common.contact")}
+                </Button>
+              </li>
+              <li>
+                <Button
+                  className="hover:text-primary"
+                  onClick={scrollToSection("services")}
+                >
+                  {t("common.services")}
                 </Button>
               </li>
             </ul>
@@ -99,7 +106,7 @@ const Footer = () => {
 
         {/* Línea divisoria */}
         <div className="border-t border-gray-600/25 mt-8 pt-6 text-center text-gray-500 text-sm">
-          © {new Date().getFullYear()} Geome7ric. Todos los derechos reservados.
+          © {new Date().getFullYear()} Geome7ric
         </div>
       </div>
     </footer>

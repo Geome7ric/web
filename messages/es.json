@@ -1,0 +1,67 @@
+{
+  "common": {
+    "contact": "Contacto",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "subject": "Asunto",
+    "send": "Enviar",
+    "sending": "Enviando...",
+    "links": "Enlaces",
+    "home": "Inicio",
+    "services": "Servicios"
+  },
+  "Hero": {
+    "title": {
+      "p1": "Transformando negocios",
+      "p2": "con",
+      "p3": "innovación digital"
+    },
+    "subtitle": "Creamos soluciones que optimizan tu negocio, agilizan el trabajo de tu equipo y te impulsan a crecer día a día.",
+    "actions": {
+      "contact": "Contactanos",
+      "services": "Sabé más"
+    }
+  },
+  "Services": {
+    "title": {
+      "p1": "Nuestros",
+      "p2": "servicios"
+    },
+    "items": {
+      "i1": {
+        "title": "Soluciones personalizadas",
+        "description": "Soluciones a medida que se adapten a las necesidades únicas de tu negocio. Diseñamos y desarrollamos productos específicos para ti.",
+        "keyword": "Soluciones a medida"
+      },
+      "i2": {
+        "title": "Productos reconstruidos",
+        "description": "Descubre nuestra amplia gama de soluciones listas para usar, diseñadas para impulsar el rendimiento y la eficiencia de tu negocio.",
+        "keyword": "soluciones listas"
+      },
+      "i3": {
+        "title": "Consultoría y estrategia",
+        "description": "Transforma tus ideas en realidad con nuestra orientación experta. Te ayudamos a planificar, estrategizar y ejecutar tu visión.",
+        "keyword": "orientación experta"
+      },
+      "i4": {
+        "title": "Intervenciones de sistemas",
+        "description": "Optimiza tus sistemas actuales para mejorar la eficiencia y reducir costos. Identificamos e implementamos mejoras clave.",
+        "keyword": "mejoras clave"
+      }
+    }
+  },
+  "Contact": {
+    "title": {
+      "p1": "Contactanos para",
+      "p2": "más información"
+    },
+    "form": {
+      "message": "¿En qué podemos ayudarte?",
+      "success": "¡Gracias por contactarnos ${name}! Nos pondremos en contacto pronto.",
+      "error": "¡Ups! Algo salió mal. Por favor, intentá nuevamente."
+    }
+  },
+  "Footer": {
+    "message": "Transformamos negocios con innovación. Creemos en productos que generan impacto y satisfacción."
+  }
+}

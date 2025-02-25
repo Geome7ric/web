@@ -1,6 +1,7 @@
 "use client";
 import { sendEmail } from "@/app/api";
 import { useNotyf } from "@/app/hooks";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 // que reciba como parametro un subject y un message
@@ -12,6 +13,7 @@ interface ContactProps {
 
 const Contact = ({ subject = "", message = "" }: ContactProps) => {
   const notyf = useNotyf();
+  const t = useTranslations("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -39,8 +41,7 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
     // Aquí puedes agregar la lógica para enviar el formulario
     sendEmail(formData)
       .then(() => {
-        const message = `!Gracias por contactarnos ${name}! Nos pondremos en contacto pronto.`;
-
+        const message = t("Contact.form.success", { name });
         notyf!.success(message);
 
         setFormData({
@@ -51,7 +52,7 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
         });
       })
       .catch(() => {
-        notyf!.error("Ocurrió un error al enviar el mensaje");
+        notyf!.error(t("Contact.form.error"));
       })
       .finally(() => {
         setIsSending(false);
@@ -74,8 +75,8 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
         {/* Columna izquierda: Texto */}
         <div className="flex-1 flex flex-center items-center   h-96  p-10 ">
           <h2 className="text-title font-bold leading-tight transition-all duration-1000 text-center lg:text-left ">
-            Contactanos para{" "}
-            <span className="text-primary">más información</span>
+            {t("Contact.title.p1") + " "}
+            <span className="text-primary">{t("Contact.title.p2")}</span>
           </h2>
         </div>
 
@@ -90,7 +91,7 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
           >
             <div className="rounded-md shadow-sm -space-y-px border-none">
               <div className="py-1">
-                <label>Nombre *</label>
+                <label>{t("common.name")} *</label>
                 <input
                   id="name"
                   name="name"
@@ -104,7 +105,7 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                 />
               </div>
               <div className="py-1">
-                <label>Correo electrónico *</label>
+                <label>{t("common.email")} *</label>
                 <input
                   id="email"
                   name="email"
@@ -119,7 +120,7 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                 />
               </div>
               <div className="py-1">
-                <label>Asunto</label>
+                <label>{t("common.subject")}</label>
                 <input
                   id="subject"
                   name="subject"
@@ -135,7 +136,7 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
               </div>
 
               <div className="py-1">
-                <label>¿En qué podemos ayudarte? *</label>
+                <label>{t("Contact.form.message")} *</label>
                 <textarea
                   id="message"
                   name="message"
@@ -170,7 +171,7 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                 //  disable if is sending
                 disabled={isSending}
               >
-                {isSending ? "Enviando..." : "Enviar"}
+                {isSending ? t("common.sending") : t("common.send")}
               </button>
             </div>
           </form>

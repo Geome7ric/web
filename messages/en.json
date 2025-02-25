@@ -1,0 +1,67 @@
+{
+  "common": {
+    "contact": "Contact",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "send": "Send",
+    "sending": "Sending...",
+    "links": "Links",
+    "home": "Home",
+    "services": "Services"
+  },
+  "Hero": {
+    "title": {
+      "p1": "Transforming businesses",
+      "p2": "with",
+      "p3": "digital innovation"
+    },
+    "subtitle": "We create solutions that optimize your business, streamline your team's work, and drive you to grow day by day.",
+    "actions": {
+      "contact": "Contact us",
+      "services": "Learn more"
+    }
+  },
+  "Services": {
+    "title": {
+      "p1": "Our",
+      "p2": "services"
+    },
+    "items": {
+      "i1": {
+        "title": "Custom solutions",
+        "description": "Tailored solutions that adapt to the unique needs of your business. We design and develop specific products for you.",
+        "keyword": "Tailored solutions"
+      },
+      "i2": {
+        "title": "Rebuilt products",
+        "description": "Discover our wide range of ready-to-use solutions, designed to boost the performance and efficiency of your business.",
+        "keyword": "ready solutions"
+      },
+      "i3": {
+        "title": "Consulting and strategy",
+        "description": "Turn your ideas into reality with our expert guidance. We help you plan, strategize, and execute your vision.",
+        "keyword": "expert guidance"
+      },
+      "i4": {
+        "title": "System interventions",
+        "description": "Optimize your current systems to improve efficiency and reduce costs. We identify and implement key improvements.",
+        "keyword": "key improvements"
+      }
+    }
+  },
+  "Contact": {
+    "title": {
+      "p1": "Contact us for",
+      "p2": "more information"
+    },
+    "form": {
+      "message": "How can we help you?",
+      "success": "Thanks for contacting us ${name}! We'll be in touch soon.",
+      "error": "Oops! Something went wrong. Please try again."
+    }
+  },
+  "Footer": {
+    "message": "We transform businesses with innovation. We believe in products that generate impact and satisfaction."
+  }
+}

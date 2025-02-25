@@ -1,38 +1,38 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 const Services = () => {
+  const t = useTranslations("Services");
+
   const services = [
     {
-      title: "Soluciones personalizadas",
-      description:
-        "Soluciones a medida que se adapten a las necesidades únicas de tu negocio. Diseñamos y desarrollamos productos específicos para ti.",
+      title: t("items.i1.title"),
+      description: t("items.i1.description"),
       icon: "🛠️",
       link: "/services/soluciones-personalizadas",
-      keyword: "Soluciones a medida",
+      keyword: t("items.i1.keyword"),
     },
     {
-      title: "Productos reconstruidos",
-      description:
-        "Descubre nuestra amplia gama de soluciones listas para usar, diseñadas para impulsar el rendimiento y la eficiencia de tu negocio.",
+      title: t("items.i2.title"),
+      description: t("items.i2.description"),
       icon: "🚀",
       link: "/services/productos-preconstruidos",
-      keyword: "soluciones listas",
+      keyword: t("items.i2.keyword"),
     },
     {
-      title: "Consultoría y estrategia",
-      description:
-        "Transforma tus ideas en realidad con nuestra orientación experta. Te ayudamos a planificar, estrategizar y ejecutar tu visión.",
+      title: t("items.i3.title"),
+      description: t("items.i3.description"),
       icon: "💡",
       link: "/services/consultoria",
-      keyword: "orientación experta",
+      keyword: t("items.i3.keyword"),
     },
     {
-      title: "Intervenciones de sistemas",
-      description:
-        "Optimiza tus sistemas actuales para mejorar la eficiencia y reducir costos. Identificamos e implementamos mejoras clave.",
+      title: t("items.i4.title"),
+      description: t("items.i4.description"),
       icon: "📈",
       link: "/services/intervenciones-de-sistemas",
-      keyword: "mejoras clave",
+      keyword: t("items.i4.keyword"),
     },
   ];
 
@@ -44,7 +44,7 @@ const Services = () => {
     >
       <div className="container mx-auto px-6">
         <h2 className="text-title font-bold text-center mb-12">
-          Nuestros <span className="text-primary">servicios</span>
+          {t("title.p1")} <span className="text-primary">{t("title.p2")}</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (

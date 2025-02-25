@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -9,6 +10,8 @@ const Hero = () => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  const t = useTranslations("Hero");
 
   return (
     <section
@@ -25,9 +28,10 @@ const Hero = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
       >
-        Transformando negocios
+        {t("title.p1")}
         <br className="hidden md:block" />
-        &nbsp;con <span className="text-primary">innovación</span>
+        &nbsp;{t("title.p2")}{" "}
+        <span className="text-primary">{t("title.p3")}</span>
       </h1>
 
       <p
@@ -37,8 +41,7 @@ const Hero = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
         }`}
       >
-        Creamos soluciones que optimizan tu negocio, agilizan el trabajo de tu
-        equipo y te impulsan a crecer día a día.
+        {t("subtitle")}
       </p>
 
       <div
@@ -53,20 +56,17 @@ const Hero = () => {
               className="px-6 py-3 bg-dark border border-accent text-accent
               font-semibold text-lg rounded-lg shadow-lg hover:bg-accent hover:text-dark transition duration-300"
             >
-              Contactanos
+              {t("actions.contact")}
             </div>
           </Link>
         </div>
         <div className=" items-center">
-          <Link
-            // ir a la section de services
-            href="/#services"
-          >
+          <Link href="/#services">
             <div
               className="px-6 py-3 border border-gray-400 text-gray-200 
               font-semibold text-lg rounded-lg hover:bg-gray-700 transition duration-300"
             >
-              Saber más
+              {t("actions.services")}
             </div>
           </Link>
         </div>

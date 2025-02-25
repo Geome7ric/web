@@ -1,20 +1,24 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Button from "./Button";
 import { Menu, X } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
+  const t = useTranslations();
+
   const links = [
     // {
     //   href: "/portfolio",
     //   label: "Casos de éxito",
     //   className: "text-accent  hover:text-accent",
     // },
-    // { href: "services", label: "Servicios" },
-    { href: "contact", label: "Contacto" },
+    { href: "services", label: t("common.services") },
+    { href: "contact", label: t("common.contact") },
   ];
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -86,8 +90,10 @@ const Header = () => {
           </Link>
         </h1>
         {state.mobileView ? (
-          // menu desplegable
-          <div>
+          // que sea una row con el lenguaje y el menu
+
+          <div className="flex items-center space-x-2">
+            <LanguageSwitcher />
             <Button
               id="menu"
               icon={state.menuOpen ? X : Menu}
@@ -102,6 +108,7 @@ const Header = () => {
             >
               {state.menuOpen ? "" : ""}
             </Button>
+
             {state.menuOpen && (
               <nav
                 className={`absolute top-16 
@@ -125,6 +132,8 @@ const Header = () => {
                             menuOpen: false,
                           }));
 
+                          // quitar el locale de la url
+
                           // si apreto casos de exito ir siempre
                           const hrefIsPortfolio = href === "/portfolio";
                           if (hrefIsPortfolio) {
@@ -132,7 +141,12 @@ const Header = () => {
                             return;
                           }
 
-                          const inHome = window.location.pathname === "/";
+                          let pathname = window.location.pathname;
+                          // quitamos locale
+                          const locale = pathname.split("/")[1];
+                          pathname = pathname.substring(locale.length + 1);
+
+                          const inHome = pathname === "";
 
                           if (inHome) {
                             const section = document.getElementById(href);
@@ -170,7 +184,12 @@ const Header = () => {
                         return;
                       }
 
-                      const inHome = window.location.pathname === "/";
+                      let pathname = window.location.pathname;
+                      // quitamos locale
+                      const locale = pathname.split("/")[1];
+                      pathname = pathname.substring(locale.length + 1);
+
+                      const inHome = pathname === "";
 
                       if (inHome) {
                         const section = document.getElementById(href);
@@ -186,6 +205,8 @@ const Header = () => {
                   </Button>
                 </li>
               ))}
+
+              <LanguageSwitcher />
             </ul>
           </nav>
         )}
