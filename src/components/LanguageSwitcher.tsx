@@ -22,32 +22,13 @@ export default function LanguageSwitcher() {
     });
   };
 
-  // ordernar routing.locales de manera que "es" sea el primero
-  const locales = [...routing.locales].sort((a) => (a === "es" ? -1 : 1));
-
-  // Calcular la posición del slider basado en el idioma actual
-  const sliderPosition = locales.indexOf(currentLocale) / locales.length;
-
   return (
     <div
       className="relative flex items-center
-      p-1 border border-accent/15
+      p-1 border border-dark/15 dark:border-accent/15
           rounded-lg
     "
     >
-      {/* Slider animado */}
-      <div
-        className={`
-          absolute  shadow-md
-          transition-all
-          duration-300 ease-in-out
-          h-8 w-1/2 transform ${isPending ? "opacity-50" : ""}
-        `}
-        style={{
-          width: `${100 / routing.locales.length}%`,
-          transform: `translateX(${sliderPosition * 100}%)`,
-        }}
-      />
       {/* Botones de idioma */}
       {routing.locales.map((locale) => (
         <button
@@ -58,8 +39,8 @@ export default function LanguageSwitcher() {
             rounded-lg transition-colors duration-300 ease-in-out
             ${
               locale === currentLocale
-                ? "bg-accent/15 text-opacity-90 "
-                : "text-gray-400 hover:text-gray-200 hover:scale-105"
+                ? "bg-primary/50 dark:bg-accent/15 text-secondary dark:text-white text-opacity-90 "
+                : "text-gray-400 hover:text-gray-500 dark:hover:text-gray-200 hover:scale-105"
             }
             ${isPending ? "cursor-not-allowed" : ""}
           `}

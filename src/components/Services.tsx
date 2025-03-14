@@ -39,7 +39,7 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="relative flex flex-col text-white
+      className="relative flex flex-col text-secondary dark:text-white
       items-center justify-center pt-48 lg:pt-38"
     >
       <div className="container mx-auto px-6">
@@ -54,12 +54,12 @@ const Services = () => {
                 {service.icon}
                 {service.title}
               </h3>
-              <p className="text-gray-300 mb-6 text-center">
+              <p className="text-dark-300 dark:text-gray-300 mb-6 text-center">
                 {service.description.split(service.keyword).map((part, i) => (
                   <span key={i}>
                     {part}
                     {i === 0 && (
-                      <span className="text-primary font-semibold hover:text-accent transition-transform duration-300 inline-block">
+                      <span className="dark:text-primary font-semibold hover:text-dark dark:hover:text-accent transition-transform duration-300 inline-block">
                         {service.keyword}
                       </span>
                     )}

@@ -20,7 +20,7 @@ const Hero = () => {
        md:mt-36
        gap-4
        relative flex flex-col items-center
-       justify-center text-center  text-white px-6 w-full"
+       justify-center text-center text-secondary  dark:text-white px-6 w-full"
     >
       <h1
         className={`text-hero font-extrabold 
@@ -37,7 +37,8 @@ const Hero = () => {
       <p
         className={`mt-4 w-full
           text-hero-sub
-        text-gray-300 max-w-2xl transition-all duration-1000 delay-200 ${
+          text-dark-300
+        dark:text-gray-300 max-w-2xl transition-all duration-1000 delay-200 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
         }`}
       >
@@ -53,8 +54,11 @@ const Hero = () => {
         <div className=" flex flex-center items-center">
           <Link className="" href="/#contact">
             <div
-              className="px-6 py-3 bg-dark border border-accent text-accent
-              font-semibold text-lg rounded-lg shadow-lg hover:bg-accent hover:text-dark transition duration-300"
+              className="px-6 py-3 
+              border
+              dark:bg-dark  dark:border-accent dark:text-accent dark:hover:bg-accent dark:hover:text-dark
+              bg-primary border-secondary text-secondary hover:bg-secondary hover:text-primary
+              font-semibold text-lg rounded-lg shadow-lg transition duration-300"
             >
               {t("actions.contact")}
             </div>
@@ -63,8 +67,10 @@ const Hero = () => {
         <div className=" items-center">
           <Link href="/#services">
             <div
-              className="px-6 py-3 border border-gray-400 text-gray-200 
-              font-semibold text-lg rounded-lg hover:bg-gray-700 transition duration-300"
+              className="px-6 py-3 border 
+              dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-700
+              border-secondary text-secondary-400 
+              font-semibold text-lg rounded-lg transition duration-300"
             >
               {t("actions.services")}
             </div>

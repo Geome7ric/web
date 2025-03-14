@@ -74,14 +74,18 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
       >
         {/* Columna izquierda: Texto */}
         <div className="flex-1 flex flex-center items-center   h-96  p-10 ">
-          <h2 className="text-title font-bold leading-tight transition-all duration-1000 text-center lg:text-left ">
+          <h2
+            className="
+            text-secondary dark:text-white
+          text-title font-bold leading-tight transition-all duration-1000 text-center lg:text-left "
+          >
             {t("Contact.title.p1") + " "}
             <span className="text-primary">{t("Contact.title.p2")}</span>
           </h2>
         </div>
 
         {/* Columna derecha: Formulario */}
-        <div className="flex-1 w-full lg:max-w-none bg-dark/50 p-10 h-full ">
+        <div className="flex-1 w-full lg:max-w-none rounded bg-primary/50 dark:bg-dark/50 p-10 h-full ">
           <form
             className="space-y-6
             lg:max-w-xl xl:max-w-xl
@@ -97,9 +101,12 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                   name="name"
                   type="text"
                   required
-                  className="appearance-none rounded-md relative block w-full px-3 border border-white/15 mt-2
-                    py-2 placeholder-gray-500 text-white rounded-t-md 
-                    focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm bg-dark"
+                  className="appearance-none rounded-md relative block w-full px-3 border  mt-2
+                    py-2   rounded-t-md 
+                    text-secondary border-secondary/40 focus:border-secondary 
+                     dark:text-white  dark:border-white/15 dark:focus:border-primary dark:bg-dark
+                     border-secondary-300
+                    focus:outline-none focus:ring-primary focus:z-10 sm:text-sm  "
                   value={formData.name}
                   onChange={handleChange}
                 />
@@ -113,8 +120,10 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                   required
                   className="appearance-none rounded-md relative 
                   block w-full px-3 py-2 border
-                   border-gray-300 placeholder-gray-500 text-white focus:outline-none bg-dark border-white/15 mt-2
-                    focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
+                  text-secondary border-secondary/40 focus:border-secondary 
+                    dark:text-white dark:border-white/15 dark:focus:border-primary dark:bg-dark
+                   border-secondary-300 dark:border-gray-300  focus:outline-none  mt-2
+                    focus:ring-primary  dfocus:z-10 sm:text-sm"
                   value={formData.email}
                   onChange={handleChange}
                 />
@@ -126,10 +135,12 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                   name="subject"
                   type="text"
                   className="appearance-none rounded-md relative 
-                  block w-full px-3 py-2 border bg-dark border-white/15 
+                  block w-full px-3 py-2 border 
                   mt-2
-                   border-gray-300 placeholder-gray-500 text-white focus:outline-none
-                    focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
+                  text-secondary border-secondary/40 focus:border-secondary 
+                    dark:text-white dark:border-white/15 dark:focus:border-primary dark:bg-dark
+                   border-gray-300 placeholder-gray-500  focus:outline-none
+                    focus:ring-primary  focus:z-10 sm:text-sm"
                   value={formData.subject}
                   onChange={handleChange}
                 />
@@ -141,10 +152,12 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                   id="message"
                   name="message"
                   required
-                  className="appearance-none rounded-none relative block w-full bg-dark border-white/15 mt-2 
-                  px-3 py-2 border border-gray-300 
-                   text-white rounded-b-md focus:outline-none focus:ring-primary
-                    focus:border-primary focus:z-10 sm:text-sm"
+                  className="appearance-none rounded-none relative block w-full  mt-2 
+                  px-3 py-2 border 
+                  text-secondary border-secondary/40 focus:border-secondary 
+                    dark:text-white dark:border-white/15 dark:focus:border-primary dark:bg-dark
+                   rounded-b-md focus:outline-none focus:ring-primary
+                     focus:z-10 sm:text-sm"
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
@@ -158,9 +171,11 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                 className={` 
                   group relative
                   flex justify-center 
-                  py-2 px-4 border border-transparent 
+                  py-2 px-4 border 
                   rounded-md
-                bg-primary text-dark text-bold  
+                  border-secondary text-secondary
+                dark:bg-primary dark:text-dark 
+                text-bold  
                   focus:outline-none focus:ring-2 
                   focus:ring-offset-2
                   w-72

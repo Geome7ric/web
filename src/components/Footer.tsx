@@ -32,7 +32,9 @@ const Footer = () => {
               height={30}
               className="mb-4"
             ></Image>
-            <p className="mt-3 text-gray-400">{t("Footer.message")}</p>
+            <p className="mt-3 text-secondary dark:text-gray-400">
+              {t("Footer.message")}
+            </p>
           </div>
 
           {/* Navegación */}
@@ -41,7 +43,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Button
-                  className="hover:text-primary"
+                  className="text-secondary hover:text-secondary dark:text-white dark:hover:text-primary"
                   onClick={scrollToSection("top")}
                 >
                   {t("common.home")}
@@ -49,7 +51,7 @@ const Footer = () => {
               </li>
               <li>
                 <Button
-                  className="hover:text-primary"
+                  className="text-secondary hover:text-secondary dark:text-white dark:hover:text-primary"
                   onClick={scrollToSection("contact")}
                 >
                   {t("common.contact")}
@@ -57,7 +59,7 @@ const Footer = () => {
               </li>
               <li>
                 <Button
-                  className="hover:text-primary"
+                  className="text-secondary hover:text-secondary dark:text-white dark:hover:text-primary"
                   onClick={scrollToSection("services")}
                 >
                   {t("common.services")}
@@ -68,12 +70,14 @@ const Footer = () => {
 
           {/* Contacto */}
           <div>
-            <h3 className="text-lg font-medium mb-3">Contacto</h3>
-            <p className="text-gray-400">
+            <h3 className="text-lg font-medium mb-3 text-secondary dark:text-white">
+              {t("common.contact")}
+            </h3>
+            <p className=" text-secondary dark:text-gray-400">
               <Link
                 href="mailto:geome7ric@gmail.com"
                 target="_blank"
-                className="hover:text-primary"
+                className="text-secondary dark:text-gray-400 dark:hover:text-primary"
               >
                 <span>
                   <span className="mr-2">📧</span>
@@ -81,10 +85,10 @@ const Footer = () => {
                 </span>
               </Link>
             </p>
-            <p className="text-gray-400 mt-3">
+            <p className="text-secondary dark:text-gray-400 mt-3">
               <Link
                 href="https://wa.me/542916450794"
-                className="hover:text-accent"
+                className="hover:text-dark dark:hover:text-accent"
               >
                 <span>
                   <span className="mr-2">📞</span>
@@ -96,7 +100,7 @@ const Footer = () => {
               <Link
                 href="https://www.linkedin.com/company/geome7ric"
                 target="_blank"
-                className="hover:text-primary"
+                className="text-secondary dark:text-gray-400 dark:hover:text-primary"
               >
                 🔗 LinkedIn
               </Link>

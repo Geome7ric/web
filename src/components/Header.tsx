@@ -75,7 +75,9 @@ const Header = () => {
   return (
     <header
       className={`sticky  w-full top-0 z-10 p-4 transition-colors duration-300 ${
-        isScrolled ? "bg-white/1 backdrop-blur-md shadow-lg" : "bg-transparent"
+        isScrolled
+          ? " dark:bg-white/1 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto flex justify-between items-center">
@@ -98,7 +100,8 @@ const Header = () => {
               id="menu"
               icon={state.menuOpen ? X : Menu}
               // icono de hamburguesa
-              className="text-2xl focus:outline-none text-primary transition-all duration-1000"
+              className="text-2xl focus:outline-none
+               text-primary transition-all duration-1000"
               onClick={() =>
                 setState((prevState) => ({
                   ...prevState,
@@ -112,7 +115,8 @@ const Header = () => {
             {state.menuOpen && (
               <nav
                 className={`absolute top-16 
-                  bg-dark right-1 backdrop-blur-md 
+                  bg-white
+                  dark:bg-dark right-1 backdrop-blur-md 
                   p-4 rounded-md shadow-lg`}
               >
                 <ul className="flex flex-col space-y-4">
