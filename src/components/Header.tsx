@@ -12,11 +12,11 @@ const Header = () => {
   const t = useTranslations();
 
   const links = [
-    // {
-    //   href: "/portfolio",
-    //   label: "Casos de éxito",
-    //   className: "text-accent  hover:text-accent",
-    // },
+    {
+      href: "/portfolio",
+      label: "Casos de éxito",
+      className: "text-accent  hover:text-accent",
+    },
     { href: "services", label: t("common.services") },
     { href: "contact", label: t("common.contact") },
   ];
@@ -95,7 +95,7 @@ const Header = () => {
           // que sea una row con el lenguaje y el menu
 
           <div className="flex items-center space-x-2">
-            <LanguageSwitcher />
+            {/* <LanguageSwitcher /> */}
             <Button
               id="menu"
               icon={state.menuOpen ? X : Menu}
@@ -136,19 +136,21 @@ const Header = () => {
                             menuOpen: false,
                           }));
 
-                          // quitar el locale de la url
-
-                          // si apreto casos de exito ir siempre
-                          const hrefIsPortfolio = href === "/portfolio";
-                          if (hrefIsPortfolio) {
-                            window.location.href = href;
-                            return;
-                          }
-
                           let pathname = window.location.pathname;
                           // quitamos locale
                           const locale = pathname.split("/")[1];
                           pathname = pathname.substring(locale.length + 1);
+
+                          console.log({
+                            locale,
+                          });
+
+                          // si apreto casos de exito ir siempre
+                          const hrefIsPortfolio = href === "/portfolio";
+                          if (hrefIsPortfolio) {
+                            window.location.href = `${locale}${href}`;
+                            return;
+                          }
 
                           const inHome = pathname === "";
 
@@ -210,7 +212,7 @@ const Header = () => {
                 </li>
               ))}
 
-              <LanguageSwitcher />
+              {/* <LanguageSwitcher /> */}
             </ul>
           </nav>
         )}

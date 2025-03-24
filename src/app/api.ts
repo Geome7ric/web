@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://geome7ric-bee-kappa.vercel.app/api";
+const API_BASE_URL = "https://bee-production-6fe6.up.railway.app/api";
 
 const mailingApiCall = "/services/mailing";
 

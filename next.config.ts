@@ -22,6 +22,13 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "laravel.com", pathname: "/**" },
       { protocol: "https", hostname: "www.mysql.com", pathname: "/**" },
       { protocol: "https", hostname: "vuex.vuejs.org", pathname: "/**" },
+      { protocol: "https", hostname: "www.w3.org", pathname: "/**" },
+      { protocol: "https", hostname: "developer.mozilla.org", pathname: "/**" },
+      { protocol: "https", hostname: "www.javascript.com", pathname: "/**" },
+      { protocol: "https", hostname: "www.coywolf.news", pathname: "/**" },
+      { protocol: "https", hostname: "upload.wikimedia.org", pathname: "/**" },
+      { protocol: "https", hostname: "png.pngtree.com", pathname: "/**" },
+      { protocol: "https", hostname: "www.argentino.com.ar", pathname: "/**" },
     ],
   },
 };

@@ -39,9 +39,12 @@ export default function Project() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="col-span-1">
             <div className="flex flex-col justify-center h-full">
-              <h1 className="text-4xl font-bold text-white">
-                {project.client}
-              </h1>
+              <div className="flex flex-row items-center">
+                <h1 className="text-4xl font-bold text-white">
+                  {project.client}
+                </h1>
+              </div>
+
               <p className="text-lg text-gray-600 mt-2">
                 {project.description}
               </p>
@@ -57,6 +60,18 @@ export default function Project() {
             />
           </div>
         </div>
+
+        {project.link && (
+          <div className="mx-4">
+            <Link
+              href={project.link}
+              target="_blank"
+              className="text-dark text-lg bg-accent p-2 mt-2 rounded-lg"
+            >
+              Visitar sitio
+            </Link>
+          </div>
+        )}
 
         {/* linea divisoria como el footer */}
         <div className="border-t border-gray-600/25 mt-8 pt-6 text-center text-gray-500 text-sm"></div>
@@ -136,9 +151,9 @@ export default function Project() {
           <h2 className="font-semibold text-subtitle mt-6">Tecnologías</h2>
 
           <div className="flex flex-wrap gap-4 mt-4  ">
-            {Object.entries(project.stack!).map(([type, techs]) => (
+            {Object.entries(project.stack!).map(([type, techs], index) => (
               <div
-                key={type}
+                key={index}
                 className="flex flex-col gap-2 border border-solid
                 p-2 rounded-lg border-accent/50"
               >
@@ -150,7 +165,6 @@ export default function Project() {
                   {type}
                 </h3>
 
-                {/* separador */}
                 <div className="border-t border-gray-600/25"></div>
 
                 <div className="flex flex-wrap gap-2 b">

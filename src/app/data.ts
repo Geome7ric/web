@@ -51,6 +51,24 @@ const Vercel = {
   link: "https://vercel.com",
 };
 
+const HTML = {
+  name: "HTML",
+  icon: "https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png",
+  link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+};
+
+const CSS = {
+  name: "CSS",
+  icon: "https://www.coywolf.news/wp-content/uploads/2024/11/purple-css-logo.webp",
+  link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+};
+
+const JavaScript = {
+  name: "JavaScript",
+  icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/768px-JavaScript-logo.png",
+  link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+};
+
 const Railway = {
   name: "Railway",
   icon: "https://railway.app/favicon.ico",
@@ -85,6 +103,53 @@ const Vuex = {
 export const projects = [
   {
     id: "1",
+    title: "Landing Page para Empresa de Transporte",
+    client: "NorteBus BB",
+    link: "https://nortebusbb.com",
+    description:
+      "Landing page informativa para NorteBus BB, una empresa de transporte en Bahía Blanca y la zona.",
+    features: [
+      "Información sobre la empresa y sus servicios",
+      "Sección de contacto con formulario para consultas",
+      "Detalles de horarios y destinos",
+      "Blog con publicaciones recientes",
+      "Optimización SEO para mejorar el posicionamiento en Google",
+    ],
+    hero: "https://i.argentino.com.ar/images/2022/0118/1573899-norte-bus-servicio-de-combis-tel-2914685103-20220118141725518.jpg",
+    mobile: "/assets/portfolio/nortebus/nortebus-screen-app-left.png",
+    images: [
+      "https://source.unsplash.com/600x400/?bus",
+      "https://source.unsplash.com/600x400/?road",
+      "https://source.unsplash.com/600x400/?travel",
+    ],
+    videos: [],
+    date: "2023-08",
+    result:
+      "<p>La creación de la landing page para NorteBus BB permitió a la empresa consolidar su presencia en línea, ofreciendo a los usuarios una plataforma donde pueden conocer sus servicios, horarios y realizar consultas directamente desde el sitio web.</p><br><p>Los beneficios incluyeron:</p><br><ul><li><strong>Mayor visibilidad:</strong> Una presencia en línea que facilita a los clientes potenciales encontrar información sobre la empresa.</li><li><strong>Comunicación eficiente:</strong> El formulario de contacto permite a los usuarios realizar consultas de manera directa y sencilla.</li><li><strong>Actualización de contenidos:</strong> La sección de blog permite compartir noticias y novedades relacionadas con la empresa y el sector.</li><li><strong>Mejor posicionamiento en Google:</strong> Gracias a la optimización SEO, la página ha logrado una excelente visibilidad en los resultados de búsqueda, facilitando que más personas la encuentren.</li></ul><br><p>En general, la landing page ha contribuido a mejorar la comunicación con los clientes y a fortalecer la imagen de NorteBus BB en el mercado local.</p>",
+    solution:
+      "<p>Se desarrolló una landing page informativa que incluye:</p><br><ul><li><strong>Sección 'Sobre nosotros':</strong> Información detallada sobre la historia y misión de la empresa.</li><li><strong>Sección 'Servicios':</strong> Descripción de los servicios ofrecidos, como traslados a Sierra de la Ventana y servicios corporativos.</li><li><strong>Sección 'Contacto':</strong> Información de contacto y un formulario para consultas.</li><li><strong>Sección 'Blog':</strong> Espacio para publicaciones relacionadas con destinos y novedades de la empresa.</li><li><strong>SEO optimizado:</strong> Estrategias aplicadas para mejorar la visibilidad en motores de búsqueda.</li></ul><br><p>La página fue diseñada para ser intuitiva y responsive, garantizando una experiencia óptima en dispositivos móviles y de escritorio.</p>",
+    challenge:
+      "<p>El principal desafío fue desarrollar una landing page que reflejara la identidad de NorteBus BB y proporcionara a los usuarios la información necesaria de manera clara y concisa. Además, se buscó facilitar la comunicación directa con la empresa a través de un formulario de contacto eficiente. Otro reto importante fue optimizar la página para mejorar su posicionamiento en Google, asegurando que más usuarios pudieran encontrar fácilmente la información.</p>",
+    stack: {
+      frontend: [HTML, CSS, JavaScript],
+      nube: [Vercel],
+      backend: [Laravel],
+    },
+    stack_explanation:
+      "Se utilizó HTML, CSS y JavaScript para el desarrollo del frontend, creando una interfaz atractiva y funcional. PHP fue empleado en el backend para gestionar el procesamiento de formularios y otras funcionalidades dinámicas. La página fue desplegada en Vercel, aprovechando su capacidad para alojar sitios estáticos y dinámicos con facilidad.",
+    testimonials: [
+      {
+        name: "Marcelo Romero",
+        position: "Director de NorteBus BB",
+        photo:
+          "https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-avatar-placeholder-png-image_3416697.jpg",
+        review:
+          "La nueva página nos ayudó a que más personas nos encuentren en Google. Es fácil de usar, muestra toda la información que nuestros clientes necesitan y además quedó muy linda. Estamos muy contentos con el resultado.",
+      },
+    ],
+  },
+  {
+    id: "2",
     title: "Gestion de tiendas + Vinculación con Tienda Nube",
     client: "Signos Indumentaria",
     description:
@@ -155,7 +220,7 @@ export const projects = [
     ],
   },
   {
-    id: "2",
+    id: "3",
     title: "Alquiler de maquinaria",
     client: "Amusquibar",
     description:
@@ -175,7 +240,7 @@ export const projects = [
     date: "2022-11",
   },
   {
-    id: "3",
+    id: "4",
     title: "E-commerce integrado",
     client: "Amusquibar",
     description:
@@ -195,7 +260,7 @@ export const projects = [
     date: "2023-02",
   },
   {
-    id: "4",
+    id: "5",
     title: "Pedidos para distribuidora",
     client: "Amusquibar",
     description:
