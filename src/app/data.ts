@@ -136,7 +136,7 @@ export const projects = [
       backend: [Laravel],
     },
     stack_explanation:
-      "Se utilizó HTML, CSS y JavaScript para el desarrollo del frontend, creando una interfaz atractiva y funcional. PHP fue empleado en el backend para gestionar el procesamiento de formularios y otras funcionalidades dinámicas. La página fue desplegada en Vercel, aprovechando su capacidad para alojar sitios estáticos y dinámicos con facilidad.",
+      "Se utilizó HTML, CSS y JavaScript para el desarrollo de la página, asegurando un diseño ligero y funcional. La implementación de técnicas de SEO mejoró su posicionamiento en Google. Además, la landing page fue alojada en Vercel, permitiendo una carga rápida y eficiente en distintos dispositivos.",
     testimonials: [
       {
         name: "Marcelo Romero",

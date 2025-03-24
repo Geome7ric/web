@@ -28,7 +28,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "www.coywolf.news", pathname: "/**" },
       { protocol: "https", hostname: "upload.wikimedia.org", pathname: "/**" },
       { protocol: "https", hostname: "png.pngtree.com", pathname: "/**" },
-      { protocol: "https", hostname: "www.argentino.com.ar", pathname: "/**" },
+      { protocol: "https", hostname: "i.argentino.com.ar", pathname: "/**" },
     ],
   },
 };

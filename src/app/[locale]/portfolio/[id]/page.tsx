@@ -39,10 +39,22 @@ export default function Project() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="col-span-1">
             <div className="flex flex-col justify-center h-full">
-              <div className="flex flex-row items-center">
+              <div className="flex flex-row items-center justify-between">
                 <h1 className="text-4xl font-bold text-white">
                   {project.client}
                 </h1>
+
+                {project.link && (
+                  <div className="mx-4">
+                    <Link
+                      href={project.link}
+                      target="_blank"
+                      className="text-dark text-lg bg-accent p-2 mt-2 rounded-lg"
+                    >
+                      Visitar sitio
+                    </Link>
+                  </div>
+                )}
               </div>
 
               <p className="text-lg text-gray-600 mt-2">
@@ -60,18 +72,6 @@ export default function Project() {
             />
           </div>
         </div>
-
-        {project.link && (
-          <div className="mx-4">
-            <Link
-              href={project.link}
-              target="_blank"
-              className="text-dark text-lg bg-accent p-2 mt-2 rounded-lg"
-            >
-              Visitar sitio
-            </Link>
-          </div>
-        )}
 
         {/* linea divisoria como el footer */}
         <div className="border-t border-gray-600/25 mt-8 pt-6 text-center text-gray-500 text-sm"></div>
