@@ -5,69 +5,73 @@ import { useTranslations } from "next-intl";
 const Services = () => {
   const t = useTranslations("Services");
 
-  const services = [
+  const sections = [
     {
-      title: t("items.i1.title"),
-      description: t("items.i1.description"),
-      icon: "🛠️",
-      link: "/services/soluciones-personalizadas",
-      keyword: t("items.i1.keyword"),
+      key: "customApps",
     },
     {
-      title: t("items.i2.title"),
-      description: t("items.i2.description"),
-      icon: "🚀",
-      link: "/services/productos-preconstruidos",
-      keyword: t("items.i2.keyword"),
+      key: "operationalTools",
     },
     {
-      title: t("items.i3.title"),
-      description: t("items.i3.description"),
-      icon: "💡",
-      link: "/services/consultoria",
-      keyword: t("items.i3.keyword"),
-    },
-    {
-      title: t("items.i4.title"),
-      description: t("items.i4.description"),
-      icon: "📈",
-      link: "/services/intervenciones-de-sistemas",
-      keyword: t("items.i4.keyword"),
+      key: "automation",
     },
   ];
 
   return (
     <section
       id="services"
-      className="relative flex flex-col text-secondary dark:text-white
-      items-center justify-center pt-48 lg:pt-38"
+      className="relative flex flex-col items-center justify-center pt-36 lg:pt-40 text-secondary dark:text-white"
     >
-      <div className="container mx-auto px-6">
-        <h2 className="text-title font-bold text-center mb-12">
-          {t("title.p1")} <span className="text-primary">{t("title.p2")}</span>
+      <div className="container mx-auto px-6 max-w-5xl">
+        {/* Título e introducción */}
+        <h2 className="text-4xl font-extrabold text-center mb-4">
+          {t("title")}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => (
-            <div key={index} className="p-8">
-              <div className="text-2xl mb-2 text-primary flex justify-center"></div>
-              <h3 className="text-2xl font-bold mb-4 text-center">
-                {service.icon}
-                {service.title}
+        <p className="text-lg text-center text-dark-300 dark:text-gray-300 mb-16">
+          {t("intro")}
+        </p>
+
+        {/* Secciones */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {sections.map(({ key }) => (
+            <div
+              key={key}
+              className=" dark:bg-dark-200 rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col"
+            >
+              <h3 className="text-xl font-semibold mb-4 text-center">
+                {t(`sections.${key}.title`)}
               </h3>
-              <p className="text-dark-300 dark:text-gray-300 mb-6 text-center">
-                {service.description.split(service.keyword).map((part, i) => (
-                  <span key={i}>
-                    {part}
-                    {i === 0 && (
-                      <span className="dark:text-primary font-semibold hover:text-dark dark:hover:text-accent transition-transform duration-300 inline-block">
-                        {service.keyword}
-                      </span>
-                    )}
-                  </span>
-                ))}
-              </p>
+
+              <div className="mt-2 mb-4">
+                <p className=" font-bold text-primary mb-1">
+                  {t(`sections.${key}.what`)}
+                </p>
+                <p className=" text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {t(`sections.${key}.whatText`)}
+                </p>
+              </div>
+
+              <div>
+                <p className=" font-bold text-primary mb-1">
+                  {t(`sections.${key}.how`)}
+                </p>
+                <p className=" text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {t(`sections.${key}.howText`)}
+                </p>
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* Por qué elegirnos */}
+        <div className="mt-24 text-center">
+          <h3 className="text-subtitle font-semibold mb-6">{t("whyTitle")}</h3>
+
+          <ul className="text-start space-y-4 max-w-2xl mx-auto text-gray-600 dark:text-gray-300 leading-relaxed">
+            {t.raw("whyBullets").map((bullet: string, index: number) => (
+              <li key={index}>• {bullet}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

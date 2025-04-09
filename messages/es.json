@@ -23,32 +23,40 @@
     }
   },
   "Services": {
-    "title": {
-      "p1": "Nuestros",
-      "p2": "servicios"
-    },
-    "items": {
-      "i1": {
-        "title": "Soluciones personalizadas",
-        "description": "Soluciones a medida que se adapten a las necesidades únicas de tu negocio. Diseñamos y desarrollamos productos específicos para ti.",
-        "keyword": "Soluciones a medida"
+    "title": "¿Qué podés resolver con Geome7ric?",
+    "intro": "Convertimos tu visión en soluciones digitales simples, prácticas y efectivas. Sabemos que cada negocio enfrenta desafíos únicos, y por eso adaptamos nuestros servicios para resolver tus necesidades reales.",
+    "sections": {
+      "customApps": {
+        "title": "💻 Desarrollo de aplicaciones a medida",
+        "what": "¿Qué resolvés?",
+        "whatText": "Automatizamos tareas repetitivas, optimizamos procesos internos y facilitamos la gestión diaria para que puedas enfocarte en lo que realmente importa: hacer crecer tu negocio.",
+        "how": "¿Cómo lo hacemos?",
+        "howText": "Aplicaciones modernas, escalables, y fáciles de usar, que se integran sin esfuerzo en tu flujo de trabajo actual."
       },
-      "i2": {
-        "title": "Productos preconstruidos",
-        "description": "Descubre nuestra gama de soluciones listas para usar, diseñadas para impulsar el rendimiento y la eficiencia de tu negocio.",
-        "keyword": "soluciones listas"
+      "operationalTools": {
+        "title": "⚙️ Soluciones para la gestión operativa",
+        "what": "¿Qué resolvés?",
+        "whatText": "Te ayudamos a monitorear, organizar y controlar tu operación diaria, reduciendo errores y aumentando la eficiencia.",
+        "how": "¿Cómo lo hacemos?",
+        "howText": "Desarrollamos sistemas intuitivos para la asignación de tareas, seguimiento en tiempo real, generación automática de reportes y alertas inteligentes."
       },
-      "i3": {
-        "title": "Consultoría y estrategia",
-        "description": "Transforma tus ideas en realidad con nuestra orientación experta. Te ayudamos a planificar, estrategizar y ejecutar tu visión.",
-        "keyword": "orientación experta"
-      },
-      "i4": {
-        "title": "Intervenciones de sistemas",
-        "description": "Optimiza tus sistemas actuales para mejorar la eficiencia y reducir costos. Identificamos e implementamos mejoras clave.",
-        "keyword": "mejoras clave"
+      "automation": {
+        "title": "📊 Automatización y reportes personalizados",
+        "what": "¿Qué resolvés?",
+        "whatText": "Olvídate del trabajo manual en tareas repetitivas y libera tiempo valioso para la toma de decisiones estratégicas.",
+        "how": "¿Cómo lo hacemos?",
+        "howText": "Creamos herramientas que automatizan la recopilación, procesamiento y presentación de información clave en reportes claros y fáciles de analizar."
       }
-    }
+    },
+    "whyTitle": "🚀 ¿Por qué elegir Geome7ric?",
+    "whyBullets": [
+      "Nos especializamos en entender problemas reales y resolverlos con soluciones tecnológicas prácticas.",
+      "Comunicación clara, respuestas rápidas y soluciones efectivas.",
+      "Trabajamos junto a vos en cada etapa para garantizar que la solución final sea exactamente lo que necesitás."
+    ],
+    "ctaTitle": "📞 Da el primer paso",
+    "ctaText": "¿Tenés un desafío o una idea para mejorar tu negocio?",
+    "ctaButton": "Habla con nosotros →"
   },
   "Contact": {
     "title": {

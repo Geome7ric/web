@@ -23,32 +23,40 @@
     }
   },
   "Services": {
-    "title": {
-      "p1": "Our",
-      "p2": "services"
-    },
-    "items": {
-      "i1": {
-        "title": "Custom solutions",
-        "description": "Tailored solutions that adapt to the unique needs of your business. We design and develop specific products for you.",
-        "keyword": "Tailored solutions"
+    "title": "What can you solve with Geome7ric?",
+    "intro": "At Geome7ric, we turn your vision into simple, practical, and effective digital solutions. Every business faces unique challenges, and we tailor our services to solve your real needs.",
+    "sections": {
+      "customApps": {
+        "title": "💻 Custom application development",
+        "what": "What do you solve?",
+        "whatText": "We automate repetitive tasks, optimize internal processes, and simplify daily operations so you can focus on what really matters: growing your business.",
+        "how": "How do we do it?",
+        "howText": "Modern, scalable, and easy-to-use apps that integrate seamlessly into your current workflow."
       },
-      "i2": {
-        "title": "Precast products",
-        "description": "Discover our range of ready-to-use solutions, designed to boost the performance and efficiency of your business.",
-        "keyword": "ready solutions"
+      "operationalTools": {
+        "title": "⚙️ Operational management solutions",
+        "what": "What do you solve?",
+        "whatText": "We help you monitor, organize, and control your daily operations, reducing errors and increasing efficiency.",
+        "how": "How do we do it?",
+        "howText": "We build intuitive systems for task assignment, real-time tracking, automated reporting, and smart alerts."
       },
-      "i3": {
-        "title": "Consulting and strategy",
-        "description": "Turn your ideas into reality with our expert guidance. We help you plan, strategize, and execute your vision.",
-        "keyword": "expert guidance"
-      },
-      "i4": {
-        "title": "System interventions",
-        "description": "Optimize your current systems to improve efficiency and reduce costs. We identify and implement key improvements.",
-        "keyword": "key improvements"
+      "automation": {
+        "title": "📊 Automation and custom reporting",
+        "what": "What do you solve?",
+        "whatText": "Forget manual work on repetitive tasks and free up valuable time for strategic decisions.",
+        "how": "How do we do it?",
+        "howText": "We build tools that automate the collection, processing, and presentation of key information in clear, actionable reports."
       }
-    }
+    },
+    "whyTitle": "🚀 Why choose Geome7ric?",
+    "whyBullets": [
+      "We specialize in understanding real problems and solving them with practical tech solutions.",
+      "Clear communication, fast responses, and effective results.",
+      "We work with you at every stage to ensure the final solution is exactly what you need."
+    ],
+    "ctaTitle": "📞 Take the first step",
+    "ctaText": "Do you have a challenge or an idea to improve your business?",
+    "ctaButton": "Talk to us →"
   },
   "Contact": {
     "title": {
