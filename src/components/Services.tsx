@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 const Services = () => {
   const t = useTranslations("Services");
@@ -22,23 +23,21 @@ const Services = () => {
       id="services"
       className="relative flex flex-col items-center justify-center pt-36 lg:pt-40 text-secondary dark:text-white"
     >
-      <div className="container mx-auto px-6 max-w-5xl">
+      <div className="container mx-auto px-6 max-w-6xl">
         {/* Título e introducción */}
-        <h2 className="text-4xl font-extrabold text-center mb-4">
-          {t("title")}
-        </h2>
-        <p className="text-lg text-center text-dark-300 dark:text-gray-300 mb-16">
+        <h2 className="text-subtitle text-center mb-4">{t("title")}</h2>
+        <p className="max-w-5xl mx-auto text-lg text-center text-dark-300 dark:text-gray-300 mb-16">
           {t("intro")}
         </p>
 
         {/* Secciones */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 my-24">
           {sections.map(({ key }) => (
             <div
               key={key}
               className=" dark:bg-dark-200 rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col"
             >
-              <h3 className="text-xl font-semibold mb-4 text-center">
+              <h3 className="text-xl  mb-4 text-center">
                 {t(`sections.${key}.title`)}
               </h3>
 
@@ -65,13 +64,32 @@ const Services = () => {
 
         {/* Por qué elegirnos */}
         <div className="mt-24 text-center">
-          <h3 className="text-subtitle font-semibold mb-6">{t("whyTitle")}</h3>
+          <h3 className="text-subtitle  mb-6">{t("whyTitle")}</h3>
 
-          <ul className="text-start space-y-4 max-w-2xl mx-auto text-gray-600 dark:text-gray-300 leading-relaxed">
+          <ul
+            className="text-start space-y-4 
+          max-w-2xl mx-auto text-gray-600
+           dark:text-gray-300 leading-relaxed"
+          >
             {t.raw("whyBullets").map((bullet: string, index: number) => (
               <li key={index}>• {bullet}</li>
             ))}
           </ul>
+        </div>
+
+        <div className="mt-24 text-center">
+          <Link
+            className="px-6 
+            py-3 border border-accent
+               text-accent
+               hover:bg-accent
+                 hover:text-dark
+                 font-semibold 
+                 text-lg rounded-lg shadow-lg transition duration-300"
+            href="/#contact"
+          >
+            {t("ctaButton")}
+          </Link>
         </div>
       </div>
     </section>

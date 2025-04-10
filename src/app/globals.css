@@ -85,7 +85,7 @@ html {
 }
 
 .text-hero-sub {
-  @apply text-xl md:text-2xl;
+  @apply text-xl md:text-2xl font-light;
 }
 
 .text-title {
