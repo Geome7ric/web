@@ -1,44 +1,25 @@
-import axios from "axios";
-
-const API_BASE_URL = "https://geome7ric-bee-kappa.vercel.app/api";
-
-const mailingApiCall = "/services/mailing";
-
-const fromMail = "matiasjriosb@gmail.com";
-
-export const sendEmail = async (data: {
-  from?: string;
-  to?: string;
+export const sendEmail = async ({
+  name,
+  email,
+  subject,
+  message,
+}: {
   name: string;
-  email?: string;
+  email: string;
   subject: string;
   message: string;
 }) => {
-  const url = `${API_BASE_URL}${mailingApiCall}`;
-
-  let { subject, message } = data;
-  const { name, email } = data;
-
-  subject = `${subject} - ${email}`;
-  message = `${message} - Escrito por ${name}`;
-
-  data = {
-    from: fromMail,
-    name,
-    to: fromMail,
-    subject,
-    message,
-  };
-
-  const options = {
+  const response = await fetch("/api/send-email", {
     method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    data,
-    url,
-  };
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, subject, message }),
+  });
 
-  return await axios(options);
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.error || "Error al enviar el formulario");
+  }
+
+  return data;
 };

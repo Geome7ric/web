@@ -65,7 +65,7 @@
     },
     "form": {
       "message": "¿En qué podemos ayudarte?",
-      "success": "¡Gracias por contactarnos ${name}! Nos pondremos en contacto pronto.",
+      "success": "¡Gracias por contactarnos {name}! Nos pondremos en contacto pronto.",
       "error": "¡Ups! Algo salió mal. Por favor, intentá nuevamente."
     }
   },
