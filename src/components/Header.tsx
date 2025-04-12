@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import LanguageSwitcher from "./LanguageSwitcher";
+import Modal from "./Modal";
 
 const Header = () => {
   const t = useTranslations();
@@ -27,6 +28,8 @@ const Header = () => {
     mobileView: false,
     menuOpen: false,
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setState((prevState) => ({
@@ -48,6 +51,7 @@ const Header = () => {
       } else {
         setState((prevState) => ({ ...prevState, mobileView: false }));
       }
+      setIsMobile(window.innerWidth <= 768);
     };
 
     const handleClickOutside = (e: MouseEvent) => {
@@ -61,6 +65,7 @@ const Header = () => {
       }
     };
 
+    handleResize(); // Check on initial render
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
     window.addEventListener("click", handleClickOutside);
@@ -71,6 +76,15 @@ const Header = () => {
       window.removeEventListener("click", handleClickOutside);
     };
   }, [state.menuOpen]);
+
+  const handlePitchClick = () => {
+    if (isMobile) {
+      window.location.href =
+        "https://www.canva.com/design/DAGkRFTMSxI/gLiKreZyhmJ-dW05UVXlkQ/view?utm_content=DAGkRFTMSxI&utm_campaign=designshare&utm_medium=embeds&utm_source=link";
+    } else {
+      setIsModalOpen(true);
+    }
+  };
 
   return (
     <header
@@ -166,6 +180,21 @@ const Header = () => {
                       </Button>
                     </li>
                   ))}
+                  <li>
+                    <Button
+                      className="hover:text-primary"
+                      onClick={() => {
+                        if (isMobile) {
+                          window.location.href =
+                            "https://www.canva.com/design/DAGkRFTMSxI/gLiKreZyhmJ-dW05UVXlkQ/view?utm_content=DAGkRFTMSxI&utm_campaign=designshare&utm_medium=embeds&utm_source=link";
+                        } else {
+                          setIsModalOpen(true);
+                        }
+                      }}
+                    >
+                      Ver Pitch
+                    </Button>
+                  </li>
                 </ul>
               </nav>
             )}
@@ -211,10 +240,21 @@ const Header = () => {
               ))}
 
               <LanguageSwitcher />
+              <button
+                onClick={handlePitchClick}
+                className="ml-4 px-4 py-2 bg-secondary text-primary rounded-lg hover:bg-accent hover:text-white transition"
+              >
+                Conócenos
+              </button>
             </ul>
           </nav>
         )}
       </div>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        iframeSrc="https://www.canva.com/design/DAGkRFTMSxI/gLiKreZyhmJ-dW05UVXlkQ/view?embed"
+      />
     </header>
   );
 };
