@@ -1,10 +1,10 @@
 build:
-	npm run build
+	npm run build -y
 
 deploy:
-	npx vercel --prod
+	npx vercel --prod -y
 
-build-deploy: build deploy
+bd: build deploy
 
 up:
 	npm run dev
