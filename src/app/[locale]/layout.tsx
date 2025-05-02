@@ -6,25 +6,40 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
-export async function generateMetadata(): Promise<Metadata> {
+// Define the supported locales
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "es" }];
+}
+
+type Props = {
+  children: React.ReactNode;
+  params: { locale: string };
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  // Properly await the params object before using it
+  const { locale } = await params;
+
+  // Get messages for metadata based on locale
+  const messages = await getMessages({ locale });
+
+  // Access SEO translations
+  const title = messages.SEO.title;
+  const description = messages.SEO.description;
+
   return {
-    title: "Geome7ric",
-    description: "Geome7ric is a design and development studio.",
+    title,
+    description,
   };
 }
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: {
-    locale: string;
-  };
-}) {
-  await params;
-
-  const locale = params.locale as string;
+export default async function LocaleLayout({ children, params }: Props) {
+  // Properly await the params object before accessing its properties
+  const { locale } = await params;
 
   // Obtener los mensajes para la internacionalización
   const messages = await getMessages({ locale });

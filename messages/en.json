@@ -12,14 +12,14 @@
   },
   "Hero": {
     "title": {
-      "p1": "Transforming businesses",
+      "p1": "Optimize your busines",
       "p2": "with",
-      "p3": "digital innovation"
+      "p3": "digital solutions"
     },
-    "subtitle": "We create solutions that optimize your business, streamline your team's work, and drive you to grow day by day.",
+    "subtitle": "We automate processes and boost your team's productivity.",
     "actions": {
-      "contact": "Contact us",
-      "services": "Learn more"
+      "contact": "Request a free consultation",
+      "services": "See how it works"
     }
   },
   "Services": {
@@ -71,5 +71,9 @@
   },
   "Footer": {
     "message": "We transform businesses with innovation. We believe in products that generate impact and satisfaction."
+  },
+  "SEO": {
+    "title": "Geome7ric | Digital solutions to optimize your business",
+    "description": "We automate processes and boost your team's productivity with custom digital solutions."
   }
 }
