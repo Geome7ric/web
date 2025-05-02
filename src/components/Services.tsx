@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+// import Link from "next/link";
 
 const Services = () => {
   const t = useTranslations("Services");
@@ -78,7 +78,7 @@ const Services = () => {
         </div>
 
         <div className="mt-24 text-center">
-          <Link
+          {/* <Link
             className="px-6 
             py-3 border border-accent
                text-accent
@@ -89,7 +89,7 @@ const Services = () => {
             href="/#contact"
           >
             {t("ctaButton")}
-          </Link>
+          </Link> */}
         </div>
       </div>
     </section>

@@ -52,7 +52,7 @@ const Hero = () => {
           }`}
       >
         <div className=" flex flex-center items-center">
-          <Link className="" href="/#contact">
+          <Link className="" href="/#calendly">
             <div
               className="px-6 py-3 
               border
