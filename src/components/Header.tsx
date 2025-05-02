@@ -6,7 +6,6 @@ import Button from "./Button";
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import LanguageSwitcher from "./LanguageSwitcher";
 import Modal from "./Modal";
 
 const Header = () => {
@@ -109,7 +108,6 @@ const Header = () => {
           // que sea una row con el lenguaje y el menu
 
           <div className="flex items-center space-x-2">
-            <LanguageSwitcher />
             <Button
               id="menu"
               icon={state.menuOpen ? X : Menu}
@@ -239,7 +237,6 @@ const Header = () => {
                 </li>
               ))}
 
-              <LanguageSwitcher />
               <button
                 onClick={handlePitchClick}
                 className="ml-4 px-4 py-2 bg-secondary text-primary rounded-lg hover:bg-accent hover:text-white transition"

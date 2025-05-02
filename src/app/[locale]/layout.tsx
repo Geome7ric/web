@@ -6,6 +6,15 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
+// Define the message structure type
+interface Messages {
+  SEO: {
+    title: string;
+    description: string;
+  };
+  [key: string]: unknown;
+}
+
 // Define the supported locales
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "es" }];
@@ -25,7 +34,7 @@ export async function generateMetadata({
   const { locale } = await params;
 
   // Get messages for metadata based on locale
-  const messages = await getMessages({ locale });
+  const messages = (await getMessages({ locale })) as Messages;
 
   // Access SEO translations
   const title = messages.SEO.title;
