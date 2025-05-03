@@ -23,3 +23,29 @@ export const sendEmail = async ({
 
   return data;
 };
+
+export const sendConfirmationEmail = async ({
+  name,
+  email,
+  date,
+  time,
+}: {
+  name: string;
+  email: string;
+  date: string;
+  time: string;
+}) => {
+  const response = await fetch("/api/send-confirmation", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, date, time }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.error || "Error al enviar el correo de confirmación");
+  }
+
+  return data;
+};

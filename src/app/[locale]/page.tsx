@@ -11,7 +11,8 @@ export default function Home() {
     >
       <Hero />
       <Services />
-      <CalendlyScheduler />
+      <CalendlyScheduler testEmail={false} />{" "}
+      {/* Desactivamos el email de prueba */}
       <Contact />
     </div>
   );
