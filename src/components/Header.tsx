@@ -6,10 +6,11 @@ import Button from "./Button";
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import Modal from "./Modal";
+import { useModal } from "@/app/hooks";
 
 const Header = () => {
   const t = useTranslations();
+  const { openModal } = useModal(); // Usamos el contexto del modal
 
   const links = [
     // {
@@ -27,7 +28,6 @@ const Header = () => {
     mobileView: false,
     menuOpen: false,
   });
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -81,7 +81,8 @@ const Header = () => {
       window.location.href =
         "https://www.canva.com/design/DAGkRFTMSxI/gLiKreZyhmJ-dW05UVXlkQ/view?utm_content=DAGkRFTMSxI&utm_campaign=designshare&utm_medium=embeds&utm_source=link";
     } else {
-      setIsModalOpen(true);
+      // Simplemente abrimos el modal usando el contexto
+      openModal();
     }
   };
 
@@ -181,14 +182,7 @@ const Header = () => {
                   <li>
                     <Button
                       className="hover:text-primary"
-                      onClick={() => {
-                        if (isMobile) {
-                          window.location.href =
-                            "https://www.canva.com/design/DAGkRFTMSxI/gLiKreZyhmJ-dW05UVXlkQ/view?utm_content=DAGkRFTMSxI&utm_campaign=designshare&utm_medium=embeds&utm_source=link";
-                        } else {
-                          setIsModalOpen(true);
-                        }
-                      }}
+                      onClick={handlePitchClick}
                     >
                       Ver Pitch
                     </Button>
@@ -247,11 +241,6 @@ const Header = () => {
           </nav>
         )}
       </div>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        iframeSrc="https://www.canva.com/design/DAGkRFTMSxI/gLiKreZyhmJ-dW05UVXlkQ/view?embed"
-      />
     </header>
   );
 };

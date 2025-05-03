@@ -1,66 +1,39 @@
-import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
 import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import ModalProvider from "@/components/ModalProvider";
 
-// Define the message structure type
-interface Messages {
-  SEO: {
-    title: string;
-    description: string;
-  };
-  [key: string]: unknown;
-}
+// Can be imported from a shared config
+const locales = ["en", "es"];
 
-// Define the supported locales
-export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "es" }];
-}
-
-type Props = {
+export default async function RootLayout({
+  children,
+  params: { locale },
+}: {
   children: React.ReactNode;
   params: { locale: string };
-};
+}) {
+  // Validate that the incoming `locale` parameter is valid
+  if (!locales.includes(locale as any)) notFound();
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string };
-}): Promise<Metadata> {
-  // Properly await the params object before using it
-  const { locale } = await params;
-
-  // Get messages for metadata based on locale
-  const messages = (await getMessages({ locale })) as Messages;
-
-  // Access SEO translations
-  const title = messages.SEO.title;
-  const description = messages.SEO.description;
-
-  return {
-    title,
-    description,
-  };
-}
-
-export default async function LocaleLayout({ children, params }: Props) {
-  // Properly await the params object before accessing its properties
-  const { locale } = await params;
-
-  // Obtener los mensajes para la internacionalización
-  const messages = await getMessages({ locale });
+  let messages;
+  try {
+    messages = (await import(`../../../messages/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
 
   return (
     <html lang={locale}>
-      <body>
-        <NextIntlClientProvider messages={messages}>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <GoogleAnalytics gaId="G-C6QCHW5EQH" />
+      <body className="dark:bg-dark min-h-screen grid grid-rows-[auto,1fr,auto]">
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <ModalProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ModalProvider>
         </NextIntlClientProvider>
       </body>
     </html>
