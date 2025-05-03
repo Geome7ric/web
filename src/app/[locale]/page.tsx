@@ -1,6 +1,7 @@
 import Contact from "@/components/Contact";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
+import HowItWorks from "@/components/HowItWorks";
 import CalendlyScheduler from "@/components/CalendlyScheduler";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
         row-start-2 sm:items-start"
     >
       <Hero />
+      <HowItWorks />
       <Services />
       <CalendlyScheduler testEmail={false} />{" "}
       {/* Desactivamos el email de prueba */}
