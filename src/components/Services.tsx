@@ -21,12 +21,12 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="relative flex flex-col items-center justify-center pt-36 lg:pt-40 text-secondary dark:text-white"
+      className="relative flex flex-col items-center justify-center pt-36 lg:pt-40 text-secondary dark:text-white z-0"
     >
       <div className="container mx-auto px-6 max-w-6xl">
         {/* Título e introducción */}
         <h2 className="text-subtitle text-center mb-4">{t("title")}</h2>
-        <p className="max-w-5xl mx-auto text-lg text-center text-dark-300 dark:text-gray-300 mb-16">
+        <p className="max-w-5xl mx-auto text-lg md:text-base text-center text-dark-300 dark:text-gray-300 mb-16">
           {t("intro")}
         </p>
 
@@ -37,7 +37,7 @@ const Services = () => {
               key={key}
               className=" dark:bg-dark-200 rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col"
             >
-              <h3 className="text-xl  mb-4 text-center">
+              <h3 className="text-xl md:text-lg mb-4 text-center">
                 {t(`sections.${key}.title`)}
               </h3>
 
@@ -45,7 +45,7 @@ const Services = () => {
                 <p className=" font-bold text-primary mb-1">
                   {t(`sections.${key}.what`)}
                 </p>
-                <p className=" text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed md:text-sm">
                   {t(`sections.${key}.whatText`)}
                 </p>
               </div>
@@ -54,7 +54,7 @@ const Services = () => {
                 <p className=" font-bold text-primary mb-1">
                   {t(`sections.${key}.how`)}
                 </p>
-                <p className=" text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed md:text-sm">
                   {t(`sections.${key}.howText`)}
                 </p>
               </div>

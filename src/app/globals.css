@@ -81,21 +81,21 @@ html {
 }
 
 .text-hero {
-  @apply text-5xl md:text-7xl;
-}
-
-.text-hero-sub {
-  @apply text-xl md:text-2xl font-light;
-}
-
-.text-title {
   @apply text-5xl md:text-6xl;
 }
 
+.text-hero-sub {
+  @apply text-xl md:text-xl font-light;
+}
+
+.text-title {
+  @apply text-5xl md:text-5xl;
+}
+
 .text-subtitle {
-  @apply text-2xl md:text-3xl;
+  @apply text-2xl md:text-2xl;
 }
 
 .text-button {
-  @apply text-sm md:text-lg;
+  @apply text-sm md:text-base;
 }

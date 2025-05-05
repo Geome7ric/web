@@ -21,7 +21,7 @@ export default async function RootLayout({
   let messages;
   try {
     messages = (await import(`../../../messages/${locale}.json`)).default;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (_error) {
     notFound();
   }

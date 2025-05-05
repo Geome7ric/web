@@ -95,7 +95,9 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
           >
             <div className="rounded-md shadow-sm -space-y-px border-none">
               <div className="py-1">
-                <label>{t("common.name")} *</label>
+                <label className="text-base md:text-sm">
+                  {t("common.name")} *
+                </label>
                 <input
                   id="name"
                   name="name"
@@ -112,7 +114,9 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                 />
               </div>
               <div className="py-1">
-                <label>{t("common.email")} *</label>
+                <label className="text-base md:text-sm">
+                  {t("common.email")} *
+                </label>
                 <input
                   id="email"
                   name="email"

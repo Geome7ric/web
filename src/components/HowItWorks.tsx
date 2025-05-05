@@ -55,14 +55,14 @@ const STEPS = [
 
 const HowItWorks = () => {
   return (
-    <section className="py-16 md:py-20 bg-dark text-white flex flex-col items-center">
+    <section className="py-16 md:py-20 bg-dark text-white flex flex-col items-center z-0">
       <div className="container px-4 md:px-8 max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-8 md:mb-10 text-center">
-          Cómo funciona trabajar con Geome7ric
+        <h2 className="text-4xl md:text-4xl font-bold mb-8 md:mb-10 text-center">
+          Cómo funciona trabajar con nosotros
         </h2>
 
         {/* subtituloi */}
-        <p className="text-lg text-center mb-10 md:mb-14 max-w-3xl mx-auto">
+        <p className="text-lg md:text-base text-center mb-10 md:mb-14 max-w-3xl mx-auto">
           Descubre los pasos clave en nuestro proceso para llevar tu proyecto
           del concepto a la realidad.
         </p>

@@ -19,7 +19,7 @@ const Hero = () => {
        mt-24
        md:mt-36
        gap-4
-       relative flex flex-col items-center
+       relative flex flex-col items-center z-0
        justify-center text-center text-secondary  dark:text-white px-6 w-full"
     >
       <h1
