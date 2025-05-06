@@ -124,10 +124,17 @@ const CalendlyScheduler = ({
       // Detectar cuando se completa una reserva y enviar el email de confirmación
       if (eventName === "calendly.event_scheduled" && !isEmailSent) {
         try {
+          console.log("Evento programado detectado:", e.data.payload.event);
+
           const invitee = e.data.payload.event?.invitee;
           const startTime = e.data.payload.event?.scheduled_event?.start_time;
 
           if (invitee?.name && invitee?.email && startTime) {
+            console.log("Datos del invitado:", {
+              name: invitee.name,
+              email: invitee.email,
+            });
+
             // Formatear los datos de la cita
             const scheduledDate = new Date(startTime);
             const date = scheduledDate.toISOString().split("T")[0];
