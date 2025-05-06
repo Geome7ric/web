@@ -147,6 +147,11 @@ const CalendlyScheduler = ({
 
             setIsEmailSent(true);
             console.log("Email de confirmación enviado con éxito");
+          } else {
+            console.log("Datos de invitado no disponibles", {
+              invitee,
+              startTime,
+            });
           }
         } catch (error) {
           console.error("Error al enviar el correo de confirmación:", error);
