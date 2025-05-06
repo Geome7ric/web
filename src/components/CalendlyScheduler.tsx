@@ -24,10 +24,97 @@ interface CalendlyEvent {
         start_time?: string;
       };
     };
+    invitee?: {
+      uri?: string;
+    };
     [key: string]: unknown;
   };
   data?: unknown;
 }
+
+// Interfaz para la respuesta de la API de Calendly
+interface InviteeResponse {
+  resource: {
+    name: string;
+    email: string;
+    timezone: string;
+    created_at: string;
+    updated_at: string;
+    event: string; // URI del evento
+    cancel_url: string;
+    reschedule_url: string;
+    status: string;
+    [key: string]: any;
+  };
+}
+
+// Interfaz para la respuesta del evento
+interface EventResponse {
+  resource: {
+    start_time: string;
+    end_time: string;
+    name: string;
+    status: string;
+    [key: string]: any;
+  };
+}
+
+const CALENDLY_API_KEY =
+  "eyJraWQiOiIxY2UxZTEzNjE3ZGNmNzY2YjNjZWJjY2Y4ZGM1YmFmYThhNjVlNjg0MDIzZjdjMzJiZTgzNDliMjM4MDEzNWI0IiwidHlwIjoiUEFUIiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiJodHRwczovL2F1dGguY2FsZW5kbHkuY29tIiwiaWF0IjoxNzQ2NTUwNDEwLCJqdGkiOiI0NTE4MmQ4Ny0xMjM2LTQwNzktODk0MS1lYjg5MGJlZGE1YTUiLCJ1c2VyX3V1aWQiOiI0ODk0MWE1Zi0wMGFkLTRkYzctYmY5NS04YTI2MDAxZjI0ODcifQ.r2306oGq6MZoVFarMIaZUfyEkOXweIXoq-4O9NQwduqKk4s8O0jMDbv9-0mc4XHLiWxw7ZsJaxrRrX4mN7o5fw";
+
+// Función para obtener los detalles del invitado desde la API de Calendly
+const getInviteeDetails = async (
+  inviteeUri: string
+): Promise<InviteeResponse | null> => {
+  try {
+    console.log("Obteniendo detalles del invitado desde:", inviteeUri);
+    const response = await fetch(inviteeUri, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${CALENDLY_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `Error en la API: ${response.status} ${response.statusText}`
+      );
+    }
+
+    const data = await response.json();
+    console.log("Datos obtenidos de la API (invitee):", data);
+    return data;
+  } catch (error) {
+    console.error("Error al obtener detalles del invitado:", error);
+    return null;
+  }
+};
+
+// Función para obtener los detalles del evento desde la API de Calendly
+const getEventDetails = async (eventUri: string): Promise<EventResponse | null> => {
+  try {
+    console.log("Obteniendo detalles del evento desde:", eventUri);
+    const response = await fetch(eventUri, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${CALENDLY_API_KEY}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error en la API: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    console.log("Datos obtenidos de la API (evento):", data);
+    return data;
+  } catch (error) {
+    console.error('Error al obtener detalles del evento:', error);
+    return null;
+  }
+};
 
 const CalendlyScheduler = ({
   url = "https://calendly.com/geome7ric/30min",
@@ -124,16 +211,51 @@ const CalendlyScheduler = ({
       // Detectar cuando se completa una reserva y enviar el email de confirmación
       if (eventName === "calendly.event_scheduled" && !isEmailSent) {
         try {
-          console.log("Evento programado detectado:", e.data.payload.event);
+          console.log("Evento programado detectado:", e.data);
 
-          const invitee = e.data.payload.event?.invitee;
-          const startTime = e.data.payload.event?.scheduled_event?.start_time;
+          const payload = e.data.payload;
+          let inviteeData = null;
+          let startTime = null;
 
-          if (invitee?.name && invitee?.email && startTime) {
-            console.log("Datos del invitado:", {
-              name: invitee.name,
-              email: invitee.email,
+          // Primero intenta recuperar la información del payload directamente si está disponible
+          if (payload.event?.invitee?.name && payload.event?.invitee?.email) {
+            inviteeData = payload.event.invitee;
+            startTime = payload.event?.scheduled_event?.start_time;
+          } else if (payload.invitee?.uri) {
+            // Si solo tenemos la URI, hacemos una llamada a la API de Calendly
+            const inviteeUri = payload.invitee.uri;
+
+            console.log("Obteniendo datos del invitado mediante API:", {
+              inviteeUri,
             });
+
+            // Obtener los datos del invitado de la API
+            const inviteeResponse = await getInviteeDetails(inviteeUri);
+
+            if (inviteeResponse && inviteeResponse.resource) {
+              // Extraer los datos del invitado
+              inviteeData = {
+                name: inviteeResponse.resource.name,
+                email: inviteeResponse.resource.email,
+              };
+
+              // Usar la URI del evento incluida en la respuesta del invitado
+              const eventUri = inviteeResponse.resource.event;
+
+              if (eventUri) {
+                // Obtener los detalles del evento para conseguir la hora de inicio
+                const eventResponse = await getEventDetails(eventUri);
+                if (eventResponse && eventResponse.resource) {
+                  startTime = eventResponse.resource.start_time;
+                }
+              }
+            }
+          }
+
+          // Verifica si tenemos todos los datos necesarios
+          if (inviteeData?.name && inviteeData?.email && startTime) {
+            console.log("Datos del invitado encontrados:", inviteeData);
+            console.log("Hora de inicio encontrada:", startTime);
 
             // Formatear los datos de la cita
             const scheduledDate = new Date(startTime);
@@ -146,8 +268,8 @@ const CalendlyScheduler = ({
 
             // Enviar el email de confirmación
             await sendConfirmationEmail({
-              name: invitee.name,
-              email: invitee.email,
+              name: inviteeData.name,
+              email: inviteeData.email,
               date: date,
               time: time,
             });
@@ -155,10 +277,10 @@ const CalendlyScheduler = ({
             setIsEmailSent(true);
             console.log("Email de confirmación enviado con éxito");
           } else {
-            console.log("Datos de invitado no disponibles", {
-              invitee,
-              startTime,
-            });
+            // Si no hay datos suficientes, simplemente log y no hacer nada más
+            console.log(
+              "No se pudieron obtener los datos necesarios para enviar el correo de confirmación"
+            );
           }
         } catch (error) {
           console.error("Error al enviar el correo de confirmación:", error);
