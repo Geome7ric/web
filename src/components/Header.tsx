@@ -60,8 +60,6 @@ const Header = () => {
 
       // si esta abierto cierro el menu
       setState((prevState) => ({ ...prevState, menuOpen: false }));
-      if (state.menuOpen) {
-      }
     };
 
     handleResize(); // Check on initial render
@@ -86,19 +84,54 @@ const Header = () => {
     }
   };
 
+  const handleSmoothScroll = (e: React.MouseEvent, targetId: string) => {
+    e.preventDefault();
+
+    // si apreto casos de exito ir siempre
+    const hrefIsPortfolio = targetId === "/portfolio";
+    if (hrefIsPortfolio) {
+      window.location.href = targetId;
+      return;
+    }
+
+    let pathname = window.location.pathname;
+    // quitamos locale
+    const locale = pathname.split("/")[1];
+    pathname = pathname.substring(locale.length + 1);
+
+    const inHome = pathname === "";
+
+    if (inHome) {
+      const section = document.getElementById(targetId);
+      if (section) {
+        // Usar scrollTo en lugar de scrollIntoView para evitar posible scroll horizontal
+        const yOffset =
+          section.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: yOffset,
+          behavior: "smooth",
+        });
+      }
+      return;
+    }
+
+    // entonces quiero ir a home diciéndole scroll hasta la section href
+    window.location.href = `/#${targetId}`;
+  };
+
   return (
     <header
-      className={`sticky  w-full top-0 z-50 p-4 transition-colors duration-300 ${
+      className={`sticky w-full top-0 z-50 p-4 transition-colors duration-300 ${
         isScrolled
           ? " dark:bg-white/1 backdrop-blur-md shadow-lg"
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex justify-between items-center overflow-hidden">
         <h1 className="text-xl">
           <Link href="/">
             <Image
-              src="/assets/Geome7ric-Horizontal-Color2.svg"
+              src="/assets/Geome7ric-Horizontal-Color-White.svg"
               alt="Logo"
               width={164}
               height={32}
@@ -141,38 +174,11 @@ const Header = () => {
                       <Button
                         className={` hover:text-primary`}
                         onClick={(e) => {
-                          // quiero que funcione como un scroll si estoy en la home
-                          e.preventDefault();
-
                           setState((prevState) => ({
                             ...prevState,
                             menuOpen: false,
                           }));
-
-                          // quitar el locale de la url
-
-                          // si apreto casos de exito ir siempre
-                          const hrefIsPortfolio = href === "/portfolio";
-                          if (hrefIsPortfolio) {
-                            window.location.href = href;
-                            return;
-                          }
-
-                          let pathname = window.location.pathname;
-                          // quitamos locale
-                          const locale = pathname.split("/")[1];
-                          pathname = pathname.substring(locale.length + 1);
-
-                          const inHome = pathname === "";
-
-                          if (inHome) {
-                            const section = document.getElementById(href);
-                            section?.scrollIntoView({ behavior: "smooth" });
-                            return;
-                          }
-
-                          // entonces quiero iur a home diciendole scroll hasta la section href
-                          window.location.href = `/#${href}`;
+                          handleSmoothScroll(e, href);
                         }}
                       >
                         {label}
@@ -197,34 +203,8 @@ const Header = () => {
               {links.map(({ href, label }) => (
                 <li key={`${href}${label}`}>
                   <Button
-                    className={`   hover:text-primary`}
-                    onClick={(e) => {
-                      // quiero que funcione como un scroll si estoy en la home
-                      e.preventDefault();
-
-                      // si apreto casos de exito ir siempre
-                      const hrefIsPortfolio = href === "/portfolio";
-                      if (hrefIsPortfolio) {
-                        window.location.href = href;
-                        return;
-                      }
-
-                      let pathname = window.location.pathname;
-                      // quitamos locale
-                      const locale = pathname.split("/")[1];
-                      pathname = pathname.substring(locale.length + 1);
-
-                      const inHome = pathname === "";
-
-                      if (inHome) {
-                        const section = document.getElementById(href);
-                        section?.scrollIntoView({ behavior: "smooth" });
-                        return;
-                      }
-
-                      // entonces quiero iur a home diciendole scroll hasta la section href
-                      window.location.href = `/#${href}`;
-                    }}
+                    className={`hover:text-primary`}
+                    onClick={(e) => handleSmoothScroll(e, href)}
                   >
                     {label}
                   </Button>

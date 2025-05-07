@@ -32,8 +32,8 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale}>
-      <body className="dark:bg-dark min-h-screen grid grid-rows-[auto,1fr,auto]">
+    <html lang={locale} className="overflow-x-hidden">
+      <body className="dark:bg-dark min-h-screen grid grid-rows-[auto,1fr,auto] max-w-[100vw] overflow-x-hidden">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ModalProvider>
             <Header />

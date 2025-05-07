@@ -26,7 +26,7 @@ const Footer = () => {
           {/* Logo y Descripción */}
           <div>
             <Image
-              src="/assets/Geome7ric-Horizontal-Color2.svg"
+              src="/assets/Geome7ric-Horizontal-Color-White.svg"
               alt="Geome7ric"
               width={164}
               height={30}

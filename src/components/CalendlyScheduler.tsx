@@ -44,7 +44,7 @@ interface InviteeResponse {
     cancel_url: string;
     reschedule_url: string;
     status: string;
-    [key: string]: any;
+    [key: string]: unknown;
   };
 }
 
@@ -55,7 +55,7 @@ interface EventResponse {
     end_time: string;
     name: string;
     status: string;
-    [key: string]: any;
+    [key: string]: unknown;
   };
 }
 
@@ -218,13 +218,17 @@ const CalendlyScheduler = ({
           console.log("Evento programado detectado:", e.data);
 
           const payload = e.data.payload;
-          let inviteeData = null;
-          let startTime = null;
+          // Definir tipos explícitos para evitar 'any'
+          let inviteeData: { name: string; email: string } | null = null;
+          let startTime: string | null = null;
 
           // Primero intenta recuperar la información del payload directamente si está disponible
           if (payload.event?.invitee?.name && payload.event?.invitee?.email) {
-            inviteeData = payload.event.invitee;
-            startTime = payload.event?.scheduled_event?.start_time;
+            inviteeData = {
+              name: payload.event.invitee.name,
+              email: payload.event.invitee.email,
+            };
+            startTime = payload.event?.scheduled_event?.start_time || null;
           } else if (payload.invitee?.uri) {
             // Si solo tenemos la URI, hacemos una llamada a la API de Calendly
             const inviteeUri = payload.invitee.uri;

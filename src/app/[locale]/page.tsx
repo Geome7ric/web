@@ -8,13 +8,12 @@ export default function Home() {
   return (
     <div
       className="font-[family-name:var(--font-geist-sans)]
-        row-start-2 sm:items-start"
+        row-start-2 sm:items-start w-full max-w-full overflow-x-hidden"
     >
       <Hero />
       <HowItWorks />
       <Services />
-      <CalendlyScheduler testEmail={false} />{" "}
-      {/* Desactivamos el email de prueba */}
+      <CalendlyScheduler testEmail={false} />
       <Contact />
     </div>
   );
