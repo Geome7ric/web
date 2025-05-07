@@ -8,6 +8,11 @@ import ModalProvider from "@/components/ModalProvider";
 // Can be imported from a shared config
 const locales = ["en", "es"];
 
+export const metadata = {
+  title: "Geome7ric",
+  description: "Soluciones digitales profesionales",
+};
+
 export default async function RootLayout({
   children,
   params: { locale },

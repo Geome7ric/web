@@ -92,26 +92,30 @@ const getInviteeDetails = async (
 };
 
 // Función para obtener los detalles del evento desde la API de Calendly
-const getEventDetails = async (eventUri: string): Promise<EventResponse | null> => {
+const getEventDetails = async (
+  eventUri: string
+): Promise<EventResponse | null> => {
   try {
     console.log("Obteniendo detalles del evento desde:", eventUri);
     const response = await fetch(eventUri, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Authorization': `Bearer ${CALENDLY_API_KEY}`,
-        'Content-Type': 'application/json'
-      }
+        Authorization: `Bearer ${CALENDLY_API_KEY}`,
+        "Content-Type": "application/json",
+      },
     });
 
     if (!response.ok) {
-      throw new Error(`Error en la API: ${response.status} ${response.statusText}`);
+      throw new Error(
+        `Error en la API: ${response.status} ${response.statusText}`
+      );
     }
 
     const data = await response.json();
     console.log("Datos obtenidos de la API (evento):", data);
     return data;
   } catch (error) {
-    console.error('Error al obtener detalles del evento:', error);
+    console.error("Error al obtener detalles del evento:", error);
     return null;
   }
 };
