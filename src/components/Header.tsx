@@ -37,7 +37,8 @@ const Header = () => {
     }));
 
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 10) {
+        // Disminuido a 10 para detectar scroll más temprano
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -55,7 +56,7 @@ const Header = () => {
 
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const menu = document.getElementById("menu");
+      const menu = document.getElementById("menu-container");
       if (menu?.contains(target)) return;
 
       // si esta abierto cierro el menu
@@ -121,9 +122,9 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky w-full top-0 z-50 p-4 transition-colors duration-300 ${
+      className={`fixed w-full top-0 z-50 p-4 transition-all duration-500 ${
         isScrolled
-          ? " dark:bg-white/1 backdrop-blur-md shadow-lg"
+          ? "backdrop-blur-md bg-white/5   shadow-lg"
           : "bg-transparent"
       }`}
     >
@@ -141,13 +142,19 @@ const Header = () => {
         {state.mobileView ? (
           // que sea una row con el lenguaje y el menu
 
-          <div className="flex items-center space-x-2">
+          <div
+            id="menu-container"
+            className="flex items-center space-x-2"
+            onMouseEnter={() =>
+              setState((prevState) => ({ ...prevState, menuOpen: true }))
+            }
+          >
             <Button
               id="menu"
               icon={state.menuOpen ? X : Menu}
               // icono de hamburguesa
               className="text-2xl focus:outline-none
-               text-primary transition-all duration-1000"
+               text-white transition-all duration-300"
               onClick={() =>
                 setState((prevState) => ({
                   ...prevState,
@@ -161,18 +168,23 @@ const Header = () => {
             {state.menuOpen && (
               <nav
                 className={`absolute top-16 
-                  bg-white
-                  dark:bg-dark right-1 backdrop-blur-md 
-                  p-4 rounded-md shadow-lg`}
+                  backdrop-blur-md bg-white/5 
+                  right-1 p-4 rounded-md shadow-lg`}
+                onMouseLeave={() =>
+                  setState((prevState) => ({
+                    ...prevState,
+                    menuOpen: false,
+                  }))
+                }
               >
                 <ul className="flex flex-col space-y-4">
                   {links.map(({ href, label }) => (
                     <li
                       key={`${href}${label}`}
-                      className={`hover:text-primary`}
+                      className="text-white hover:text-accent"
                     >
                       <Button
-                        className={` hover:text-primary`}
+                        className="text-white hover:text-accent transition-colors duration-300"
                         onClick={(e) => {
                           setState((prevState) => ({
                             ...prevState,
@@ -187,7 +199,7 @@ const Header = () => {
                   ))}
                   <li>
                     <Button
-                      className="hover:text-primary"
+                      className="text-white hover:text-accent transition-colors duration-300"
                       onClick={handlePitchClick}
                     >
                       Ver Pitch
@@ -203,7 +215,7 @@ const Header = () => {
               {links.map(({ href, label }) => (
                 <li key={`${href}${label}`}>
                   <Button
-                    className={`hover:text-primary`}
+                    className="text-white hover:text-accent transition-colors duration-300"
                     onClick={(e) => handleSmoothScroll(e, href)}
                   >
                     {label}
@@ -213,7 +225,7 @@ const Header = () => {
 
               <button
                 onClick={handlePitchClick}
-                className="ml-4 px-4 py-2 bg-secondary text-primary rounded-lg hover:bg-accent hover:text-white transition"
+                className="ml-4 px-4 py-2 backdrop-blur-sm bg-accent/80 text-dark hover:bg-accent/90 hover:text-white transition-colors duration-300 rounded-lg  shadow-lg"
               >
                 Conócenos
               </button>

@@ -68,7 +68,7 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
       justify-center px-4 sm:px-6 lg:px-8 w-full"
     >
       <div
-        className="max-w-6xl 
+        className="max-w-6xl
         w-full flex flex-col lg:flex-row items-center
         lg:items-start gap-2 lg:gap-16"
       >
@@ -85,7 +85,7 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
         </div>
 
         {/* Columna derecha: Formulario */}
-        <div className="flex-1 w-full lg:max-w-none rounded bg-primary/50 dark:bg-dark/50 p-10 h-full ">
+        <div className="flex-1 w-full lg:max-w-none rounded  p-10 h-full ">
           <form
             className="space-y-6
             lg:max-w-xl xl:max-w-xl

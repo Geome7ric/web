@@ -5,5 +5,22 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": ["source.fixAll.eslint"],
   // tab size 2
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+
+  // TypeScript validation en tiempo real
+  "typescript.validate.enable": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  // ESLint validación en tiempo real
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.run": "onType",
+  "eslint.lintTask.enable": true,
+  "javascript.validate.enable": true,
+  "typescript.reportStyleChecksAsWarnings": true
 }

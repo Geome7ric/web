@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:check": "concurrently \"next dev --turbopack\" \"tsc --watch --preserveWatchOutput\"",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "check-all": "npm run lint && npm run type-check"
   },
   "dependencies": {
     "@next/third-parties": "^15.1.7",

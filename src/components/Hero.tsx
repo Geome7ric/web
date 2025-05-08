@@ -16,11 +16,10 @@ const Hero = () => {
   return (
     <section
       className="py-16 
-       mt-24
-       md:mt-36
+       my-32 md:my-48 lg:my-28 xl:my-32 2xl:my-48
        gap-4
        relative flex flex-col items-center z-0
-       justify-center text-center text-secondary  dark:text-white px-6 w-full"
+       justify-center text-center text-secondary dark:text-white px-6 w-full"
     >
       <h1
         className={`text-hero font-extrabold 
@@ -56,11 +55,14 @@ const Hero = () => {
             <div
               className="px-6 py-3 
               border
-              dark:bg-dark  dark:border-accent dark:text-accent dark:hover:bg-accent dark:hover:text-dark
+              glassmorphism
+              dark:bg-transparent  dark:border-accent dark:text-accent dark:hover:bg-accent dark:hover:text-dark
               bg-primary border-secondary text-secondary hover:bg-secondary hover:text-primary
-              font-semibold text-lg rounded-lg shadow-lg transition duration-300"
+              font-semibold text-lg rounded-lg shadow-lg transition duration-300 relative"
             >
               {t("actions.contact")}
+              <span className="absolute -right-1.5 -top-1.5 h-3 w-3 rounded-full bg-accent  "></span>
+              <span className="absolute -right-1.5 -top-1.5 h-3 w-3 rounded-full bg-accent animate-ping "></span>
             </div>
           </Link>
         </div>
@@ -69,7 +71,8 @@ const Hero = () => {
           <Link href="/#services">
             <div
               className="px-6 py-3 border 
-              dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-700
+              glassmorphism
+              dark:border-gray-400 dark:text-gray-200 
               border-secondary text-secondary-400 
               font-semibold text-lg rounded-lg transition duration-300"
             >

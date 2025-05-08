@@ -60,14 +60,16 @@ const HowItWorks = () => {
   // Efecto para controlar la animación inicial
   useEffect(() => {
     setIsVisible(true);
-    
+
     // Animación escalonada de los pasos
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const stepIndex = parseInt(entry.target.getAttribute('data-step-index') || '0');
-            setVisibleSteps(prev => [...prev, stepIndex]);
+            const stepIndex = parseInt(
+              entry.target.getAttribute("data-step-index") || "0"
+            );
+            setVisibleSteps((prev) => [...prev, stepIndex]);
             observer.unobserve(entry.target);
           }
         });
@@ -75,13 +77,13 @@ const HowItWorks = () => {
       { threshold: 0.1 }
     );
 
-    const stepElements = document.querySelectorAll('.step-item');
-    stepElements.forEach(element => {
+    const stepElements = document.querySelectorAll(".step-item");
+    stepElements.forEach((element) => {
       observer.observe(element);
     });
 
     return () => {
-      stepElements.forEach(element => {
+      stepElements.forEach((element) => {
         observer.unobserve(element);
       });
     };
@@ -90,11 +92,11 @@ const HowItWorks = () => {
   return (
     <section
       id="howItWorks"
-      className="py-16 md:py-20 bg-dark text-white flex flex-col items-center z-0 
+      className="py-16 md:py-20 text-white flex flex-col items-center z-0 
       mt-28 lg:mt-24"
     >
       <div className="container px-4 md:px-8 max-w-6xl mx-auto">
-        <h2 
+        <h2
           className={`text-4xl md:text-4xl font-bold mb-8 md:mb-10 text-center
           transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
@@ -103,7 +105,7 @@ const HowItWorks = () => {
           Cómo funciona trabajar con nosotros
         </h2>
 
-        <p 
+        <p
           className={`text-lg md:text-base text-center mb-10 md:mb-14 max-w-3xl mx-auto
           transition-all duration-1000 delay-200 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
@@ -116,23 +118,25 @@ const HowItWorks = () => {
         <div className="md:max-w-4xl md:mx-auto relative">
           {/* Mapeo de los pasos con animaciones */}
           {STEPS.map((step, index) => (
-            <div 
-              key={step.id} 
+            <div
+              key={step.id}
               className={`step-item mb-10 md:mb-14 relative
               transition-all duration-700 ${
-                visibleSteps.includes(index) 
-                  ? "opacity-100 translate-x-0" 
+                visibleSteps.includes(index)
+                  ? "opacity-100 translate-x-0"
                   : "opacity-0 translate-x-10"
               }`}
-              style={{ transitionDelay: `${200 + (index * 150)}ms` }}
+              style={{ transitionDelay: `${200 + index * 150}ms` }}
               data-step-index={index}
             >
               {/* Línea vertical que conecta cada elemento hasta antes del paso 06 */}
               {index < STEPS.length - 1 && step.id !== "05" && (
-                <div className={`absolute left-[34px] top-[70px] h-full w-[2px] bg-accent opacity-50 z-0
+                <div
+                  className={`absolute left-[34px] top-[70px] h-full w-[2px] bg-accent opacity-50 z-0
                 transition-all duration-1000 origin-top ${
                   visibleSteps.includes(index) ? "scale-y-100" : "scale-y-0"
-                }`}></div>
+                }`}
+                ></div>
               )}
               <div className="flex items-start">
                 {step.id === "06" && (
@@ -163,27 +167,30 @@ const HowItWorks = () => {
                 )}
 
                 <div className="ml-6 md:ml-8">
-                  <h3 className={`text-xl md:text-2xl font-bold mb-2
+                  <h3
+                    className={`text-xl md:text-2xl font-bold mb-2
                     transition-all duration-500 ${
                       visibleSteps.includes(index) ? "opacity-100" : "opacity-0"
                     }`}
-                    style={{ transitionDelay: `${300 + (index * 150)}ms` }}
+                    style={{ transitionDelay: `${300 + index * 150}ms` }}
                   >
                     {step.title}
                   </h3>
-                  <p className={`text-base md:text-lg max-w-2xl md:hidden
+                  <p
+                    className={`text-base md:text-lg max-w-2xl md:hidden
                     transition-all duration-500 ${
                       visibleSteps.includes(index) ? "opacity-100" : "opacity-0"
                     }`}
-                    style={{ transitionDelay: `${400 + (index * 150)}ms` }}
+                    style={{ transitionDelay: `${400 + index * 150}ms` }}
                   >
                     {step.shortDescription}
                   </p>
-                  <p className={`text-base md:text-lg max-w-2xl hidden md:block
+                  <p
+                    className={`text-base md:text-lg max-w-2xl hidden md:block
                     transition-all duration-500 ${
                       visibleSteps.includes(index) ? "opacity-100" : "opacity-0"
                     }`}
-                    style={{ transitionDelay: `${400 + (index * 150)}ms` }}
+                    style={{ transitionDelay: `${400 + index * 150}ms` }}
                   >
                     {step.fullDescription}
                   </p>
@@ -192,17 +199,21 @@ const HowItWorks = () => {
             </div>
           ))}
         </div>
-        <div className={`flex justify-center mt-12 md:mt-16
+        <div
+          className={`flex justify-center mt-12 md:mt-16
           transition-all duration-1000 delay-[1200ms] ${
-            isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-5 scale-90"
+            isVisible
+              ? "opacity-100 translate-y-0 scale-100"
+              : "opacity-0 translate-y-5 scale-90"
           }`}
         >
           <Link
             href="#calendly"
             className="px-6 py-3 
               border
-              dark:bg-dark dark:border-accent dark:text-accent dark:hover:bg-accent dark:hover:text-dark
-              bg-primary border-secondary text-secondary hover:bg-secondary hover:text-primary
+              bg-transparent
+               dark:border-accent dark:text-accent dark:hover:bg-accent dark:hover:text-dark
+               border-secondary text-secondary hover:bg-secondary hover:text-primary
               font-semibold text-lg rounded-lg shadow-lg transition duration-300 hover:scale-105"
           >
             Agenda una reunión

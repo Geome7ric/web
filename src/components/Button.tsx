@@ -17,8 +17,8 @@ export default function Button({
   return (
     <button
       className={cn(
-        "flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all",
-        variant === "primary" ? "" : "",
+        "flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all hover:backdrop-blur-sm",
+        variant === "primary" ? "   shadow-lg " : "hover:backdrop-blur-sm   ",
         className
       )}
       {...props}

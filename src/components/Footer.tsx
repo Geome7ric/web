@@ -18,8 +18,8 @@ const Footer = () => {
   };
 
   return (
-    <footer className="row-start-3 text-white py-10 mx-16">
-      <div className="container mx-auto  md:px-12 lg:px-16 ">
+    <footer className="row-start-3 text-white py-10 mx-16 bg-transparent z-10">
+      <div className="container mx-auto md:px-12 lg:px-16">
         {/* Línea divisoria */}
         <div className="border-t border-gray-600/25 mt-8 pt-6 text-center text-gray-500 text-sm"></div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
