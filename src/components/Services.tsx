@@ -63,7 +63,7 @@ const Services = () => {
         </div>
 
         {/* Por qué elegirnos */}
-        <div className="mt-24 text-center">
+        {/* <div className="mt-24 text-center">
           <h3 className="text-subtitle  mb-6">{t("whyTitle")}</h3>
 
           <ul
@@ -75,7 +75,7 @@ const Services = () => {
               <li key={index}>• {bullet}</li>
             ))}
           </ul>
-        </div>
+        </div> */}
 
         <div className="mt-24 text-center">
           {/* <Link
