@@ -7,11 +7,17 @@ interface BackgroundGradientsProps {
 }
 
 const BackgroundGradients = ({ className = "" }: BackgroundGradientsProps) => {
-  const [pageHeight, setPageHeight] = useState(0);
-  const [pageWidth, setPageWidth] = useState(0);
+  // Inicializamos como nulo para evitar hidratación incorrecta
+  const [pageHeight, setPageHeight] = useState<number | null>(null);
+  const [pageWidth, setPageWidth] = useState<number | null>(null);
+  // Estado para controlar si estamos en cliente o no
+  const [isMounted, setIsMounted] = useState(false);
   const gradientContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Marcar que el componente está montado (solo ocurre en el cliente)
+    setIsMounted(true);
+    
     // Función para calcular la altura total de la página
     const calculatePageHeight = () => {
       // Obtenemos la altura del documento completo
@@ -25,8 +31,7 @@ const BackgroundGradients = ({ className = "" }: BackgroundGradientsProps) => {
       );
 
       // Obtenemos la anchura de la ventana
-      const winWidth =
-        window.innerWidth || document.documentElement.clientWidth;
+      const winWidth = window.innerWidth || document.documentElement.clientWidth;
 
       setPageHeight(docHeight);
       setPageWidth(winWidth);
@@ -50,19 +55,17 @@ const BackgroundGradients = ({ className = "" }: BackgroundGradientsProps) => {
 
   // Crear gradientes dinámicamente basados en la altura de la página
   const renderGradients = () => {
-    // Si no tenemos altura aún, mostrar gradientes por defecto
-    if (pageHeight === 0) {
-      setPageHeight(3000); // Altura por defecto
-    }
-
-    if (pageWidth === 0) {
-      setPageWidth(1920); // Anchura por defecto
-    }
+    // No renderizar nada en el servidor o antes de que el componente esté montado
+    if (!isMounted) return [];
+    
+    // Usar valores por defecto si no tenemos medidas aún
+    const height = pageHeight || 3000;
+    const width = pageWidth || 1920;
 
     const gradients = [];
     // Calculamos cuántos gradientes necesitamos según la altura
     // Aproximadamente un gradiente cada 800px
-    const numberOfGradients = Math.max(5, Math.ceil(pageHeight / 800));
+    const numberOfGradients = Math.max(5, Math.ceil(height / 800));
 
     // Crear gradientes distribuidos uniformemente
     for (let i = 0; i < numberOfGradients; i++) {
@@ -77,42 +80,35 @@ const BackgroundGradients = ({ className = "" }: BackgroundGradientsProps) => {
 
       // Calcular la posición vertical
       const topPosition =
-        i === 0 ? 0 : Math.floor((pageHeight * i) / (numberOfGradients - 0.5));
+        i === 0 ? 0 : Math.floor((height * i) / (numberOfGradients - 0.5));
 
       const animationDelay = randomBetween(400, 600);
 
-      // mientras menos ancha la pantalla, mas desplazamiento en x
-      // const xOffset = Math.floor(pageWidth * -0.3);
+      let gradientWidth = 200;
+      let gradientHeight = 200;
 
-      // si es desktop, el desplazamiento es 0.3
-      // si es mobile, el desplazamiento es 0.5
-
-      let width = 200;
-      let height = 200;
-
-      const xOffset = Math.floor(width * -0.4);
+      const xOffset = Math.floor(gradientWidth * -0.4);
 
       // si estamos en pantalla grande multiplicamos por 2 width y height
-      if (pageWidth > 1024) {
-        width = width * 2;
-        height = height * 2;
+      if (width > 1024) {
+        gradientWidth = gradientWidth * 2;
+        gradientHeight = gradientHeight * 2;
       }
 
       gradients.push(
         <div
           key={`gradient-${i}`}
-          className={`absolute  rounded-full 
+          className={`absolute rounded-full 
             ${isPrimary ? "bg-primary" : "bg-accent"} 
             blur-[120px]
-            ${isLeft ? "left-0" : "right-0 "}
+            ${isLeft ? "left-0" : "right-0"}
             animate-smoke
             transition-opacity duration-4000`}
           style={{
             top: `${topPosition}px`,
             boxShadow: "0 0 100px rgba(0, 0, 0, 0.1)",
-            // width que dependa del ancho de la pantalla
-            width: `${width}px`,
-            height: `${height}px`,
+            width: `${gradientWidth}px`,
+            height: `${gradientHeight}px`,
             left: isLeft ? `${xOffset}px` : "auto",
             right: isLeft ? "auto" : `${xOffset}px`,
             transition: "opacity 2s ease-in-out, transform 2s ease-in-out",
@@ -129,9 +125,8 @@ const BackgroundGradients = ({ className = "" }: BackgroundGradientsProps) => {
     <div
       ref={gradientContainerRef}
       className={`absolute inset-0 w-full h-full overflow-hidden pointer-events-none ${className}`}
-      // style={{ minHeight: "100vh" }}
     >
-      {renderGradients()}
+      {isMounted && renderGradients()}
     </div>
   );
 };

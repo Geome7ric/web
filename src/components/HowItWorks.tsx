@@ -146,16 +146,14 @@ const HowItWorks = () => {
                       alt="Cycle process"
                       width={70}
                       height={70}
-                      className={`hover:rotate-180 transition-all duration-1000 cursor-pointer ${
-                        visibleSteps.includes(index) ? "animate-pulse" : ""
-                      }`}
+                      className={`hover:rotate-180 transition-all duration-1000 cursor-pointer `}
                     />
                   </div>
                 )}
                 {step.id !== "06" && (
                   <div
                     className={`col-auto flex-shrink-0 w-[70px] h-[70px] bg-accent text-dark 
-                    rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg hover:bg-dark hover:text-accent
+                    rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg hover:bg-transparent hover:text-accent
                     transition-all duration-300 cursor-pointer group z-10 relative ${
                       visibleSteps.includes(index) ? "animate-fadeIn" : ""
                     }`}

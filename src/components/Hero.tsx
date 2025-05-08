@@ -30,7 +30,7 @@ const Hero = () => {
         {t("title.p1")}
         <br className="hidden md:block" />
         &nbsp;{t("title.p2")}{" "}
-        <span className="text-primary">{t("title.p3")}</span>
+        <span className="text-accent">{t("title.p3")}</span>
       </h1>
 
       <p
