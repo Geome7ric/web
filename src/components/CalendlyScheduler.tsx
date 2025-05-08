@@ -128,14 +128,48 @@ const CalendlyScheduler = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const calendarRef = useRef<HTMLDivElement>(null);
   const [isEmailSent, setIsEmailSent] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
-  // Configuración de los colores para Calendly
+  // Detectar el modo oscuro/claro
+  useEffect(() => {
+    // Comprueba el modo oscuro inicial
+    const checkDarkMode = () => {
+      if (document.documentElement.classList.contains("dark")) {
+        setIsDarkMode(true);
+      } else {
+        setIsDarkMode(false);
+      }
+    };
+
+    checkDarkMode();
+
+    // Crea un observador de mutaciones para detectar cambios en la clase 'dark'
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (
+          mutation.attributeName === "class" &&
+          mutation.target === document.documentElement
+        ) {
+          checkDarkMode();
+        }
+      });
+    });
+
+    // Iniciar la observación del elemento HTML
+    observer.observe(document.documentElement, { attributes: true });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // Configuración de los colores para Calendly - ahora usando exactamente los mismos colores de fondo
   const pageSettings = {
-    backgroundColor: "0A0A0A",
+    backgroundColor: isDarkMode ? "0A0A0A" : "F1F1F1", // Exactamente el mismo color que en globals.css
     hideEventTypeDetails: false,
     hideLandingPageDetails: false,
     primaryColor: "00EF91",
-    textColor: "FFFFFF",
+    textColor: isDarkMode ? "EDEDED" : "171717", // También usando los mismos colores de texto
   };
 
   // Función para enviar un correo electrónico de prueba
@@ -307,7 +341,7 @@ const CalendlyScheduler = ({
       }
       clearTimeout(loadTimer);
     };
-  }, [url, isEmailSent, testEmail]);
+  }, [url, isEmailSent, testEmail, isDarkMode]);
 
   return (
     <div
@@ -324,7 +358,7 @@ const CalendlyScheduler = ({
             <div className="flex justify-center mb-4">
               <button
                 onClick={sendTestEmail}
-                className="bg-primary text-black px-4 py-2 rounded-md hover:bg-primary/90 transition-colors"
+                className="bg-accent text-black dark:text-white px-4 py-2 rounded-md hover:bg-accent/90 transition-colors"
               >
                 Enviar correo de prueba
               </button>

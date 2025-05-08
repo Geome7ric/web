@@ -2,11 +2,45 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Button from "./Button";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
   const t = useTranslations("");
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    // Comprueba el modo oscuro inicial
+    const checkDarkMode = () => {
+      if (document.documentElement.classList.contains("dark")) {
+        setIsDarkMode(true);
+      } else {
+        setIsDarkMode(false);
+      }
+    };
+
+    checkDarkMode();
+
+    // Crea un observador de mutaciones para detectar cambios en la clase 'dark'
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (
+          mutation.attributeName === "class" &&
+          mutation.target === document.documentElement
+        ) {
+          checkDarkMode();
+        }
+      });
+    });
+
+    // Iniciar la observación del elemento HTML
+    observer.observe(document.documentElement, { attributes: true });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   const scrollToSection = (section: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     if (section === "top") {
@@ -18,66 +52,75 @@ const Footer = () => {
   };
 
   return (
-    <footer className="row-start-3 text-white py-10 mx-16 bg-transparent z-10">
+    <footer className="row-start-3 text-black dark:text-white py-10 mx-16 bg-transparent z-10">
       <div className="container mx-auto md:px-12 lg:px-16">
         {/* Línea divisoria */}
-        <div className="border-t border-gray-600/25 mt-8 pt-6 text-center text-gray-500 text-sm"></div>
+        <div className="border-t border-black/20 dark:border-white/20 mt-8 pt-6 text-center text-black/60 dark:text-white/60 text-sm"></div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo y Descripción */}
           <div>
             <Image
-              src="/assets/Geome7ric-Horizontal-Color-White.svg"
+              src={
+                isDarkMode
+                  ? "/assets/Geome7ric-Horizontal-Color-White.svg"
+                  : "/assets/Geome7ric-Horizontal-Color.svg"
+              }
               alt="Geome7ric"
               width={164}
               height={30}
               className="mb-4"
-            ></Image>
-            <p className="mt-3 text-secondary dark:text-gray-400">
+            />
+            <p className="mt-3 text-black/70 dark:text-white/70">
               {t("Footer.message")}
             </p>
           </div>
 
           {/* Navegación */}
           <div>
-            <h3 className="text-lg font-medium mb-3">{t("common.links")}</h3>
+            <h3 className="text-lg font-medium mb-3 text-black dark:text-white">
+              {t("common.links")}
+            </h3>
             <ul className="space-y-2">
               <li>
-                <Button
-                  className="text-secondary hover:text-secondary dark:text-white dark:hover:text-primary"
+                <a
+                  href="#"
                   onClick={scrollToSection("top")}
+                  className="text-black/80 hover:text-accent dark:text-white/80 dark:hover:text-accent"
                 >
                   {t("common.home")}
-                </Button>
+                </a>
               </li>
               <li>
-                <Button
-                  className="text-secondary hover:text-secondary dark:text-white dark:hover:text-primary"
+                <a
+                  href="#contact"
                   onClick={scrollToSection("contact")}
+                  className="text-black/80 hover:text-accent dark:text-white/80 dark:hover:text-accent"
                 >
                   {t("common.contact")}
-                </Button>
+                </a>
               </li>
               <li>
-                <Button
-                  className="text-secondary hover:text-secondary dark:text-white dark:hover:text-primary"
+                <a
+                  href="#services"
                   onClick={scrollToSection("services")}
+                  className="text-black/80 hover:text-accent dark:text-white/80 dark:hover:text-accent"
                 >
                   {t("common.services")}
-                </Button>
+                </a>
               </li>
             </ul>
           </div>
 
           {/* Contacto */}
           <div>
-            <h3 className="text-lg font-medium mb-3 text-secondary dark:text-white">
+            <h3 className="text-lg font-medium mb-3 text-black dark:text-white">
               {t("common.contact")}
             </h3>
-            <p className=" text-secondary dark:text-gray-400">
+            <p className="text-black/70 dark:text-white/70">
               <Link
                 href="mailto:geome7ric@gmail.com"
                 target="_blank"
-                className="text-secondary dark:text-gray-400 dark:hover:text-primary"
+                className="text-black/80 hover:text-accent dark:text-white/80 dark:hover:text-accent transition-colors duration-300"
               >
                 <span>
                   <span className="mr-2">📧</span>
@@ -85,10 +128,10 @@ const Footer = () => {
                 </span>
               </Link>
             </p>
-            <p className="text-secondary dark:text-gray-400 mt-3">
+            <p className="text-black/70 dark:text-white/70 mt-3">
               <Link
                 href="https://wa.me/542916450794"
-                className="hover:text-dark dark:hover:text-accent"
+                className="text-black/80 hover:text-accent dark:text-white/80 dark:hover:text-accent transition-colors duration-300"
               >
                 <span>
                   <span className="mr-2">📞</span>
@@ -100,7 +143,7 @@ const Footer = () => {
               <Link
                 href="https://www.linkedin.com/company/geome7ric"
                 target="_blank"
-                className="text-secondary dark:text-gray-400 dark:hover:text-primary"
+                className="text-black/80 hover:text-accent dark:text-white/80 dark:hover:text-accent transition-colors duration-300"
               >
                 🔗 LinkedIn
               </Link>
@@ -109,7 +152,7 @@ const Footer = () => {
         </div>
 
         {/* Línea divisoria */}
-        <div className="border-t border-gray-600/25 mt-8 pt-6 text-center text-gray-500 text-sm">
+        <div className="border-t border-black/20 dark:border-white/20 mt-8 pt-6 text-center text-black/60 dark:text-white/60 text-sm">
           © {new Date().getFullYear()} Geome7ric
         </div>
       </div>

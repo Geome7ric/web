@@ -18,7 +18,9 @@ export default function Button({
     <button
       className={cn(
         "flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all hover:backdrop-blur-sm",
-        variant === "primary" ? "   shadow-lg " : "hover:backdrop-blur-sm   ",
+        variant === "primary"
+          ? "text-black dark:text-white shadow-lg hover:text-accent dark:hover:text-accent"
+          : "text-black dark:text-white hover:backdrop-blur-sm hover:text-accent dark:hover:text-accent",
         className
       )}
       {...props}

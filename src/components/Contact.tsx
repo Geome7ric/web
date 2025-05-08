@@ -73,19 +73,19 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
         lg:items-start gap-2 lg:gap-16"
       >
         {/* Columna izquierda: Texto */}
-        <div className="flex-1 flex flex-center items-center   h-96  p-10 ">
+        <div className="flex-1 flex flex-center items-center h-96 p-10">
           <h2
             className="
-            text-secondary dark:text-white
-          text-title font-bold leading-tight transition-all duration-1000 text-center lg:text-left "
+            text-black dark:text-white
+            text-title font-bold leading-tight transition-all duration-1000 text-center lg:text-left"
           >
             {t("Contact.title.p1") + " "}
-            <span className="text-primary">{t("Contact.title.p2")}</span>
+            <span className="text-accent">{t("Contact.title.p2")}</span>
           </h2>
         </div>
 
         {/* Columna derecha: Formulario */}
-        <div className="flex-1 w-full lg:max-w-none rounded  p-10 h-full ">
+        <div className="flex-1 w-full lg:max-w-none rounded p-10 h-full">
           <form
             className="space-y-6
             lg:max-w-xl xl:max-w-xl
@@ -95,7 +95,7 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
           >
             <div className="rounded-md shadow-sm -space-y-px border-none">
               <div className="py-1">
-                <label className="text-base md:text-sm">
+                <label className="text-base md:text-sm text-black dark:text-white">
                   {t("common.name")} *
                 </label>
                 <input
@@ -103,18 +103,17 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                   name="name"
                   type="text"
                   required
-                  className="appearance-none rounded-md relative block w-full px-3 border  mt-2
-                    py-2   rounded-t-md 
-                    text-secondary border-secondary/40 focus:border-secondary 
-                     dark:text-white  dark:border-white/15 dark:focus:border-primary dark:bg-dark
-                     border-secondary-300
-                    focus:outline-none focus:ring-primary focus:z-10 sm:text-sm  "
+                  className="appearance-none rounded-md relative block w-full px-3 border mt-2
+                    py-2 rounded-t-md 
+                    text-black bg-white/80 border-black/40 focus:border-accent 
+                    dark:text-white dark:bg-black/20 dark:border-white/15 dark:focus:border-accent
+                    focus:outline-none focus:ring-accent focus:z-10 sm:text-sm"
                   value={formData.name}
                   onChange={handleChange}
                 />
               </div>
               <div className="py-1">
-                <label className="text-base md:text-sm">
+                <label className="text-base md:text-sm text-black dark:text-white">
                   {t("common.email")} *
                 </label>
                 <input
@@ -124,16 +123,18 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                   required
                   className="appearance-none rounded-md relative 
                   block w-full px-3 py-2 border
-                  text-secondary border-secondary/40 focus:border-secondary 
-                    dark:text-white dark:border-white/15 dark:focus:border-primary dark:bg-dark
-                   border-secondary-300 dark:border-gray-300  focus:outline-none  mt-2
-                    focus:ring-primary  dfocus:z-10 sm:text-sm"
+                  text-black bg-white/80 border-black/40 focus:border-accent
+                  dark:text-white dark:bg-black/20 dark:border-white/15 dark:focus:border-accent
+                  focus:outline-none mt-2
+                  focus:ring-accent focus:z-10 sm:text-sm"
                   value={formData.email}
                   onChange={handleChange}
                 />
               </div>
               <div className="py-1">
-                <label>{t("common.subject")}</label>
+                <label className="text-black dark:text-white">
+                  {t("common.subject")}
+                </label>
                 <input
                   id="subject"
                   name="subject"
@@ -141,27 +142,29 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                   className="appearance-none rounded-md relative 
                   block w-full px-3 py-2 border 
                   mt-2
-                  text-secondary border-secondary/40 focus:border-secondary 
-                    dark:text-white dark:border-white/15 dark:focus:border-primary dark:bg-dark
-                   border-gray-300 placeholder-gray-500  focus:outline-none
-                    focus:ring-primary  focus:z-10 sm:text-sm"
+                  text-black bg-white/80 border-black/40 focus:border-accent
+                  dark:text-white dark:bg-black/20 dark:border-white/15 dark:focus:border-accent
+                  focus:outline-none
+                  focus:ring-accent focus:z-10 sm:text-sm"
                   value={formData.subject}
                   onChange={handleChange}
                 />
               </div>
 
               <div className="py-1">
-                <label>{t("Contact.form.message")} *</label>
+                <label className="text-black dark:text-white">
+                  {t("Contact.form.message")} *
+                </label>
                 <textarea
                   id="message"
                   name="message"
                   required
-                  className="appearance-none rounded-none relative block w-full  mt-2 
+                  className="appearance-none rounded-md relative block w-full mt-2 
                   px-3 py-2 border 
-                  text-secondary border-secondary/40 focus:border-secondary 
-                    dark:text-white dark:border-white/15 dark:focus:border-primary dark:bg-dark
-                   rounded-b-md focus:outline-none focus:ring-primary
-                     focus:z-10 sm:text-sm"
+                  text-black bg-white/80 border-black/40 focus:border-accent
+                  dark:text-white dark:bg-black/20 dark:border-white/15 dark:focus:border-accent
+                  focus:outline-none focus:ring-accent
+                  focus:z-10 sm:text-sm"
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
@@ -177,17 +180,18 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                   flex justify-center 
                   py-2 px-4 border 
                   rounded-md
-                  border-secondary text-secondary
-                dark:bg-primary dark:text-dark 
-                text-bold  
+                  bg-white/60 text-black border-black/60
+                  dark:bg-accent dark:text-white dark:border-accent
+                  hover:bg-accent hover:border-accent hover:text-white
+                  dark:hover:bg-accent/80
+                  text-bold  
                   focus:outline-none focus:ring-2 
                   focus:ring-offset-2
                   w-72
-                focus:ring-primary
-
-                ${isSending ? "bg-gray-500" : "cursor-pointer"}
+                  focus:ring-accent
+                  transition-all duration-300
+                  ${isSending ? "opacity-70 cursor-not-allowed" : "cursor-pointer"}
                  `}
-                //  disable if is sending
                 disabled={isSending}
               >
                 {isSending ? t("common.sending") : t("common.send")}

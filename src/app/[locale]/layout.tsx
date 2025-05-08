@@ -36,7 +36,37 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale} className="overflow-x-hidden">
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        {/* This script ensures dark mode preference is applied before rendering to avoid flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                // Check for stored theme preference, fallback to system preference
+                const theme = localStorage.getItem('theme') || 
+                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                
+                // Apply theme immediately to prevent flash
+                document.documentElement.classList.toggle('dark', theme === 'dark');
+                
+                // Store the current theme
+                localStorage.setItem('theme', theme);
+                
+                // Set up listener for system preference changes
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                  // Only update if we're using system preference (no manual override)
+                  if (!localStorage.getItem('theme-manual')) {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    document.documentElement.classList.toggle('dark', e.matches);
+                    localStorage.setItem('theme', newTheme);
+                  }
+                });
+              })()
+            `,
+          }}
+        />
+      </head>
       <body className="relative min-h-screen grid grid-rows-[auto,1fr,auto] max-w-[100vw] overflow-x-hidden">
         <BackgroundGradients className="" />
         <NextIntlClientProvider locale={locale} messages={messages}>

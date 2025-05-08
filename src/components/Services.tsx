@@ -21,12 +21,14 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="relative flex flex-col items-center justify-center pt-36 lg:pt-40 text-secondary dark:text-white z-0"
+      className="relative flex flex-col items-center justify-center pt-36 lg:pt-40 text-black dark:text-white z-0"
     >
       <div className="container mx-auto px-6 max-w-6xl">
         {/* Título e introducción */}
-        <h2 className="text-subtitle text-center mb-4">{t("title")}</h2>
-        <p className="max-w-5xl mx-auto text-lg md:text-base text-center text-dark-300 dark:text-gray-300 mb-16">
+        <h2 className="text-subtitle text-center mb-4 text-black dark:text-white">
+          {t("title")}
+        </h2>
+        <p className="max-w-5xl mx-auto text-lg md:text-base text-center text-black/80 dark:text-white/80 mb-16">
           {t("intro")}
         </p>
 
@@ -35,26 +37,26 @@ const Services = () => {
           {sections.map(({ key }) => (
             <div
               key={key}
-              className=" dark:bg-dark-200 rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col"
+              className="bg-white/50 dark:bg-black/20 rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col"
             >
-              <h3 className="text-xl md:text-lg mb-4 text-center">
+              <h3 className="text-xl md:text-lg mb-4 text-center text-black dark:text-white">
                 {t(`sections.${key}.title`)}
               </h3>
 
               <div className="mt-2 mb-4">
-                <p className=" font-bold text-primary mb-1">
+                <p className="font-bold text-accent mb-1">
                   {t(`sections.${key}.what`)}
                 </p>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed md:text-sm">
+                <p className="text-black/70 dark:text-white/70 leading-relaxed md:text-sm">
                   {t(`sections.${key}.whatText`)}
                 </p>
               </div>
 
               <div>
-                <p className=" font-bold text-primary mb-1">
+                <p className="font-bold text-accent mb-1">
                   {t(`sections.${key}.how`)}
                 </p>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed md:text-sm">
+                <p className="text-black/70 dark:text-white/70 leading-relaxed md:text-sm">
                   {t(`sections.${key}.howText`)}
                 </p>
               </div>

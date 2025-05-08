@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { scrollToElement } from "../utils/utils";
 
 // Constantes para los textos
 const STEPS = [
@@ -18,9 +19,9 @@ const STEPS = [
     id: "02",
     title: "Propuesta clara",
     shortDescription:
-      "Te enviamos un presupuesto detallado con la solución adecuada.",
+      "Te brindamos un presupuesto detallado con la solución adecuada.",
     fullDescription:
-      "Te enviamos un presupuesto formal que incluye una descripción detallada de la solución propuesta, el costo y los plazos.",
+      "Te brindamos un presupuesto formal que incluye una descripción detallada de la solución propuesta, el costo y los plazos.",
   },
   {
     id: "03",
@@ -33,16 +34,18 @@ const STEPS = [
   {
     id: "04",
     title: "Desarrollo ágil",
-    shortDescription: "Implementamos la solución paso a paso, con tu feedback.",
+    shortDescription:
+      "Implementamos la solución en etapas iterativas, con tu feedback en cada paso.",
     fullDescription:
       "El proceso de desarrollo se realiza en etapas iterativas, lo que nos permite ajustar rápidamente cualquier detalle según tus necesidades o feedback.",
   },
   {
     id: "05",
     title: "Entrega y puesta en producción",
-    shortDescription: "Lanzamos la aplicación y aseguramos su funcionamiento.",
+    shortDescription:
+      "Realizamos una entrega formal y capacitación a tu equipo.",
     fullDescription:
-      "Una vez desarrollada la solución, la implementamos en tu dominio, asegurándonos de que todo funcione perfectamente desde el primer momento.",
+      "Realizamos una entrega formal de la aplicación y ofrecemos capacitación a tu equipo para garantizar un uso óptimo.",
   },
   {
     id: "06",
@@ -89,15 +92,24 @@ const HowItWorks = () => {
     };
   }, []);
 
+  // Manejador para scroll suave con offset
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string
+  ) => {
+    e.preventDefault();
+    scrollToElement(id);
+  };
+
   return (
     <section
       id="howItWorks"
-      className="py-16 md:py-20 text-white flex flex-col items-center z-0 
+      className="py-16 md:py-20 text-black dark:text-white flex flex-col items-center z-0 
       mt-28 lg:mt-24"
     >
       <div className="container px-4 md:px-8 max-w-6xl mx-auto">
         <h2
-          className={`text-4xl md:text-4xl font-bold mb-8 md:mb-10 text-center
+          className={`text-4xl md:text-4xl font-bold mb-8 md:mb-10 text-center text-black dark:text-white
           transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
@@ -106,7 +118,7 @@ const HowItWorks = () => {
         </h2>
 
         <p
-          className={`text-lg md:text-base text-center mb-10 md:mb-14 max-w-3xl mx-auto
+          className={`text-lg md:text-base text-center mb-10 md:mb-14 max-w-3xl mx-auto text-black/80 dark:text-white/80
           transition-all duration-1000 delay-200 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
           }`}
@@ -146,13 +158,13 @@ const HowItWorks = () => {
                       alt="Cycle process"
                       width={70}
                       height={70}
-                      className={`hover:rotate-180 transition-all duration-1000 cursor-pointer `}
+                      className={`hover:rotate-180 transition-all duration-1000 cursor-pointer`}
                     />
                   </div>
                 )}
                 {step.id !== "06" && (
                   <div
-                    className={`col-auto flex-shrink-0 w-[70px] h-[70px] bg-accent text-dark 
+                    className={`col-auto flex-shrink-0 w-[70px] h-[70px] bg-accent text-black dark:text-black 
                     rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg hover:bg-transparent hover:text-accent
                     transition-all duration-300 cursor-pointer group z-10 relative ${
                       visibleSteps.includes(index) ? "animate-fadeIn" : ""
@@ -166,7 +178,7 @@ const HowItWorks = () => {
 
                 <div className="ml-6 md:ml-8">
                   <h3
-                    className={`text-xl md:text-2xl font-bold mb-2
+                    className={`text-xl md:text-2xl font-bold mb-2 text-black dark:text-white
                     transition-all duration-500 ${
                       visibleSteps.includes(index) ? "opacity-100" : "opacity-0"
                     }`}
@@ -175,7 +187,7 @@ const HowItWorks = () => {
                     {step.title}
                   </h3>
                   <p
-                    className={`text-base md:text-lg max-w-2xl md:hidden
+                    className={`text-base md:text-lg max-w-2xl md:hidden text-black/80 dark:text-white/80
                     transition-all duration-500 ${
                       visibleSteps.includes(index) ? "opacity-100" : "opacity-0"
                     }`}
@@ -184,7 +196,7 @@ const HowItWorks = () => {
                     {step.shortDescription}
                   </p>
                   <p
-                    className={`text-base md:text-lg max-w-2xl hidden md:block
+                    className={`text-base md:text-lg max-w-2xl hidden md:block text-black/80 dark:text-white/80
                     transition-all duration-500 ${
                       visibleSteps.includes(index) ? "opacity-100" : "opacity-0"
                     }`}
@@ -205,17 +217,18 @@ const HowItWorks = () => {
               : "opacity-0 translate-y-5 scale-90"
           }`}
         >
-          <Link
+          <a
             href="#calendly"
+            onClick={(e) => handleSmoothScroll(e, "calendly")}
             className="px-6 py-3 
               border
               bg-transparent
-               dark:border-accent dark:text-accent dark:hover:bg-accent dark:hover:text-dark
-               border-secondary text-secondary hover:bg-secondary hover:text-primary
+               dark:border-accent dark:text-accent dark:hover:bg-accent dark:hover:text-white
+               border-black text-black hover:bg-accent hover:border-accent hover:text-white
               font-semibold text-lg rounded-lg shadow-lg transition duration-300 hover:scale-105"
           >
             Agenda una reunión
-          </Link>
+          </a>
         </div>
       </div>
     </section>

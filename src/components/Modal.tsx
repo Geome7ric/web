@@ -9,17 +9,40 @@ const Modal: React.FC<{
   const { isOpen, onClose, iframeSrc } = props;
   const [isMobile, setIsMobile] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
+    // Verificar el modo oscuro inicial
+    const checkDarkMode = () => {
+      setIsDarkMode(document.documentElement.classList.contains("dark"));
+    };
+
+    checkDarkMode(); // Verificar al montar el componente
+
+    // Observer para detectar cambios en el tema
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (
+          mutation.attributeName === "class" &&
+          mutation.target === document.documentElement
+        ) {
+          checkDarkMode();
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, { attributes: true });
+
     handleResize(); // Check on initial render
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      observer.disconnect();
     };
   }, []);
 
@@ -42,12 +65,10 @@ const Modal: React.FC<{
 
   return (
     <div
-      className="fixed inset-0 bg-opacity-30 
-      flex justify-center items-center z-50
-      dark:bg-dark dark:bg-opacity-50
-      bg-gray-900
+      className={`fixed inset-0 flex justify-center items-center z-50
+      ${isDarkMode ? "bg-gray-900 bg-opacity-70" : "bg-gray-600 bg-opacity-50"}
       w-full h-full
-      overflow-y-auto"
+      overflow-y-auto`}
       onClick={handleBackdropClick}
       style={{
         position: "absolute",
@@ -55,18 +76,21 @@ const Modal: React.FC<{
         height: `${viewportHeight}px`,
       }}
     >
-      <div className="dark:bg-dark bg-white rounded-lg w-4/5 h-4/5 overflow-hidden relative flex flex-col m-auto">
+      <div
+        className={`${isDarkMode ? "bg-gray-800" : "bg-white"} rounded-lg w-4/5 h-4/5 overflow-hidden relative flex flex-col m-auto`}
+      >
         <button
           onClick={onClose}
-          className="absolute top-2 right-4 text-2xl text-gray-600 dark:hover:text-accent
-          dark:text-white hover:text-primary transition duration-300"
+          className={`absolute top-2 right-4 text-2xl 
+          ${isDarkMode ? "text-white hover:text-accent" : "text-gray-600 hover:text-primary"} 
+          transition duration-300`}
         >
           &times;
         </button>
         {isLoading && (
           <div
-            className="flex justify-center items-center w-full h-full
-            bg-white dark:bg-dark"
+            className={`flex justify-center items-center w-full h-full
+            ${isDarkMode ? "bg-gray-800" : "bg-white"}`}
             style={{
               position: "absolute",
               top: 0,
@@ -75,16 +99,16 @@ const Modal: React.FC<{
             }}
           >
             <div
-              className="loader border-t-4 
-            border-primary dark:border-accent
-            rounded-full w-8 h-8 animate-spin"
+              className={`loader border-t-4 
+              ${isDarkMode ? "border-accent" : "border-primary"}
+              rounded-full w-8 h-8 animate-spin`}
             ></div>
           </div>
         )}
         <iframe
           src={iframeSrc}
           onLoad={() => setIsLoading(false)}
-          className="w-full h-full dark:bg-dark bg-white"
+          className={`w-full h-full ${isDarkMode ? "bg-gray-800" : "bg-white"}`}
           style={{
             display: isLoading ? "none" : "block",
             border: "none",

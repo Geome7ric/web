@@ -51,6 +51,8 @@ export default {
       animation: {
         "spin-slow": "spin 20s linear infinite",
         smoke: "smokeEffect 6s infinite ease-in-out", // Usamos el nombre 'smoke' para la animación
+        fadeIn: "fadeIn 0.5s ease-in-out",
+        fadeOut: "fadeOut 0.5s ease-in-out",
       },
       fontSize: {},
     },

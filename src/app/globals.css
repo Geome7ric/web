@@ -12,12 +12,16 @@ body {
 :root {
   --background: #f1f1f1;
   --foreground: #171717;
+  --primary-shadow: rgba(112, 197, 251, 0.9);
+  --accent-shadow: rgba(0, 239, 145, 0.9);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary-shadow: rgba(112, 197, 251, 0.9);
+    --accent-shadow: rgba(0, 239, 145, 0.9);
   }
 
   .text-error {
