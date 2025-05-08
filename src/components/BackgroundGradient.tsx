@@ -12,11 +12,10 @@ const BackgroundGradients = ({ className = "" }: BackgroundGradientsProps) => {
   const [pageWidth, setPageWidth] = useState<number | null>(null);
   // Estado para controlar si estamos en cliente o no
   const [isMounted, setIsMounted] = useState(false);
-  // Estado para controlar el modo oscuro/claro - usamos un valor fijo inicialmente para evitar hidratación incorrecta
+  // Estado para controlar el modo oscuro/claro
   const [isDarkMode, setIsDarkMode] = useState(false);
   const gradientContainerRef = useRef<HTMLDivElement>(null);
 
-  // Efecto que se ejecuta solo en el cliente después del montaje del componente
   useEffect(() => {
     // Marcar que el componente está montado (solo ocurre en el cliente)
     setIsMounted(true);
@@ -114,34 +113,41 @@ const BackgroundGradients = ({ className = "" }: BackgroundGradientsProps) => {
 
       const animationDelay = randomBetween(400, 600);
 
-      // Valores fijos de estilos para evitar diferencias entre servidor y cliente
-      const gradientWidth = 200;
-      const gradientHeight = 200;
+      let gradientWidth = isDarkMode ? 200 : 250; // Gradientes más grandes en modo claro
+      let gradientHeight = isDarkMode ? 200 : 250;
       const xOffset = Math.floor(gradientWidth * -0.4);
 
       // Si estamos en pantalla grande multiplicamos por 2 width y height
-      const finalWidth = width > 1024 ? gradientWidth * 2 : gradientWidth;
-      const finalHeight = width > 1024 ? gradientHeight * 2 : gradientHeight;
+      if (width > 1024) {
+        gradientWidth = gradientWidth * 2;
+        gradientHeight = gradientHeight * 2;
+      }
+
+      // Ajustar la opacidad y el grado de blur según el modo
+      const blurAmount = isDarkMode ? "120px" : "80px"; // Menos blur en modo claro para más definición
+
+      // Significativamente mayor opacidad en modo claro
+      const opacityClass = isDarkMode ? "opacity-20" : "opacity-50";
 
       // Definir colores más fuertes para el modo claro - sin transparencia
-      const gradientColorClass = isPrimary ? "bg-primary" : "bg-accent";
+      const gradientColorClass = isPrimary ? "bg-primary" : "bg-accent"; // Simplificado para evitar problemas de hidratación
 
       gradients.push(
         <div
           key={`gradient-${i}`}
           className={`absolute rounded-full 
             ${gradientColorClass}
-            opacity-20
+            ${opacityClass}
             animate-smoke
             transition-opacity duration-4000`}
           style={{
             top: `${topPosition}px`,
             boxShadow: "0 0 100px rgba(0, 0, 0, 0.1)",
-            width: `${finalWidth}px`,
-            height: `${finalHeight}px`,
+            width: `${gradientWidth}px`,
+            height: `${gradientHeight}px`,
             left: isLeft ? `${xOffset}px` : "auto",
             right: isLeft ? "auto" : `${xOffset}px`,
-            filter: `blur(120px)`,
+            filter: `blur(${blurAmount})`,
             transition: "opacity 2s ease-in-out, transform 2s ease-in-out",
             transitionDelay: `${animationDelay}ms`,
           }}

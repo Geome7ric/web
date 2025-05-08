@@ -168,7 +168,7 @@ const CalendlyScheduler = ({
     backgroundColor: isDarkMode ? "0A0A0A" : "F1F1F1", // Exactamente el mismo color que en globals.css
     hideEventTypeDetails: false,
     hideLandingPageDetails: false,
-    primaryColor: "00EF91",
+    primaryColor: isDarkMode ? "00EF91" : "0A0A0A", // Color primario
     textColor: isDarkMode ? "EDEDED" : "171717", // También usando los mismos colores de texto
   };
 

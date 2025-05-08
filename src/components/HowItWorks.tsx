@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { scrollToElement } from "../utils/utils";
 
 // Constantes para los textos
@@ -165,6 +164,7 @@ const HowItWorks = () => {
                 {step.id !== "06" && (
                   <div
                     className={`col-auto flex-shrink-0 w-[70px] h-[70px] bg-accent text-black dark:text-black 
+                      hover:bg-primary hover:text-dark
                     rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg hover:bg-transparent hover:text-accent
                     transition-all duration-300 cursor-pointer group z-10 relative ${
                       visibleSteps.includes(index) ? "animate-fadeIn" : ""
