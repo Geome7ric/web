@@ -36,7 +36,7 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
     setIsSending(true);
     const { name } = formData;
     e.preventDefault();
-    
+
     sendEmail(formData)
       .then(() => {
         const message = t("Contact.form.success", { name });
@@ -74,10 +74,7 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
 
           {/* Columna derecha: Formulario */}
           <div className="w-full lg:w-1/2">
-            <form
-              className="space-y-6 w-full"
-              onSubmit={handleSubmit}
-            >
+            <form className="space-y-6 w-full" onSubmit={handleSubmit}>
               <div className="rounded-md shadow-sm -space-y-px border-none">
                 <div className="py-1">
                   <label className="text-base md:text-sm text-black dark:text-white">
@@ -177,9 +174,15 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
                     transition-all duration-300
                     ${isSending ? "opacity-70 cursor-not-allowed" : "cursor-pointer"}
                   `}
-                  disabled={isSending}
                 >
-                  {isSending ? t("common.sending") : t("common.send")}
+                  {isSending ? (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
+                      <span>{t("common.sending")}</span>
+                    </div>
+                  ) : (
+                    t("common.send")
+                  )}
                 </button>
               </div>
             </form>
