@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import HowItWorks from "@/components/HowItWorks";
 import CalendlyScheduler from "@/components/CalendlyScheduler";
+import BrandScroller from "@/components/BrandScroller";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         row-start-2 sm:items-start w-full max-w-full overflow-x-hidden relative"
     >
       <Hero />
+      <BrandScroller />
       <HowItWorks />
       <Services />
       <CalendlyScheduler testEmail={false} />
