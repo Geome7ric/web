@@ -169,18 +169,9 @@ const Header = () => {
         </h1>
 
         {state.mobileView ? (
-          // que sea una row con el lenguaje y el menu
-
-          <div
-            id="menu-container"
-            className="flex items-center space-x-2"
-            onMouseEnter={() =>
-              setState((prevState) => ({ ...prevState, menuOpen: true }))
-            }
-          >
+          <div id="menu-container" className="flex items-center space-x-2">
             <button
               id="menu"
-              // icono de hamburguesa
               className="text-2xl focus:outline-none
               animation-fadeIn
               animation-spin
