@@ -42,11 +42,17 @@ console.log("Firebase core initialized with config:", {
 });
 
 /**
+ * Tipo para los parámetros de eventos de Firebase Analytics
+ * Esto evita el uso de 'any' y proporciona un tipo más específico
+ */
+type EventParams = Record<string, string | number | boolean | null | undefined>;
+
+/**
  * Función para registrar eventos de Analytics
  * @param eventName Nombre del evento a registrar
  * @param eventParams Parámetros adicionales del evento
  */
-export const trackEvent = (eventName: string, eventParams?: Record<string, any>) => {
+export const trackEvent = (eventName: string, eventParams?: EventParams) => {
   if (analytics) {
     logEvent(analytics, eventName, eventParams);
     console.log(`Event tracked: ${eventName}`, eventParams);
