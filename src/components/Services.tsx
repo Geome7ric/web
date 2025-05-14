@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Image from "next/image";
+// import Image from "next/image";
 // import Link from "next/link";
 
 const Services = () => {
@@ -37,7 +37,7 @@ const Services = () => {
         </p>{" "}
         {/* Secciones */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 my-24">
-          {sections.map(({ key, image }) => (
+          {sections.map(({ key }) => (
             <div
               key={key}
               className="bg-white/50

@@ -1,4 +1,3 @@
-// lib/firebase.js
 import { initializeApp, getApps } from "firebase/app";
 import { getAnalytics, isSupported } from "firebase/analytics";
 
