@@ -1,5 +1,10 @@
 import { initializeApp, getApps } from "firebase/app";
-import { getAnalytics, isSupported, Analytics, logEvent } from "firebase/analytics";
+import {
+  getAnalytics,
+  isSupported,
+  Analytics,
+  logEvent,
+} from "firebase/analytics";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -57,7 +62,10 @@ export const trackEvent = (eventName: string, eventParams?: EventParams) => {
     logEvent(analytics, eventName, eventParams);
     console.log(`Event tracked: ${eventName}`, eventParams);
   } else {
-    console.log(`Analytics not available, could not track: ${eventName}`, eventParams);
+    console.log(
+      `Analytics not available, could not track: ${eventName}`,
+      eventParams
+    );
   }
 };
 
