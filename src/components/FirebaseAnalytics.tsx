@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { analytics } from '@/lib/firebase';
-import { logEvent, Analytics } from 'firebase/analytics';
+import { useEffect } from "react";
+import { analytics } from "@/lib/firebase";
+import { logEvent, Analytics } from "firebase/analytics";
 
 export default function FirebaseAnalytics() {
   useEffect(() => {
     if (analytics) {
       // Registra una vista de página cuando el componente se monta
-      logEvent(analytics as Analytics, 'page_view', {
+      logEvent(analytics as Analytics, "page_view", {
         page_title: document.title,
         page_location: window.location.href,
-        page_path: window.location.pathname
+        page_path: window.location.pathname,
       });
-      console.log('Firebase page_view event logged successfully');
+      console.log("Firebase page_view event logged successfully");
     }
   }, []);
 

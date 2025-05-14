@@ -1,5 +1,5 @@
 import { initializeApp, getApps } from "firebase/app";
-import { getAnalytics, isSupported, Analytics } from "firebase/analytics";
+import { getAnalytics, isSupported, Analytics, logEvent } from "firebase/analytics";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -31,14 +31,29 @@ if (typeof window !== "undefined") {
       }
     } catch (err) {
       console.error("Error initializing Firebase Analytics:", err);
-    }  })();
+    }
+  })();
 }
 
 // Log initialization status
 console.log("Firebase core initialized with config:", {
   projectId: firebaseConfig.projectId,
-  appId: firebaseConfig.appId?.substring(0, 5) + '...',
+  appId: firebaseConfig.appId?.substring(0, 5) + "...",
 });
+
+/**
+ * Función para registrar eventos de Analytics
+ * @param eventName Nombre del evento a registrar
+ * @param eventParams Parámetros adicionales del evento
+ */
+export const trackEvent = (eventName: string, eventParams?: Record<string, any>) => {
+  if (analytics) {
+    logEvent(analytics, eventName, eventParams);
+    console.log(`Event tracked: ${eventName}`, eventParams);
+  } else {
+    console.log(`Analytics not available, could not track: ${eventName}`, eventParams);
+  }
+};
 
 // Export Firebase instances
 export { app, analytics };

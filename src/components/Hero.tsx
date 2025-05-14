@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { scrollToElement } from "../utils/utils";
+import { trackEvent } from "../lib/firebase";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,13 +33,27 @@ const Hero = () => {
   }, []);
 
   const t = useTranslations("Hero");
-
   // Manejador para scroll suave con offset
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     id: string
   ) => {
     e.preventDefault();
+    
+    // Registrar evento de clic en botones CTA
+    if (id === "calendly") {
+      trackEvent("calendly_button_click", {
+        location: "hero_section",
+        button_text: t("actions.contact"),
+        device_type: window.innerWidth < 768 ? "mobile" : "desktop"
+      });
+    } else if (id === "howItWorks") {
+      trackEvent("services_button_click", {
+        location: "hero_section",
+        button_text: t("actions.services")
+      });
+    }
+    
     scrollToElement(id);
   };
 
