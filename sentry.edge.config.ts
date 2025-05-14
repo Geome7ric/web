@@ -7,7 +7,6 @@ import * as Sentry from "@sentry/nextjs";
 
 // Verificar si estamos en un entorno local y deshabilitar Sentry
 if (process.env.NODE_ENV === "development") {
-  console.log("Sentry deshabilitado en entorno local");
 } else {
   Sentry.init({
     dsn: "https://fa12d268372bc82196da153999926c04@o4507424839434240.ingest.us.sentry.io/4509276948398080",

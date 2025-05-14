@@ -13,7 +13,6 @@ export default function FirebaseAnalytics() {
         page_location: window.location.href,
         page_path: window.location.pathname,
       });
-      console.log("Firebase page_view event logged successfully");
     }
   }, []);
 

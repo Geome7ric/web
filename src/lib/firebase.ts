@@ -23,28 +23,25 @@ const app =
 
 // Initialize Analytics
 let analytics: Analytics | null = null;
-if (typeof window !== "undefined") {
-  // Solución actualizada para Analytics
+// Detectar si estamos en entorno de desarrollo local
+const isLocalEnvironment = process.env.NODE_ENV === "development";
+
+if (typeof window !== "undefined" && !isLocalEnvironment) {
+  // Solución actualizada para Analytics - solo en producción
   (async () => {
     try {
       const analyticsSupported = await isSupported();
       if (analyticsSupported) {
         analytics = getAnalytics(app);
-        console.log("Firebase Analytics initialized successfully");
       } else {
-        console.log("Firebase Analytics is not supported in this environment");
       }
     } catch (err) {
       console.error("Error initializing Firebase Analytics:", err);
     }
   })();
+} else if (isLocalEnvironment) {
+  console.log("Firebase Analytics disabled in local development environment");
 }
-
-// Log initialization status
-console.log("Firebase core initialized with config:", {
-  projectId: firebaseConfig.projectId,
-  appId: firebaseConfig.appId?.substring(0, 5) + "...",
-});
 
 /**
  * Tipo para los parámetros de eventos de Firebase Analytics
@@ -58,14 +55,17 @@ type EventParams = Record<string, string | number | boolean | null | undefined>;
  * @param eventParams Parámetros adicionales del evento
  */
 export const trackEvent = (eventName: string, eventParams?: EventParams) => {
-  if (analytics) {
-    logEvent(analytics, eventName, eventParams);
-    console.log(`Event tracked: ${eventName}`, eventParams);
-  } else {
+  // Si estamos en entorno local, no enviar eventos a Firebase Analytics
+  if (isLocalEnvironment) {
     console.log(
-      `Analytics not available, could not track: ${eventName}`,
+      `[DEV] Event would be tracked in production: ${eventName}`,
       eventParams
     );
+    return;
+  }
+
+  if (analytics) {
+    logEvent(analytics, eventName, eventParams);
   }
 };
 

@@ -67,7 +67,6 @@ const getInviteeDetails = async (
   inviteeUri: string
 ): Promise<InviteeResponse | null> => {
   try {
-    console.log("Obteniendo detalles del invitado desde:", inviteeUri);
     const response = await fetch(inviteeUri, {
       method: "GET",
       headers: {
@@ -83,10 +82,8 @@ const getInviteeDetails = async (
     }
 
     const data = await response.json();
-    console.log("Datos obtenidos de la API (invitee):", data);
     return data;
   } catch (error) {
-    console.error("Error al obtener detalles del invitado:", error);
     return null;
   }
 };
@@ -96,7 +93,6 @@ const getEventDetails = async (
   eventUri: string
 ): Promise<EventResponse | null> => {
   try {
-    console.log("Obteniendo detalles del evento desde:", eventUri);
     const response = await fetch(eventUri, {
       method: "GET",
       headers: {
@@ -112,10 +108,9 @@ const getEventDetails = async (
     }
 
     const data = await response.json();
-    console.log("Datos obtenidos de la API (evento):", data);
     return data;
   } catch (error) {
-    console.error("Error al obtener detalles del evento:", error);
+    console.error("Error al obtener los detalles del evento:", error);
     return null;
   }
 };
@@ -191,7 +186,6 @@ const CalendlyScheduler = ({
         time: formattedTime,
       });
 
-      console.log("Correo de prueba enviado con éxito");
       setIsEmailSent(true);
     } catch (error) {
       console.error("Error al enviar el correo de prueba:", error);
@@ -249,8 +243,6 @@ const CalendlyScheduler = ({
       // Detectar cuando se completa una reserva y enviar el email de confirmación
       if (eventName === "calendly.event_scheduled" && !isEmailSent) {
         try {
-          console.log("Evento programado detectado:", e.data);
-
           const payload = e.data.payload;
           // Definir tipos explícitos para evitar 'any'
           let inviteeData: { name: string; email: string } | null = null;
@@ -266,10 +258,6 @@ const CalendlyScheduler = ({
           } else if (payload.invitee?.uri) {
             // Si solo tenemos la URI, hacemos una llamada a la API de Calendly
             const inviteeUri = payload.invitee.uri;
-
-            console.log("Obteniendo datos del invitado mediante API:", {
-              inviteeUri,
-            });
 
             // Obtener los datos del invitado de la API
             const inviteeResponse = await getInviteeDetails(inviteeUri);
@@ -296,9 +284,6 @@ const CalendlyScheduler = ({
 
           // Verifica si tenemos todos los datos necesarios
           if (inviteeData?.name && inviteeData?.email && startTime) {
-            console.log("Datos del invitado encontrados:", inviteeData);
-            console.log("Hora de inicio encontrada:", startTime);
-
             // Formatear los datos de la cita
             const scheduledDate = new Date(startTime);
             const date = scheduledDate.toISOString().split("T")[0];
@@ -317,12 +302,6 @@ const CalendlyScheduler = ({
             });
 
             setIsEmailSent(true);
-            console.log("Email de confirmación enviado con éxito");
-          } else {
-            // Si no hay datos suficientes, simplemente log y no hacer nada más
-            console.log(
-              "No se pudieron obtener los datos necesarios para enviar el correo de confirmación"
-            );
           }
         } catch (error) {
           console.error("Error al enviar el correo de confirmación:", error);
