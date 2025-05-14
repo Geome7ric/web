@@ -84,6 +84,8 @@ const getInviteeDetails = async (
     const data = await response.json();
     return data;
   } catch (error) {
+    console.error("Error al obtener los detalles del invitado:", error);
+
     return null;
   }
 };
