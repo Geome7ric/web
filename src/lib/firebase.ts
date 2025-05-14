@@ -1,6 +1,7 @@
 import { initializeApp, getApps } from "firebase/app";
-import { getAnalytics, isSupported } from "firebase/analytics";
+import { getAnalytics, isSupported, Analytics } from "firebase/analytics";
 
+// Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -11,16 +12,33 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
+// Initialize Firebase
 const app =
   getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 
-let analytics;
+// Initialize Analytics
+let analytics: Analytics | null = null;
 if (typeof window !== "undefined") {
-  isSupported().then((yes) => {
-    if (yes) {
-      analytics = getAnalytics(app);
-    }
-  });
+  // Solución actualizada para Analytics
+  (async () => {
+    try {
+      const analyticsSupported = await isSupported();
+      if (analyticsSupported) {
+        analytics = getAnalytics(app);
+        console.log("Firebase Analytics initialized successfully");
+      } else {
+        console.log("Firebase Analytics is not supported in this environment");
+      }
+    } catch (err) {
+      console.error("Error initializing Firebase Analytics:", err);
+    }  })();
 }
 
+// Log initialization status
+console.log("Firebase core initialized with config:", {
+  projectId: firebaseConfig.projectId,
+  appId: firebaseConfig.appId?.substring(0, 5) + '...',
+});
+
+// Export Firebase instances
 export { app, analytics };

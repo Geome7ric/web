@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ModalProvider from "@/components/ModalProvider";
 import BackgroundGradients from "@/components/BackgroundGradient";
+import FirebaseAnalytics from "@/components/FirebaseAnalytics";
 
 // Can be imported from a shared config
 const locales = ["en", "es"];
@@ -74,6 +75,7 @@ export default async function RootLayout({
             <Header />
             <main className="relative z-0">{children}</main>
             <Footer />
+            <FirebaseAnalytics />
           </ModalProvider>
         </NextIntlClientProvider>
       </body>
