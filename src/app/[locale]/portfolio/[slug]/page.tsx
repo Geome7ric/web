@@ -26,8 +26,8 @@ function ImageCarousel({
 }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
-    // Adding skipSnapshot to prevent hydration mismatch
-    skipSnap: true,
+    // Adding skipSnaps to prevent hydration mismatch
+    skipSnaps: true,
   });
 
   const scrollPrev = useCallback(() => {
