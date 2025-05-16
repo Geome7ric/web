@@ -17,14 +17,11 @@ export const metadata = {
 
 export default async function RootLayout({
   children,
-  params,
+  params: { locale },
 }: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // Extraer locale después de recibir params completo
-  const locale = params.locale;
-
   // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale)) notFound();
 
