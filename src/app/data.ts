@@ -282,14 +282,6 @@ export const projects = [
     hero: "https://pampa.com/wp-content/uploads/2023/12/pampa-logo-blanco.svg",
     images: [
       {
-        url: "/assets/portfolio/pampa/desktop1.png",
-        caption: "Jefe de turno: Panel de control principal",
-      },
-      {
-        url: "/assets/portfolio/pampa/desktop2.jpg",
-        caption: "Jefe de turno: Gestión de pasajeros",
-      },
-      {
         url: "/assets/portfolio/pampa/desktop3.png",
         caption: "Jefe de turno: Calendario de turnos planificados",
       },
@@ -298,17 +290,58 @@ export const projects = [
         caption: "Jefe de turno: Planificación de turno",
       },
       {
-        url: "/assets/portfolio/pampa/desktop5.png",
-        caption: "Administrador de transporte: Agregar transportista",
+        url: "/assets/portfolio/pampa/desktop2.jpg",
+        caption: "Jefe de turno: Gestión de pasajeros",
+      },
+      {
+        url: "/assets/portfolio/pampa/desktop1.png",
+        caption: "Jefe de turno: Panel de control principal",
       },
       {
         url: "/assets/portfolio/pampa/desktop6.png",
-        caption:
-          "Administrador de transporte: Calendario de turnos a planificar",
+        caption: "Jefe de transporte: Calendario de turnos a planificar",
       },
       {
         url: "/assets/portfolio/pampa/desktop7.jpg",
-        caption: "Administrador de transporte: Planificación de viaje",
+        caption: "Jefe de transporte: Planificación de viaje",
+      },
+      {
+        url: "/assets/portfolio/pampa/desktop5.png",
+        caption: "Jefe de transporte: Agregar transportista",
+      },
+    ],
+    mobileImages: [
+      {
+        url: "/assets/portfolio/pampa/mobile6.png",
+        caption: "Empleado: Panel de control principal",
+      },
+      {
+        url: "/assets/portfolio/pampa/mobile7.png",
+        caption: "Empleado: Subscripción a un turno",
+      },
+      {
+        url: "/assets/portfolio/pampa/mobile8.png",
+        caption: "Empleado: Mis turnos",
+      },
+      {
+        url: "/assets/portfolio/pampa/mobile9.png",
+        caption: "Empleado: Viaje en curso",
+      },
+      {
+        url: "/assets/portfolio/pampa/mobile5.png",
+        caption: "Empleado: Menú",
+      },
+      {
+        url: "/assets/portfolio/pampa/mobile1.png",
+        caption: "Transportista: Menú",
+      },
+      {
+        url: "/assets/portfolio/pampa/mobile2.png",
+        caption: "Transportista: Próximo viaje asignado",
+      },
+      {
+        url: "/assets/portfolio/pampa/mobile3.png",
+        caption: "Transportista: Viaje en curso",
       },
     ],
     videos: [],
@@ -319,23 +352,23 @@ export const projects = [
       <br>
       <p>La solución debía contemplar una gestión ágil de turnos y viajes, administración de todos los actores involucrados (empleados, choferes, jefes de turno y jefes de transporte) y una sincronización automática con comunicación clara, integrada y unificada en un solo sistema digital.</p>`,
 
-    solution: `<p>La solución consistió en una plataforma web para administradores, jefes de planta y jefes de transporte, complementada con una aplicación móvil para los choferes y los empleados. Todo el proceso de planificación, asignación y ejecución de los viajes quedó centralizado y automatizado en un único sistema digital.</p>
+    solution: `<p>La solución consistió en una plataforma web para administradores, jefes de planta y jefes de transporte, complementada con una aplicación móvil para los transportistas y los empleados. Todo el proceso de planificación, asignación y ejecución de los viajes quedó centralizado y automatizado en un único sistema digital.</p>
       <br>
       <ul>
         <li><strong>Planificación:</strong> Los jefes de planta planifican el personal por jornada, reemplazando por completo el uso de planillas Excel.</li>
-        <li><strong>Organización de viajes:</strong> Los jefes de transporte reciben estas planificaciones y organizan los viajes, definiendo el recorrido y asignando choferes.</li>
-        <li><strong>Gestión por choferes:</strong> Los conductores acceden a sus viajes asignados desde la app móvil. Cada viaje muestra en tiempo real el orden de recogida de los pasajeros y el detalle de cada parada, con navegación por mapa.</li>
+        <li><strong>Organización de viajes:</strong> Los jefes de transporte reciben estas planificaciones y organizan los viajes, definiendo el recorrido y asignando transportistas.</li>
+        <li><strong>Gestión por transportistas:</strong> Los conductores acceden a sus viajes asignados desde la app móvil. Cada viaje muestra en tiempo real el orden de recogida de los pasajeros y el detalle de cada parada, con navegación por mapa.</li>
+        <li><strong>Autonomía de empleados:</strong> Los empleados pueden ver sus turnos disponibles, suscribirse o quitarse según su disponibilidad, lo que les da mayor control sobre su participación y reduce la carga operativa sobre los jefes de transporte.</li>
         <li><strong>Visualización para empleados:</strong> Al comenzar un viaje, los empleados involucrados pueden ver en la aplicación la posición de la combi, el estado de recogida de los pasajeros y una hora estimada de llegada a su domicilio.</li>
-        <li><strong>Notificaciones automáticas:</strong> Todo el sistema opera con notificaciones en tiempo real. Se informa a cada actor (empleado, chofer, jefe de turno, jefe de transporte) sobre eventos clave: asignación de viajes, inicio, avance, recogida de pasajeros y finalización del recorrido.</li>
+        <li><strong>Notificaciones automáticas:</strong> Todo el sistema opera con notificaciones en tiempo real. Se informa a cada actor (empleado, transportista, jefe de turno, jefe de transporte) sobre eventos clave: asignación de viajes, inicio, avance, recogida de pasajeros y finalización del recorrido.</li>
       </ul>
       <br>
-      <p>Esta solución unificó todos los flujos en un solo entorno digital, mejorando la eficiencia, la trazabilidad de cada etapa del viaje y la comunicación entre todas las personas involucradas.</p>
-    `,
-    result: `<p>La incorporación del nuevo sistema marcó un antes y un después en la coordinación del transporte interno. Los jefes de turno dejaron atrás las planillas manuales y ahora planifican el personal de cada jornada desde una plataforma ágil y centralizada. Por su parte, los jefes de transporte cuentan con una herramienta que les brinda visibilidad completa para organizar recorridos, asignar choferes y tomar decisiones con mayor precisión y eficiencia.</p>
-    <br>
-    <p>Los conductores acceden a sus viajes desde una app móvil que les muestra el recorrido, el orden de recogida y la siguiente dirección en tiempo real, mejorando su autonomía y reduciendo la necesidad de intermediaciones. Al iniciar el viaje, todo el sistema se activa de forma sincronizada: se notifican automáticamente todos los involucrados, desde el jefe de turno hasta cada pasajero. Los empleados, que antes solo sabían el horario de su turno, ahora pueden seguir el recorrido de la combi en vivo, conocer su posición en la fila y estimar la hora exacta en la que serán recogidos.</p>
-    <br>
-    <p>Este nuevo ecosistema digital reemplazó la incertidumbre y la desorganización por un entorno claro, conectado y trazable. La solución optimizó tiempos, mejoró la experiencia de todos los actores y elevó el estándar de cómo debe gestionarse el transporte en entornos industriales complejos.</p>`,
+      <p>Esta solución unificó todos los flujos en un solo entorno digital, mejorando la eficiencia, la trazabilidad de cada etapa del viaje y la comunicación entre todas las personas involucradas.</p>`,
+    result: `<p>La incorporación del nuevo sistema marcó un antes y un después en la coordinación del transporte interno. Los jefes de turno dejaron atrás las planillas manuales y ahora planifican el personal de cada jornada desde una plataforma ágil y centralizada. Por su parte, los jefes de transporte cuentan con una herramienta que les brinda visibilidad completa para organizar recorridos, asignar transportistas y tomar decisiones con mayor precisión y eficiencia.</p>
+      <br>
+      <p>Los transportistas acceden a sus viajes desde una app móvil que les muestra el recorrido, el orden de recogida y la siguiente dirección en tiempo real, mejorando su autonomía y reduciendo la necesidad de intermediaciones. Al iniciar el viaje, todo el sistema se activa de forma sincronizada: se notifican automáticamente todos los involucrados, desde el jefe de turno hasta cada pasajero. Los empleados, que antes solo sabían el horario de su turno, ahora pueden seguir el recorrido de la combi en vivo, conocer su posición en la fila, estimar la hora exacta en la que serán recogidos y gestionar sus subscripciones a turnos de forma autónoma.</p>
+      <br>
+      <p>Este nuevo ecosistema digital reemplazó la incertidumbre y la desorganización por un entorno claro, conectado y trazable. La solución optimizó tiempos, mejoró la experiencia de todos los actores y elevó el estándar de cómo debe gestionarse el transporte en entornos industriales complejos.</p>`,
 
     stack: {
       frontend: [Quasar, Vue, Pinia],

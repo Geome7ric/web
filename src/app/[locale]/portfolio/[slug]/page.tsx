@@ -18,11 +18,17 @@ interface ImageWithCaption {
 function ImageCarousel({
   images,
   title,
+  isMobile = false,
 }: {
   images: ImageWithCaption[];
   title: string;
+  isMobile?: boolean;
 }) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    // Adding skipSnapshot to prevent hydration mismatch
+    skipSnap: true,
+  });
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -32,9 +38,15 @@ function ImageCarousel({
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
+  // Para imágenes móviles usamos una relación de aspecto más alta (9:16 o 0.5625)
+  // Para imágenes de escritorio mantenemos 16:9 (56.25%)
+  const aspectRatio = isMobile ? "pt-[177.78%]" : "pt-[56.25%]";
+
   return (
-    <div className="relative w-full max-w-5xl mx-auto">
-      <div className="relative w-full pt-[56.25%]">
+    <div
+      className={`relative w-full ${isMobile ? "max-w-sm" : "max-w-5xl"} mx-auto`}
+    >
+      <div className={`relative w-full ${aspectRatio}`}>
         {/* Direct carousel container */}
         <div
           className="absolute inset-0 overflow-hidden rounded-xl"
@@ -50,7 +62,12 @@ function ImageCarousel({
                   src={image.url}
                   alt={`${title} screenshot ${index + 1}`}
                   fill
-                  className="object-contain"
+                  className={`${isMobile ? "object-scale-down" : "object-contain"}`}
+                  sizes={
+                    isMobile
+                      ? "(max-width: 640px) 90vw, 400px"
+                      : "(max-width: 1024px) 90vw, 1200px"
+                  }
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-2 text-center">
                   <p className="text-sm md:text-base">{image.caption}</p>
@@ -99,21 +116,11 @@ export default function Project() {
       </div>
     );
   }
-
   return (
-    <div className="min-h-screen py-24 px-6">
+    <div className="min-h-screen py-24 px-6" suppressHydrationWarning>
       <div className="max-w-5xl mx-auto">
         {/* Intro */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="col-span-1">
-            <Image
-              src={project.hero}
-              alt={project.title}
-              width={400}
-              height={200}
-              className="rounded-lg"
-            />
-          </div>
           <div className="col-span-1">
             <div className="flex flex-col justify-center h-full">
               <p className="text-lg text-gray-600 mt-2">
@@ -121,40 +128,63 @@ export default function Project() {
               </p>
             </div>
           </div>
+          <div className="col-span-1">
+            <Image
+              src={project.hero}
+              alt={project.title}
+              width={400}
+              height={200}
+              className="rounded-lg"
+              priority
+            />
+          </div>
         </div>
-
         {/* Contenido */}
-        <div className="border-t border-gray-600/25 mt-8 pt-6 text-center text-gray-500 text-sm"></div>
+        <div className="border-t border-gray-600/25 mt-8 pt-6 text-center text-gray-500 text-sm"></div>{" "}
         <h2 className="font-semibold text-subtitle mt-6">El reto</h2>
         <div
           className="mt-4 text-gray-400"
           dangerouslySetInnerHTML={{ __html: project.challenge! }}
+          suppressHydrationWarning
         ></div>
-
         <h2 className="font-semibold text-subtitle mt-6">La solución</h2>
         <div
           className="mt-4 text-gray-400"
           dangerouslySetInnerHTML={{ __html: project.solution! }}
+          suppressHydrationWarning
         ></div>
-
         <h2 className="font-semibold text-subtitle mt-6">El resultado</h2>
         <div
           className="mt-4 text-gray-400"
           dangerouslySetInnerHTML={{ __html: project.result! }}
+          suppressHydrationWarning
         ></div>
-
-        {/* Carrusel de imágenes */}
+        {/* Carrusel de imágenes Desktop */}
         {project.images && project.images.length > 0 && (
           <div className="mt-12 w-full">
-            <h2 className="font-semibold text-subtitle mb-6">
-              Capturas de pantalla
-            </h2>
+            <h2 className="font-semibold mb-6">Aplicación para escritorio</h2>
             <div className="w-full flex justify-center">
               <ImageCarousel images={project.images} title={project.title} />
             </div>
           </div>
         )}
-
+        {/* Carrusel de imágenes Mobile */}
+        {"mobileImages" in project &&
+          project.mobileImages &&
+          project.mobileImages.length > 0 && (
+            <div className="mt-12 w-full">
+              <h2 className="font-semibold mb-6">
+                Aplicación para dispositivos móviles
+              </h2>
+              <div className="w-full flex justify-center">
+                <ImageCarousel
+                  images={project.mobileImages}
+                  title={`${project.title} Mobile`}
+                  isMobile={true}
+                />
+              </div>
+            </div>
+          )}
         {/* Testimonios */}
         <h2 className="font-semibold text-subtitle mt-6">Testimonios</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
@@ -191,18 +221,16 @@ export default function Project() {
             </div>
           ))}
         </div>
-
         {/* Tecnologías */}
         <div className="mt-6">
-          <h2 className="font-semibold text-subtitle mt-6">Tecnologías</h2>
-
+          <h2 className="font-semibold text-subtitle mt-6">Tecnologías</h2>{" "}
           <div
-            className="mt-4 text-gray-400 "
+            className="mt-4 text-gray-400"
             dangerouslySetInnerHTML={{
               __html: project.stack_explanation!,
             }}
+            suppressHydrationWarning
           ></div>
-
           <div className="flex flex-wrap gap-4 mt-4">
             {Object.entries(project.stack!).map(([type, techs]) => (
               <div
@@ -242,7 +270,6 @@ export default function Project() {
             ))}
           </div>
         </div>
-
         {/* Contacto */}
         <div className="mt-24">
           <Contact
@@ -250,7 +277,6 @@ export default function Project() {
             message={`Hola, me gustaría saber más sobre el proyecto ${project.title}`}
           />
         </div>
-
         {/* Volver */}
         <div className="mt-8 transition duration-300 hover:-translate-x-2 ">
           <Link href="/portfolio">
