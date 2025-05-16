@@ -2,7 +2,7 @@
 
 import { getProject } from "@/app/data";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import Contact from "@/components/Contact";
 import { useParams } from "next/navigation";
