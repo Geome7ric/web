@@ -280,8 +280,6 @@ export const projects = [
       "Seguimiento del estado del viaje",
     ],
     hero: "https://pampa.com/wp-content/uploads/2023/12/pampa-logo-blanco.svg",
-    socialImage:
-      "https://pampa.com/wp-content/uploads/2023/12/pampa-logo-blanco.svg",
     images: [
       {
         url: "/assets/portfolio/pampa/desktop1.png",
