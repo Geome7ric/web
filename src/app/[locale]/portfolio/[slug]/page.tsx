@@ -101,10 +101,10 @@ export default function Project() {
   }
 
   return (
-    <div className="min-h-screen py-24 px-6">
+    <div className="min-h-screen py-24 xl:px-24">
       <div className="max-w-5xl mx-auto">
         {/* Intro */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-8 ">
           <div className="col-span-1">
             <Image
               src={project.hero}
@@ -124,31 +124,30 @@ export default function Project() {
         </div>
 
         {/* Contenido */}
-        <div className="border-t border-gray-600/25 mt-8 pt-6 text-center text-gray-500 text-sm"></div>
-        <h2 className="font-semibold text-subtitle mt-6">El reto</h2>
-        <div
-          className="mt-4 text-gray-400"
-          dangerouslySetInnerHTML={{ __html: project.challenge! }}
-        ></div>
+        <div className="px-8">
+          <div className="border-t border-gray-600/25 mt-8 pt-6 text-center text-gray-500 text-sm  "></div>
+          <h2 className="font-semibold text-subtitle mt-6">El reto</h2>
+          <div
+            className="mt-4 text-gray-400"
+            dangerouslySetInnerHTML={{ __html: project.challenge! }}
+          ></div>
 
-        <h2 className="font-semibold text-subtitle mt-6">La solución</h2>
-        <div
-          className="mt-4 text-gray-400"
-          dangerouslySetInnerHTML={{ __html: project.solution! }}
-        ></div>
+          <h2 className="font-semibold text-subtitle mt-6">La solución</h2>
+          <div
+            className="mt-4 text-gray-400"
+            dangerouslySetInnerHTML={{ __html: project.solution! }}
+          ></div>
 
-        <h2 className="font-semibold text-subtitle mt-6">El resultado</h2>
-        <div
-          className="mt-4 text-gray-400"
-          dangerouslySetInnerHTML={{ __html: project.result! }}
-        ></div>
+          <h2 className="font-semibold text-subtitle mt-6">El resultado</h2>
+          <div
+            className="mt-4 text-gray-400"
+            dangerouslySetInnerHTML={{ __html: project.result! }}
+          ></div>
+        </div>
 
         {/* Carrusel de imágenes */}
         {project.images && project.images.length > 0 && (
           <div className="mt-12 w-full">
-            <h2 className="font-semibold text-subtitle mb-6">
-              Capturas de pantalla
-            </h2>
             <div className="w-full flex justify-center">
               <ImageCarousel images={project.images} title={project.title} />
             </div>
@@ -156,52 +155,47 @@ export default function Project() {
         )}
 
         {/* Testimonios */}
-        <h2 className="font-semibold text-subtitle mt-6">Testimonios</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
-          {project.testimonials!.map((testimonial) => (
-            <div
-              key={testimonial.name}
-              className="flex flex-col gap-4 p-4 rounded-lg"
-            >
-              <div className="flex items-center gap-4">
-                <Image
-                  src={testimonial.photo}
-                  alt={testimonial.name}
-                  width={48}
-                  height={48}
-                  className="rounded-full"
-                />
-                <div>
-                  <h3 className="text-accent">{testimonial.name}</h3>
-                  <p className="text-gray-400">{testimonial.position}</p>
-                  {"url" in testimonial && testimonial.url && (
-                    <Link
-                      href={testimonial.url}
-                      target="_blank"
-                      className="text-gray-400 hover:text-accent"
-                    >
-                      <span>{testimonial.urlName}</span>
-                    </Link>
-                  )}
+        <div className="px-8">
+          <h2 className="font-semibold text-subtitle mt-6">Testimonios</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
+            {project.testimonials!.map((testimonial) => (
+              <div
+                key={testimonial.name}
+                className="flex flex-col gap-4 p-4 rounded-lg"
+              >
+                <div className="flex items-center gap-4">
+                  <Image
+                    src={testimonial.photo}
+                    alt={testimonial.name}
+                    width={48}
+                    height={48}
+                    className="rounded-full"
+                  />
+                  <div>
+                    <h3 className="text-accent">{testimonial.name}</h3>
+                    <p className="text-gray-400">{testimonial.position}</p>
+                    {"url" in testimonial && testimonial.url && (
+                      <Link
+                        href={testimonial.url}
+                        target="_blank"
+                        className="text-gray-400 hover:text-accent"
+                      >
+                        <span>{testimonial.urlName}</span>
+                      </Link>
+                    )}
+                  </div>
                 </div>
+                <p className="text-gray-400 italic">
+                  &quot;{testimonial.review}&quot;
+                </p>
               </div>
-              <p className="text-gray-400 italic">
-                &quot;{testimonial.review}&quot;
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Tecnologías */}
-        <div className="mt-6">
+        <div className="mt-6 px-8">
           <h2 className="font-semibold text-subtitle mt-6">Tecnologías</h2>
-
-          <div
-            className="mt-4 text-gray-400 "
-            dangerouslySetInnerHTML={{
-              __html: project.stack_explanation!,
-            }}
-          ></div>
 
           <div className="flex flex-wrap gap-4 mt-4">
             {Object.entries(project.stack!).map(([type, techs]) => (
@@ -241,10 +235,17 @@ export default function Project() {
               </div>
             ))}
           </div>
+
+          <div
+            className="mt-4 text-gray-400 "
+            dangerouslySetInnerHTML={{
+              __html: project.stack_explanation!,
+            }}
+          ></div>
         </div>
 
         {/* Contacto */}
-        <div className="mt-24">
+        <div className="mt-2 px-4">
           <Contact
             subject={`${project.title}`}
             message={`Hola, me gustaría saber más sobre el proyecto ${project.title}`}
@@ -252,7 +253,7 @@ export default function Project() {
         </div>
 
         {/* Volver */}
-        <div className="mt-8 transition duration-300 hover:-translate-x-2 ">
+        <div className="mt-8 transition duration-300 hover:-translate-x-2 px-8">
           <Link href="/portfolio">
             <div className="flex flex-row items-left">
               <ArrowLeft className="absolute w-5 h-5 text-accent mt-3" />
