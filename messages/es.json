@@ -10,13 +10,25 @@
     "home": "Inicio",
     "services": "Servicios"
   },
+  "AboutUs": {
+    "title": "Quiénes somos",
+    "description1": "Geome7ric es un equipo dedicado a transformar tu negocio a través de soluciones digitales personalizadas. Nos especializamos en optimizar procesos, automatizar tareas y mejorar la productividad de tus equipos, brindándote las herramientas para que puedas centrarte en lo que realmente importa: hacer crecer tu negocio.",
+    "description2": "Nuestro equipo está formado por expertos en desarrollo de software y gestión operativa. Estamos comprometidos con la innovación, la calidad y el soporte constante.",
+    "whyChooseUs": "¿Por qué elegirnos?",
+    "reasons": {
+      "reason1": "Soluciones personalizadas que se adaptan a tus necesidades.",
+      "reason2": "Innovación constante para mantener tu negocio al día.",
+      "reason3": "Soporte continuo para acompañarte en todo el proceso."
+    },
+    "meetTeam": "Conoce al equipo"
+  },
   "Hero": {
     "title": {
       "p1": "Optimizá tu negocio",
       "p2": "con",
       "p3": "soluciones digitales"
     },
-    "subtitle": "Automatizamos procesos y mejoramos la productividad de tu equipo.",
+    "subtitle": "Descubre cómo Geome7ric transforma procesos y mejora la productividad de tu equipo.",
     "actions": {
       "contact": "Solicitar una consulta gratuita",
       "services": "Ver cómo funciona"

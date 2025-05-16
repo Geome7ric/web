@@ -10,6 +10,18 @@
     "home": "Home",
     "services": "Services"
   },
+  "AboutUs": {
+    "title": "About Us",
+    "description1": "Geome7ric is a team dedicated to transforming your business through custom digital solutions. We specialize in optimizing processes, automating tasks, and improving your team's productivity, providing you with the tools so you can focus on what really matters: growing your business.",
+    "description2": "Our team consists of experts in software development and operational management. We are committed to innovation, quality, and constant support.",
+    "whyChooseUs": "Why Choose Us?",
+    "reasons": {
+      "reason1": "Custom solutions that adapt to your needs.",
+      "reason2": "Constant innovation to keep your business up to date.",
+      "reason3": "Continuous support to accompany you throughout the process."
+    },
+    "meetTeam": "Meet the team"
+  },
   "Hero": {
     "title": {
       "p1": "Optimize your busines",

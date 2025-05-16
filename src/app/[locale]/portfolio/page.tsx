@@ -4,7 +4,7 @@ import { projects } from "@/app/data";
 
 export default function PortfolioPage() {
   return (
-    <div className="min-h-screen py-12 px-6 text-white">
+    <div className="min-h-screen py-24 px-6 text-white">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-title font-bold mb-4">Casos de éxito</h1>
         <p className="text-subtitle text-gray-600 mb-12">
@@ -13,8 +13,12 @@ export default function PortfolioPage() {
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2 max-w-6xl mx-auto">
+        {" "}
         {projects.map((project) => (
-          <Link href={`portfolio/${project.id}`} key={project.id}>
+          <Link
+            href={`portfolio/${project.slug || project.id}`}
+            key={project.id}
+          >
             <div
               className="text-white 
               hover:transform hover:scale-105
@@ -31,7 +35,7 @@ export default function PortfolioPage() {
                   alt={project.title}
                   width={100}
                   height={200}
-                  className=""
+                  className="py-4"
                 />
               </div>
               <h2 className="text-2xl font-semibold text-white mb-2">

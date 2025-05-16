@@ -6,6 +6,7 @@ import Services from "@/components/Services";
 import HowItWorks from "@/components/HowItWorks";
 import CalendlyScheduler from "@/components/CalendlyScheduler";
 import BrandScroller from "@/components/BrandScroller";
+// import AboutUs from "@/components/AboutUs";
 
 export default function Home() {
   return (
@@ -13,10 +14,12 @@ export default function Home() {
       className="font-[family-name:var(--font-geist-sans)]
         row-start-2 sm:items-start w-full max-w-full overflow-x-hidden relative"
     >
+      {" "}
       <Hero />
       <BrandScroller />
       <HowItWorks />
       <Services />
+      {/* <AboutUs /> */}
       <CalendlyScheduler testEmail={false} />
       <Contact />
     </div>

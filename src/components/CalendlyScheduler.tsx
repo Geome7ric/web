@@ -158,15 +158,15 @@ const CalendlyScheduler = ({
     return () => {
       observer.disconnect();
     };
-  }, []);
-
-  // Configuración de los colores para Calendly - ahora usando exactamente los mismos colores de fondo
+  }, []); // Configuración mejorada de los colores para Calendly
   const pageSettings = {
-    backgroundColor: isDarkMode ? "0A0A0A" : "F1F1F1", // Exactamente el mismo color que en globals.css
+    backgroundColor: isDarkMode ? "121212" : "FFFFFF", // Fondos ligeramente contrastados para mejor visualización
     hideEventTypeDetails: false,
     hideLandingPageDetails: false,
-    primaryColor: isDarkMode ? "00EF91" : "0A0A0A", // Color primario
-    textColor: isDarkMode ? "EDEDED" : "171717", // También usando los mismos colores de texto
+    primaryColor: "00EF91", // Color de acento consistente en ambos modos
+    textColor: isDarkMode ? "FFFFFF" : "171717", // Mejor contraste en texto
+    hideGdprBanner: true,
+    hideLoadingIndicator: true,
   };
 
   // Función para enviar un correo electrónico de prueba
@@ -234,12 +234,15 @@ const CalendlyScheduler = ({
       // Cuando Calendly termina de cargar, ocultar el spinner
       if (eventName === "calendly.page_load") {
         setIsLoaded(true);
-      }
-
-      // Solo actualizar la altura si es necesario
+      } // Actualizar la altura con una transición suave para evitar saltos
       if (e.data.payload.height) {
         const newHeight = parseInt(e.data.payload.height);
-        setIframeHeight(newHeight);
+        // Asegurar una altura mínima y evitar cambios pequeños
+        const adjustedHeight = Math.max(newHeight, 650);
+        // Solo actualizar si el cambio es significativo (más de 30px) o si es la primera carga
+        if (!isLoaded || Math.abs(adjustedHeight - iframeHeight) > 30) {
+          setIframeHeight(adjustedHeight);
+        }
       }
 
       // Detectar cuando se completa una reserva y enviar el email de confirmación
@@ -322,56 +325,79 @@ const CalendlyScheduler = ({
       }
       clearTimeout(loadTimer);
     };
-  }, [url, isEmailSent, testEmail, isDarkMode]);
+  }, [url, isEmailSent, testEmail, isDarkMode, iframeHeight, isLoaded]);
 
   return (
-    <div
+    <section
       id="calendly"
       ref={calendarRef}
-      className="relative flex flex-col items-center 
-       lg:mt-16 xl:mt-32 mt-8
-      justify-center sm:px-6 lg:px-8 scroll-mt-24"
+      className="w-full px-4 sm:px-6 lg:px-8 mt-8 md:mt-4 lg:mt-16 xl:mt-32 scroll-mt-24"
     >
-      <div className="w-full max-w-6xl">
-        <div className="w-full">
-          {/* Añadir botón de prueba para enviar email manualmente */}
-          {testEmail && !isEmailSent && (
-            <div className="flex justify-center mb-4">
-              <button
-                onClick={sendTestEmail}
-                className="bg-accent text-black dark:text-white px-4 py-2 rounded-md hover:bg-accent/90 transition-colors"
-              >
-                Enviar correo de prueba
-              </button>
-            </div>
-          )}
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-16">
+          {/* Columna izquierda: Texto */}
+          <div className="w-full lg:w-1/2 flex items-center">
+            <div>
+              <h2 className="text-black dark:text-white text-subtitle text-3xl md:text-4xl font-bold mb-4 leading-tight transition-all duration-1000 text-center lg:text-left">
+                Agendá una cita con nosotros
+              </h2>
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 text-center lg:text-left">
+                Seleccioná una fecha y hora que sea conveniente para vos. Vamos
+                a escucharte y ver cómo podemos ayudarte.
+              </p>
 
-          {/* Contenedor del iframe sin bordes ni sombras */}
+              {/* Botón de test en modo prueba */}
+              {testEmail && !isEmailSent && (
+                <div className="flex justify-center lg:justify-start">
+                  <button
+                    onClick={sendTestEmail}
+                    className="bg-accent text-black dark:text-white px-4 py-2 rounded-md hover:bg-accent/90 transition-colors"
+                  >
+                    Enviar correo de prueba
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Columna derecha: Calendario */}
           <div
+            className="w-full lg:w-1/2"
             style={{
-              position: "relative",
-              minHeight: "700px",
+              // scale 0-8
+              transform: `scale(${isLoaded ? 0.9 : 0.8})`,
+              // smooth transition
+              transition: "transform 0.3s ease-in-out",
             }}
           >
-            {/* Solo un indicador de carga, sin fondos que creen cuadrados */}
-            {!isLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center z-10">
-                {/* <div className="w-12 h-12 border-t-4 border-primary border-solid rounded-full animate-spin"></div> */}
-              </div>
-            )}
-
-            <InlineWidget
-              url={url}
-              styles={{
-                height: iframeHeight ? `${iframeHeight}px` : "700px",
-                width: "100%",
+            <div
+              className="bg-white dark:bg-black bg-opacity-20 dark:bg-opacity-20 rounded-xl overflow-hidden shadow-lg"
+              style={{
+                transition: "min-height 0.3s ease-in-out",
+                position: "relative",
               }}
-              pageSettings={pageSettings}
-            />
+            >
+              {!isLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center z-10 bg-gray-100 dark:bg-gray-900 bg-opacity-50 dark:bg-opacity-50">
+                  <div className="animate-spin h-8 w-8 border-4 border-accent border-t-transparent rounded-full"></div>
+                </div>
+              )}
+
+              <InlineWidget
+                url={url}
+                styles={{
+                  height: iframeHeight ? `${iframeHeight}px` : "630px",
+                  width: "100%",
+                  margin: "0 auto",
+                  transition: "height 0.3s ease-in-out",
+                }}
+                pageSettings={pageSettings}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

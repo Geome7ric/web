@@ -89,6 +89,15 @@ const Footer = () => {
                 >
                   {t("common.home")}
                 </a>
+              </li>{" "}
+              <li>
+                <a
+                  href="#about-us"
+                  onClick={scrollToSection("about-us")}
+                  className="text-black/80 hover:text-accent dark:text-white/80 dark:hover:text-accent"
+                >
+                  {t("AboutUs.title")}
+                </a>
               </li>
               <li>
                 <a

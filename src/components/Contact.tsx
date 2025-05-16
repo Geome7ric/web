@@ -7,9 +7,14 @@ import { useState } from "react";
 interface ContactProps {
   subject?: string;
   message?: string;
+  className?: string;
 }
 
-const Contact = ({ subject = "", message = "" }: ContactProps) => {
+const Contact = ({
+  subject = "",
+  message = "",
+  className = "",
+}: ContactProps) => {
   const notyf = useNotyf();
   const t = useTranslations("");
 
@@ -56,11 +61,10 @@ const Contact = ({ subject = "", message = "" }: ContactProps) => {
         setIsSending(false);
       });
   };
-
   return (
     <section
       id="contact"
-      className="w-full px-4 sm:px-6 lg:px-8 mt-8 md:mt-4 lg:mt-16 xl:mt-32"
+      className={`w-full px-4 sm:px-6 lg:px-8 mt-8 md:mt-4 lg:mt-16 xl:mt-32 ${className}`}
     >
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-16">

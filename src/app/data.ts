@@ -30,6 +30,13 @@ const Node = {
   link: "https://nodejs.org",
 };
 
+const nestSVG = "https://nestjs.com/logo-small-gradient.d792062c.svg";
+const Nest = {
+  name: "NestJS",
+  icon: nestSVG,
+  link: "https://nestjs.com",
+};
+
 const svgExpress = `<svg fill="#ffffff" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M24 18.588a1.529 1.529 0 0 1-1.895-.72l-3.45-4.771-.5-.667-4.003 5.444a1.466 1.466 0 0 1-1.802.708l5.158-6.92-4.798-6.251a1.595 1.595 0 0 1 1.9.666l3.576 4.83 3.596-4.81a1.435 1.435 0 0 1 1.788-.668L21.708 7.9l-2.522 3.283a.666.666 0 0 0 0 .994l4.804 6.412zM.002 11.576l.42-2.075c1.154-4.103 5.858-5.81 9.094-3.27 1.895 1.489 2.368 3.597 2.275 5.973H1.116C.943 16.447 4.005 19.009 7.92 17.7a4.078 4.078 0 0 0 2.582-2.876c.207-.666.548-.78 1.174-.588a5.417 5.417 0 0 1-2.589 3.957 6.272 6.272 0 0 1-7.306-.933 6.575 6.575 0 0 1-1.64-3.858c0-.235-.08-.455-.134-.666A88.33 88.33 0 0 1 0 11.577zm1.127-.286h9.654c-.06-3.076-2.001-5.258-4.59-5.278-2.882-.04-4.944 2.094-5.071 5.264z"></path></g></svg>`;
 const Express = {
   name: "Express",
@@ -85,6 +92,7 @@ const Vuex = {
 export const projects = [
   {
     id: "1",
+    slug: "gestion-tiendas-tiendanube",
     title: "Gestion de tiendas + Vinculación con Tienda Nube",
     client: "Signos Indumentaria",
     description:
@@ -98,9 +106,18 @@ export const projects = [
     hero: "/assets/portfolio/signos/signos.svg",
     mobile: "/assets/portfolio/amusquibar/amusquibar-screen-app-left.png",
     images: [
-      "https://source.unsplash.com/600x400/?bus",
-      "https://source.unsplash.com/600x400/?gps",
-      "https://source.unsplash.com/600x400/?road",
+      {
+        url: "https://source.unsplash.com/600x400/?bus",
+        caption: "Sistema de seguimiento de transporte en tiempo real",
+      },
+      {
+        url: "https://source.unsplash.com/600x400/?gps",
+        caption: "Seguimiento GPS para control de entregas",
+      },
+      {
+        url: "https://source.unsplash.com/600x400/?road",
+        caption: "Planificación de rutas optimizadas",
+      },
     ],
     videos: ["https://www.pexels.com/video/856084/"],
     date: "2023-06",
@@ -155,56 +172,26 @@ export const projects = [
     ],
   },
   {
-    id: "2",
-    title: "Alquiler de maquinaria",
-    client: "Amusquibar",
-    description:
-      "Plataforma para asignar tareas y planificar el uso de equipos. Permite gestionar mantenimiento, disponibilidad y control de horas de uso.",
-    features: [
-      "Control de disponibilidad",
-      "Historial de mantenimiento",
-      "Gestión de operadores",
-    ],
-    hero: "/assets/portfolio/amusquibar/amusquibar-logo-white.png",
-    images: [
-      "https://source.unsplash.com/600x400/?crane",
-      "https://source.unsplash.com/600x400/?excavator",
-      "https://source.unsplash.com/600x400/?tools",
-    ],
-    videos: ["https://www.pexels.com/video/855258/"],
-    date: "2022-11",
-  },
-  {
-    id: "3",
-    title: "E-commerce integrado",
-    client: "Amusquibar",
-    description:
-      "Sistema para vincular stock y clientes con Tienda Nube. Automatiza la gestión de inventario y pedidos con sincronización en tiempo real.",
-    features: [
-      "Integración con Tienda Nube",
-      "Sincronización de stock",
-      "Gestión de clientes",
-    ],
-    hero: "/assets/portfolio/amusquibar/amusquibar-logo-white.png",
-    images: [
-      "https://source.unsplash.com/600x400/?shopping",
-      "https://source.unsplash.com/600x400/?store",
-      "https://source.unsplash.com/600x400/?cart",
-    ],
-    videos: ["https://www.pexels.com/video/3182826/"],
-    date: "2023-02",
-  },
-  {
     id: "4",
+    slug: "pedidos-distribuidora",
     title: "Pedidos para distribuidora",
     client: "Amusquibar",
     description:
       "Aplicación para gestionar pedidos de productos por clientes. Seguimiento de entregas, facturación automática y notificaciones en tiempo real.",
     hero: "/assets/portfolio/amusquibar/amusquibar-logo-white.png",
     images: [
-      "https://source.unsplash.com/600x400/?inventory",
-      "https://source.unsplash.com/600x400/?delivery",
-      "https://source.unsplash.com/600x400/?logistics",
+      {
+        url: "https://source.unsplash.com/600x400/?inventory",
+        caption: "Sistema de gestión de inventario",
+      },
+      {
+        url: "https://source.unsplash.com/600x400/?delivery",
+        caption: "Control de entregas y seguimiento",
+      },
+      {
+        url: "https://source.unsplash.com/600x400/?logistics",
+        caption: "Logística optimizada para distribuidoras",
+      },
     ],
     videos: ["https://www.pexels.com/video/3206171/"],
     date: "2023-08",
@@ -278,8 +265,107 @@ export const projects = [
       },
     ],
   },
+  {
+    id: "5",
+    slug: "transporte-empleados-turnos",
+    title: "Planificación y transporte de empleados por turnos",
+    client: "Pampa Energía",
+    description:
+      "Aplicación para coordinar el traslado de empleados en modalidad de turnos en una planta industrial. Digitaliza la planificación de viajes, asignación de choferes y notificaciones a empleados.",
+    features: [
+      "Planificación de turnos por jefes de planta",
+      "Organización de viajes por jefes de transporte",
+      "Asignación de choferes y vehículos",
+      "Notificaciones automáticas a empleados",
+      "Seguimiento del estado del viaje",
+    ],
+    hero: "https://pampa.com/wp-content/uploads/2023/12/pampa-logo-blanco.svg",
+    images: [
+      {
+        url: "/assets/portfolio/pampa/desktop1.png",
+        caption: "Jefe de turno: Panel de control principal",
+      },
+      {
+        url: "/assets/portfolio/pampa/desktop2.jpg",
+        caption: "Jefe de turno: Gestión de pasajeros",
+      },
+      {
+        url: "/assets/portfolio/pampa/desktop3.png",
+        caption: "Jefe de turno: Calendario de turnos planificados",
+      },
+      {
+        url: "/assets/portfolio/pampa/desktop4.jpg",
+        caption: "Jefe de turno: Planificación de turno",
+      },
+      {
+        url: "/assets/portfolio/pampa/desktop5.png",
+        caption: "Administrador de transporte: Agregar transportista",
+      },
+      {
+        url: "/assets/portfolio/pampa/desktop6.png",
+        caption:
+          "Administrador de transporte: Calendario de turnos a planificar",
+      },
+      {
+        url: "/assets/portfolio/pampa/desktop7.jpg",
+        caption: "Administrador de transporte: Planificación de viaje",
+      },
+    ],
+    videos: [],
+    date: "2024-02",
+    challenge: `<p>El sistema anterior se basaba en el intercambio manual de planillas Excel entre jefes de turno, jefes de transporte y choferes. Si alguien demoraba en enviar o recibir la planificación, todo el circuito operativo se atrasaba. Además, realizar cambios sobre una planificación ya enviada era engorroso y poco práctico.</p>
+      <br>
+      <p>Los empleados, por su parte, no sabían en qué orden serían recogidos, ni por quién, ni a qué hora. Solo conocían el horario del turno al que debían llegar, y estimaban la salida de la combi, lo que generaba incertidumbre y desinformación.</p>
+      <br>
+      <p>La solución debía contemplar una gestión ágil de turnos y viajes, administración de todos los actores involucrados (empleados, choferes, jefes de turno y jefes de transporte) y una sincronización automática con comunicación clara, integrada y unificada en un solo sistema digital.</p>`,
+
+    solution: `<p>La solución consistió en una plataforma web para administradores, jefes de planta y jefes de transporte, complementada con una aplicación móvil para los choferes y los empleados. Todo el proceso de planificación, asignación y ejecución de los viajes quedó centralizado y automatizado en un único sistema digital.</p>
+      <br>
+      <ul>
+        <li><strong>Planificación:</strong> Los jefes de planta planifican el personal por jornada, reemplazando por completo el uso de planillas Excel.</li>
+        <li><strong>Organización de viajes:</strong> Los jefes de transporte reciben estas planificaciones y organizan los viajes, definiendo el recorrido y asignando choferes.</li>
+        <li><strong>Gestión por choferes:</strong> Los conductores acceden a sus viajes asignados desde la app móvil. Cada viaje muestra en tiempo real el orden de recogida de los pasajeros y el detalle de cada parada, con navegación por mapa.</li>
+        <li><strong>Visualización para empleados:</strong> Al comenzar un viaje, los empleados involucrados pueden ver en la aplicación la posición de la combi, el estado de recogida de los pasajeros y una hora estimada de llegada a su domicilio.</li>
+        <li><strong>Notificaciones automáticas:</strong> Todo el sistema opera con notificaciones en tiempo real. Se informa a cada actor (empleado, chofer, jefe de turno, jefe de transporte) sobre eventos clave: asignación de viajes, inicio, avance, recogida de pasajeros y finalización del recorrido.</li>
+      </ul>
+      <br>
+      <p>Esta solución unificó todos los flujos en un solo entorno digital, mejorando la eficiencia, la trazabilidad de cada etapa del viaje y la comunicación entre todas las personas involucradas.</p>
+    `,
+    result: `<p>La incorporación del nuevo sistema marcó un antes y un después en la coordinación del transporte interno. Los jefes de turno dejaron atrás las planillas manuales y ahora planifican el personal de cada jornada desde una plataforma ágil y centralizada. Por su parte, los jefes de transporte cuentan con una herramienta que les brinda visibilidad completa para organizar recorridos, asignar choferes y tomar decisiones con mayor precisión y eficiencia.</p>
+    <br>
+    <p>Los conductores acceden a sus viajes desde una app móvil que les muestra el recorrido, el orden de recogida y la siguiente dirección en tiempo real, mejorando su autonomía y reduciendo la necesidad de intermediaciones. Al iniciar el viaje, todo el sistema se activa de forma sincronizada: se notifican automáticamente todos los involucrados, desde el jefe de turno hasta cada pasajero. Los empleados, que antes solo sabían el horario de su turno, ahora pueden seguir el recorrido de la combi en vivo, conocer su posición en la fila y estimar la hora exacta en la que serán recogidos.</p>
+    <br>
+    <p>Este nuevo ecosistema digital reemplazó la incertidumbre y la desorganización por un entorno claro, conectado y trazable. La solución optimizó tiempos, mejoró la experiencia de todos los actores y elevó el estándar de cómo debe gestionarse el transporte en entornos industriales complejos.</p>`,
+
+    stack: {
+      frontend: [Quasar, Vue, Pinia],
+      backend: [Nest, PostgreSQL],
+      nube: [Railway],
+      servicios: [Firebase],
+    },
+    stack_explanation: `Se utilizó Quasar Framework junto con Vue.js para construir interfaces modernas y responsivas tanto en la web como en mobile. La gestión de estado se implementó con Pinia, logrando una experiencia fluida para los usuarios. El backend fue desarrollado con NestJS, aprovechando su arquitectura escalable y modular, y utilizando PostgreSQL como base de datos principal para almacenar información de usuarios, turnos y viajes. El despliegue se realizó en Railway, y las notificaciones se gestionaron mediante Firebase y servicios de correo electrónico.`,
+    testimonials: [
+      {
+        name: "Marcelo Romero",
+        position: "Socio gerente de Norte Bus",
+        url: "https://ar.linkedin.com/in/marcelo-romero-49792926",
+        urlName: "LinkedIn",
+        photo: "/assets/portfolio/pampa/norte.webp",
+        review:
+          "La aplicación mejoró por completo la coordinación del transporte en planta. Ahora los operarios saben cuándo y por dónde pasa la combi, lo que redujo la incertidumbre y nos ayudó a optimizar tiempos y recursos.",
+      },
+    ],
+  },
 ];
 
 export const getProject = ({ id }: { id: string }) => {
-  return projects.find((project) => project.id === id);
+  // Try to find project by slug first (new URL format)
+  let project = projects.find((project) => project.slug === id);
+
+  // If not found, try finding by id (backwards compatibility)
+  if (!project) {
+    project = projects.find((project) => project.id === id);
+  }
+
+  return project;
 };

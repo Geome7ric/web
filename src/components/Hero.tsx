@@ -93,7 +93,7 @@ const Hero = () => {
 
       <p
         className={`mt-4 w-full
-          text-hero-sub
+          text-lg text-left
           text-black/80
         dark:text-white/80 max-w-2xl transition-all duration-1000 delay-200 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
