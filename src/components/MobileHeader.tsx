@@ -5,13 +5,7 @@ import { Menu, X } from "lucide-react";
 import { scrollToElement } from "@/utils/utils";
 import { HeaderProps } from "@/types/HeaderTypes";
 
-const MobileHeader = ({
-  links,
-  isDarkMode,
-  isScrolled,
-  pitchUrl,
-  handlePitchClick,
-}: HeaderProps) => {
+const MobileHeader = ({ links, handlePitchClick }: HeaderProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleSmoothScroll = (e: React.MouseEvent, targetId: string) => {
