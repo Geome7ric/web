@@ -290,7 +290,7 @@ export default function Project() {
         <div className="mt-24 px-4">
           <Contact
             subject={`${project.title}`}
-            message={`Hola, me gustaría saber más sobre el proyecto ${project.title}`}
+            message={`Hola, me gustaría saber más sobre el ${project.title}`}
           />
         </div>
 

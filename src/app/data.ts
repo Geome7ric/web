@@ -10,6 +10,13 @@ const Vue = {
   link: "https://vuejs.org",
 };
 
+const tnSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' width='40' height='40' fill='#FFFFFF'><path d='M24.0068 0H23.9915C23.9915 0 23.983 0 23.9779 0C20.4547 0.00509626 17.098 1.38958 14.5923 3.82559C13.3097 3.28199 11.9287 3 10.5017 3C4.71065 3 0 7.71065 0 13.5C0 19.2894 4.71065 24 10.5 24C11.9049 24 13.2945 23.7129 14.5804 23.1727C17.013 25.5391 20.3307 27 23.9847 27C31.4287 27 37.4847 20.9439 37.4847 13.5C37.4847 6.05606 31.4405 0.0118913 24.0068 0ZM23.9847 24C18.1954 24 13.4847 19.2894 13.4847 13.5H10.4847C10.4847 16.1484 11.2542 18.6183 12.5759 20.7044C11.9032 20.8981 11.205 21 10.5 21C6.36523 21 3 17.6348 3 13.5C3 9.36523 6.36523 6 10.5 6C12.1376 6 13.6937 6.51812 14.9983 7.4983C16.906 8.93035 18 11.1183 18 13.5H21C21 10.359 19.6393 7.45923 17.2491 5.4581C19.1263 3.88335 21.5062 3.0017 23.9915 3C29.7775 3.0034 34.483 7.71234 34.483 13.5C34.483 19.2877 29.7724 24 23.983 24H23.9847Z'/></svg>`;
+const TiendaNube = {
+  name: "Tienda Nube",
+  icon: `data:image/svg+xml,${encodeURIComponent(tnSvg)}`,
+  link: "https://www.tiendanube.com",
+};
+
 const svgFirebase = `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>file_type_firebase</title><path d="M5.8,24.6l.17-.237L13.99,9.149l.017-.161L10.472,2.348a.656.656,0,0,0-1.227.207Z" style="fill:#ffc24a"></path><path d="M5.9,24.42l.128-.25L13.965,9.114,10.439,2.448a.6.6,0,0,0-1.133.206Z" style="fill:#ffa712"></path><path d="M16.584,14.01l2.632-2.7L16.583,6.289a.678.678,0,0,0-1.195,0L13.981,8.971V9.2Z" style="fill:#f4bd62"></path><path d="M16.537,13.9l2.559-2.62L16.537,6.4a.589.589,0,0,0-1.074-.047L14.049,9.082l-.042.139Z" style="fill:#ffa50e"></path><polygon points="5.802 24.601 5.879 24.523 6.158 24.41 16.418 14.188 16.548 13.834 13.989 8.956 5.802 24.601" style="fill:#f6820c"></polygon><path d="M16.912,29.756,26.2,24.577,23.546,8.246A.635.635,0,0,0,22.471,7.9L5.8,24.6l9.233,5.155a1.927,1.927,0,0,0,1.878,0" style="fill:#fde068"></path><path d="M26.115,24.534,23.483,8.326a.557.557,0,0,0-.967-.353L5.9,24.569l9.131,5.1a1.912,1.912,0,0,0,1.863,0Z" style="fill:#fcca3f"></path><path d="M16.912,29.6a1.927,1.927,0,0,1-1.878,0L5.876,24.522,5.8,24.6l9.233,5.155a1.927,1.927,0,0,0,1.878,0L26.2,24.577l-.023-.14Z" style="fill:#eeab37"></path></g></svg>`;
 const Firebase = {
   name: "Firebase",
@@ -93,82 +100,134 @@ export const projects = [
   {
     id: "1",
     slug: "gestion-tiendas-tiendanube",
-    title: "Gestion de tiendas + Vinculación con Tienda Nube",
+    title: "Gestión de tiendas con integración a Tienda Nube",
     client: "Signos Indumentaria",
     description:
-      "Sistema de gestión de tiendas de ropa con integración a Tienda Nube. Permite administrar stock, ventas, clientes y proveedores de manera centralizada.",
+      "Sistema centralizado para gestionar tiendas físicas y virtuales con sincronización automática de stock y ventas entre locales y Tienda Nube.",
     features: [
-      "Gestión de stock y ventas",
-      "Integración con Tienda Nube",
-      "Control de clientes y proveedores",
-      "Reportes y análisis de ventas",
+      "Gestión integral de stock y ventas",
+      "Sincronización automática con Tienda Nube",
+      "Administración de clientes y proveedores",
+      "Reportes visuales para la toma de decisiones",
     ],
     hero: "/assets/portfolio/signos/signos.svg",
-    mobile: "/assets/portfolio/amusquibar/amusquibar-screen-app-left.png",
+    mobile: "/assets/portfolio/signos/mobile1.png",
     images: [
       {
-        url: "https://source.unsplash.com/600x400/?bus",
-        caption: "Sistema de seguimiento de transporte en tiempo real",
+        url: "/assets/portfolio/signos/desktop1.png",
+        caption: "Vista general del inventario centralizado",
       },
       {
-        url: "https://source.unsplash.com/600x400/?gps",
-        caption: "Seguimiento GPS para control de entregas",
+        url: "/assets/portfolio/signos/desktop2.png",
+        caption: "Panel de reportes de ventas por tienda y canal",
       },
       {
-        url: "https://source.unsplash.com/600x400/?road",
-        caption: "Planificación de rutas optimizadas",
+        url: "/assets/portfolio/signos/desktop3.jpg",
+        caption: "Sincronización en tiempo real con Tienda Nube",
+      },
+      {
+        url: "/assets/portfolio/signos/desktop4.jpg",
+        caption: "Gestión de precios y medios de pago",
+      },
+      {
+        url: "/assets/portfolio/signos/desktop5.jpg",
+        caption: "Control de caja y emisión de tickets",
+      },
+      {
+        url: "/assets/portfolio/signos/desktop6.jpg",
+        caption: "Administración de múltiples locales físicos",
+      },
+      {
+        url: "/assets/portfolio/signos/desktop7.jpg",
+        caption: "Estadísticas de ventas por categoría y producto",
+      },
+      {
+        url: "/assets/portfolio/signos/desktop8.jpg",
+        caption: "Gestión de usuarios y roles de acceso",
+      },
+      {
+        url: "/assets/portfolio/signos/desktop9.jpg",
+        caption: "Dashboard de rentabilidad por producto",
+      },
+      {
+        url: "/assets/portfolio/signos/desktop10.jpg",
+        caption: "Configuración de precios diferenciados",
+      },
+      {
+        url: "/assets/portfolio/signos/desktop11.jpg",
+        caption: "Historial de operaciones por usuario",
+      },
+      {
+        url: "/assets/portfolio/signos/desktop12.jpg",
+        caption: "Vista de productos destacados",
       },
     ],
-    videos: ["https://www.pexels.com/video/856084/"],
+    mobileImages: [
+      {
+        url: "/assets/portfolio/signos/mobile1.png",
+        caption: "Gestión de inventario en dispositivos móviles",
+      },
+      {
+        url: "/assets/portfolio/signos/mobile2.png",
+        caption: "Vista de ventas en dispositivos móviles",
+      },
+      {
+        url: "/assets/portfolio/signos/mobile3.jpg",
+        caption: "Sincronización con Tienda Nube en aplicación móvil",
+      },
+      {
+        url: "/assets/portfolio/signos/mobile4.jpg",
+        caption: "Panel de control para vendedores",
+      },
+      {
+        url: "/assets/portfolio/signos/mobile5.jpg",
+        caption: "Registro de ventas en punto de venta",
+      },
+    ],
+    videos: [],
     date: "2023-06",
-    result: `<p>La implementación de esta solución permitió a Signos Indumentaria centralizar la gestión de sus tiendas y optimizar sus operaciones diarias. La integración con Tienda Nube les permitió tener un control total sobre su stock, ventas y clientes, lo que les permitió tomar decisiones más informadas y mejorar la eficiencia de su negocio.</p>
-      <br>
-      <p>Los beneficios incluyeron:</p>
-      <br>
-      <ul>
-        <li><strong>Centralización de la gestión:</strong> Todas las tiendas de Signos Indumentaria pudieron ser gestionadas desde una única plataforma, lo que facilitó la toma de decisiones y la coordinación de operaciones.</li>
-        <li><strong>Control de stock y ventas:</strong> La integración con Tienda Nube permitió a la empresa tener un control total sobre su inventario y sus ventas, lo que les permitió optimizar su stock y mejorar la rentabilidad de sus tiendas.</li>
-        <li><strong>Mejora en la atención al cliente:</strong> La plataforma les permitió conocer mejor a sus clientes
-        y ofrecerles un servicio más personalizado y eficiente.</li>
-      </ul>
-      <br>
-      <p>En términos generales, la implementación de esta solución contribuyó a mejorar la eficiencia y la rentabilidad de Signos Indumentaria, permitiéndoles optimizar sus operaciones y ofrecer un mejor servicio a sus clientes.</p>
-    `,
-    solution: `<p>Desarrollamos una plataforma web para la gestión de tiendas y una integración con Tienda Nube para la sincronización de stock y ventas.</p>
-    <br>
+    challenge: `
+    <p>Signos Indumentaria enfrentaba un problema crítico: no podía mantener sincronizado su stock entre los locales físicos y su tienda online en Tienda Nube. Esto lo obligaba a separar físicamente el inventario, limitando las ventas presenciales para evitar comprometer pedidos online, y generando una operación poco eficiente y difícil de escalar.</p>
+    <p>Además, el negocio carecía de una herramienta que le permitiera gestionar precios diferenciados por medio de pago, controlar caja, registrar ventas, administrar clientes y escalar su operación abriendo nuevos locales sin perder el control centralizado. Su desafío no era solo resolver un problema puntual, sino también construir una solución que pudiera acompañar el crecimiento de la empresa.</p>
+  `,
+    solution: `
+    <p>Desarrollamos una plataforma integral que resolvió el problema de fondo: sincronizamos en tiempo real el stock entre los locales físicos y la tienda online, permitiendo a Signos Indumentaria operar con un único inventario sin riesgo de sobreventa.</p>
     <ul>
-      <li><strong>Plataforma web:</strong> Creamos una plataforma web intuitiva y fácil de usar, donde los administradores podían gestionar todas las tiendas de Signos Indumentaria. La plataforma permitía visualizar el stock, las ventas, los clientes y los proveedores de manera centralizada, lo que facilitó la toma de decisiones y la coordinación de operaciones.</li>
-      <br>
-      <li><strong>Integración con Tienda Nube:</strong> Desarrollamos una integración con Tienda Nube para la sincronización de stock y ventas. La integración permitió a Signos Indumentaria tener un control total sobre su inventario y sus ventas, lo que les permitió optimizar su stock y mejorar la rentabilidad de sus tiendas.</li>
+      <li><strong>Sincronización bidireccional:</strong> Cada venta online descuenta stock automáticamente en la tienda física, y cada venta presencial se refleja inmediatamente en Tienda Nube.</li>
+      <li><strong>Gestión avanzada de precios y medios de pago:</strong> El sistema permite configurar recargos personalizados según tarjeta, efectivo o transferencia.</li>
+      <li><strong>Control de caja y generación de tickets:</strong> Cada venta queda registrada con su forma de pago, generando tickets y consolidando la información en reportes diarios.</li>
+      <li><strong>Módulo de estadísticas:</strong> Reportes de ventas por local, por categoría, producto más vendido, y evolución del “producto bomba”.</li>
+      <li><strong>Gestión de usuarios y roles:</strong> Se incorporaron perfiles diferenciados de vendedores y administradores, con permisos personalizados.</li>
+      <li><strong>Soporte para múltiples locales físicos:</strong> A medida que Signos fue creciendo y abriendo nuevas tiendas, la plataforma se fue adaptando para permitir la gestión de múltiples puntos de venta dentro del mismo sistema, manteniendo siempre el control y la sincronización.</li>
     </ul>
-    <br>
-    <p>La sincronización entre la plataforma web y Tienda Nube fue crucial, por lo que implementamos una solución que garantizara que los datos se actualicen de manera eficiente en ambas plataformas.</p>
-    `,
-    challenge: `<p>Signos Indumentaria necesitaba una solución que les permitiera centralizar la gestión de sus tiendas y tener un control total sobre su stock, ventas y clientes. La integración con Tienda Nube era fundamental para optimizar sus operaciones y mejorar la eficiencia de su negocio.</p>
-    <br>
-    <p>El principal desafío era desarrollar una plataforma web que permitiera a los administradores gestionar todas las tiendas de manera centralizada, con una interfaz amigable y herramientas de control detalladas. La integración con Tienda Nube también presentaba un reto, ya que era necesario garantizar que los datos se sincronizaran de manera eficiente y en tiempo real.</p>
+    <p>La solución fue pensada para escalar junto al negocio, evolucionando a medida que surgían nuevas necesidades operativas.</p>
+  `,
+    result: `
+      <p>Gracias a esta solución, Signos Indumentaria dejó atrás las planillas y los problemas de stock desincronizado. Comenzaron a gestionar todos sus canales de venta —tanto físicos como online— desde un único sistema centralizado, lo que les permitió tener un control total del inventario y una visibilidad clara sobre cada movimiento. A medida que el negocio creció, pudieron abrir nuevas tiendas físicas sin perder trazabilidad ni eficiencia, ya que el sistema fue adaptándose para acompañar ese crecimiento.</p>
+
+      <p>La sincronización automática evitó la sobreventa, mejorando significativamente la experiencia de compra tanto presencial como online. Además, la disponibilidad de estadísticas y reportes estratégicos permitió tomar decisiones informadas sobre precios, promociones, categorías más vendidas y productos destacados, impulsando la rentabilidad. Con esta plataforma como aliada, Signos logró profesionalizar su operación, escalar su estructura comercial y enfocarse en lo más importante: hacer crecer su marca.</p>
     `,
     stack: {
       frontend: [Quasar, Vue, Vuex],
-      nube: [Vercel, Railway],
       backend: [Laravel, MySQL, WooCommerce],
+      integraciones: [TiendaNube],
+      deploy: [Vercel, Railway],
     },
-    stack_explanation: `Se utilizó Quasar Framework para el desarrollo de la plataforma web, aprovechando su capacidad de generar aplicaciones web progresivas (PWA) y aplicaciones SPA (Single Page Application) con un rendimiento óptimo. De igualmente fue utilizado para el desarrollo de la aplicación móvil, aprovechando su capacidad de generar aplicaciones nativas para Android y iOS a partir de un solo código base.
-    <br>
-    Laravel fue utilizado para el desarrollo del back-end, aprovechando su potencia y flexibilidad para la creación de APIs y la gestión de bases de datos. MySQL fue la base de datos elegida, por su robustez y escalabilidad.
-    <br>
-    Vercel y Railway fueron utilizados para el despliegue de las aplicaciones, ofreciendo un entorno de desarrollo y despliegue sencillo y eficiente.
-    <br>
-    Firebase fue utilizado para la gestión de servicios en la nube, como la autenticación de usuarios y el almacenamiento de archivos.
-    `,
+    stack_explanation: `
+    <p>Se utilizó <strong>Quasar Framework</strong> con Vue.js para construir una SPA moderna, rápida y responsive. Vuex permitió un control eficiente del estado.</p>
+    <p><strong>Laravel</strong> y <strong>MySQL</strong> fueron elegidos para el backend por su solidez y capacidad de escalado. La integración con la API de <strong>Tienda Nube</strong> garantiza sincronización confiable.</p>
+    <p>La solución se desplegó en <strong>Vercel</strong> y <strong>Railway</strong> para asegurar entornos modernos y de rápida puesta en marcha.</p>
+  `,
     testimonials: [
-      {
-        name: "Nicolás Brost",
-        position: "Owner",
-        photo: "https://i.pravatar.cc/128",
-        review:
-          "¡Gracias al equipo de desarrollo por su excelente trabajo! Ahora podemos gestionar nuestras tiendas de manera más eficiente.",
-      },
+      // {
+      //   name: "Nicolás Brost",
+      //   position: "Dueño de Signos Indumentaria",
+      //   photo: "https://i.pravatar.cc/128?u=nicolas.brost",
+      //   url: "https://www.instagram.com/nicolasbrost/",
+      //   urlName: "Instagram",
+      //   review:
+      //     "La solución nos cambió la forma de trabajar. Podemos gestionar todo desde un solo lugar y tener el stock siempre sincronizado. Nos ayudó a crecer.",
+      // },
     ],
   },
   {
