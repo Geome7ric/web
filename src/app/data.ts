@@ -219,15 +219,16 @@ export const projects = [
     <p>La solución se desplegó en <strong>Vercel</strong> y <strong>Railway</strong> para asegurar entornos modernos y de rápida puesta en marcha.</p>
   `,
     testimonials: [
-      // {
-      //   name: "Nicolás Brost",
-      //   position: "Dueño de Signos Indumentaria",
-      //   photo: "https://i.pravatar.cc/128?u=nicolas.brost",
-      //   url: "https://www.instagram.com/nicolasbrost/",
-      //   urlName: "Instagram",
-      //   review:
-      //     "La solución nos cambió la forma de trabajar. Podemos gestionar todo desde un solo lugar y tener el stock siempre sincronizado. Nos ayudó a crecer.",
-      // },
+      {
+        name: "Nicolás Brost",
+        position: "Dueño de Signos Indumentaria",
+        photo:
+          "https://pbs.twimg.com/profile_images/1836886592503336960/d5dPpt_3_400x400.jpg",
+        url: "https://www.instagram.com/nicolasbrost/",
+        urlName: "Instagram",
+        review:
+          "La solución nos cambió la forma de trabajar. Podemos gestionar todo desde un solo lugar y tener el stock siempre sincronizado. Nos ayudó a crecer.",
+      },
     ],
   },
   {
