@@ -209,27 +209,28 @@ export const projects = [
     `,
     stack: {
       frontend: [Quasar, Vue, Vuex],
-      backend: [Laravel, MySQL, WooCommerce],
       integraciones: [TiendaNube],
+      backend: [Laravel, MySQL, WooCommerce],
       deploy: [Vercel, Railway],
     },
     stack_explanation: `
-    <p>Se utilizó <strong>Quasar Framework</strong> con Vue.js para construir una SPA moderna, rápida y responsive. Vuex permitió un control eficiente del estado.</p>
-    <p><strong>Laravel</strong> y <strong>MySQL</strong> fueron elegidos para el backend por su solidez y capacidad de escalado. La integración con la API de <strong>Tienda Nube</strong> garantiza sincronización confiable.</p>
-    <p>La solución se desplegó en <strong>Vercel</strong> y <strong>Railway</strong> para asegurar entornos modernos y de rápida puesta en marcha.</p>
-  `,
-    testimonials: [
-      {
-        name: "Nicolás Brost",
-        position: "Dueño de Signos Indumentaria",
-        photo:
-          "https://pbs.twimg.com/profile_images/1836886592503336960/d5dPpt_3_400x400.jpg",
-        url: "https://www.instagram.com/nicolasbrost/",
-        urlName: "Instagram",
-        review:
-          "La solución nos cambió la forma de trabajar. Podemos gestionar todo desde un solo lugar y tener el stock siempre sincronizado. Nos ayudó a crecer.",
-      },
-    ],
+      <p>Desarrollamos una SPA ágil, moderna y responsive utilizando <strong>Quasar Framework</strong> y <strong>Vue.js</strong>. El manejo del estado global se resolvió con <strong>Vuex</strong>, logrando una experiencia fluida y consistente para el usuario.</p>
+      <p>Para el backend optamos por <strong>Laravel</strong> con base de datos <strong>MySQL</strong>, una combinación robusta, escalable y de rápida implementación. La integración con <strong>Tienda Nube</strong> permite sincronizar productos, stock y ventas entre todos los canales de forma automática y confiable.</p>
+      <p>El despliegue se realizó en <strong>Vercel</strong> y <strong>Railway</strong>, plataformas modernas que garantizan velocidad, entornos separados para desarrollo y producción, y facilidad de mantenimiento.</p>
+    `,
+
+    // testimonials: [
+    //   {
+    //     name: "Nicolás Brost",
+    //     position: "Dueño de Signos Indumentaria",
+    //     photo:
+    //       "https://pbs.twimg.com/profile_images/1836886592503336960/d5dPpt_3_400x400.jpg",
+    //     url: "https://www.instagram.com/nicolasbrost/",
+    //     urlName: "Instagram",
+    //     review:
+    //       "La solución nos cambió la forma de trabajar. Podemos gestionar todo desde un solo lugar y tener el stock siempre sincronizado. Nos ayudó a crecer.",
+    //   },
+    // ],
   },
   {
     id: "4",

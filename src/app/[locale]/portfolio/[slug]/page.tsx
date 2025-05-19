@@ -198,54 +198,50 @@ export default function Project() {
         </div>
 
         {/* Testimonios */}
-        <div className="px-8">
-          <h2 className="font-semibold text-subtitle mt-6">Testimonios</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
-            {project.testimonials!.map((testimonial) => (
-              <div
-                key={testimonial.name}
-                className="flex flex-col gap-4 p-4 rounded-lg"
-              >
-                <div className="flex items-center gap-4">
-                  <Image
-                    src={testimonial.photo}
-                    alt={testimonial.name}
-                    width={48}
-                    height={48}
-                    className="rounded-full"
-                  />
-                  <div>
-                    <h3 className="text-accent">{testimonial.name}</h3>
-                    <p className="text-gray-400">{testimonial.position}</p>
-                    {"url" in testimonial && testimonial.url && (
-                      <Link
-                        href={testimonial.url}
-                        target="_blank"
-                        className="text-gray-400 hover:text-accent"
-                      >
-                        <span>{testimonial.urlName}</span>
-                      </Link>
-                    )}
+
+        {project.testimonials?.length && (
+          <div className="px-8">
+            <h2 className="font-semibold text-subtitle mt-6">Testimonios</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
+              {project.testimonials!.map((testimonial) => (
+                <div
+                  key={testimonial.name}
+                  className="flex flex-col gap-4 p-4 rounded-lg"
+                >
+                  <div className="flex items-center gap-4">
+                    <Image
+                      src={testimonial.photo}
+                      alt={testimonial.name}
+                      width={48}
+                      height={48}
+                      className="rounded-full"
+                    />
+                    <div>
+                      <h3 className="text-accent">{testimonial.name}</h3>
+                      <p className="text-gray-400">{testimonial.position}</p>
+                      {"url" in testimonial && testimonial.url && (
+                        <Link
+                          href={testimonial.url}
+                          target="_blank"
+                          className="text-gray-400 hover:text-accent"
+                        >
+                          <span>{testimonial.urlName}</span>
+                        </Link>
+                      )}
+                    </div>
                   </div>
+                  <p className="text-gray-400 italic">
+                    &quot;{testimonial.review}&quot;
+                  </p>
                 </div>
-                <p className="text-gray-400 italic">
-                  &quot;{testimonial.review}&quot;
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Tecnologías */}
         <div className="mt-6 px-8">
           <h2 className="font-semibold text-subtitle mt-6">Tecnologías</h2>{" "}
-          <div
-            className="mt-4 text-gray-400"
-            dangerouslySetInnerHTML={{
-              __html: project.stack_explanation!,
-            }}
-            suppressHydrationWarning
-          ></div>
           <div className="flex flex-wrap gap-4 mt-4">
             {Object.entries(project.stack!).map(([type, techs]) => (
               <div
@@ -284,6 +280,13 @@ export default function Project() {
               </div>
             ))}
           </div>
+          <div
+            className="mt-4 text-gray-400"
+            dangerouslySetInnerHTML={{
+              __html: project.stack_explanation!,
+            }}
+            suppressHydrationWarning
+          ></div>
         </div>
 
         {/* Contacto */}
@@ -296,7 +299,7 @@ export default function Project() {
 
         {/* Volver */}
         <div className="mt-8 transition duration-300 hover:-translate-x-2 px-8">
-          <Link href="/es/portfolio">
+          <Link href="/portfolio">
             <div className="flex flex-row items-left">
               <ArrowLeft className="absolute w-5 h-5 text-accent mt-3" />
               <span className="ml-4 inline-block py-2 px-4 rounded-lg text-md font-semibold text-accent cursor-pointer">
