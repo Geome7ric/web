@@ -14,7 +14,7 @@ const MobileHeader = ({ links, handlePitchClick }: HeaderProps) => {
     // si apreto casos de exito ir siempre
     const hrefIsPortfolio = targetId === "/portfolio";
     if (hrefIsPortfolio) {
-      window.location.href = targetId;
+      window.location.href = "es/" + targetId;
       return;
     }
 
