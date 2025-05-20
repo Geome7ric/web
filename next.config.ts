@@ -25,6 +25,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "vuex.vuejs.org", pathname: "/**" },
       { protocol: "https", hostname: "upload.wikimedia.org", pathname: "/**" },
       { protocol: "https", hostname: "pbs.twimg.com", pathname: "/**" },
+      { protocol: "https", hostname: "www.svgrepo.com", pathname: "/**" },
     ],
   },
 };

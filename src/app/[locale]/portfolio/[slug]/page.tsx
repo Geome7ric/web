@@ -117,8 +117,11 @@ export default function Project() {
     );
   }
   return (
-    <div className="min-h-screen py-24 " suppressHydrationWarning>
-      <div className="max-w-5xl mx-auto">
+    <div
+      className="min-h-screen py-24 relative z-0 bg-transparent"
+      suppressHydrationWarning
+    >
+      <div className="max-w-5xl mx-auto relative z-10">
         {/* Intro */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-8">
           <div className="col-span-1">
@@ -293,7 +296,7 @@ export default function Project() {
         <div className="mt-24 px-4">
           <Contact
             subject={`${project.title}`}
-            message={`Hola, me gustaría saber más sobre el ${project.title}`}
+            message={`Hola, me gustaría saber más sobre ${project.title}`}
           />
         </div>
 

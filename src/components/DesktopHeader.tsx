@@ -1,6 +1,5 @@
 "use client";
 
-import Button from "./Button";
 import { HeaderProps } from "@/types/HeaderTypes";
 import { scrollToElement } from "@/utils/utils";
 
@@ -35,27 +34,29 @@ const DesktopHeader = ({ links, handlePitchClick }: HeaderProps) => {
   return (
     <nav>
       {" "}
-      <ul className="flex space-x-6">
+      <ul className="flex space-x-6 items-center">
         {links.map((link: { href: string; label: string }) => (
           <li key={`${link.href}${link.label}`}>
-            <Button
-              className="text-black dark:text-white hover:text-accent transition-colors duration-300"
+            <button
+              className="text-black dark:text-white
+              hover:text-primary
+              dark:hover:text-accent transition-colors duration-300"
               onClick={(e) => handleSmoothScroll(e, link.href)}
             >
               {link.label}
-            </Button>
+            </button>
           </li>
         ))}
 
         <button
           onClick={handlePitchClick}
-          className="ml-4 px-4 py-2 backdrop-blur-sm
+          className="px-4 py-2.5 backdrop-blur-sm
           dark:hover:text-white
           dark:bg-accent
            bg-accent/80 text-black dark:text-dark hover:bg-accent/90
-            hover:text-white  transition-colors duration-300 rounded-lg shadow-lg"
+            hover:text-white transition-colors duration-300 rounded-lg "
         >
-          Conócenos
+          Conocenos
         </button>
       </ul>
     </nav>
