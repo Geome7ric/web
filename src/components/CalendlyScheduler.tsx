@@ -371,7 +371,7 @@ const CalendlyScheduler = ({
             }}
           >
             <div
-              className="bg-white dark:bg-black bg-opacity-20 dark:bg-opacity-20 rounded-xl overflow-hidden shadow-lg"
+              className=" rounded-xl overflow-hidden "
               style={{
                 transition: "min-height 0.3s ease-in-out",
                 position: "relative",
