@@ -11,14 +11,23 @@
     "services": "Servicios"
   },
   "AboutUs": {
-    "title": "Quiénes somos",
-    "description1": "Geome7ric es un equipo dedicado a transformar tu negocio a través de soluciones digitales personalizadas. Nos especializamos en optimizar procesos, automatizar tareas y mejorar la productividad de tus equipos, brindándote las herramientas para que puedas centrarte en lo que realmente importa: hacer crecer tu negocio.",
-    "description2": "Nuestro equipo está formado por expertos en desarrollo de software y gestión operativa. Estamos comprometidos con la innovación, la calidad y el soporte constante.",
-    "whyChooseUs": "¿Por qué elegirnos?",
+    "title": "¿Quiénes somos?",
+    "description1": "En Geome7ric, ayudamos a las empresas a transformar sus operaciones con soluciones digitales personalizadas. Nos especializamos en automatizar procesos, optimizar flujos de trabajo y mejorar la productividad, para que puedas centrarte en lo que realmente importa: hacer crecer tu negocio.",
+    "description2": "Nuestro equipo de expertos se dedica a ofrecer innovación y calidad en cada proyecto, trabajando siempre para que tu empresa obtenga la solución perfecta.",
+    "whyChooseUs": "¿Por qué nosotros?",
     "reasons": {
-      "reason1": "Soluciones personalizadas que se adaptan a tus necesidades.",
-      "reason2": "Innovación constante para mantener tu negocio al día.",
-      "reason3": "Soporte continuo para acompañarte en todo el proceso."
+      "reason1": {
+        "title": "Soluciones personalizadas y resultados medibles",
+        "description": "Optimización, automatización y reducción de errores con tecnología de vanguardia."
+      },
+      "reason2": {
+        "title": "Soporte cercano y continuo",
+        "description": "Acompañamiento en cada etapa y ajuste según tus necesidades."
+      },
+      "reason3": {
+        "title": "Comunicación clara y transparente",
+        "description": "Información constante sobre el progreso y control total sobre el proyecto."
+      }
     },
     "meetTeam": "Conoce al equipo"
   },
@@ -53,7 +62,7 @@
         "howText": "Desarrollamos sistemas intuitivos para la asignación de tareas, seguimiento en tiempo real, generación automática de reportes y alertas inteligentes."
       },
       "automation": {
-        "title": "Automatización y reportes personalizados",
+        "title": "Automatización y reportes",
         "what": "¿Qué resolvés?",
         "whatText": "Olvídate del trabajo manual en tareas repetitivas y libera tiempo valioso para la toma de decisiones estratégicas.",
         "how": "¿Cómo lo hacemos?",

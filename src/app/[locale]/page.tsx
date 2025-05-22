@@ -6,7 +6,7 @@ import Services from "@/components/Services";
 import HowItWorks from "@/components/HowItWorks";
 import CalendlyScheduler from "@/components/CalendlyScheduler";
 import BrandScroller from "@/components/BrandScroller";
-// import AboutUs from "@/components/AboutUs";
+import AboutUs from "@/components/AboutUs";
 
 export default function Home() {
   return (
@@ -16,10 +16,9 @@ export default function Home() {
     >
       {" "}
       <Hero />
-      <BrandScroller />
-      <HowItWorks />
+      <BrandScroller /> <HowItWorks />
       <Services />
-      {/* <AboutUs /> */}
+      <AboutUs />
       <CalendlyScheduler testEmail={false} />
       <Contact />
     </div>
