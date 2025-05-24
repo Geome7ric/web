@@ -1,9 +1,4 @@
 {
-  "Blog": {
-    "blogTitle": "Our Blog",
-    "minutesRead": "min read",
-    "relatedArticles": "Related Articles"
-  },
   "common": {
     "contact": "Contact",
     "name": "Name",
@@ -13,8 +8,7 @@
     "sending": "Sending...",
     "links": "Links",
     "home": "Home",
-    "services": "Services",
-    "blog": "Blog"
+    "services": "Services"
   },
   "AboutUs": {
     "title": "About Us",
@@ -85,6 +79,11 @@
     "ctaText": "Do you have a challenge or an idea to improve your business?",
     "ctaButton": "Talk to us →"
   },
+  "Blog": {
+    "blogTitle": "Blog",
+    "minutesRead": "min read",
+    "relatedArticles": "Related Articles"
+  },
   "Contact": {
     "title": {
       "p1": "Contact us for",
@@ -104,7 +103,6 @@
     "description": "We automate processes and boost your team's productivity with custom digital solutions."
   },
   "Calendly": {
-    "title": "Schedule a 30-minute meeting",
-    "description": "Choose a suitable time for a free consultation. We'll help you understand how our digital solutions can optimize your business."
+    "title": "Schedule a 30-minute meeting"
   }
 }

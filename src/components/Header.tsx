@@ -15,16 +15,16 @@ const Header = () => {
 
   const pitchUrl =
     "https://www.canva.com/design/DAGkRFTMSxI/gLiKreZyhmJ-dW05UVXlkQ/view?utm_content=DAGkRFTMSxI&utm_campaign=designshare&utm_medium=embeds&utm_source=link";
-
   const links: LinkType[] = [
     {
       href: "/portfolio",
       label: "Casos de éxito",
       className: "text-accent  hover:text-accent",
     },
-    { href: "services", label: t("common.services") },
-    // { href: "about-us", label: t("AboutUs.title") },
-    { href: "contact", label: t("common.contact") },
+    { href: "/services", label: t("common.services") },
+    // { href: "/blog", label: t("common.blog") },
+    // { href: "/about-us", label: t("AboutUs.title") },
+    { href: "/contact", label: t("common.contact") },
   ];
 
   const [isScrolled, setIsScrolled] = useState(false);

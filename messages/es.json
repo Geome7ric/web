@@ -1,4 +1,9 @@
 {
+  "Blog": {
+    "blogTitle": "Nuestro Blog",
+    "minutesRead": "min de lectura",
+    "relatedArticles": "Artículos Relacionados"
+  },
   "common": {
     "contact": "Contacto",
     "name": "Nombre",
@@ -8,7 +13,8 @@
     "sending": "Enviando...",
     "links": "Enlaces",
     "home": "Inicio",
-    "services": "Servicios"
+    "services": "Servicios",
+    "blog": "Blog"
   },
   "AboutUs": {
     "title": "¿Quiénes somos?",

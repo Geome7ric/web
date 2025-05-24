@@ -7,13 +7,24 @@ const DesktopHeader = ({ links, handlePitchClick }: HeaderProps) => {
   const handleSmoothScroll = (e: React.MouseEvent, targetId: string) => {
     e.preventDefault();
 
-    // si apreto casos de exito ir siempre
-    const hrefIsPortfolio = targetId === "/portfolio";
-    if (hrefIsPortfolio) {
-      window.location.href = "es/" + targetId;
+    // Determinar si es un enlace a una página o sección
+    const isFullPageLink = targetId.startsWith("/");
+
+    // Si es un enlace completo (como /blog, /portfolio, etc.)
+    if (isFullPageLink) {
+      // En caso de portfolio, mantener el comportamiento actual
+      if (targetId === "/portfolio") {
+        window.location.href = "es" + targetId;
+        return;
+      }
+
+      // Para otros enlaces completos (/blog, /services, etc.)
+      const locale = window.location.pathname.split("/")[1] || "es";
+      window.location.href = `/${locale}${targetId}`;
       return;
     }
 
+    // El código existente para secciones dentro de la página (servicios, contacto, etc.)
     let pathname = window.location.pathname;
     // quitamos locale
     const locale = pathname.split("/")[1];
