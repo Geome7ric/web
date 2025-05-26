@@ -7,11 +7,13 @@ import Link from "next/link";
 
 export interface BlogProps {
   title: string;
+  previewTitle?: string;
   slug: string;
   seoTitle: string;
   seoDescription: string;
   socialDescription?: string;
   heroImage: { src: string; alt: string; caption?: string };
+  heroVideo?: string | null;
   intermediateImage?: { src: string; alt: string; caption?: string };
   publishedAt: string;
   readingTimeMinutes: number;
@@ -538,25 +540,42 @@ const Blog = ({ data }: { data: BlogProps }) => {
               </p>
             </div>{" "}
           </header>
-          {/* Hero Image - Hidden temporarily */}
-          {/* 
           <figure className="mb-12">
-            <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
-              <Image
-                src={data.heroImage.src}
-                alt={data.heroImage.alt}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-            {data.heroImage.caption && (
+            {data.heroVideo ? (
+              <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+                <video
+                  src={data.heroVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                  aria-label={`Video hero for ${data.title}`}
+                />
+              </div>
+            ) : (
+              <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
+                <Image
+                  src={data.heroImage.src}
+                  alt={data.heroImage.alt}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            )}
+            {data.heroVideo && data.heroImage.caption && (
+              <figcaption className="text-sm text-center mt-2 text-black/60 dark:text-white/60">
+                {data.heroImage.caption}{" "}
+                {/* You might want a separate video caption or adjust this */}
+              </figcaption>
+            )}
+            {!data.heroVideo && data.heroImage.caption && (
               <figcaption className="text-sm text-center mt-2 text-black/60 dark:text-white/60">
                 {data.heroImage.caption}
               </figcaption>
             )}
           </figure>
-          */}
           {/* Table of Contents for longer articles */}
           {tableOfContents.length > 0 && (
             <nav className="mb-8 p-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
@@ -580,7 +599,6 @@ const Blog = ({ data }: { data: BlogProps }) => {
           <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-black dark:prose-headings:text-white prose-p:text-black/80 dark:prose-p:text-white/80">
             {data.sections.map((section, index) => {
               // Add intermediate image after a few sections if provided - Hidden temporarily
-              /* 
               if (index === 2 && data.intermediateImage) {
                 return (
                   <React.Fragment key={`section-with-image-${index}`}>
@@ -603,7 +621,7 @@ const Blog = ({ data }: { data: BlogProps }) => {
                   </React.Fragment>
                 );
               }
-              */
+
               return renderSection(section, index);
             })}
           </div>

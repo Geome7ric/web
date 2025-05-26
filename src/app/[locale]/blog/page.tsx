@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useBlogStore } from "@/store/blogStore";
+import Image from "next/image";
 
 export default function BlogsPage() {
   const t = useTranslations("Blog");
@@ -25,7 +26,7 @@ export default function BlogsPage() {
               {" "}
               <Link href={`/es/blog/${blog.slug}`} className="block">
                 {/* Blog card image - Hidden temporarily */}
-                {/* 
+
                 <div className="relative h-48 w-full">
                   <Image
                     src={blog.heroImage.src}
@@ -34,7 +35,7 @@ export default function BlogsPage() {
                     className="object-cover"
                   />
                 </div>
-                */}
+
                 <div className="p-6">
                   <div className="flex flex-wrap gap-2 mb-3">
                     {blog.tags.slice(0, 2).map((tag, index) => (

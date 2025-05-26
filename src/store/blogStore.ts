@@ -12,6 +12,7 @@ export const useBlogStore = create<BlogStore>((set, get) => ({
     {
       title:
         "Cómo automatizar tareas repetitivas para mejorar la productividad en tu negocio",
+      previewTitle: "Automatización de tareas repetitivas",
       slug: "automatizar-tareas-productividad",
       seoTitle: "Automatización de tareas repetitivas | Geome7ric",
       seoDescription:
@@ -19,12 +20,14 @@ export const useBlogStore = create<BlogStore>((set, get) => ({
       socialDescription:
         "Liberá horas de trabajo diario con automatización inteligente: menos errores, más foco estratégico y crecimiento real.",
       heroImage: {
-        src: "/assets/blogs/beneficios-digitalizacion-software-medida/hero.png",
+        src: "/assets/blogs/automatizar-tareas-productividad/hero.png",
         alt: "Ilustración digital de procesos empresariales automatizados fluyendo desde un dashboard con íconos tecnológicos",
         caption: "Dashboard que muestra tareas completándose automáticamente",
       },
+      heroVideo:
+        "/assets/blogs/automatizar-tareas-productividad/hero_video.mp4",
       intermediateImage: {
-        src: "/assets/blogs/section_a.png",
+        src: "/assets/blogs/automatizar-tareas-productividad/section.png",
         alt: "Antes y después de la automatización: persona abrumada con papeles vs persona concentrada en un sistema automatizado",
         caption: "De la sobrecarga manual a la eficiencia automatizada",
       },
@@ -106,6 +109,7 @@ export const useBlogStore = create<BlogStore>((set, get) => ({
     {
       title:
         "Los beneficios de la digitalización: ¿Por qué tu empresa necesita un software a medida?",
+      previewTitle: "Beneficios del software a medida",
       slug: "beneficios-digitalizacion-software-medida",
       seoTitle: "Beneficios del software a medida | Geome7ric",
       seoDescription:
@@ -113,13 +117,14 @@ export const useBlogStore = create<BlogStore>((set, get) => ({
       socialDescription:
         "Deja atrás herramientas genéricas: un software a medida te da control, visibilidad y velocidad para escalar sin límites.",
       heroImage: {
-        src: "/assets/blogs/hero_b.png",
+        src: "/assets/blogs/beneficios-digitalizacion-software-medida/hero.png",
         alt: "Concepto de trabajo digital personalizado: equipo usando un sistema unificado en lugar de múltiples herramientas desordenadas",
         caption:
           "De sistemas dispersos a una plataforma centralizada diseñada para tu negocio",
       },
+      heroVideo: null,
       intermediateImage: {
-        src: "/assets/blogs/section_b.png",
+        src: "/assets/blogs/beneficios-digitalizacion-software-medida/section.png",
         alt: "Comparación visual: caos con herramientas genéricas vs orden y eficiencia con software a medida",
         caption:
           "El cambio de plataformas desarticuladas a un flujo integrado y escalable",
@@ -205,6 +210,7 @@ export const useBlogStore = create<BlogStore>((set, get) => ({
     {
       title:
         "Cómo optimizar el flujo de trabajo y reducir los errores humanos con tecnología",
+      previewTitle: "Optimiza tus flujos de trabajo",
       slug: "optimizar-flujo-reducir-errores",
       seoTitle: "Optimización de procesos y reducción de errores | Geome7ric",
       seoDescription:
@@ -212,13 +218,14 @@ export const useBlogStore = create<BlogStore>((set, get) => ({
       socialDescription:
         "Transformá tus procesos: minimizá errores humanos y ganá eficiencia diseñando flujos de trabajo digitales claros y conectados.",
       heroImage: {
-        src: "/assets/blogs/hero_a.png",
+        src: "/assets/blogs/optimizar-flujo-reducir-errores/hero.png",
         alt: "Diagrama de flujo de trabajo digital con alertas automáticas y validaciones integradas",
         caption:
           "Flujos digitales que guían cada paso para evitar errores y agilizar procesos",
       },
+      heroVideo: null,
       intermediateImage: {
-        src: "/assets/blogs/section_b.png",
+        src: "/assets/blogs/optimizar-flujo-reducir-errores/section.png",
         alt: "Línea de tiempo horizontal con iconos de tareas conectadas por flechas y marcas de verificación",
         caption:
           "Visualización paso a paso de un proceso optimizado y libre de errores",
@@ -299,6 +306,103 @@ export const useBlogStore = create<BlogStore>((set, get) => ({
             "Los beneficios de la digitalización: ¿Por qué tu empresa necesita un software a medida?",
           reason:
             "Un software a medida te da la plataforma para diseñar y controlar flujos sin errores.",
+        },
+      ],
+    },
+    {
+      title:
+        "Transformación digital en pymes: de la intuición al control operativo",
+      previewTitle: "Transformación digital en pymes",
+      slug: "transformacion-digital-pymes-control-operativo",
+      seoTitle: "Transformación digital en pymes | Geome7ric",
+      seoDescription:
+        "Descubrí cómo la transformación digital permite a las pymes pasar de decisiones intuitivas a un control operativo basado en datos, mejorando la eficiencia y competitividad.",
+      socialDescription:
+        "Pasá de la intuición al control operativo: cómo la transformación digital impulsa la eficiencia y competitividad de tu pyme.",
+      heroImage: {
+        src: "/assets/blogs/transformacion-digital-pymes/hero.png",
+        alt: "Equipo de trabajo utilizando herramientas digitales para el control operativo",
+        caption:
+          "De la intuición al control operativo: transformación digital en pymes",
+      },
+      heroVideo: null,
+      intermediateImage: {
+        src: "/assets/blogs/transformacion-digital-pymes/section.png",
+        alt: "Dashboard mostrando métricas clave de una pyme en tiempo real",
+        caption: "Visualización en tiempo real para decisiones estratégicas",
+      },
+      publishedAt: "2025-05-24",
+      readingTimeMinutes: 7,
+      tags: [
+        "transformación digital",
+        "pymes",
+        "control operativo",
+        "eficiencia empresarial",
+      ],
+      sections: [
+        {
+          type: "intro",
+          content:
+            "En un entorno empresarial cada vez más competitivo, las pymes enfrentan el desafío de tomar decisiones basadas en datos precisos en lugar de intuiciones. La transformación digital ofrece las herramientas necesarias para lograr un control operativo efectivo y sostenible.",
+        },
+        {
+          type: "highlight",
+          content:
+            "La transformación digital permite a las pymes pasar de decisiones intuitivas a un control operativo basado en datos, mejorando la eficiencia y competitividad.",
+        },
+        {
+          type: "problem",
+          title: "El desafío de la gestión intuitiva",
+          content:
+            "Muchas pymes toman decisiones basadas en la experiencia o intuición, lo que puede llevar a errores, ineficiencias y oportunidades perdidas. Sin sistemas adecuados, es difícil tener una visión clara y en tiempo real de las operaciones.",
+        },
+        {
+          type: "solution",
+          title: "Cómo lo resolvemos en Geome7ric",
+          content:
+            "En Geome7ric, implementamos soluciones digitales personalizadas que permiten a las pymes monitorizar sus operaciones en tiempo real, automatizar procesos y tomar decisiones informadas basadas en datos precisos y actualizados.",
+        },
+        {
+          type: "benefits",
+          title: "Beneficios de la transformación digital",
+          items: [
+            "Decisiones basadas en datos reales y actuales.",
+            "Automatización de procesos repetitivos, liberando recursos.",
+            "Mejora en la eficiencia y reducción de errores.",
+            "Mayor competitividad en el mercado.",
+          ],
+        },
+        {
+          type: "testimonial",
+          quote:
+            "Desde que implementamos las soluciones de Geome7ric, nuestras decisiones son más acertadas y hemos mejorado significativamente nuestra eficiencia operativa.",
+          author: "Laura Martínez, Gerente General de PymeTech",
+        },
+        {
+          type: "cta",
+          title: "¿Listo para transformar tu pyme?",
+          buttonText: "Solicitá tu asesoría gratuita",
+          buttonLink: "/contacto",
+        },
+        {
+          type: "conclusion",
+          content:
+            "La transformación digital no es una opción, es una necesidad para las pymes que buscan crecer y mantenerse competitivas. En Geome7ric, te acompañamos en cada paso hacia un control operativo eficiente y basado en datos.",
+        },
+      ],
+      related: [
+        {
+          slug: "automatizar-tareas-productividad",
+          title:
+            "Cómo automatizar tareas repetitivas para mejorar la productividad",
+          reason:
+            "Descubrí cómo la automatización puede liberar recursos y mejorar la eficiencia en tu pyme.",
+        },
+        {
+          slug: "optimizar-flujo-reducir-errores",
+          title: "Cómo optimizar el flujo de trabajo y reducir errores",
+          reason:
+            "Aprendé a diseñar flujos de trabajo digitales que minimicen errores y aumenten la eficiencia operativa.",
         },
       ],
     },

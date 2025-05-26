@@ -114,10 +114,9 @@ const HowItWorks = () => {
           }`}
         >
           Cómo funciona trabajar con nosotros
-        </h2>
-
+        </h2>{" "}
         <p
-          className={`text-lg md:text-base text-center mb-10 md:mb-14 max-w-3xl mx-auto text-black/80 dark:text-white/80
+          className={`text-lg md:text-base text-center mb-4 max-w-3xl mx-auto text-black/80 dark:text-white/80
           transition-all duration-1000 delay-200 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
           }`}
@@ -125,7 +124,20 @@ const HowItWorks = () => {
           Descubre los pasos clave en nuestro proceso para llevar tu proyecto
           del concepto a la realidad.
         </p>
-
+        <p
+          className={`text-lg md:text-base text-center mb-10 md:mb-14 max-w-3xl mx-auto text-black/80 dark:text-white/80
+          transition-all duration-1000 delay-300 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+          }`}
+        >
+          Transformamos tu idea de negocio digital en una solución tecnológica a
+          medida mediante un proceso estructurado y transparente. Desde la
+          comprensión inicial de tus necesidades hasta el desarrollo iterativo y
+          el soporte posterior al lanzamiento, trabajamos en estrecha
+          colaboración contigo en cada etapa para garantizar que la solución
+          final se alinee perfectamente con tus objetivos comerciales y resuelva
+          los desafíos específicos de tu empresa.
+        </p>
         <div className="md:max-w-4xl md:mx-auto relative">
           {/* Mapeo de los pasos con animaciones */}
           {STEPS.map((step, index) => (

@@ -16,6 +16,7 @@ export interface EnhancedBlogProps {
 
   // Media
   heroImage: BlogImage;
+  heroVideo?: string; // Added heroVideo field
   intermediateImage?: BlogImage;
   featuredImage?: BlogImage; // For social sharing
 
@@ -189,6 +190,8 @@ export const exampleBlogPost: EnhancedBlogProps = {
     alt: "Empresario utilizando software a medida en tablet",
     caption: "La digitalización transforma la manera de hacer negocios",
   },
+  heroVideo:
+    "/assets/blogs/beneficios-digitalizacion-software-medida/hero_video.mp4", // Added heroVideo field
 
   publishedAt: "2024-12-15T10:00:00Z",
   lastModified: "2024-12-20T14:30:00Z",

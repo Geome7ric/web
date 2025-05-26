@@ -7,6 +7,7 @@ import HowItWorks from "@/components/HowItWorks";
 import CalendlyScheduler from "@/components/CalendlyScheduler";
 import BrandScroller from "@/components/BrandScroller";
 import AboutUs from "@/components/AboutUs";
+// import BlogPreview from "@/components/BlogPreview";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <BrandScroller /> <HowItWorks />
       <Services />
       <AboutUs />
+      {/* <BlogPreview /> */}
       <CalendlyScheduler testEmail={false} />
       <Contact />
     </div>
