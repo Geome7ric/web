@@ -13,15 +13,12 @@ export const metadata = {
   description: "Propuesta personalizada de servicios digitales",
 };
 
-interface BudgetLayoutProps {
-  children: React.ReactNode;
-  params: { locale: string };
-}
+import { LayoutProps } from "next"; // Add this import
 
 export default async function BudgetLayout({
   children,
   params: { locale },
-}: BudgetLayoutProps) {
+}: LayoutProps) {
   // El locale ya está extraído como parámetro destructurado
 
   // Validate that the incoming `locale` parameter is valid
