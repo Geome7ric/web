@@ -15,17 +15,17 @@ export const metadata = {
 
 export default async function BudgetLayout({
   children,
-  params,
+  params: { locale },
 }: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // Extraer locale después de recibir params completo
-  const locale = params.locale;
+  // El locale ya está extraído como parámetro destructurado
 
   // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale)) notFound();
 
+  // Load messages
   let messages;
   try {
     messages = (await import(`../../../../messages/${locale}.json`)).default;
