@@ -14,7 +14,8 @@
     "links": "Enlaces",
     "home": "Inicio",
     "services": "Servicios",
-    "blog": "Blog"
+    "blog": "Blog",
+    "successCases": "Casos de éxito"
   },
   "AboutUs": {
     "title": "¿Quiénes somos?",
@@ -105,6 +106,48 @@
   },
   "Calendly": {
     "title": "Agenda una reunión de 30 minutos",
-    "description": "Elige un horario conveniente para una consulta gratuita. Te ayudaremos a entender cómo nuestras soluciones digitales pueden optimizar tu negocio."
+    "description": "Elige un horario conveniente para una consulta gratuita. Te ayudaremos a entender cómo nuestras soluciones digitales pueden optimizar tu negocio.",
+    "scheduleTitle": "Agendá una cita con nosotros",
+    "scheduleDescription": "Seleccioná una fecha y hora que sea conveniente para vos. Vamos a escucharte y ver cómo podemos ayudarte.",
+    "sendTestEmailButton": "Enviar correo de prueba"
+  },
+  "HowItWorks": {
+    "title": "Cómo funciona trabajar con nosotros",
+    "subtitle1": "Descubre los pasos clave en nuestro proceso para llevar tu proyecto del concepto a la realidad.",
+    "subtitle2": "Transformamos tu idea de negocio digital en una solución tecnológica a medida mediante un proceso estructurado y transparente. Desde la comprensión inicial de tus necesidades hasta el desarrollo iterativo y el soporte posterior al lanzamiento, trabajamos en estrecha colaboración contigo en cada etapa para garantizar que la solución final se alinee perfectamente con tus objetivos comerciales y resuelva los desafíos específicos de tu empresa.",
+    "ctaButton": "Agenda una reunión",
+    "steps": {
+      "step1": {
+        "title": "Diagnóstico personalizado",
+        "shortDescription": "Entendemos tus necesidades para ofrecerte soluciones a medida.",
+        "fullDescription": "Iniciamos con una reunión para entender en profundidad las necesidades de tu negocio y los retos específicos que enfrentas."
+      },
+      "step2": {
+        "title": "Propuesta clara",
+        "shortDescription": "Te brindamos un presupuesto detallado con la solución adecuada.",
+        "fullDescription": "Te brindamos un presupuesto formal que incluye una descripción detallada de la solución propuesta, el costo y los plazos."
+      },
+      "step3": {
+        "title": "Reunión en vivo",
+        "shortDescription": "Presentamos y ajustamos la propuesta en una videollamada.",
+        "fullDescription": "Nos reunimos en una videollamada para revisar el presupuesto y hacer cualquier ajuste necesario, asegurándonos de que sea perfecto para ti."
+      },
+      "step4": {
+        "title": "Desarrollo ágil",
+        "shortDescription": "Implementamos la solución en etapas iterativas, con tu feedback en cada paso.",
+        "fullDescription": "El proceso de desarrollo se realiza en etapas iterativas, lo que nos permite ajustar rápidamente cualquier detalle según tus necesidades o feedback."
+      },
+      "step5": {
+        "title": "Entrega y puesta en producción",
+        "shortDescription": "Realizamos una entrega formal y capacitación a tu equipo.",
+        "fullDescription": "Realizamos una entrega formal de la aplicación y ofrecemos capacitación a tu equipo para garantizar un uso óptimo."
+      },
+      "step6": {
+        "title": "Soporte continuo",
+        "shortDescription": "Te ofrecemos mantenimiento para ajustes y mejoras.",
+        "fullDescription": "Te ofrecemos un servicio de mantenimiento para asegurarnos de que todo siga funcionando bien, implementando mejoras o realizando ajustes cuando sea necesario."
+      }
+    },
+    "cycleProcessAlt": "Proceso cíclico"
   }
 }

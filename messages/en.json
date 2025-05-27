@@ -14,7 +14,8 @@
     "links": "Links",
     "home": "Home",
     "services": "Services",
-    "blog": "Blog"
+    "blog": "Blog",
+    "successCases": "Success Stories"
   },
   "AboutUs": {
     "title": "About Us",
@@ -105,6 +106,48 @@
   },
   "Calendly": {
     "title": "Schedule a 30-minute meeting",
-    "description": "Choose a suitable time for a free consultation. We'll help you understand how our digital solutions can optimize your business."
+    "description": "Choose a suitable time for a free consultation. We'll help you understand how our digital solutions can optimize your business.",
+    "scheduleTitle": "Schedule a meeting with us",
+    "scheduleDescription": "Select a date and time that is convenient for you. We will listen to you and see how we can help you.",
+    "sendTestEmailButton": "Send test email"
+  },
+  "HowItWorks": {
+    "title": "How It Works to Work With Us",
+    "subtitle1": "Discover the key steps in our process to take your project from concept to reality.",
+    "subtitle2": "We transform your digital business idea into a tailored technological solution through a structured and transparent process. From the initial understanding of your needs to iterative development and post-launch support, we work closely with you at each stage to ensure the final solution perfectly aligns with your business goals and solves your company's specific challenges.",
+    "ctaButton": "Schedule a meeting",
+    "steps": {
+      "step1": {
+        "title": "Personalized Diagnosis",
+        "shortDescription": "We understand your needs to offer you tailored solutions.",
+        "fullDescription": "We start with a meeting to deeply understand your business needs and the specific challenges you face."
+      },
+      "step2": {
+        "title": "Clear Proposal",
+        "shortDescription": "We provide you with a detailed budget with the right solution.",
+        "fullDescription": "We provide you with a formal budget that includes a detailed description of the proposed solution, cost, and timelines."
+      },
+      "step3": {
+        "title": "Live Meeting",
+        "shortDescription": "We present and adjust the proposal in a video call.",
+        "fullDescription": "We meet in a video call to review the budget and make any necessary adjustments, ensuring it's perfect for you."
+      },
+      "step4": {
+        "title": "Agile Development",
+        "shortDescription": "We implement the solution in iterative stages, with your feedback at each step.",
+        "fullDescription": "The development process is carried out in iterative stages, allowing us to quickly adjust any details according to your needs or feedback."
+      },
+      "step5": {
+        "title": "Delivery and Production Launch",
+        "shortDescription": "We conduct a formal delivery and training for your team.",
+        "fullDescription": "We conduct a formal delivery of the application and offer training to your team to ensure optimal use."
+      },
+      "step6": {
+        "title": "Continuous Support",
+        "shortDescription": "We offer maintenance for adjustments and improvements.",
+        "fullDescription": "We offer a maintenance service to ensure everything continues to run smoothly, implementing improvements or making adjustments when necessary."
+      }
+    },
+    "cycleProcessAlt": "Cycle process"
   }
 }

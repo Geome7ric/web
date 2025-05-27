@@ -1,63 +1,56 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import { scrollToElement } from "../utils/utils";
-
-// Constantes para los textos
-const STEPS = [
-  {
-    id: "01",
-    title: "Diagnóstico personalizado",
-    shortDescription:
-      "Entendemos tus necesidades para ofrecerte soluciones a medida.",
-    fullDescription:
-      "Iniciamos con una reunión para entender en profundidad las necesidades de tu negocio y los retos específicos que enfrentas.",
-  },
-  {
-    id: "02",
-    title: "Propuesta clara",
-    shortDescription:
-      "Te brindamos un presupuesto detallado con la solución adecuada.",
-    fullDescription:
-      "Te brindamos un presupuesto formal que incluye una descripción detallada de la solución propuesta, el costo y los plazos.",
-  },
-  {
-    id: "03",
-    title: "Reunión en vivo",
-    shortDescription:
-      "Presentamos y ajustamos la propuesta en una videollamada.",
-    fullDescription:
-      "Nos reunimos en una videollamada para revisar el presupuesto y hacer cualquier ajuste necesario, asegurándonos de que sea perfecto para ti.",
-  },
-  {
-    id: "04",
-    title: "Desarrollo ágil",
-    shortDescription:
-      "Implementamos la solución en etapas iterativas, con tu feedback en cada paso.",
-    fullDescription:
-      "El proceso de desarrollo se realiza en etapas iterativas, lo que nos permite ajustar rápidamente cualquier detalle según tus necesidades o feedback.",
-  },
-  {
-    id: "05",
-    title: "Entrega y puesta en producción",
-    shortDescription:
-      "Realizamos una entrega formal y capacitación a tu equipo.",
-    fullDescription:
-      "Realizamos una entrega formal de la aplicación y ofrecemos capacitación a tu equipo para garantizar un uso óptimo.",
-  },
-  {
-    id: "06",
-    title: "Soporte continuo",
-    shortDescription: "Te ofrecemos mantenimiento para ajustes y mejoras.",
-    fullDescription:
-      "Te ofrecemos un servicio de mantenimiento para asegurarnos de que todo siga funcionando bien, implementando mejoras o realizando ajustes cuando sea necesario.",
-  },
-];
+import { useTranslations } from "next-intl";
 
 const HowItWorks = () => {
+  const t = useTranslations("HowItWorks");
   const [isVisible, setIsVisible] = useState(false);
   const [visibleSteps, setVisibleSteps] = useState<number[]>([]);
+
+  const STEPS = useMemo(
+    () => [
+      {
+        id: "01",
+        title: t("steps.step1.title"),
+        shortDescription: t("steps.step1.shortDescription"),
+        fullDescription: t("steps.step1.fullDescription"),
+      },
+      {
+        id: "02",
+        title: t("steps.step2.title"),
+        shortDescription: t("steps.step2.shortDescription"),
+        fullDescription: t("steps.step2.fullDescription"),
+      },
+      {
+        id: "03",
+        title: t("steps.step3.title"),
+        shortDescription: t("steps.step3.shortDescription"),
+        fullDescription: t("steps.step3.fullDescription"),
+      },
+      {
+        id: "04",
+        title: t("steps.step4.title"),
+        shortDescription: t("steps.step4.shortDescription"),
+        fullDescription: t("steps.step4.fullDescription"),
+      },
+      {
+        id: "05",
+        title: t("steps.step5.title"),
+        shortDescription: t("steps.step5.shortDescription"),
+        fullDescription: t("steps.step5.fullDescription"),
+      },
+      {
+        id: "06",
+        title: t("steps.step6.title"),
+        shortDescription: t("steps.step6.shortDescription"),
+        fullDescription: t("steps.step6.fullDescription"),
+      },
+    ],
+    [t]
+  );
 
   // Efecto para controlar la animación inicial
   useEffect(() => {
@@ -113,7 +106,7 @@ const HowItWorks = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          Cómo funciona trabajar con nosotros
+          {t("title")}
         </h2>{" "}
         <p
           className={`text-lg md:text-base text-center mb-4 max-w-3xl mx-auto text-black/80 dark:text-white/80
@@ -121,8 +114,7 @@ const HowItWorks = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
           }`}
         >
-          Descubre los pasos clave en nuestro proceso para llevar tu proyecto
-          del concepto a la realidad.
+          {t("subtitle1")}
         </p>
         <p
           className={`text-lg md:text-base text-center mb-10 md:mb-14 max-w-3xl mx-auto text-black/80 dark:text-white/80
@@ -130,13 +122,7 @@ const HowItWorks = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
           }`}
         >
-          Transformamos tu idea de negocio digital en una solución tecnológica a
-          medida mediante un proceso estructurado y transparente. Desde la
-          comprensión inicial de tus necesidades hasta el desarrollo iterativo y
-          el soporte posterior al lanzamiento, trabajamos en estrecha
-          colaboración contigo en cada etapa para garantizar que la solución
-          final se alinee perfectamente con tus objetivos comerciales y resuelva
-          los desafíos específicos de tu empresa.
+          {t("subtitle2")}
         </p>
         <div className="md:max-w-4xl md:mx-auto relative">
           {/* Mapeo de los pasos con animaciones */}
@@ -166,7 +152,7 @@ const HowItWorks = () => {
                   <div className="col-auto flex-shrink-0 flex items-center justify-center">
                     <Image
                       src="/assets/cycle.png"
-                      alt="Cycle process"
+                      alt={t("cycleProcessAlt")}
                       width={70}
                       height={70}
                       className={`hover:rotate-180 transition-all duration-1000 cursor-pointer`}
@@ -239,7 +225,7 @@ const HowItWorks = () => {
                border-black text-black hover:bg-accent hover:border-accent hover:text-white
               font-semibold text-lg rounded-lg shadow-lg transition duration-300 hover:scale-105"
           >
-            Agenda una reunión
+            {t("ctaButton")}
           </a>
         </div>
       </div>
