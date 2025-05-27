@@ -734,15 +734,6 @@ const Blog = ({ data }: { data: BlogProps }) => {
               </div>
             </section>
           )}
-          <div className="mt-16 pt-8 text-center opacity-80 hover:opacity-100 transition-opacity">
-            <Image
-              src="/assets/Geome7ric-Horizontal-Color.svg"
-              alt="Geome7ric"
-              width={120}
-              height={30}
-              className="mx-auto animate-pulse"
-            />
-          </div>
         </div>
       </article>
     </>

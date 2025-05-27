@@ -3,12 +3,230 @@ import { BlogProps } from "@/components/Blog";
 
 interface BlogStore {
   blogs: BlogProps[];
+  featuredBlogs: BlogProps[];
+  isLoading: boolean;
+  error: string | null;
   // eslint-disable-next-line no-unused-vars
   getBlogBySlug: (slug: string) => BlogProps | undefined;
+  fetchBlogs: () => Promise<void>;
 }
+
+export const blogPostTecnologiaTransformacion: BlogProps = {
+  title:
+    "Tecnología: Transformando el Trabajo, la Cultura Empresarial y el Mundo Móvil",
+  previewTitle: "Tecnología y Transformación Empresarial",
+  slug: "tecnologia-transformacion-trabajo-cultura-movil",
+  seoTitle:
+    "Tecnología: Impacto en Trabajo, Cultura y Móvil | Geome7ric Insights",
+  seoDescription:
+    "Análisis de cómo los avances tecnológicos están redefiniendo el trabajo, la cultura empresarial y el mundo móvil, y cómo las empresas pueden adaptarse.",
+  socialDescription:
+    "La tecnología está cambiando todo: trabajo, cultura empresarial y el mundo móvil. Descubre los impactos y cómo navegar esta transformación. #Tecnologia #CulturaEmpresarial #Movilidad",
+  heroImage: {
+    src: "/assets/blogs/tecnologia-transformacion/hero.png",
+    alt: "Ondas tecnológicas abstractas en verde azulado Geome7ric entrelazándose con iconos de trabajo, cultura y móvil sobre fondo oscuro.",
+    caption:
+      "Tecnología: Motor de la transformación en trabajo, cultura y movilidad.",
+  },
+  heroVideo: null,
+  intermediateImage: {
+    src: "/assets/blogs/tecnologia-transformacion/section.png",
+    alt: "Tres esferas luminosas interconectadas (trabajo, cultura, móvil) en verde azulado Geome7ric, simbolizando su interdependencia en un entorno digital oscuro.",
+    caption:
+      "La interconexión de la tecnología, la cultura y la movilidad en la era digital.",
+  },
+  publishedAt: "2025-06-18",
+  readingTimeMinutes: 11,
+  tags: [
+    "Tecnología",
+    "Transformación Digital",
+    "Cultura Empresarial",
+    "Trabajo Remoto",
+    "Movilidad",
+    "Innovación",
+    "Productividad",
+  ],
+  sections: [
+    {
+      type: "intro",
+      content:
+        "La tecnología avanza a un ritmo vertiginoso, trayendo consigo una serie de transformaciones profundas que impactan no solo nuestra vida personal, sino especialmente el entorno laboral y empresarial. Ya no se trata solo de nuevas herramientas, sino de cambios que redefinen procesos, culturas y la forma en que interactuamos. Sumergámonos en cómo estos avances están moldeando el trabajo, la cultura de las empresas y el omnipresente mundo móvil.",
+    },
+    {
+      type: "highlight",
+      content:
+        "La tecnología avanza a un ritmo vertiginoso, trayendo consigo una serie de transformaciones profundas que impactan no solo nuestra vida personal, sino especialmente el entorno laboral y empresarial.",
+    },
+    {
+      type: "benefits",
+      title: "Beneficios de la Tecnología en el Entorno Laboral",
+      content:
+        "En términos generales, los avances tecnológicos han traído cambios positivos en la vida de las personas y en los procesos de las empresas, haciéndolos más eficientes, reduciendo el margen de error y facilitando la comunicación entre colaboradores. Nos permite trabajar desde donde queramos, ya que la distancia deja de ser un impedimento con solo una computadora y conexión a internet. Esto posibilita interactuar con personas en distintas partes del mundo.",
+      items: [
+        "Incremento de la productividad y eficiencia: Automatizando operaciones y ofreciendo indicadores en tiempo real para el análisis y la toma de decisiones.",
+        "Reducción de distancias y acortamiento de tiempos en procesos.",
+        "Promoción de la innovación y la creatividad: Permitiendo resolver problemáticas diarias de formas nuevas.",
+        "Fomento de la adquisición de conocimientos y desarrollo de habilidades: Otorgando una ventaja competitiva profesional para adaptarse a estos avances.",
+        "Mejora en la comunicación con el equipo de trabajo: Gracias a herramientas como documentos compartidos en línea, videollamadas y la nube.",
+      ],
+    },
+    {
+      type: "problem",
+      title: "Desafíos de la Tecnología en el Entorno Laboral",
+      content: "Sin embargo, la tecnología también presenta inconvenientes.",
+      items: [
+        "Velocidad de avance: Puede avanzar demasiado rápido para seguirla.",
+        "Impacto en el empleo: Los cambios pueden significar la pérdida o 'desvirtualización' de trabajos, como sienten los diseñadores gráficos ante programas de Inteligencia Artificial que realizan tareas complejas en segundos.",
+        "Nuevas cargas de trabajo: Aunque el ideal es que las máquinas reduzcan el tiempo de las tareas, los nuevos avances pueden generar nuevas cargas.",
+        "Distracción y productividad: En entornos de trabajo multitarea y 'siempre conectados', la atención se distrae tanto que mina la productividad, especialmente en niveles directivos.",
+        "Gestión de la información: Gestionar la enorme cantidad de información que llega requiere autodisciplina, y el comportamiento de directivos hiperconectados puede ser un mal ejemplo para el resto del personal.",
+      ],
+    },
+    {
+      type: "benefits",
+      title: "La Revolución Móvil: El Mundo en Nuestros Bolsillos",
+      content:
+        "La tecnología móvil, en particular, ha supuesto una verdadera revolución en el ámbito laboral. Para comerciales y vendedores, dispositivos como smartphones y tablets lo han cambiado casi todo, permitiendo mostrar catálogos actualizados, firmar contratos y enviar facturas por email. Han potenciado enormemente la fuerza de ventas, desarrollando las capacidades de comunicación a niveles inimaginables hace pocos años.\nEl tráfico móvil superó al de escritorio en 2014, y el internet se ha vuelto móvil y expandido más allá del teléfono a través del Internet de las Cosas (IoT). Esto significa que ya no tiene sentido definir una estrategia móvil separada; se trata de hacer marketing en un mundo digital que es móvil. La audiencia interactúa de forma natural a través de canales offline, online y móviles, lo que impulsa a las empresas a tender hacia la omnicanalidad.\nLos smartphones han alterado nuestro comportamiento como usuarios, volviéndonos más impacientes y otorgándonos más poder sobre las empresas. Esperamos que todo funcione de manera fluida en nuestros móviles, a menudo antes que en otros dispositivos, sin importar la complejidad técnica detrás. Los móviles se han convertido en un canal de comunicación muy importante, ofreciendo más formas de estar cerca de los usuarios.",
+    },
+    {
+      type: "benefits",
+      title:
+        "Impacto Tecnológico en la Cultura Empresarial: Repensando Modelos y Personas",
+      content:
+        "El impacto de la tecnología en la cultura empresarial ha sido significativo y transformador. La digitalización de procesos, la creación de nuevas herramientas y la necesidad de adaptarse a un entorno tecnológico creciente han llevado a las empresas a replantear sus modelos de negocio y formas de trabajo. La tecnología ha facilitado la comunicación interna y externa, agilizado procesos, mejorado la toma de decisiones y permitido mayor flexibilidad y adaptabilidad.\nLa agenda digital de las empresas coexiste con la agenda de sostenibilidad y la agenda de transformación organizativa, y visibilizar su interrelación es clave. La sinergia entre estas agendas es una de las claves del éxito. La supervivencia de una empresa hoy en día depende, según expertos, más directamente de la agenda digital. La transformación digital no solo implica tecnología, sino también innovaciones organizativas necesarias para adaptarse a la sociedad digital, poniendo a las personas en el centro, desde el talento y la confianza.\nEl bajo compromiso de las personas con sus empleadores es un desafío significativo en la sociedad digital. Las encuestas muestran un bajo porcentaje de empleados comprometidos. El compromiso emocional, caracterizado por la convicción en los objetivos de la organización y la disposición a esforzarse, es el que correlaciona con la productividad. Un trabajador satisfecho es un trabajador más productivo, lo que crea un círculo virtuoso. La base de la productividad y felicidad de los profesionales son las buenas políticas de gestión de personas.\nLa complejidad de la sociedad digital impulsa un salto hacia organizaciones más ágiles y humanistas, como las organizaciones evolutivas 'Teal'. Estas se basan en principios como la plenitud, la autogestión y un propósito evolutivo. El teletrabajo masivo desde 2020 ha permitido comprender el valor de tener un propósito claro y profesionales con autonomía y delegación. El reto es entender qué condiciones organizativas hacen que el teletrabajo sea un aliado de la satisfacción y productividad.\nLas organizaciones empresariales (OOEE) en América Latina muestran interés en digitalizarse más allá de la pandemia. La digitalización ha motivado a las OOEE a aumentar su afiliación, ofrecer servicios novedosos, mejorar la comunicación y aprovechar datos. La demanda de los miembros es un factor influyente. Los principales impedimentos para la digitalización de las OOEE incluyen los altos costos y la dificultad para encontrar soluciones que se adapten a sus necesidades. La falta de capacidad y competencias del personal también es una barrera, así como la fuga de personal con habilidades digitales. Es crucial involucrar al personal y a los miembros en el diseño y socialización de la estrategia digital.",
+    },
+    {
+      type: "conclusion",
+      title: "Conectando los Puntos y Mirando Hacia Adelante",
+      content:
+        "Como vemos, estos tres ámbitos –el entorno laboral, la cultura empresarial y el mundo móvil– están intrínsecamente ligados por el hilo conductor de la tecnología. La tecnología general proporciona el qué (herramientas, posibilidades), el mundo móvil ofrece el cómo (conectividad ubicua, interacción instantánea), y la cultura empresarial define el quién y el por qué (cómo las personas y organizaciones se adaptan y aprovechan estos cambios para crear valor).\nLa revolución móvil es un motor clave detrás de los cambios en el trabajo; facilita la flexibilidad y el trabajo remoto, pero también contribuye al desafío de estar 'siempre conectado'. A su vez, estos nuevos modos de trabajar impulsados por la tecnología requieren una transformación profunda en la cultura empresarial, que debe enfocarse en la confianza, el talento, el compromiso y la adaptación organizativa para seguir siendo productiva y relevante.\nLa digitalización, habilitada por tecnologías y especialmente potenciada por la movilidad, obliga a las empresas a repensar no solo sus procesos, sino su esencia. Los desafíos de adaptarse a la tecnología, como la necesidad de nuevas habilidades y la resistencia al cambio, se manifiestan en todos los niveles, desde el trabajador individual hasta la estructura organizativa y las asociaciones empresariales.\nLa tecnología está en el centro de una transformación multifacética. Los beneficios en eficiencia, comunicación e innovación son innegables, pero los retos relacionados con la adaptación humana y organizativa, la productividad en la era digital y los dilemas éticos requieren una atención constante. Poner a las personas y al talento en el centro de esta transformación digital y cultural, fomentando la confianza y la adaptabilidad, parece ser la clave para navegar con éxito en este mundo en constante evolución.",
+    },
+  ],
+};
+
+export const blogPostIaPartnerTi: BlogProps = {
+  title:
+    "Impulsa tu Empresa con IA: Cómo la Inteligencia Artificial Transforma los Negocios y Por Qué tu Partner de TI es Clave",
+  previewTitle: "IA para Empresas: El Rol Clave de tu Partner TI",
+  slug: "impulsa-empresa-ia-partner-ti-clave",
+  seoTitle:
+    "IA para Empresas: Transformación y Rol Clave del Partner TI | Geome7ric",
+  seoDescription:
+    "Descubre cómo la Inteligencia Artificial está transformando los negocios y por qué un partner de TI es crucial para implementar IA con éxito y obtener una ventaja competitiva.",
+  socialDescription:
+    "La IA está aquí para revolucionar tu negocio. Aprende cómo y por qué tu partner de TI es esencial en este viaje de transformación. #IA #TransformacionDigital #PartnerTI",
+  heroImage: {
+    src: "/assets/blogs/ia-partner-ti/hero.png", // Placeholder
+    alt: "Red neuronal abstracta y luminosa en tonos verde azulado Geome7ric sobre fondo oscuro, simbolizando la inteligencia artificial en los negocios.",
+    caption:
+      "Inteligencia Artificial: Transformando negocios con el socio tecnológico adecuado.",
+  },
+  heroVideo: null,
+  intermediateImage: {
+    src: "/assets/blogs/ia-partner-ti/section.png", // Placeholder
+    alt: "Mano estilizada de un experto de Geome7ric conectando nodos de IA, ilustrando la colaboración y el soporte de un partner de TI.",
+    caption:
+      "Tu partner de TI: La clave para desbloquear el potencial de la IA en tu empresa.",
+  },
+  publishedAt: "2025-06-10", // Placeholder date, adjust as needed
+  readingTimeMinutes: 9, // Estimated, adjust as needed
+  tags: [
+    "Inteligencia Artificial",
+    "IA",
+    "Transformación Digital",
+    "Partner de TI",
+    "Optimización de Procesos",
+    "Pymes",
+    "Innovación Tecnológica",
+  ],
+  sections: [
+    {
+      type: "intro",
+      content:
+        "La Inteligencia Artificial (IA) ha dejado de ser un concepto futurista para convertirse en una realidad presente que está redefiniendo la forma en que operan las empresas en todos los sectores. Desde la atención al cliente hasta la manufactura, la IA está impulsando una transformación profunda. Para las empresas modernas, adoptar la IA no es solo una tendencia tecnológica, sino una ventaja competitiva tangible. Pero, ¿qué significa realmente la IA para tu negocio y cómo puedes implementarla con éxito?",
+    },
+    {
+      type: "highlight",
+      content:
+        "Para las empresas modernas, adoptar la IA no es solo una tendencia tecnológica, sino una ventaja competitiva tangible.",
+    },
+    {
+      type: "benefits",
+      title: "La IA: Un Motor de Transformación para tu Negocio",
+      content:
+        "En esencia, la IA permite que los sistemas informáticos realicen tareas que normalmente requieren inteligencia humana, como el aprendizaje, la resolución de problemas y el reconocimiento de patrones, especialmente para tareas repetitivas. Al integrar la IA en los procesos de negocio, las empresas pueden obtener beneficios medibles y reales.",
+    },
+    {
+      type: "benefits",
+      title: "Impactos Destacados de la IA en Empresas",
+      items: [
+        "Automatización de Procesos: La IA puede automatizar tareas repetitivas, desde la gestión de inventarios hasta el procesamiento de facturas o la entrada de datos, liberando al personal para que se enfoque en actividades más estratégicas y creativas. Herramientas como UiPath o Blue Prism son ejemplos de cómo se aplica la automatización robótica de procesos (RPA).",
+        "Mejora en la Toma de Decisiones: La capacidad de la IA para analizar grandes volúmenes de datos en tiempo real proporciona información valiosa (insights). Esto permite a las empresas tomar decisiones mejor fundamentadas y basadas en datos, anticipar problemas y predecir tendencias, lo que reduce el margen de error.",
+        "Personalización de la Experiencia del Cliente: La IA, a través de sistemas de recomendación y chatbots, permite ofrecer experiencias altamente personalizadas y soporte 24/7. Ejemplos de éxito incluyen las recomendaciones de Spotify o Netflix y la mejora en la atención al cliente con herramientas como Zendesk AI o Aivo. La personalización en marketing digital también aumenta el compromiso y la tasa de conversión.",
+        "Incremento de la Eficiencia Operativa y Reducción de Costes: La automatización y optimización de procesos impulsadas por IA reducen tiempos, minimizan errores humanos y permiten escalar operaciones sin aumentar costes de manera proporcional.",
+        "Gestión de Riesgos: La IA es crucial en la detección de fraudes en tiempo real, como lo demuestra Banco Ciudad, y en el mantenimiento predictivo en industrias como la manufactura o la energía, permitiendo actuar proactivamente antes de que ocurran fallos.",
+      ],
+    },
+    {
+      type: "benefits",
+      title: "Ejemplos Reales del Impacto de la IA por Industria",
+      content: "Vemos casos de éxito en diversas industrias:",
+      items: [
+        "Retail y eCommerce: Recomendaciones personalizadas (Spotify, Amazon, Netflix), automatización logística (Amazon), chatbots de atención al cliente. Herramientas como Adobe Sensei o Dynamic Yield para personalización web.",
+        "Finanzas: Detección de fraudes (Banco Ciudad), análisis predictivo para prever impagos o riesgos. Herramientas como SAS Analytics.",
+        "Salud: Predicción de readmisiones de pacientes (CareSkore), mejora de diagnósticos y gestión hospitalaria con plataformas como IBM Watson Health.",
+        "Manufactura: Optimización de la producción, control de calidad, mantenimiento predictivo. Herramientas como Seebo o Vanti AI.",
+      ],
+    },
+    {
+      type: "problem",
+      title: "Desafíos en la Adopción de IA",
+      content:
+        "A pesar de los claros beneficios, la implementación de IA no está exenta de retos significativos. Las empresas, especialmente las pequeñas y medianas (Pymes), pueden enfrentar obstáculos como:",
+      items: [
+        "Costos Iniciales: La inversión en software, hardware y capacitación del personal puede ser considerable.",
+        "Complejidad Técnica y Falta de Conocimiento: Implementar IA requiere conocimientos técnicos especializados que no todas las empresas poseen internamente. Existe una brecha de talento identificada como un obstáculo importante.",
+        "Integración con Sistemas Existentes: Uno de los retos comunes es asegurar que las nuevas soluciones de IA se integren fluidamente con la infraestructura tecnológica ya en uso.",
+        "Seguridad y Privacidad de Datos: El manejo de grandes volúmenes de datos sensibles plantea preocupaciones sobre la seguridad y la privacidad. Es fundamental gestionar los datos de manera ética y transparente.",
+        "Impacto Laboral: Si bien la IA crea nuevos empleos, también puede desplazar trabajos que consisten en tareas repetitivas. Esto requiere estrategias de re-capacitación y adaptación.",
+      ],
+    },
+    {
+      type: "solution",
+      title:
+        "Tu Partner de Servicios Informáticos: La Clave para una Implementación Exitosa de IA",
+      content:
+        "Aquí es donde un partner de servicios informáticos juega un papel fundamental. Navegar por el panorama de la IA, identificar las soluciones correctas e implementarlas de manera efectiva requiere experiencia y conocimiento técnico.\n\nComo tu proveedor de servicios informáticos, podemos ayudarte a:",
+      items: [
+        "Identificar Necesidades y Oportunidades: Analizar tu negocio para determinar dónde la IA puede tener el mayor impacto y alinear la tecnología con tus objetivos estratégicos.",
+        "Educar y Asesorar sobre Opciones: Explicar los conceptos básicos de la IA y las soluciones disponibles, ayudándote a entender qué herramientas se adaptan mejor a tus necesidades específicas.",
+        "Implementar Soluciones (Iniciando en Pequeño): Asistir en la implementación de soluciones de IA pre-construidas o desarrollar proyectos piloto, gestionando la complejidad técnica para ti y permitiéndote empezar a ver resultados rápidamente.",
+        "Garantizar la Integración y Seguridad: Asegurar que las nuevas herramientas de IA se integren sin problemas con tus sistemas actuales y que el manejo de datos cumpla con los más altos estándares de seguridad y privacidad.",
+        "Brindar el Talento Técnico: Poner a tu disposición la experiencia necesaria para trabajar con datos, algoritmos y herramientas de IA, superando la brecha de conocimiento interno.",
+        "Ofrecer Soporte Continuo: Monitorear el desempeño de las soluciones de IA y realizar ajustes para maximizar sus beneficios a largo plazo.",
+      ],
+    },
+    {
+      type: "conclusion",
+      content:
+        "La IA no es solo para las grandes corporaciones. Con las herramientas adecuadas y el soporte experto, cualquier Pyme puede aprovechar su poder para optimizar procesos, reducir costos y mejorar la experiencia del cliente. La transformación digital impulsada por la IA es una necesidad para mantenerse competitivo. No tienes que hacerlo solo. Identificar las áreas donde la IA puede tener un impacto en tu negocio es el primer paso.",
+    },
+    {
+      type: "cta",
+      title: "¿Listo para dar el siguiente paso?",
+      content:
+        "Como tu partner tecnológico, estamos aquí para guiarte en este viaje. Contáctanos hoy mismo para explorar cómo podemos ayudarte a integrar la Inteligencia Artificial en tu empresa y convertir este desafío en una gran oportunidad de crecimiento.",
+      buttonText: "Explorá Soluciones de IA",
+      buttonLink: "/contacto", // Standard Geome7ric contact link
+    },
+  ],
+  // related: [] // No related posts provided in the source text
+};
 
 export const useBlogStore = create<BlogStore>((set, get) => ({
   blogs: [
+    blogPostIaPartnerTi,
+    blogPostTecnologiaTransformacion,
     {
       title:
         "Cómo automatizar tareas repetitivas para mejorar la productividad en tu negocio",
@@ -223,7 +441,7 @@ export const useBlogStore = create<BlogStore>((set, get) => ({
         caption:
           "Flujos digitales que guían cada paso para evitar errores y agilizar procesos",
       },
-      heroVideo: null,
+      heroVideo: "/assets/blogs/optimizar-flujo-reducir-errores/hero_video.mp4",
       intermediateImage: {
         src: "/assets/blogs/optimizar-flujo-reducir-errores/section.png",
         alt: "Línea de tiempo horizontal con iconos de tareas conectadas por flechas y marcas de verificación",
@@ -410,5 +628,29 @@ export const useBlogStore = create<BlogStore>((set, get) => ({
   getBlogBySlug: (slug: string) => {
     const { blogs } = get();
     return blogs.find((blog) => blog.slug === slug);
+  },
+  featuredBlogs: [],
+  isLoading: false,
+  error: null,
+  fetchBlogs: async () => {
+    set({ isLoading: true });
+    try {
+      // En una aplicación real, esto sería una llamada a una API
+      // Simulamos una pequeña demora para imitar una carga real
+      await new Promise((resolve) => setTimeout(resolve, 300));
+
+      // Usamos los blogs existentes en el store
+      const blogs = get().blogs;
+
+      set({
+        featuredBlogs: blogs.slice(0, 3),
+        isLoading: false,
+      });
+    } catch {
+      set({
+        error: "Error al cargar los blogs",
+        isLoading: false,
+      });
+    }
   },
 }));
