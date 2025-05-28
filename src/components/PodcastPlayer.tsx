@@ -28,6 +28,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
   const playerRef = useRef<HTMLDivElement>(null);
   const speedOptionsRef = useRef<HTMLDivElement>(null);
   const volumeSliderRef = useRef<HTMLDivElement>(null);
+  // Volume slider styling is handled via inline styles and className
 
   // Detect dark mode and mount status (similar to Hero.tsx)
   useEffect(() => {
@@ -359,6 +360,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
       }`}
     >
       {" "}
+      {/* Custom styling for the volume slider is applied via the volume-slider class */}
       <div
         ref={playerRef}
         className={`bg-white/95 dark:bg-slate-800/95 backdrop-blur-md ${
@@ -461,7 +463,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
           {" "}
           {/* Description text */}{" "}
           <p
-            className={`${isMobile ? "text-xs" : "text-xs"} text-slate-700 dark:text-slate-200 ${isMobile ? "p-2 pb-1" : "p-3 pb-1"} font-medium`}
+            className={`${isMobile ? "text-xs" : "text-xs"} text-slate-700 dark:text-slate-200 ${isMobile ? "p-2 pb-1" : "p-3 pb-1 font-medium"} `}
           >
             {description}
           </p>
@@ -621,20 +623,21 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
               <div className="relative z-100">
                 {" "}
                 <button
-                  onClick={toggleVolumeSlider}
-                  className={`flex items-center justify-center ${isMobile ? "h-8 w-8" : "p-1"} hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full transition-colors`}
-                  aria-label={isMuted ? "Activar sonido" : "Ajustar volumen"}
+                  onClick={(e) => {
+                    toggleVolumeSlider(e);
+                  }}
+                  className={`flex items-center justify-center ${isMobile ? "h-8 w-8" : "w-7 h-7"} 
+                    ${showVolumeSlider ? "bg-accent/10 dark:bg-accent/20" : ""}
+                    ${isMuted ? "text-slate-500" : "text-accent"}
+                    hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full transition-colors`}
+                  aria-label="Ajustar volumen"
                   aria-expanded={showVolumeSlider}
                   aria-haspopup="true"
                 >
                   {isMuted ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className={
-                        isMobile
-                          ? "h-4.5 w-4.5 text-slate-500"
-                          : "h-3.5 w-3.5 text-slate-500"
-                      }
+                      className={isMobile ? "h-4.5 w-4.5" : "h-3.5 w-3.5"}
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -643,81 +646,102 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
                   ) : (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className={
-                        isMobile
-                          ? "h-4.5 w-4.5 text-accent dark:text-accent"
-                          : "h-3.5 w-3.5 text-accent dark:text-accent"
-                      }
+                      className={isMobile ? "h-4.5 w-4.5" : "h-3.5 w-3.5"}
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
                       <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
                     </svg>
                   )}
-                </button>
-                {/* Volume slider dropdown - animated */}
+                </button>{" "}
+                {/* Horizontal volume slider - without box */}{" "}
                 <div
                   ref={volumeSliderRef}
-                  className={`absolute bottom-full right-0 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-all ${
-                    showVolumeSlider
-                      ? "opacity-100 max-h-48 translate-y-0"
-                      : "opacity-0 max-h-0 translate-y-2 pointer-events-none"
-                  }`}
+                  className={`absolute bottom-full right-0 mb-[-32] transition-all 
+                    bg-white dark:bg-slate-800 rounded-lg shadow-lg p-2
+                    
+                    ${
+                      showVolumeSlider
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-2 pointer-events-none"
+                    }`}
                   style={{
-                    transitionProperty: "opacity, max-height, transform",
-                    transitionDuration: "300ms",
+                    transitionProperty: "opacity, transform",
+                    transitionDuration: "200ms",
                   }}
                 >
-                  {" "}
-                  <div className="p-3">
-                    <div className="flex flex-col w-32">
-                      <div className="flex items-center justify-between mb-2">
-                        <button
-                          className={`${isMobile ? "p-1.5" : "p-1"} hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors mr-2`}
-                          onClick={toggleMute}
-                        >
-                          {isMuted ? (
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-3.5 w-3.5 text-slate-500"
-                              fill="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path d="M19 11h-1.7c0 .74-.16 1.43-.43 2.05l1.23 1.23c.56-.98.9-2.09.9-3.28zm-4.02.17c0-.06.02-.11.02-.17V5c0-1.66-1.34-3-3-3S9 3.34 9 5v.18l5.98 5.99zM4.27 3L3 4.27l6.01 6.01V11c0 1.66 1.33 3 2.99 3 .22 0 .44-.03.65-.08l1.66 1.66c-.71.33-1.5.52-2.31.52-2.76 0-5.3-2.1-5.3-5.1H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c.91-.13 1.77-.45 2.55-.9l4.2 4.2 1.27-1.27L4.27 3z" />
-                            </svg>
-                          ) : (
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-3.5 w-3.5 text-accent dark:text-accent"
-                              fill="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path d="M3 9v6h4l5 5V4L7 9H3zm7-.17v6.34L7.83 13H5v-2h2.83L10 8.83zM16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77 0-4.28-2.99-7.86-7-8.77z" />
-                            </svg>
-                          )}
-                        </button>
-                        <span
-                          className={`${isMobile ? "text-xs" : "text-xs"} font-medium text-accent dark:text-accent`}
-                        >
-                          {isMuted ? "0%" : `${Math.round(volume * 100)}%`}
-                        </span>
+                  <div className="flex items-center ">
+                    {/* Horizontal slider control with integrated mute button */}
+                    <div className="flex items-center ">
+                      {/* Mute button */}
+                      <button
+                        className={`${isMobile ? "p-1.5" : "p-1"} 
+                          ${isMuted ? "text-slate-500" : "text-accent"} 
+                          hover:text-accent/80
+                          transition-colors
+                          mr-1.5 flex items-center justify-center`}
+                        onClick={toggleMute}
+                        aria-label={isMuted ? "Activar sonido" : "Silenciar"}
+                      >
+                        {isMuted ? (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                          </svg>
+                        ) : (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M3 9v6h4l5 5V4L7 9H3zm7-.17v6.34L7.83 13H5v-2h2.83L10 8.83zM16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                          </svg>
+                        )}
+                      </button>
+
+                      {/* Simple horizontal slider */}
+                      <div className="relative w-28 h-6">
+                        {/* Track background */}
+                        <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 h-1 bg-gray-200 dark:bg-gray-700 rounded-full">
+                          {/* Volume level indicator */}
+                          <div
+                            className="absolute top-0 left-0 bottom-0 
+                            bg-gradient-to-r from-accent to-primary dark:from-accent dark:to-primary
+                             rounded-full transition-all duration-150"
+                            style={{
+                              width: `${isMuted ? 0 : volume * 100}%`,
+                            }}
+                          ></div>
+                        </div>
+
+                        {/* Actual slider input */}
+                        <input
+                          type="range"
+                          min="0"
+                          max="1"
+                          step="0.01"
+                          value={volume}
+                          onChange={(e) =>
+                            changeVolume(parseFloat(e.target.value))
+                          }
+                          className="absolute h-5 w-full appearance-none bg-transparent cursor-pointer"
+                          style={{
+                            WebkitAppearance: "none",
+                            background: "transparent",
+                            position: "absolute",
+                            top: "50%",
+                            left: 1,
+                            transform: "translateY(-50%)",
+                            zIndex: 20,
+                          }}
+                          aria-label="Ajustar volumen"
+                        />
                       </div>
-                      <input
-                        type="range"
-                        min="0"
-                        max="1"
-                        step="0.01"
-                        value={volume}
-                        onChange={(e) =>
-                          changeVolume(parseFloat(e.target.value))
-                        }
-                        className="w-full accent-accent cursor-pointer"
-                        aria-label="Ajustar volumen"
-                        aria-valuemin={0}
-                        aria-valuemax={1}
-                        aria-valuenow={volume}
-                        aria-valuetext={`Volumen ${Math.round(volume * 100)}%`}
-                      />
                     </div>
                   </div>
                 </div>
@@ -727,9 +751,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
                 {" "}
                 <button
                   onClick={toggleSpeedOptions}
-                  className={`flex items-center 
-                    
-                    justify-center ${isMobile ? "h-8 w-8" : "p-1.5"} hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full transition-colors ml-1`}
+                  className={`flex items-center justify-center ${isMobile ? "h-8 w-8" : "p-1.5"} hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full transition-colors ml-1`}
                   aria-label="Cambiar velocidad de reproducción"
                   aria-expanded={showSpeedOptions}
                   aria-haspopup="true"
@@ -760,7 +782,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
                   {" "}
                   <div className="p-1">
                     {" "}
-                    {[1, 1.5, 2].map((rate) => (
+                    {[1, 1.5].map((rate) => (
                       <button
                         key={rate}
                         onClick={() => changePlaybackRate(rate)}
@@ -780,9 +802,9 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
             </div>
           </div>{" "}
         </div>{" "}
-        {/* Watermark - Simple and discrete - Always visible */}
+        {/* Watermark - Simple and discrete - */}
         <div
-          className={`absolute ${isMinimized ? "bottom-1 left-1/2 transform -translate-x-1/2" : "bottom-1 right-1.5"} flex items-center gap-1 opacity-20 hover:opacity-100 transition-all duration-300`}
+          className={`absolute bottom-1.5 right-1.5 flex items-center gap-1 opacity-100 hover:opacity-100 transition-all duration-300`}
         >
           {/* Simplified Geome7ric text logo */}
           <div className="text-[8px] font-semibold text-slate-500 dark:text-slate-600 tracking-tight">
