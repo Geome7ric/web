@@ -366,7 +366,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
         className={`bg-white/95 dark:bg-slate-800/95 backdrop-blur-md ${
           isMobile
             ? isMinimized
-              ? "rounded-t-xl"
+              ? "rounded-t-xl rounded-b-xl"
               : "rounded-t-xl"
             : "rounded-xl"
         } shadow-lg overflow-hidden border border-gray-100 dark:border-slate-700/50 transition-all ${
