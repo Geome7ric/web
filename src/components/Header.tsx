@@ -18,7 +18,7 @@ const Header = () => {
   const links: LinkType[] = [
     {
       href: "/portfolio",
-      label: "Casos de éxito",
+      label: t("common.successCases"),
       className: "text-accent  hover:text-accent",
     },
     { href: "/services", label: t("common.services") },

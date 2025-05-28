@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef } from "react";
 import { InlineWidget } from "react-calendly";
 import { sendConfirmationEmail } from "@/app/api";
+import { useTranslations } from "next-intl"; // Import useTranslations
 
 interface CalendlySchedulerProps {
   url?: string;
@@ -121,6 +122,7 @@ const CalendlyScheduler = ({
   url = "https://calendly.com/geome7ric/30min",
   testEmail = false, // Por defecto no enviar email de prueba
 }: CalendlySchedulerProps) => {
+  const t = useTranslations("Calendly"); // Initialize useTranslations
   const [iframeHeight, setIframeHeight] = useState(700);
   const [isLoaded, setIsLoaded] = useState(false);
   const calendarRef = useRef<HTMLDivElement>(null);
@@ -339,11 +341,10 @@ const CalendlyScheduler = ({
           <div className="w-full lg:w-1/2 flex items-center">
             <div>
               <h2 className="text-black dark:text-white text-subtitle text-3xl md:text-4xl font-bold mb-4 leading-tight transition-all duration-1000 text-center lg:text-left">
-                Agendá una cita con nosotros
+                {t('scheduleTitle')}
               </h2>
               <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 text-center lg:text-left">
-                Seleccioná una fecha y hora que sea conveniente para vos. Vamos
-                a escucharte y ver cómo podemos ayudarte.
+                {t('scheduleDescription')}
               </p>
 
               {/* Botón de test en modo prueba */}
@@ -353,7 +354,7 @@ const CalendlyScheduler = ({
                     onClick={sendTestEmail}
                     className="bg-accent text-black dark:text-white px-4 py-2 rounded-md hover:bg-accent/90 transition-colors"
                   >
-                    Enviar correo de prueba
+                    {t('sendTestEmailButton')}
                   </button>
                 </div>
               )}

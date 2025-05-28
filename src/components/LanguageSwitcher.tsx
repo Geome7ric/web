@@ -1,8 +1,8 @@
 "use client"; // Asegurar que se ejecuta en el cliente
 
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname } from "@/i18n/routing"; // Corrected import for hooks
 import { useTransition } from "react";
-import { routing } from "@/i18n/routing";
+import { routing } from "@/i18n/routing"; // Ensure routing is imported separately
 
 export default function LanguageSwitcher() {
   const router = useRouter();
