@@ -804,7 +804,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
         </div>{" "}
         {/* Watermark - Simple and discrete - */}
         <div
-          className={`absolute bottom-1.5 right-1.5 flex items-center gap-1 opacity-100 hover:opacity-100 transition-all duration-300`}
+          className={`absolute bottom-1.5 right-1.5 flex items-center gap-1 opacity-20 hover:opacity-100 transition-all duration-300`}
         >
           {/* Simplified Geome7ric text logo */}
           <div className="text-[8px] font-semibold text-slate-500 dark:text-slate-600 tracking-tight">
