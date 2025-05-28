@@ -363,13 +363,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
       {/* Custom styling for the volume slider is applied via the volume-slider class */}
       <div
         ref={playerRef}
-        className={`bg-white/95 dark:bg-slate-800/95 backdrop-blur-md ${
-          isMobile
-            ? isMinimized
-              ? "rounded-t-xl rounded-b-xl"
-              : "rounded-t-xl"
-            : "rounded-xl"
-        } shadow-lg overflow-hidden border border-gray-100 dark:border-slate-700/50 transition-all ${
+        className={`bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-slate-700/50 transition-all ${
           !isMinimized ? "" : ""
         }`}
         style={!isMinimized && isMounted ? glowStyle : {}}
