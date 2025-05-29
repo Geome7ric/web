@@ -11,28 +11,34 @@ import { LinkType } from "@/types/HeaderTypes";
 
 const Header = () => {
   const t = useTranslations();
-  const { openModal } = useModal(); // Usamos el contexto del modal
+  const { openModal } = useModal(); // Use modal context
 
   const pitchUrl =
     "https://www.canva.com/design/DAGkRFTMSxI/gLiKreZyhmJ-dW05UVXlkQ/view?utm_content=DAGkRFTMSxI&utm_campaign=designshare&utm_medium=embeds&utm_source=link";
   const links: LinkType[] = [
     {
-      href: "/portfolio",
-      label: t("common.successCases"),
-      className: "text-accent  hover:text-accent",
+      href: "#services",
+      label: t("common.services"),
     },
-    { href: "/services", label: t("common.services") },
-    // { href: "/blog", label: t("common.blog") },
-    // { href: "/about-us", label: t("AboutUs.title") },
-    { href: "/contact", label: t("common.contact") },
+    {
+      href: "#about-us",
+      label: t("AboutUs.title"),
+    },
+    {
+      href: "#howItWorks",
+      label: t("common.howItWorks"),
+    },
+    {
+      href: "#contact",
+      label: t("common.contact"),
+    },
   ];
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
-
   useEffect(() => {
-    // Comprueba el modo oscuro inicial
+    // Check initial dark mode
     const checkDarkMode = () => {
       if (document.documentElement.classList.contains("dark")) {
         setIsDarkMode(true);
@@ -43,7 +49,7 @@ const Header = () => {
 
     checkDarkMode();
 
-    // Crea un observador de mutaciones para detectar cambios en la clase 'dark'
+    // Create mutation observer to detect changes in 'dark' class
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (
@@ -55,12 +61,12 @@ const Header = () => {
       });
     });
 
-    // Iniciar la observación del elemento HTML con la configuración establecida
+    // Start observing the HTML element with the established configuration
     observer.observe(document.documentElement, { attributes: true });
 
     const handleScroll = () => {
       if (window.scrollY > 10) {
-        // Disminuido a 10 para detectar scroll más temprano
+        // Decreased to 10 to detect scroll earlier
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -81,13 +87,12 @@ const Header = () => {
       observer.disconnect();
     };
   }, []);
-
   const handlePitchClick = () => {
     if (isMobile) {
-      // abrir en una nueva pestaña
+      // Open in new tab
       window.open(pitchUrl, "_blank");
     } else {
-      // Simplemente abrimos el modal usando el contexto
+      // Simply open modal using context
       openModal();
     }
   };

@@ -9,6 +9,7 @@ import { useParams } from "next/navigation";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback } from "react";
+import { useTranslations } from "next-intl";
 
 interface ImageWithCaption {
   url: string;
@@ -97,12 +98,11 @@ function ImageCarousel({
 
 export default function Project() {
   let { slug } = useParams();
+  const t = useTranslations("Portfolio");
 
   if (!slug) {
     return (
-      <div className="text-center text-gray-500 mt-10">
-        Proyecto no encontrado
-      </div>
+      <div className="text-center text-gray-500 mt-10">{t("notFound")}</div>
     );
   }
 
@@ -111,9 +111,7 @@ export default function Project() {
 
   if (!project) {
     return (
-      <div className="text-center text-gray-500 mt-10">
-        Proyecto no encontrado
-      </div>
+      <div className="text-center text-gray-500 mt-10">{t("notFound")}</div>
     );
   }
   return (
@@ -142,30 +140,28 @@ export default function Project() {
             />
           </div>
         </div>
-
-        {/* Contenido */}
+        {/* Contenido */}{" "}
         <div className="px-8">
           <div className="border-t border-gray-600/25 mt-8 pt-6 text-center text-gray-500 text-sm"></div>{" "}
-          <h2 className="font-semibold text-subtitle mt-6">El reto</h2>
+          <h2 className="font-semibold text-subtitle mt-6">{t("challenge")}</h2>
           <div
             className="mt-4 text-gray-400"
             dangerouslySetInnerHTML={{ __html: project.challenge! }}
             suppressHydrationWarning
           ></div>
-          <h2 className="font-semibold text-subtitle mt-6">La solución</h2>
+          <h2 className="font-semibold text-subtitle mt-6">{t("solution")}</h2>
           <div
             className="mt-4 text-gray-400"
             dangerouslySetInnerHTML={{ __html: project.solution! }}
             suppressHydrationWarning
           ></div>
-          <h2 className="font-semibold text-subtitle mt-6">El resultado</h2>
+          <h2 className="font-semibold text-subtitle mt-6">{t("result")}</h2>
           <div
             className="mt-4 text-gray-400"
             dangerouslySetInnerHTML={{ __html: project.result! }}
             suppressHydrationWarning
           ></div>
         </div>
-
         {/* Carrusel de imágenes Desktop */}
         <div className="">
           {project.images && project.images.length > 0 && (
@@ -179,7 +175,6 @@ export default function Project() {
             </div>
           )}
         </div>
-
         {/* Carrusel de imágenes Mobile */}
         <div className="px-8">
           {"mobileImages" in project &&
@@ -199,9 +194,7 @@ export default function Project() {
               </div>
             )}
         </div>
-
         {/* Testimonios */}
-
         {project.testimonials?.length && (
           <div className="px-8">
             <h2 className="font-semibold text-subtitle mt-6">Testimonios</h2>
@@ -241,7 +234,6 @@ export default function Project() {
             </div>
           </div>
         )}
-
         {/* Tecnologías */}
         <div className="mt-6 px-8">
           <h2 className="font-semibold text-subtitle mt-6">Tecnologías</h2>{" "}
@@ -291,7 +283,6 @@ export default function Project() {
             suppressHydrationWarning
           ></div>
         </div>
-
         {/* Contacto */}
         <div className="mt-24 px-4">
           <Contact
@@ -299,7 +290,6 @@ export default function Project() {
             message={`Hola, me gustaría saber más sobre ${project.title}`}
           />
         </div>
-
         {/* Volver */}
         <div className="mt-8 transition duration-300 hover:-translate-x-2 px-8">
           <Link href="/portfolio">

@@ -57,7 +57,7 @@ const Hero = () => {
     scrollToElement(id);
   };
 
-  // Solo mostrar la sombra de texto cuando el componente está montado en el cliente
+  // Only show text shadow when component is mounted on client
   const textShadowStyle = isMounted
     ? {
         textShadow: isDarkMode
@@ -65,7 +65,6 @@ const Hero = () => {
           : "0 0 40px var(--primary-shadow)",
       }
     : {};
-
   return (
     <section
       className="py-16 

@@ -3,50 +3,31 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { scrollToElement } from "@/utils/utils";
-import { HeaderProps } from "@/types/HeaderTypes";
+import { useRouter, usePathname } from "@/i18n/routing";
 
 const MobileHeader = ({ links, handlePitchClick }: HeaderProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+
   const handleSmoothScroll = (e: React.MouseEvent, targetId: string) => {
     e.preventDefault();
+    setMenuOpen(false); // Close menu on any link click
 
-    // Determinar si es un enlace a una página o sección
-    const isFullPageLink = targetId.startsWith("/");
-
-    // Si es un enlace completo (como /blog, /portfolio, etc.)
-    if (isFullPageLink) {
-      // Close menu first
-      setMenuOpen(false);
-
-      // En caso de portfolio, mantener el comportamiento actual
-      if (targetId === "/portfolio") {
-        window.location.href = "es" + targetId;
-        return;
+    if (targetId.startsWith("/")) {
+      // Full page link like /portfolio
+      router.push(targetId);
+    } else if (targetId.startsWith("#")) {
+      // Section link like #services
+      const sectionId = targetId.substring(1);
+      if (pathname === "/") {
+        // We are on the main page
+        scrollToElement(sectionId);
+      } else {
+        // Navigate to the main page (conceptual /) and then scroll to the section
+        router.push(`/#${sectionId}`);
       }
-
-      // Para otros enlaces completos (/blog, /services, etc.)
-      const locale = window.location.pathname.split("/")[1] || "es";
-      window.location.href = `/${locale}${targetId}`;
-      return;
     }
-
-    let pathname = window.location.pathname;
-    // quitamos locale
-    const locale = pathname.split("/")[1];
-    pathname = pathname.substring(locale.length + 1);
-
-    const inHome = pathname === "";
-
-    if (inHome) {
-      // Close menu first
-      setMenuOpen(false);
-      // Usar nuestra nueva función de scroll con offset
-      scrollToElement(targetId);
-      return;
-    }
-
-    // entonces quiero ir a home diciéndole scroll hasta la section href
-    window.location.href = `/#${targetId}`;
   };
 
   // Close menu when clicking outside

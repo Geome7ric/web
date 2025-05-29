@@ -5,11 +5,13 @@ import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useBlogStore } from "@/store/blogStore";
 import { BlogProps } from "@/components/Blog";
+import { useParams } from "next/navigation";
+import { useScrollToTopOnNavigation } from "@/hooks/useScrollRestoration";
 
 // Helper function to format date in a readable way
-const formatDate = (dateString: string): string => {
+const formatDate = (dateString: string, locale: string = "es"): string => {
   const date = new Date(dateString);
-  return new Intl.DateTimeFormat("es-ES", {
+  return new Intl.DateTimeFormat(locale === "en" ? "en-US" : "es-ES", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -17,9 +19,20 @@ const formatDate = (dateString: string): string => {
 };
 
 // Component for a single blog preview card
-const BlogCard: React.FC<{ blog: BlogProps }> = ({ blog }) => {
+const BlogCard: React.FC<{ blog: BlogProps; locale?: string }> = ({
+  blog,
+  locale = "es",
+}) => {
+  // Utilizamos el hook para manejar el scroll
+  const handleScrollToTop = useScrollToTopOnNavigation();
+
   return (
-    <Link href={`/blog/${blog.slug}`} className="block h-full group">
+    <Link
+      href={`/blog/${blog.slug}`}
+      className="block h-full group"
+      scroll={true}
+      onClick={handleScrollToTop}
+    >
       <div className="bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] group-hover:shadow-[0_0_15px_rgba(34,197,94,0.4)] flex flex-col h-full">
         <div className="relative h-48 w-full overflow-hidden">
           {blog.heroVideo ? (
@@ -45,11 +58,12 @@ const BlogCard: React.FC<{ blog: BlogProps }> = ({ blog }) => {
         <div className="p-6 flex flex-col flex-grow">
           <div className="flex items-center mb-3">
             <span className="text-sm text-slate-500 dark:text-slate-400">
-              {formatDate(blog.publishedAt)}
+              {formatDate(blog.publishedAt, locale)}
             </span>
             <span className="mx-2 text-slate-400">•</span>
             <span className="text-sm text-slate-500 dark:text-slate-400">
-              {blog.readingTimeMinutes} min de lectura
+              {blog.readingTimeMinutes}{" "}
+              {locale === "en" ? "min read" : "min de lectura"}
             </span>
           </div>
           <h3 className="text-xl font-semibold mb-3 text-slate-800 dark:text-white">
@@ -77,22 +91,32 @@ const BlogCard: React.FC<{ blog: BlogProps }> = ({ blog }) => {
 };
 
 const BlogPreview: React.FC = () => {
-  const { blogs, fetchBlogs, isLoading } = useBlogStore();
+  const params = useParams();
+  const locale = (params?.locale as string) || "es";
+  const { fetchBlogs, isLoading, setCurrentLocale, getLocalizedBlogs } =
+    useBlogStore();
 
   useEffect(() => {
+    // Actualizar el locale en el store
+    setCurrentLocale(locale);
+    // Cargar los blogs
     fetchBlogs();
-  }, [fetchBlogs]);
-  const featuredBlogs = blogs.slice(0, 3);
+  }, [fetchBlogs, locale, setCurrentLocale]);
+
+  // Obtener blogs localizados
+  const displayBlogs = getLocalizedBlogs(locale).slice(0, 3);
 
   return (
     <section id="blog" className="py-16 px-4 md:px-8 max-w-7xl mx-auto">
+      {" "}
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">
-          Nuestro Blog
+          {locale === "en" ? "Our Blog" : "Nuestro Blog"}
         </h2>
         <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-          Descubre ideas, tendencias y consejos sobre desarrollo de software a
-          medida y digitalización empresarial
+          {locale === "en"
+            ? "Discover ideas, trends, and advice on custom software development and business digitalization"
+            : "Descubre ideas, tendencias y consejos sobre desarrollo de software a medida y digitalización empresarial"}
         </p>
       </div>{" "}
       {isLoading ? (
@@ -101,17 +125,19 @@ const BlogPreview: React.FC = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredBlogs.map((blog) => (
-            <BlogCard key={blog.slug} blog={blog} />
+          {displayBlogs.map((blog) => (
+            <BlogCard key={blog.slug} blog={blog} locale={locale} />
           ))}
         </div>
-      )}
+      )}{" "}
       <div className="mt-12 text-center">
         <Link
           href="/blog"
           className="inline-block px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+          scroll={true}
+          onClick={useScrollToTopOnNavigation()}
         >
-          Ver todos los artículos
+          {locale === "en" ? "View all articles" : "Ver todos los artículos"}
         </Link>
       </div>
     </section>

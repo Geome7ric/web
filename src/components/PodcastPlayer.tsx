@@ -1,18 +1,25 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import { useTranslations } from "next-intl";
 
 interface PodcastPlayerProps {
   audioSrc: string;
-  title?: string; // Hago el título opcional
+  title?: string; // Make title optional
   description?: string;
 }
 
 const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
   audioSrc,
-  title = "Nuestro podcast", // Valor predeterminado
-  description = "Escucha este podcast para saber más sobre nuestros servicios",
+  title,
+  description,
 }) => {
+  const t = useTranslations();
+
+  // Use translations with fallbacks
+  const defaultTitle = title || t("PodcastPlayer.defaultTitle");
+  const defaultDescription =
+    description || t("PodcastPlayer.defaultDescription");
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -22,7 +29,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
   const [isMounted, setIsMounted] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
   const [showSpeedOptions, setShowSpeedOptions] = useState(false);
-  const [volume, setVolume] = useState(1); // Valor entre 0 y 1
+  const [volume, setVolume] = useState(1); // Value between 0 and 1
   const [showVolumeSlider, setShowVolumeSlider] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const playerRef = useRef<HTMLDivElement>(null);
@@ -55,7 +62,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
   const glowStyle = isMounted
     ? {
         boxShadow: isDarkMode
-          ? "0 0 170px 1px var(--accent-shadow)" // Más difuminada y extendida en dark mode
+          ? "0 0 170px 1px var(--accent-shadow)" // More diffused and extended in dark mode
           : "0 0 15px var(--primary-shadow)",
       }
     : {};
@@ -398,7 +405,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
             <h3
               className={`${isMobile ? "text-xs" : "text-sm"} text-dark font-medium truncate`}
             >
-              {title}
+              {defaultTitle}
             </h3>
           </div>{" "}
           <button
@@ -407,7 +414,11 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
             text-white/80 hover:text-white
             
             hover:bg-white/20 rounded-full transition-colors`}
-            aria-label={isMinimized ? "Expandir" : "Minimizar"}
+            aria-label={
+              isMinimized
+                ? t("PodcastPlayer.expandLabel")
+                : t("PodcastPlayer.minimizeLabel")
+            }
           >
             {isMinimized ? (
               <svg
@@ -459,7 +470,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
           <p
             className={`${isMobile ? "text-xs" : "text-xs"} text-slate-700 dark:text-slate-200 ${isMobile ? "p-2 pb-1" : "p-3 pb-1 font-medium"} `}
           >
-            {description}
+            {defaultDescription}
           </p>
           {/* Audio waveform visualization (simplified) */}{" "}
           <div
@@ -503,7 +514,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
                 value={currentTime}
                 onChange={handleSeek}
                 className="absolute inset-0 opacity-0 cursor-pointer w-full"
-                aria-label="Seek audio position"
+                aria-label={t("PodcastPlayer.seekLabel")}
                 aria-valuemin={0}
                 aria-valuemax={duration || 0}
                 aria-valuenow={currentTime}
@@ -522,7 +533,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
                   className={`flex items-center justify-center ${
                     isMobile ? "w-7 h-7" : "w-7 h-7"
                   } bg-gray-100 dark:bg-gray-700 text-accent hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full transition-all`}
-                  aria-label="Retroceder 10 segundos"
+                  aria-label={t("PodcastPlayer.rewindLabel")}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -545,7 +556,11 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
                   className={`flex items-center justify-center ${
                     isMobile ? "w-10 h-10" : "w-9 h-9"
                   } bg-accent hover:bg-green-700 text-dark rounded-full transition-all shadow-md hover:shadow-lg hover:scale-105`}
-                  aria-label={isPlaying ? "Pausar" : "Reproducir"}
+                  aria-label={
+                    isPlaying
+                      ? t("PodcastPlayer.pauseLabel")
+                      : t("PodcastPlayer.playLabel")
+                  }
                 >
                   {isPlaying ? (
                     <svg
@@ -581,7 +596,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
                   className={`flex items-center justify-center ${
                     isMobile ? "w-7 h-7" : "w-7 h-7"
                   } bg-gray-100 dark:bg-gray-700 text-accent hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full transition-all`}
-                  aria-label="Avanzar 10 segundos"
+                  aria-label={t("PodcastPlayer.forwardLabel")}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -621,10 +636,9 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
                     toggleVolumeSlider(e);
                   }}
                   className={`flex items-center justify-center ${isMobile ? "h-8 w-8" : "w-7 h-7"} 
-                    ${showVolumeSlider ? "bg-accent/10 dark:bg-accent/20" : ""}
-                    ${isMuted ? "text-slate-500" : "text-accent"}
+                    ${showVolumeSlider ? "bg-accent/10 dark:bg-accent/20" : ""}                    ${isMuted ? "text-slate-500" : "text-accent"}
                     hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full transition-colors`}
-                  aria-label="Ajustar volumen"
+                  aria-label={t("PodcastPlayer.volumeLabel")}
                   aria-expanded={showVolumeSlider}
                   aria-haspopup="true"
                 >
@@ -675,7 +689,11 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
                           transition-colors
                           mr-1.5 flex items-center justify-center`}
                         onClick={toggleMute}
-                        aria-label={isMuted ? "Activar sonido" : "Silenciar"}
+                        aria-label={
+                          isMuted
+                            ? t("PodcastPlayer.unmuteLabel")
+                            : t("PodcastPlayer.muteLabel")
+                        }
                       >
                         {isMuted ? (
                           <svg
@@ -733,7 +751,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
                             transform: "translateY(-50%)",
                             zIndex: 20,
                           }}
-                          aria-label="Ajustar volumen"
+                          aria-label={t("PodcastPlayer.volumeLabel")}
                         />
                       </div>
                     </div>
@@ -746,7 +764,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
                 <button
                   onClick={toggleSpeedOptions}
                   className={`flex items-center justify-center ${isMobile ? "h-8 w-8" : "p-1.5"} hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full transition-colors ml-1`}
-                  aria-label="Cambiar velocidad de reproducción"
+                  aria-label={t("PodcastPlayer.speedLabel")}
                   aria-expanded={showSpeedOptions}
                   aria-haspopup="true"
                 >
@@ -785,7 +803,9 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
                             ? "bg-accent/10 text-accent font-medium"
                             : "hover:bg-gray-100 dark:hover:bg-gray-700"
                         } rounded transition-colors`}
-                        aria-label={`Velocidad ${rate}x`}
+                        aria-label={t("PodcastPlayer.speedValueLabel", {
+                          rate,
+                        })}
                       >
                         {rate}x
                       </button>
@@ -800,22 +820,20 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
         <div
           className={`absolute bottom-1.5 right-1.5 flex items-center gap-1 opacity-20 hover:opacity-100 transition-all duration-300`}
         >
-          {/* Simplified Geome7ric text logo */}
+          {/* Simplified Geome7ric text logo */}{" "}
           <div className="text-[8px] font-semibold text-slate-500 dark:text-slate-600 tracking-tight">
             <span className="hover:text-primary/70 dark:hover:text-accent/70">
-              Geome7ric with
+              {t("PodcastPlayer.watermarkText")}
             </span>
           </div>
-
           {/* IA Logo */}
           <div className="relative group">
             <div className="w-4 h-4 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center">
               <span className="text-[6px] font-bold text-white">IA</span>
-            </div>
-
+            </div>{" "}
             {/* Simple tooltip */}
             <div className="absolute bottom-full right-0 mb-1 px-1.5 py-0.5 bg-black/80 text-white text-[9px] rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-              Podcast y reproductor creados con IA
+              {t("PodcastPlayer.aiTooltip")}
             </div>
           </div>
         </div>

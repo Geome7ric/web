@@ -59,7 +59,7 @@ const Modal: React.FC<{
 
   if (!isOpen) return null;
 
-  // Calculamos el viewport actual donde está el usuario
+  // Calculate the current viewport where the user is
   const viewportTop = window.scrollY;
   const viewportHeight = window.innerHeight;
 

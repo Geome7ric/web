@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { useCalendlyStore } from "@/store/calendlyStore";
 
 interface CalendlyModalProps {
@@ -14,16 +15,20 @@ const CalendlyModal = ({
   isOpen,
   onClose,
   url = "https://calendly.com/geome7ric/30min",
-  title = "Agenda una cita con nosotros",
+  title,
   subtitle,
 }: CalendlyModalProps) => {
+  const t = useTranslations("CalendlyModal");
   const [isClosing, setIsClosing] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
-  // Usar el store de Zustand
+  // Use Zustand store
   const { setUrl, iframeHeight, setIsEmailSent } = useCalendlyStore();
 
-  // Cierre suave del modal usando useCallback para evitar re-creación en cada render
+  // Use translation fallback for title
+  const modalTitle = title || t("defaultTitle");
+
+  // Smooth modal close using useCallback to avoid re-creation on each render
   const handleClose = useCallback(() => {
     setIsClosing(true);
     setTimeout(() => {
@@ -32,7 +37,7 @@ const CalendlyModal = ({
     }, 300);
   }, [onClose]);
 
-  // Cierre al hacer clic fuera del modal con useCallback
+  // Close when clicking outside the modal with useCallback
   const handleOutsideClick = useCallback(
     (e: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
@@ -42,7 +47,7 @@ const CalendlyModal = ({
     [handleClose]
   );
 
-  // Cierre con tecla Escape con useCallback
+  // Close with Escape key using useCallback
   const handleEscapeKey = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -50,7 +55,7 @@ const CalendlyModal = ({
       }
     },
     [handleClose]
-  ); // Cerrar el modal cuando se programa un evento
+  ); // Close modal when an event is scheduled
   const handleEmailSent = useCallback(() => {
     setIsEmailSent(true);
     setTimeout(() => {
@@ -58,10 +63,10 @@ const CalendlyModal = ({
     }, 1000);
   }, [handleClose, setIsEmailSent]);
 
-  // Manejar el scroll del body cuando el modal está abierto
+  // Handle body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
-      // Actualizar la URL en el store cuando se abre el modal
+      // Update URL in store when modal opens
       setUrl(url);
 
       document.body.style.overflow = "hidden";
@@ -104,9 +109,10 @@ const CalendlyModal = ({
       >
         {/* Encabezado del modal */}
         <div className="flex justify-between items-center p-3 border-b border-gray-200 dark:border-gray-700">
+          {" "}
           <div>
             <h2 className="text-lg font-semibold text-black dark:text-white">
-              {title}
+              {modalTitle}
             </h2>
             {subtitle && (
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
@@ -117,7 +123,7 @@ const CalendlyModal = ({
           <button
             onClick={handleClose}
             className="text-gray-500 hover:text-black dark:hover:text-white rounded-full p-1 transition-colors focus:outline-none"
-            aria-label="Cerrar"
+            aria-label={t("closeLabel")}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -137,15 +143,16 @@ const CalendlyModal = ({
         </div>{" "}
         {/* Contenido del modal */}
         <div className="p-0 sm:p-2 overflow-visible">
+          {" "}
           <iframe
             src={url}
             width="100%"
             height="600"
             frameBorder="0"
-            title="Calendly Scheduling"
+            title={t("iframeTitle")}
             className="rounded-lg"
             onLoad={() => {
-              // Simular que se programó un evento después de 5 segundos
+              // Simulate event scheduling after 5 seconds
               setTimeout(() => {
                 handleEmailSent();
               }, 5000);

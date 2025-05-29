@@ -28,7 +28,7 @@ const Services = () => {
       className="relative flex flex-col items-center justify-center pt-36 lg:pt-40 text-black dark:text-white z-0"
     >
       <div className="container mx-auto px-6 max-w-6xl">
-        {/* Título e introducción */}
+        {/* Title and introduction */}
         <h2 className="text-subtitle text-center mb-4 text-black dark:text-white">
           {t("title")}
         </h2>
@@ -92,7 +92,7 @@ const Services = () => {
             </div>
           ))}
         </div>
-        {/* Por qué elegirnos */}
+        {/* Why choose us */}
         {/* <div className="mt-24 text-center">
           <h3 className="text-subtitle  mb-6">{t("whyTitle")}</h3>
 

@@ -20,11 +20,11 @@ export default {
         smokeEffect: {
           "0%": {
             transform: "scale(1) translateY(0)",
-            opacity: "0.4", // Comienza más tenue
+            opacity: "0.4", // Starts dimmer
           },
           "25%": {
             transform: "scale(1.02) ", // Agregamos un leve desplazamiento hacia arriba
-            opacity: "0.4", // Se hace más visible
+            opacity: "0.4", // Becomes more visible
           },
           "50%": {
             transform: "scale(1.4) ", // Un desplazamiento vertical mayor
@@ -35,7 +35,7 @@ export default {
             opacity: "0.4", // Se estabiliza en opacidad media
           },
           "100%": {
-            transform: "scale(1) translateY(0)", // Regresa a su tamaño original
+            transform: "scale(1) translateY(0)", // Returns to original size
             opacity: "0.4", // Y vuelve a ser tenue
           },
         },
@@ -50,7 +50,7 @@ export default {
       },
       animation: {
         "spin-slow": "spin 20s linear infinite",
-        smoke: "smokeEffect 6s infinite ease-in-out", // Usamos el nombre 'smoke' para la animación
+        smoke: "smokeEffect 6s infinite ease-in-out", // Use 'smoke' name for animation
         fadeIn: "fadeIn 0.5s ease-in-out",
         fadeOut: "fadeOut 0.5s ease-in-out",
       },

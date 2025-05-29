@@ -2,44 +2,28 @@
 
 import { HeaderProps } from "@/types/HeaderTypes";
 import { scrollToElement } from "@/utils/utils";
+import { useRouter, usePathname } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 const DesktopHeader = ({ links, handlePitchClick }: HeaderProps) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const t = useTranslations();
+
   const handleSmoothScroll = (e: React.MouseEvent, targetId: string) => {
     e.preventDefault();
 
-    // Determinar si es un enlace a una página o sección
-    const isFullPageLink = targetId.startsWith("/");
+    if (targetId.startsWith("/")) {
+      router.push(targetId as string);
+    } else if (targetId.startsWith("#")) {
+      const sectionId = targetId.substring(1);
 
-    // Si es un enlace completo (como /blog, /portfolio, etc.)
-    if (isFullPageLink) {
-      // En caso de portfolio, mantener el comportamiento actual
-      if (targetId === "/portfolio") {
-        window.location.href = "es" + targetId;
-        return;
+      if (pathname === "/") {
+        scrollToElement(sectionId);
+      } else {
+        router.push(`/#${sectionId}`);
       }
-
-      // Para otros enlaces completos (/blog, /services, etc.)
-      const locale = window.location.pathname.split("/")[1] || "es";
-      window.location.href = `/${locale}${targetId}`;
-      return;
     }
-
-    // El código existente para secciones dentro de la página (servicios, contacto, etc.)
-    let pathname = window.location.pathname;
-    // quitamos locale
-    const locale = pathname.split("/")[1];
-    pathname = pathname.substring(locale.length + 1);
-
-    const inHome = pathname === "";
-
-    if (inHome) {
-      // Usar nuestra nueva función de scroll con offset
-      scrollToElement(targetId);
-      return;
-    }
-
-    // entonces quiero ir a home diciéndole scroll hasta la section href
-    window.location.href = `/#${targetId}`;
   };
 
   return (
@@ -67,7 +51,7 @@ const DesktopHeader = ({ links, handlePitchClick }: HeaderProps) => {
            bg-accent/80 text-black dark:text-dark hover:bg-accent/90
             hover:text-white transition-colors duration-300 rounded-lg "
         >
-          Conocenos
+          {t("AboutUs.meetTeam")}
         </button>
       </ul>
     </nav>

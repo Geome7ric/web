@@ -9,6 +9,7 @@ import BrandScroller from "@/components/BrandScroller";
 import AboutUs from "@/components/AboutUs";
 import BlogPreview from "@/components/BlogPreview";
 import PodcastPlayer from "@/components/PodcastPlayer";
+import BackgroundVideo from "@/components/BackgroundVideo";
 
 export default function Home() {
   return (
@@ -16,17 +17,15 @@ export default function Home() {
       className="font-[family-name:var(--font-geist-sans)]
         row-start-2 sm:items-start w-full max-w-full overflow-x-hidden relative"
     >
-      {" "}
+      <BackgroundVideo videoSrc="/assets/hero/background.mp4" />
       <Hero />
-      <BrandScroller /> <HowItWorks />
+      <BrandScroller />
+      <HowItWorks />
       <Services />
-      <AboutUs /> <BlogPreview />
-      <CalendlyScheduler testEmail={false} />
-      <Contact />{" "}
-      <PodcastPlayer
-        audioSrc="/podcast.wav"
-        description="Te explicamos cómo transformamos tu negocio"
-      />
+      <AboutUs />
+      <BlogPreview />
+      <CalendlyScheduler testEmail={false} /> <Contact />
+      <PodcastPlayer audioSrc="/podcast.wav" />
     </div>
   );
 }

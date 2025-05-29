@@ -52,11 +52,11 @@ const HowItWorks = () => {
     [t]
   );
 
-  // Efecto para controlar la animación inicial
+  // Effect to control initial animation
   useEffect(() => {
     setIsVisible(true);
 
-    // Animación escalonada de los pasos
+    // Staggered step animation
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -138,7 +138,7 @@ const HowItWorks = () => {
               style={{ transitionDelay: `${200 + index * 150}ms` }}
               data-step-index={index}
             >
-              {/* Línea vertical que conecta cada elemento hasta antes del paso 06 */}
+              {/* Vertical line connecting each element until before step 06 */}
               {index < STEPS.length - 1 && step.id !== "05" && (
                 <div
                   className={`absolute left-[34px] top-[70px] h-full w-[2px] bg-accent opacity-50 z-0

@@ -36,7 +36,7 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   );
 
   const [lastScrollY, setLastScrollY] = useState(0);
-  const scrollThreshold = 200; // Umbral de desplazamiento (en píxeles)
+  const scrollThreshold = 200; // Scroll threshold (in pixels)
   const [scrollAccumulator, setScrollAccumulator] = useState(0); // Acumulador para registrar el desplazamiento total
 
   useEffect(() => {
@@ -52,14 +52,14 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
 
       // Desplazar solo cuando el acumulado supera el umbral
       if (Math.abs(newScrollAccumulator) >= scrollThreshold) {
-        // Calculamos cuántas imágenes mover dependiendo del acumulado
+        // Calculate how many images to move based on accumulated scroll
         const moveCount = Math.floor(newScrollAccumulator / scrollThreshold);
 
         if (moveCount !== 0) {
           emblaApi.scrollTo(emblaApi.selectedScrollSnap() + moveCount);
         }
 
-        // Restablecemos el acumulador después de mover el carrusel
+        // Reset accumulator after moving carousel
         setScrollAccumulator(0);
       }
 
@@ -85,7 +85,7 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
           <div
             className="flex items-center "
             style={{
-              // Se ajusta según el ancho de la pantalla
+              // Adjusts according to screen width
               width: `calc(100%)`,
             }}
           >

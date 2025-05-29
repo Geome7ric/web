@@ -27,7 +27,7 @@ let analytics: Analytics | null = null;
 const isLocalEnvironment = process.env.NODE_ENV === "development";
 
 if (typeof window !== "undefined" && !isLocalEnvironment) {
-  // Solución actualizada para Analytics - solo en producción
+  // Updated solution for Analytics - production only
   (async () => {
     try {
       const analyticsSupported = await isSupported();

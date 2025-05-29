@@ -15,7 +15,8 @@
     "home": "Home",
     "services": "Services",
     "blog": "Blog",
-    "successCases": "Success Stories"
+    "successCases": "Success Stories",
+    "howItWorks": "How It Works"
   },
   "AboutUs": {
     "title": "About Us",
@@ -36,7 +37,7 @@
         "description": "We value honesty and clarity. We ensure that you are kept informed about the progress of your project, timelines, and any necessary adjustments, so you always have full control over the results."
       }
     },
-    "meetTeam": "Meet the team"
+    "meetTeam": "Meet us"
   },
   "Hero": {
     "title": {
@@ -109,7 +110,9 @@
     "description": "Choose a suitable time for a free consultation. We'll help you understand how our digital solutions can optimize your business.",
     "scheduleTitle": "Schedule a meeting with us",
     "scheduleDescription": "Select a date and time that is convenient for you. We will listen to you and see how we can help you.",
-    "sendTestEmailButton": "Send test email"
+    "sendTestEmailButton": "Send test email",
+    "closeLabel": "Close",
+    "iframeTitle": "Calendly Scheduling"
   },
   "HowItWorks": {
     "title": "How It Works to Work With Us",
@@ -149,5 +152,42 @@
       }
     },
     "cycleProcessAlt": "Cycle process"
+  },
+  "PodcastPlayer": {
+    "defaultTitle": "Our Podcast",
+    "defaultDescription": "Listen to this podcast to learn more about our services",
+    "expandLabel": "Expand",
+    "minimizeLabel": "Minimize",
+    "playLabel": "Play",
+    "pauseLabel": "Pause",
+    "rewindLabel": "Rewind 10 seconds",
+    "forwardLabel": "Forward 10 seconds",
+    "seekLabel": "Seek audio position",
+    "volumeLabel": "Adjust volume",
+    "speedLabel": "Change playback speed",
+    "muteLabel": "Mute",
+    "unmuteLabel": "Unmute",
+    "speedValueLabel": "Speed {rate}x",
+    "watermarkText": "Geome7ric with",
+    "aiTooltip": "Podcast and player created with AI"
+  },
+  "CalendlyModal": {
+    "defaultTitle": "Schedule an appointment with us",
+    "closeLabel": "Close",
+    "iframeTitle": "Calendly Scheduling"
+  },
+  "Portfolio": {
+    "title": "Success Cases",
+    "subtitle": "Custom digital solutions for businesses",
+    "notFound": "Project not found",
+    "challenge": "The Challenge",
+    "solution": "The Solution",
+    "result": "The Result",
+    "desktopApp": "Desktop Application",
+    "mobileApp": "Mobile Application",
+    "testimonials": "Testimonials",
+    "technologies": "Technologies",
+    "contactUs": "Hello, I would like to know more about",
+    "backToPortfolio": "Back to portfolio"
   }
 }

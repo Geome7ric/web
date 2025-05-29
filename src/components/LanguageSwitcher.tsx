@@ -44,7 +44,7 @@ export default function LanguageSwitcher() {
             }
             ${isPending ? "cursor-not-allowed" : ""}
           `}
-          disabled={isPending} // Evita múltiples clics mientras cambia
+          disabled={isPending} // Prevent multiple clicks while changing
         >
           {locale.toUpperCase()}
         </button>
