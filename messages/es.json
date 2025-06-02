@@ -16,7 +16,7 @@
     "services": "Servicios",
     "blog": "Blog",
     "successCases": "Casos de éxito",
-    "howItWorks": "Cómo funciona"
+    "howItWorks": "Cómo funcionaunciona"
   },
   "AboutUs": {
     "title": "¿Quiénes somos?",
@@ -48,7 +48,7 @@
     "subtitle": "Descubre cómo Geome7ric transforma procesos y mejora la productividad de tu equipo.",
     "actions": {
       "contact": "Solicitar una consulta gratuita",
-      "services": "Ver cómo f"
+      "services": "Ver cómo funciona"
     }
   },
   "Services": {
@@ -115,7 +115,7 @@
     "iframeTitle": "Programación de Calendly"
   },
   "HowItWorks": {
-    "title": "Cómo f trabajar con nosotros",
+    "title": "Cómo funciona trabajar con nosotros",
     "subtitle1": "Descubre los pasos clave en nuestro proceso para llevar tu proyecto del concepto a la realidad.",
     "subtitle2": "Transformamos tu idea de negocio digital en una solución tecnológica a medida mediante un proceso estructurado y transparente. Desde la comprensión inicial de tus necesidades hasta el desarrollo iterativo y el soporte posterior al lanzamiento, trabajamos en estrecha colaboración contigo en cada etapa para garantizar que la solución final se alinee perfectamente con tus objetivos comerciales y resuelva los desafíos específicos de tu empresa.",
     "ctaButton": "Agenda una reunión",
