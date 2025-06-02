@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { create } from "zustand";
 import { EnhancedBlogProps, LocalizedBlogProps } from "@/types/blog";
 import {
@@ -5,6 +6,7 @@ import {
   LocalizedString,
   LocalizedStringArray,
   LocalizedImageAsset,
+  ImageAsset,
 } from "@/types/common";
 import { blogsData } from "@/data/blog/blogsData";
 
@@ -13,9 +15,7 @@ interface BlogStore {
   featuredBlogs: LocalizedBlogProps[];
   isLoading: boolean;
   error: string | null;
-  currentLocale: string;
-
-  // Methods expected by components
+  currentLocale: string; // Methods expected by components
   fetchBlogs: () => Promise<void>;
   setCurrentLocale: (locale: string) => void;
   getLocalizedBlogs: (locale: string) => LocalizedBlogProps[];
@@ -51,10 +51,10 @@ const localizeStringArray = (
 
 // Helper function to localize image assets
 const localizeImageAsset = (
-  imageAsset: any,
+  imageAsset: ImageAsset | LocalizedImageAsset,
   locale: string
 ): LocalizedImageAsset => {
-  if (!imageAsset) return imageAsset;
+  if (!imageAsset) return { src: "", alt: "" };
 
   return {
     src: imageAsset.src,
@@ -217,7 +217,7 @@ export const useBlogStore = create<BlogStore>((set, get) => ({
         featuredBlogs: localizedBlogs.slice(0, 3),
         isLoading: false,
       });
-    } catch (error) {
+    } catch {
       set({
         error: "Error loading blogs",
         isLoading: false,

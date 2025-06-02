@@ -542,15 +542,15 @@ const Blog = ({ data }: { data: LocalizedBlogProps }) => {
             {data.heroVideo ? (
               <div className="relative w-full aspect-video rounded-lg overflow-hidden">
                 <video
+                  src={data.heroVideo}
                   className="w-full h-full object-cover"
                   poster={data.heroImage.src}
-                  controls
                   preload="metadata"
+                  autoPlay
+                  muted
                   playsInline
-                >
-                  <source src={data.heroVideo} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                  loop
+                ></video>
               </div>
             ) : (
               <div className="relative w-full aspect-video rounded-lg overflow-hidden">

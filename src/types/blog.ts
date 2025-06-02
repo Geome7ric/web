@@ -5,7 +5,6 @@ import {
   LocalizedStringArray,
   ImageAsset,
   LocalizedImageAsset,
-  Locale,
 } from "./common";
 
 // Enhanced blog props (raw data with localized fields)
