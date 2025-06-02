@@ -10,10 +10,12 @@ import useScrollRestoration from "@/hooks/useScrollRestoration";
 
 export default function BlogsPage() {
   const params = useParams();
-  const locale = (params?.locale as string) || "es";
+  const locale =
+    (Array.isArray(params?.locale) ? params.locale[0] : params?.locale) || "es";
   const t = useTranslations("Blog");
   const { fetchBlogs, isLoading, setCurrentLocale, getLocalizedBlogs } =
     useBlogStore();
+
   React.useEffect(() => {
     // Actualizar el locale en el store
     setCurrentLocale(locale);
@@ -51,17 +53,17 @@ export default function BlogsPage() {
                   className="block"
                   scroll={true}
                 >
-                  {/* Blog card image - Hidden temporarily */}
-
+                  {/* Blog card image - Hidden temporarily */}{" "}
                   <div className="relative h-48 w-full">
                     <Image
-                      src={blog.heroImage.src}
-                      alt={blog.heroImage.alt}
+                      alt={blog.heroImage.alt || "Blog image"}
+                      src={
+                        blog.heroImage.src || "/images/default-blog-image.jpg"
+                      }
                       fill
                       className="object-cover"
                     />
                   </div>
-
                   <div className="p-6">
                     <div className="flex flex-wrap gap-2 mb-3">
                       {blog.tags.slice(0, 2).map((tag, index) => (
@@ -72,7 +74,7 @@ export default function BlogsPage() {
                           {tag}
                         </span>
                       ))}
-                    </div>
+                    </div>{" "}
                     <h2 className="text-xl font-semibold mb-3 text-black dark:text-white">
                       {blog.title}
                     </h2>

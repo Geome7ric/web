@@ -1,34 +1,33 @@
 // Enhanced blog data interface with comprehensive SEO fields
-// Place this in: src/types/blog.ts
 
-export type LocalizedString = {
-  es: string;
-  en: string;
-};
+import {
+  LocalizedString,
+  LocalizedStringArray,
+  ImageAsset,
+  LocalizedImageAsset,
+  Locale,
+} from "./common";
 
-export type LocalizedStringArray = {
-  es: string[];
-  en: string[];
-};
-
+// Enhanced blog props (raw data with localized fields)
 export interface EnhancedBlogProps {
   // Basic content
   title: LocalizedString;
-  slug: string; // Slug remains a single string, not localized in this manner
-  content: BlogSection[];
+  previewTitle?: LocalizedString; // Added missing previewTitle
+  slug: string;
+  content?: BlogSection[]; // Made optional since it's not used in current data
 
   // SEO Meta Tags
   seoTitle: LocalizedString;
   seoDescription: LocalizedString;
-  focusKeyword: LocalizedString;
-  metaKeywords: LocalizedStringArray;
+  focusKeyword?: LocalizedString;
+  metaKeywords?: LocalizedStringArray;
   socialDescription?: LocalizedString;
 
   // Media
-  heroImage: BlogImage;
-  heroVideo?: string; // Video URLs are typically not localized
-  intermediateImage?: BlogImage;
-  featuredImage?: BlogImage; // For social sharing
+  heroImage: ImageAsset;
+  heroVideo?: string; // Changed to optional string (undefined instead of null)
+  intermediateImage?: ImageAsset;
+  featuredImage?: ImageAsset;
 
   // Publishing Info
   publishedAt: string;
@@ -36,31 +35,31 @@ export interface EnhancedBlogProps {
   readingTimeMinutes: number;
 
   // Categorization
-  category: LocalizedString;
+  category?: LocalizedString;
   tags: LocalizedStringArray;
 
   // Content Structure
-  sections: BlogSection[]; // sections are already an array of BlogSection, which will have localized fields
+  sections: BlogSection[];
   tableOfContents?: boolean;
 
   // Engagement
   related?: RelatedArticle[];
 
-  // Author Info (for future multi-author support)
+  // Author Info
   author?: {
     name: LocalizedString;
     bio?: LocalizedString;
-    avatar?: string; // Avatar URL is not localized
+    avatar?: string;
     social?: {
-      twitter?: string; // Social URLs are not localized
-      linkedin?: string; // Social URLs are not localized
+      twitter?: string;
+      linkedin?: string;
     };
   };
 
   // Advanced SEO
-  canonical?: string; // Canonical URL is typically not localized or handled differently
+  canonical?: string;
   noindex?: boolean;
-  priority?: number; // For sitemap
+  priority?: number;
   changeFrequency?:
     | "always"
     | "hourly"
@@ -76,12 +75,61 @@ export interface EnhancedBlogProps {
   shares?: number;
 }
 
-export interface BlogImage {
-  src: string; // Image source URL is not localized
-  alt: LocalizedString;
-  caption?: LocalizedString;
-  width?: number;
-  height?: number;
+// Localized blog props (after localization)
+export interface LocalizedBlogProps {
+  title: string;
+  previewTitle?: string;
+  slug: string;
+  content?: LocalizedBlogSection[];
+
+  seoTitle: string;
+  seoDescription: string;
+  focusKeyword?: string;
+  metaKeywords?: string[];
+  socialDescription?: string;
+
+  heroImage: LocalizedImageAsset;
+  heroVideo?: string;
+  intermediateImage?: LocalizedImageAsset;
+  featuredImage?: LocalizedImageAsset;
+
+  publishedAt: string;
+  lastModified?: string;
+  readingTimeMinutes: number;
+
+  category?: string;
+  tags: string[];
+
+  sections: LocalizedBlogSection[];
+  tableOfContents?: boolean;
+
+  related?: LocalizedRelatedArticle[];
+
+  author?: {
+    name: string;
+    bio?: string;
+    avatar?: string;
+    social?: {
+      twitter?: string;
+      linkedin?: string;
+    };
+  };
+
+  canonical?: string;
+  noindex?: boolean;
+  priority?: number;
+  changeFrequency?:
+    | "always"
+    | "hourly"
+    | "daily"
+    | "weekly"
+    | "monthly"
+    | "yearly"
+    | "never";
+
+  views?: number;
+  likes?: number;
+  shares?: number;
 }
 
 export interface BlogSection {
@@ -99,21 +147,56 @@ export interface BlogSection {
   content?: LocalizedString;
   items?: LocalizedStringArray;
   quote?: LocalizedString;
-  author?: LocalizedString; // Author of the quote/testimonial
+  author?: LocalizedString;
   buttonText?: LocalizedString;
-  buttonLink?: string; // Button links are typically not localized in this manner
+  buttonLink?: string;
 
-  // For FAQ sections
   questions?: {
     question: LocalizedString;
     answer: LocalizedString;
   }[];
 }
 
+export interface LocalizedBlogSection {
+  type:
+    | "intro"
+    | "highlight"
+    | "problem"
+    | "solution"
+    | "benefits"
+    | "testimonial"
+    | "cta"
+    | "conclusion"
+    | "faq";
+  title?: string;
+  content?: string;
+  items?: string[];
+  quote?: string;
+  author?: string;
+  buttonText?: string;
+  buttonLink?: string;
+
+  questions?: {
+    question: string;
+    answer: string;
+  }[];
+}
+
 export interface RelatedArticle {
-  slug: string; // Slug remains a single string
+  slug: string;
   title: LocalizedString;
   reason: LocalizedString;
-  image?: string; // Image URL is not localized
+  image?: string;
   publishedAt?: string;
 }
+
+export interface LocalizedRelatedArticle {
+  slug: string;
+  title: string;
+  reason: string;
+  image?: string;
+  publishedAt?: string;
+}
+
+// Legacy type alias for compatibility with existing Blog component
+export type BlogProps = LocalizedBlogProps;

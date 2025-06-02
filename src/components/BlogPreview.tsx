@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useBlogStore } from "@/store/blogStore";
-import { BlogProps } from "@/components/Blog";
+import { LocalizedBlogProps } from "@/types/blog";
 import { useParams } from "next/navigation";
 import { useScrollToTopOnNavigation } from "@/hooks/useScrollRestoration";
 
@@ -19,7 +19,7 @@ const formatDate = (dateString: string, locale: string = "es"): string => {
 };
 
 // Component for a single blog preview card
-const BlogCard: React.FC<{ blog: BlogProps; locale?: string }> = ({
+const BlogCard: React.FC<{ blog: LocalizedBlogProps; locale?: string }> = ({
   blog,
   locale = "es",
 }) => {
@@ -73,11 +73,11 @@ const BlogCard: React.FC<{ blog: BlogProps; locale?: string }> = ({
             {blog.socialDescription || blog.seoDescription.substring(0, 120)}
             {(blog.socialDescription || blog.seoDescription).length > 120 &&
               "..."}
-          </p>
+          </p>{" "}
           <div className="flex flex-wrap gap-2">
-            {blog.tags.slice(0, 2).map((tag) => (
+            {blog.tags.slice(0, 2).map((tag: string, index: number) => (
               <span
-                key={tag}
+                key={index}
                 className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-xs px-2 py-1 rounded-md"
               >
                 {tag}

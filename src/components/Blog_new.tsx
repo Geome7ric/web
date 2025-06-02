@@ -146,10 +146,9 @@ const Blog = ({ data }: { data: LocalizedBlogProps }) => {
         return (
           <section key={`section-${index}`} className="mb-10">
             <blockquote className="border-l-4 border-green-500 pl-6 py-4 bg-gray-50 dark:bg-gray-800/50 rounded-r-lg">
-              {" "}
               {section.quote && (
                 <p className="text-lg italic text-black/80 dark:text-white/80 mb-3">
-                  &ldquo;{section.quote}&rdquo;
+                  "{section.quote}"
                 </p>
               )}
               {section.author && (
@@ -212,27 +211,22 @@ const Blog = ({ data }: { data: LocalizedBlogProps }) => {
               <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-black dark:text-white">
                 {section.title}
               </h2>
-            )}{" "}
+            )}
             {section.questions && section.questions.length > 0 && (
               <div className="space-y-4">
-                {section.questions.map(
-                  (
-                    faqItem: { question: string; answer: string },
-                    faqIndex: number
-                  ) => (
-                    <details
-                      key={`faq-${faqIndex}`}
-                      className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 border border-gray-200 dark:border-gray-700"
-                    >
-                      <summary className="font-medium text-black dark:text-white cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors">
-                        {faqItem.question}
-                      </summary>
-                      <p className="mt-3 text-black/80 dark:text-white/80 leading-relaxed">
-                        {faqItem.answer}
-                      </p>
-                    </details>
-                  )
-                )}
+                {section.questions.map((faqItem: any, faqIndex: number) => (
+                  <details
+                    key={`faq-${faqIndex}`}
+                    className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 border border-gray-200 dark:border-gray-700"
+                  >
+                    <summary className="font-medium text-black dark:text-white cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                      {faqItem.question}
+                    </summary>
+                    <p className="mt-3 text-black/80 dark:text-white/80 leading-relaxed">
+                      {faqItem.answer}
+                    </p>
+                  </details>
+                ))}
               </div>
             )}
           </section>
@@ -288,7 +282,7 @@ const Blog = ({ data }: { data: LocalizedBlogProps }) => {
         : 0;
       const questionsCount = section.questions
         ? section.questions.reduce(
-            (sum: number, q: { question: string; answer: string }) =>
+            (sum: number, q: any) =>
               sum + q.question.split(" ").length + q.answer.split(" ").length,
             0
           )
@@ -307,10 +301,7 @@ const Blog = ({ data }: { data: LocalizedBlogProps }) => {
           text +=
             " " +
             section.questions
-              .map(
-                (q: { question: string; answer: string }) =>
-                  q.question + " " + q.answer
-              )
+              .map((q: any) => q.question + " " + q.answer)
               .join(" ");
         }
         return text;

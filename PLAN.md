@@ -1,5 +1,7 @@
 feats
 
+hacer queel sition se cargue el idioma segun el navegador del usuario https://nextjs.org/docs/pages/guides/internationalization
+
 - Performance Optimization & Monitoring Deep Dive: Next.js Image Optimization Audit: Systematically review all image usage (many in assets) and ensure they are optimally loaded using the Next.js <Image> component to improve load times and Core Web Vital
 - Sentry Custom Alerts: Leverage your Sentry setup (sentry.edge.config.ts, sentry.server.config.ts) by configuring custom performance alerts for key user flows or critical pages to proactively identify and address performance regressions.
 - mejorar el reproductor para la versión móvil

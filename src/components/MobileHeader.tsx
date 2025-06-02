@@ -1,9 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import {
+  useState,
+  useEffect,
+  JSXElementConstructor,
+  ReactElement,
+  ReactNode,
+  ReactPortal,
+} from "react";
 import { Menu, X } from "lucide-react";
 import { scrollToElement } from "@/utils/utils";
 import { useRouter, usePathname } from "@/i18n/routing";
+import { HeaderProps } from "@/types/HeaderTypes";
 
 const MobileHeader = ({ links, handlePitchClick }: HeaderProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -74,20 +82,45 @@ const MobileHeader = ({ links, handlePitchClick }: HeaderProps) => {
              bg-white dark:bg-dark
              "
         >
-          {links.map((link) => (
-            <button
-              key={`${link.href}${link.label}`}
-              className="block w-full text-left px-4 py-2 text-sm 
+          {links.map(
+            (link: {
+              href: string;
+              label:
+                | string
+                | number
+                | bigint
+                | boolean
+                | ReactElement<unknown, string | JSXElementConstructor<any>>
+                | Iterable<ReactNode>
+                | ReactPortal
+                | Promise<
+                    | string
+                    | number
+                    | bigint
+                    | boolean
+                    | ReactPortal
+                    | ReactElement<unknown, string | JSXElementConstructor<any>>
+                    | Iterable<ReactNode>
+                    | null
+                    | undefined
+                  >
+                | null
+                | undefined;
+            }) => (
+              <button
+                key={`${link.href}${link.label}`}
+                className="block w-full text-left px-4 py-2 text-sm 
               text-dark dark:text-white 
              "
-              onClick={(e) => {
-                setMenuOpen(false);
-                handleSmoothScroll(e, link.href);
-              }}
-            >
-              {link.label}
-            </button>
-          ))}
+                onClick={(e) => {
+                  setMenuOpen(false);
+                  handleSmoothScroll(e, link.href);
+                }}
+              >
+                {link.label}
+              </button>
+            )
+          )}
           <button
             className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
             onClick={() => {

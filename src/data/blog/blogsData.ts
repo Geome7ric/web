@@ -1,6 +1,6 @@
-import { BlogProps } from "@/components/Blog";
+import { EnhancedBlogProps } from "@/types/blog";
 
-export const blogPostTecnologiaTransformacion: BlogProps = {
+export const blogPostTecnologiaTransformacion: EnhancedBlogProps = {
   title: {
     es: "Tecnología: Transformando el Trabajo, la Cultura Empresarial y el Mundo Móvil",
     en: "Technology: Transforming Work, Business Culture, and the Mobile World",
@@ -33,7 +33,7 @@ export const blogPostTecnologiaTransformacion: BlogProps = {
       en: "Technology: The engine of transformation in work, culture, and mobility.",
     },
   },
-  heroVideo: null,
+  heroVideo: undefined,
   intermediateImage: {
     src: "/assets/blogs/tecnologia-transformacion/section.png",
     alt: {
@@ -172,7 +172,7 @@ export const blogPostTecnologiaTransformacion: BlogProps = {
   ],
 };
 
-export const blogPostIaPartnerTi: BlogProps = {
+export const blogPostIaPartnerTi: EnhancedBlogProps = {
   title: {
     es: "Impulsa tu Empresa con IA: Cómo la Inteligencia Artificial Transforma los Negocios y Por Qué tu Partner de TI es Clave",
     en: "Boost Your Company with AI: How Artificial Intelligence Transforms Businesses and Why Your IT Partner is Key",
@@ -395,7 +395,7 @@ export const blogPostIaPartnerTi: BlogProps = {
   ],
 };
 
-export const blogPostOptimizarFlujoReducirErrores: BlogProps = {
+export const blogPostOptimizarFlujoReducirErrores: EnhancedBlogProps = {
   title: {
     es: "Cómo automatizar tareas repetitivas para mejorar la productividad en tu negocio",
     en: "How to automate repetitive tasks to improve productivity in your business",
@@ -561,187 +561,188 @@ export const blogPostOptimizarFlujoReducirErrores: BlogProps = {
   ],
 };
 
-export const blogPostBeneficiosDigitalizacionSoftwareMedida: BlogProps = {
-  title: {
-    es: "Los beneficios de la digitalización: ¿Por qué tu empresa necesita un software a medida?",
-    en: "The benefits of digitalization: Why does your company need custom software?",
-  },
-  previewTitle: {
-    es: "Beneficios del software a medida",
-    en: "Benefits of custom software",
-  },
-  slug: "beneficios-digitalizacion-software-medida",
-  seoTitle: {
-    es: "Beneficios del software a medida | Geome7ric",
-    en: "Benefits of custom software | Geome7ric",
-  },
-  seoDescription: {
-    es: "Descubrí cómo un software personalizado puede mejorar la eficiencia, el control y la escalabilidad de tu empresa.",
-    en: "Discover how custom software can improve your company's efficiency, control, and scalability.",
-  },
-  socialDescription: {
-    es: "Deja atrás herramientas genéricas: un software a medida te da control, visibilidad y velocidad para escalar sin límites.",
-    en: "Leave generic tools behind: custom software gives you control, visibility, and speed to scale without limits.",
-  },
-  heroImage: {
-    src: "/assets/blogs/beneficios-digitalizacion-software-medida/hero.png",
-    alt: {
-      es: "Concepto de trabajo digital personalizado: equipo usando un sistema unificado en lugar de múltiples herramientas desordenadas",
-      en: "Custom digital work concept: team using a unified system instead of multiple disorganized tools",
+export const blogPostBeneficiosDigitalizacionSoftwareMedida: EnhancedBlogProps =
+  {
+    title: {
+      es: "Los beneficios de la digitalización: ¿Por qué tu empresa necesita un software a medida?",
+      en: "The benefits of digitalization: Why does your company need custom software?",
     },
-    caption: {
-      es: "De sistemas dispersos a una plataforma centralizada diseñada para tu negocio",
-      en: "From scattered systems to a centralized platform designed for your business",
+    previewTitle: {
+      es: "Beneficios del software a medida",
+      en: "Benefits of custom software",
     },
-  },
-  heroVideo: null,
-  intermediateImage: {
-    src: "/assets/blogs/beneficios-digitalizacion-software-medida/section.png",
-    alt: {
-      es: "Comparación visual: caos con herramientas genéricas vs orden y eficiencia con software a medida",
-      en: "Visual comparison: chaos with generic tools vs order and efficiency with custom software",
+    slug: "beneficios-digitalizacion-software-medida",
+    seoTitle: {
+      es: "Beneficios del software a medida | Geome7ric",
+      en: "Benefits of custom software | Geome7ric",
     },
-    caption: {
-      es: "El cambio de plataformas desarticuladas a un flujo integrado y escalable",
-      en: "The shift from disjointed platforms to an integrated and scalable flow",
+    seoDescription: {
+      es: "Descubrí cómo un software personalizado puede mejorar la eficiencia, el control y la escalabilidad de tu empresa.",
+      en: "Discover how custom software can improve your company's efficiency, control, and scalability.",
     },
-  },
-  publishedAt: "2025-05-21",
-  readingTimeMinutes: 7,
-  tags: {
-    es: [
-      "software a medida",
-      "digitalización",
-      "tecnología personalizada",
-      "crecimiento empresarial",
+    socialDescription: {
+      es: "Deja atrás herramientas genéricas: un software a medida te da control, visibilidad y velocidad para escalar sin límites.",
+      en: "Leave generic tools behind: custom software gives you control, visibility, and speed to scale without limits.",
+    },
+    heroImage: {
+      src: "/assets/blogs/beneficios-digitalizacion-software-medida/hero.png",
+      alt: {
+        es: "Concepto de trabajo digital personalizado: equipo usando un sistema unificado en lugar de múltiples herramientas desordenadas",
+        en: "Custom digital work concept: team using a unified system instead of multiple disorganized tools",
+      },
+      caption: {
+        es: "De sistemas dispersos a una plataforma centralizada diseñada para tu negocio",
+        en: "From scattered systems to a centralized platform designed for your business",
+      },
+    },
+    heroVideo: undefined,
+    intermediateImage: {
+      src: "/assets/blogs/beneficios-digitalizacion-software-medida/section.png",
+      alt: {
+        es: "Comparación visual: caos con herramientas genéricas vs orden y eficiencia con software a medida",
+        en: "Visual comparison: chaos with generic tools vs order and efficiency with custom software",
+      },
+      caption: {
+        es: "El cambio de plataformas desarticuladas a un flujo integrado y escalable",
+        en: "The shift from disjointed platforms to an integrated and scalable flow",
+      },
+    },
+    publishedAt: "2025-05-21",
+    readingTimeMinutes: 7,
+    tags: {
+      es: [
+        "software a medida",
+        "digitalización",
+        "tecnología personalizada",
+        "crecimiento empresarial",
+      ],
+      en: [
+        "custom software",
+        "digitalization",
+        "custom technology",
+        "business growth",
+      ],
+    },
+    sections: [
+      {
+        type: "intro",
+        content: {
+          es: "En un mercado cada vez más competitivo, seguir operando con herramientas genéricas puede resultar un freno al crecimiento. Formularios independientes, planillas desconectadas y soluciones estándar terminan imponiendo procesos ajenos a tu forma de trabajar. En este artículo descubrirás por qué un software diseñado específicamente para tus flujos, tu equipo y tus metas genera un impacto inmediato en la eficiencia, la colaboración y tu capacidad para escalar de manera sostenible.",
+          en: "In an increasingly competitive market, continuing to operate with generic tools can hinder growth. Independent forms, disconnected spreadsheets, and standard solutions end up imposing processes alien to your way of working. In this article, you'll discover why software specifically designed for your workflows, your team, and your goals generates an immediate impact on efficiency, collaboration, and your ability to scale sustainably.",
+        },
+      },
+      {
+        type: "highlight",
+        content: {
+          es: "Un sistema pensado para tu negocio no sólo se adapta: potencia cada resultado.",
+          en: "A system designed for your business doesn't just adapt: it enhances every result.",
+        },
+      },
+      {
+        type: "problem",
+        title: {
+          es: "El límite de las soluciones genéricas",
+          en: "The limit of generic solutions",
+        },
+        content: {
+          es: "Las plataformas universales suelen requerir concesiones: flujos rígidos, campos inútiles y adaptaciones forzadas que terminan en parches manuales. Cada nuevo módulo sumado complica la curva de aprendizaje y multiplica los puntos de falla. Al mismo tiempo, tus datos quedan fragmentados, perdiendo trazabilidad y ralentizando la toma de decisiones. Este desorden genera cuellos de botella operativos, costosos retrasos y una experiencia de usuario interna que desmotiva al equipo.",
+          en: "Universal platforms often require compromises: rigid workflows, useless fields, and forced adaptations that end up in manual patches. Each new added module complicates the learning curve and multiplies failure points. At the same time, your data becomes fragmented, losing traceability and slowing down decision-making. This disorder creates operational bottlenecks, costly delays, and an internal user experience that demotivates the team.",
+        },
+      },
+      {
+        type: "solution",
+        title: {
+          es: "Cómo lo resolvemos en Geome7ric",
+          en: "How we solve it at Geome7ric",
+        },
+        content: {
+          es: "En Geome7ric empezamos con un diagnóstico de tus procesos clave y las casuísticas de tu empresa. A partir de allí, definimos una arquitectura modular, intuitiva y escalable, donde cada componente encaja con tus necesidades reales. Integramos tus fuentes de datos, automatizamos validaciones y desplegamos dashboards personalizados. Todo en un ciclo iterativo donde recibís demos frecuentes, aportás feedback y garantizas que la solución final refleje tu operación sin salirse del presupuesto ni de los plazos acordados.",
+          en: "At Geome7ric, we start with a diagnosis of your key processes and your company's specific cases. From there, we define a modular, intuitive, and scalable architecture, where each component fits your real needs. We integrate your data sources, automate validations, and deploy custom dashboards. All in an iterative cycle where you receive frequent demos, provide feedback, and ensure that the final solution reflects your operation without exceeding budget or agreed deadlines.",
+        },
+      },
+      {
+        type: "benefits",
+        title: {
+          es: "Beneficios de un software a medida",
+          en: "Benefits of custom software",
+        },
+        items: {
+          es: [
+            "Alineación total con tus procesos: nada de funcionalidad sobrante ni faltante.",
+            "Escalabilidad bajo demanda: sumá usuarios y módulos sin reprocesos.",
+            "Visibilidad en tiempo real: datos centralizados para decisiones más rápidas.",
+            "Mayor adopción interna: interfaces y flujos diseñados para tu equipo.",
+            "Reducción de costos ocultos: adiós a integraciones y manuales extra.",
+            "Rapidez de implementación: enfoque ágil que minimiza interrupciones.",
+          ],
+          en: [
+            "Total alignment with your processes: no redundant or missing functionality.",
+            "On-demand scalability: add users and modules without reprocessing.",
+            "Real-time visibility: centralized data for faster decisions.",
+            "Greater internal adoption: interfaces and flows designed for your team.",
+            "Reduction of hidden costs: goodbye to extra integrations and manuals.",
+            "Speed of implementation: agile approach that minimizes disruptions.",
+          ],
+        },
+      },
+      {
+        type: "testimonial",
+        quote: {
+          es: "Desde que migramos a la plataforma diseñada por Geome7ric, reducimos un 40 % los tiempos de cierre mensual y todos los equipos trabajan con la misma información.",
+          en: "Since migrating to the platform designed by Geome7ric, we've reduced our monthly closing times by 40%, and all teams work with the same information.",
+        },
+        author: {
+          es: "Javier Amusquibar, Director de Operaciones en Distribuidora Amusquibar",
+          en: "Javier Amusquibar, Operations Director at Distribuidora Amusquibar",
+        },
+      },
+      {
+        type: "cta",
+        title: {
+          es: "¿Listo para dar el salto digital con tu propio software?",
+          en: "Ready to take the digital leap with your own software?",
+        },
+        buttonText: {
+          es: "Hablá con un especialista",
+          en: "Talk to a specialist",
+        },
+        buttonLink: "/contacto",
+      },
+      {
+        type: "conclusion",
+        content: {
+          es: "Optar por un desarrollo a medida es una inversión estratégica: no solo mejoras la eficiencia actual, sino que preparás tu empresa para adaptarse a nuevos desafíos con agilidad. En Geome7ric acompañamos cada etapa, desde la definición de requisitos hasta el soporte post-lanzamiento, para que tu software evolucione contigo y siga impulsando tu crecimiento.",
+          en: "Opting for custom development is a strategic investment: you not only improve current efficiency but also prepare your company to adapt to new challenges with agility. At Geome7ric, we accompany each stage, from requirements definition to post-launch support, so that your software evolves with you and continues to drive your growth.",
+        },
+      },
     ],
-    en: [
-      "custom software",
-      "digitalization",
-      "custom technology",
-      "business growth",
+    related: [
+      {
+        slug: "automatizar-tareas-productividad",
+        title: {
+          es: "Cómo automatizar tareas repetitivas para mejorar la productividad",
+          en: "How to automate repetitive tasks to improve productivity",
+        },
+        reason: {
+          es: "Fundamental para liberar recursos antes de digitalizar procesos a gran escala.",
+          en: "Fundamental for freeing up resources before digitizing processes on a large scale.",
+        },
+      },
+      {
+        slug: "optimizar-flujo-reducir-errores",
+        title: {
+          es: "Cómo optimizar el flujo de trabajo y reducir errores",
+          en: "How to optimize workflow and reduce errors",
+        },
+        reason: {
+          es: "Con un sistema a medida podrás guiar cada paso de tu flujo con total precisión.",
+          en: "With a custom system, you can guide each step of your workflow with total precision.",
+        },
+      },
     ],
-  },
-  sections: [
-    {
-      type: "intro",
-      content: {
-        es: "En un mercado cada vez más competitivo, seguir operando con herramientas genéricas puede resultar un freno al crecimiento. Formularios independientes, planillas desconectadas y soluciones estándar terminan imponiendo procesos ajenos a tu forma de trabajar. En este artículo descubrirás por qué un software diseñado específicamente para tus flujos, tu equipo y tus metas genera un impacto inmediato en la eficiencia, la colaboración y tu capacidad para escalar de manera sostenible.",
-        en: "In an increasingly competitive market, continuing to operate with generic tools can hinder growth. Independent forms, disconnected spreadsheets, and standard solutions end up imposing processes alien to your way of working. In this article, you'll discover why software specifically designed for your workflows, your team, and your goals generates an immediate impact on efficiency, collaboration, and your ability to scale sustainably.",
-      },
-    },
-    {
-      type: "highlight",
-      content: {
-        es: "Un sistema pensado para tu negocio no sólo se adapta: potencia cada resultado.",
-        en: "A system designed for your business doesn't just adapt: it enhances every result.",
-      },
-    },
-    {
-      type: "problem",
-      title: {
-        es: "El límite de las soluciones genéricas",
-        en: "The limit of generic solutions",
-      },
-      content: {
-        es: "Las plataformas universales suelen requerir concesiones: flujos rígidos, campos inútiles y adaptaciones forzadas que terminan en parches manuales. Cada nuevo módulo sumado complica la curva de aprendizaje y multiplica los puntos de falla. Al mismo tiempo, tus datos quedan fragmentados, perdiendo trazabilidad y ralentizando la toma de decisiones. Este desorden genera cuellos de botella operativos, costosos retrasos y una experiencia de usuario interna que desmotiva al equipo.",
-        en: "Universal platforms often require compromises: rigid workflows, useless fields, and forced adaptations that end up in manual patches. Each new added module complicates the learning curve and multiplies failure points. At the same time, your data becomes fragmented, losing traceability and slowing down decision-making. This disorder creates operational bottlenecks, costly delays, and an internal user experience that demotivates the team.",
-      },
-    },
-    {
-      type: "solution",
-      title: {
-        es: "Cómo lo resolvemos en Geome7ric",
-        en: "How we solve it at Geome7ric",
-      },
-      content: {
-        es: "En Geome7ric empezamos con un diagnóstico de tus procesos clave y las casuísticas de tu empresa. A partir de allí, definimos una arquitectura modular, intuitiva y escalable, donde cada componente encaja con tus necesidades reales. Integramos tus fuentes de datos, automatizamos validaciones y desplegamos dashboards personalizados. Todo en un ciclo iterativo donde recibís demos frecuentes, aportás feedback y garantizas que la solución final refleje tu operación sin salirse del presupuesto ni de los plazos acordados.",
-        en: "At Geome7ric, we start with a diagnosis of your key processes and your company's specific cases. From there, we define a modular, intuitive, and scalable architecture, where each component fits your real needs. We integrate your data sources, automate validations, and deploy custom dashboards. All in an iterative cycle where you receive frequent demos, provide feedback, and ensure that the final solution reflects your operation without exceeding budget or agreed deadlines.",
-      },
-    },
-    {
-      type: "benefits",
-      title: {
-        es: "Beneficios de un software a medida",
-        en: "Benefits of custom software",
-      },
-      items: {
-        es: [
-          "Alineación total con tus procesos: nada de funcionalidad sobrante ni faltante.",
-          "Escalabilidad bajo demanda: sumá usuarios y módulos sin reprocesos.",
-          "Visibilidad en tiempo real: datos centralizados para decisiones más rápidas.",
-          "Mayor adopción interna: interfaces y flujos diseñados para tu equipo.",
-          "Reducción de costos ocultos: adiós a integraciones y manuales extra.",
-          "Rapidez de implementación: enfoque ágil que minimiza interrupciones.",
-        ],
-        en: [
-          "Total alignment with your processes: no redundant or missing functionality.",
-          "On-demand scalability: add users and modules without reprocessing.",
-          "Real-time visibility: centralized data for faster decisions.",
-          "Greater internal adoption: interfaces and flows designed for your team.",
-          "Reduction of hidden costs: goodbye to extra integrations and manuals.",
-          "Speed of implementation: agile approach that minimizes disruptions.",
-        ],
-      },
-    },
-    {
-      type: "testimonial",
-      quote: {
-        es: "Desde que migramos a la plataforma diseñada por Geome7ric, reducimos un 40 % los tiempos de cierre mensual y todos los equipos trabajan con la misma información.",
-        en: "Since migrating to the platform designed by Geome7ric, we've reduced our monthly closing times by 40%, and all teams work with the same information.",
-      },
-      author: {
-        es: "Javier Amusquibar, Director de Operaciones en Distribuidora Amusquibar",
-        en: "Javier Amusquibar, Operations Director at Distribuidora Amusquibar",
-      },
-    },
-    {
-      type: "cta",
-      title: {
-        es: "¿Listo para dar el salto digital con tu propio software?",
-        en: "Ready to take the digital leap with your own software?",
-      },
-      buttonText: {
-        es: "Hablá con un especialista",
-        en: "Talk to a specialist",
-      },
-      buttonLink: "/contacto",
-    },
-    {
-      type: "conclusion",
-      content: {
-        es: "Optar por un desarrollo a medida es una inversión estratégica: no solo mejoras la eficiencia actual, sino que preparás tu empresa para adaptarse a nuevos desafíos con agilidad. En Geome7ric acompañamos cada etapa, desde la definición de requisitos hasta el soporte post-lanzamiento, para que tu software evolucione contigo y siga impulsando tu crecimiento.",
-        en: "Opting for custom development is a strategic investment: you not only improve current efficiency but also prepare your company to adapt to new challenges with agility. At Geome7ric, we accompany each stage, from requirements definition to post-launch support, so that your software evolves with you and continues to drive your growth.",
-      },
-    },
-  ],
-  related: [
-    {
-      slug: "automatizar-tareas-productividad",
-      title: {
-        es: "Cómo automatizar tareas repetitivas para mejorar la productividad",
-        en: "How to automate repetitive tasks to improve productivity",
-      },
-      reason: {
-        es: "Fundamental para liberar recursos antes de digitalizar procesos a gran escala.",
-        en: "Fundamental for freeing up resources before digitizing processes on a large scale.",
-      },
-    },
-    {
-      slug: "optimizar-flujo-reducir-errores",
-      title: {
-        es: "Cómo optimizar el flujo de trabajo y reducir errores",
-        en: "How to optimize workflow and reduce errors",
-      },
-      reason: {
-        es: "Con un sistema a medida podrás guiar cada paso de tu flujo con total precisión.",
-        en: "With a custom system, you can guide each step of your workflow with total precision.",
-      },
-    },
-  ],
-};
+  };
 
-export const blogPostHumanErrorReduction: BlogProps = {
+export const blogPostHumanErrorReduction: EnhancedBlogProps = {
   title: {
     es: "Cómo optimizar el flujo de trabajo y reducir los errores humanos con tecnología",
     en: "How to optimize workflow and reduce human errors with technology",
@@ -916,183 +917,184 @@ export const blogPostHumanErrorReduction: BlogProps = {
   ],
 };
 
-export const blogPostTransformacionDigitalPymesControlOperativo: BlogProps = {
-  title: {
-    es: "Transformación digital en pymes: de la intuición al control operativo",
-    en: "Digital transformation in SMEs: from intuition to operational control",
-  },
-  previewTitle: {
-    es: "Transformación digital en pymes",
-    en: "Digital transformation in SMEs",
-  },
-  slug: "transformacion-digital-pymes-control-operativo",
-  seoTitle: {
-    es: "Transformación digital en pymes | Geome7ric",
-    en: "Digital transformation in SMEs | Geome7ric",
-  },
-  seoDescription: {
-    es: "Descubrí cómo la transformación digital permite a las pymes pasar de decisiones intuitivas a un control operativo basado en datos, mejorando la eficiencia y competitividad.",
-    en: "Discover how digital transformation allows SMEs to move from intuitive decisions to data-driven operational control, improving efficiency and competitiveness.",
-  },
-  socialDescription: {
-    es: "Pasá de la intuición al control operativo: cómo la transformación digital impulsa la eficiencia y competitividad de tu pyme.",
-    en: "Move from intuition to operational control: how digital transformation drives the efficiency and competitiveness of your SME.",
-  },
-  heroImage: {
-    src: "/assets/blogs/transformacion-digital-pymes/hero.png",
-    alt: {
-      es: "Equipo de trabajo utilizando herramientas digitales para el control operativo",
-      en: "Work team using digital tools for operational control",
+export const blogPostTransformacionDigitalPymesControlOperativo: EnhancedBlogProps =
+  {
+    title: {
+      es: "Transformación digital en pymes: de la intuición al control operativo",
+      en: "Digital transformation in SMEs: from intuition to operational control",
     },
-    caption: {
-      es: "De la intuición al control operativo: transformación digital en pymes",
-      en: "From intuition to operational control: digital transformation in SMEs",
+    previewTitle: {
+      es: "Transformación digital en pymes",
+      en: "Digital transformation in SMEs",
     },
-  },
-  heroVideo: null,
-  intermediateImage: {
-    src: "/assets/blogs/transformacion-digital-pymes/section.png",
-    alt: {
-      es: "Dashboard mostrando métricas clave de una pyme en tiempo real",
-      en: "Dashboard showing key SME metrics in real time",
+    slug: "transformacion-digital-pymes-control-operativo",
+    seoTitle: {
+      es: "Transformación digital en pymes | Geome7ric",
+      en: "Digital transformation in SMEs | Geome7ric",
     },
-    caption: {
-      es: "Visualización en tiempo real para decisiones estratégicas",
-      en: "Real-time visualization for strategic decisions",
+    seoDescription: {
+      es: "Descubrí cómo la transformación digital permite a las pymes pasar de decisiones intuitivas a un control operativo basado en datos, mejorando la eficiencia y competitividad.",
+      en: "Discover how digital transformation allows SMEs to move from intuitive decisions to data-driven operational control, improving efficiency and competitiveness.",
     },
-  },
-  publishedAt: "2025-05-24",
-  readingTimeMinutes: 7,
-  tags: {
-    es: [
-      "transformación digital",
-      "pymes",
-      "control operativo",
-      "eficiencia empresarial",
+    socialDescription: {
+      es: "Pasá de la intuición al control operativo: cómo la transformación digital impulsa la eficiencia y competitividad de tu pyme.",
+      en: "Move from intuition to operational control: how digital transformation drives the efficiency and competitiveness of your SME.",
+    },
+    heroImage: {
+      src: "/assets/blogs/transformacion-digital-pymes/hero.png",
+      alt: {
+        es: "Equipo de trabajo utilizando herramientas digitales para el control operativo",
+        en: "Work team using digital tools for operational control",
+      },
+      caption: {
+        es: "De la intuición al control operativo: transformación digital en pymes",
+        en: "From intuition to operational control: digital transformation in SMEs",
+      },
+    },
+    heroVideo: undefined,
+    intermediateImage: {
+      src: "/assets/blogs/transformacion-digital-pymes/section.png",
+      alt: {
+        es: "Dashboard mostrando métricas clave de una pyme en tiempo real",
+        en: "Dashboard showing key SME metrics in real time",
+      },
+      caption: {
+        es: "Visualización en tiempo real para decisiones estratégicas",
+        en: "Real-time visualization for strategic decisions",
+      },
+    },
+    publishedAt: "2025-05-24",
+    readingTimeMinutes: 7,
+    tags: {
+      es: [
+        "transformación digital",
+        "pymes",
+        "control operativo",
+        "eficiencia empresarial",
+      ],
+      en: [
+        "digital transformation",
+        "SMEs",
+        "operational control",
+        "business efficiency",
+      ],
+    },
+    sections: [
+      {
+        type: "intro",
+        content: {
+          es: "En un entorno empresarial cada vez más competitivo, las pymes enfrentan el desafío de tomar decisiones basadas en datos precisos en lugar de intuiciones. La transformación digital ofrece las herramientas necesarias para lograr un control operativo efectivo y sostenible.",
+          en: "In an increasingly competitive business environment, SMEs face the challenge of making decisions based on accurate data rather than intuition. Digital transformation offers the necessary tools to achieve effective and sustainable operational control.",
+        },
+      },
+      {
+        type: "highlight",
+        content: {
+          es: "La transformación digital permite a las pymes pasar de decisiones intuitivas a un control operativo basado en datos, mejorando la eficiencia y competitividad.",
+          en: "Digital transformation allows SMEs to move from intuitive decisions to data-driven operational control, improving efficiency and competitiveness.",
+        },
+      },
+      {
+        type: "problem",
+        title: {
+          es: "El desafío de la gestión intuitiva",
+          en: "The challenge of intuitive management",
+        },
+        content: {
+          es: "Muchas pymes toman decisiones basadas en la experiencia o intuición, lo que puede llevar a errores, ineficiencias y oportunidades perdidas. Sin sistemas adecuados, es difícil tener una visión clara y en tiempo real de las operaciones.",
+          en: "Many SMEs make decisions based on experience or intuition, which can lead to errors, inefficiencies, and missed opportunities. Without adequate systems, it's difficult to have a clear, real-time view of operations.",
+        },
+      },
+      {
+        type: "solution",
+        title: {
+          es: "Cómo lo resolvemos en Geome7ric",
+          en: "How we solve it at Geome7ric",
+        },
+        content: {
+          es: "En Geome7ric, implementamos soluciones digitales personalizadas que permiten a las pymes monitorizar sus operaciones en tiempo real, automatizar procesos y tomar decisiones informadas basadas en datos precisos y actualizados.",
+          en: "At Geome7ric, we implement custom digital solutions that allow SMEs to monitor their operations in real time, automate processes, and make informed decisions based on accurate and updated data.",
+        },
+      },
+      {
+        type: "benefits",
+        title: {
+          es: "Beneficios de la transformación digital",
+          en: "Benefits of digital transformation",
+        },
+        items: {
+          es: [
+            "Decisiones basadas en datos reales y actuales.",
+            "Automatización de procesos repetitivos, liberando recursos.",
+            "Mejora en la eficiencia y reducción de errores.",
+            "Mayor competitividad en el mercado.",
+          ],
+          en: [
+            "Decisions based on real and current data.",
+            "Automation of repetitive processes, freeing up resources.",
+            "Improved efficiency and error reduction.",
+            "Greater competitiveness in the market.",
+          ],
+        },
+      },
+      {
+        type: "testimonial",
+        quote: {
+          es: "Desde que implementamos las soluciones de Geome7ric, nuestras decisiones son más acertadas y hemos mejorado significativamente nuestra eficiencia operativa.",
+          en: "Since implementing Geome7ric's solutions, our decisions are more accurate, and we have significantly improved our operational efficiency.",
+        },
+        author: {
+          es: "Laura Martínez, Gerente General de PymeTech",
+          en: "Laura Martínez, General Manager of PymeTech",
+        },
+      },
+      {
+        type: "cta",
+        title: {
+          es: "¿Listo para transformar tu pyme?",
+          en: "Ready to transform your SME?",
+        },
+        buttonText: {
+          es: "Solicitá tu asesoría gratuita",
+          en: "Request your free consultation",
+        },
+        buttonLink: "/contacto",
+      },
+      {
+        type: "conclusion",
+        content: {
+          es: "La transformación digital no es una opción, es una necesidad para las pymes que buscan crecer y mantenerse competitivas. En Geome7ric, te acompañamos en cada paso hacia un control operativo eficiente y basado en datos.",
+          en: "Digital transformation is not an option; it's a necessity for SMEs looking to grow and stay competitive. At Geome7ric, we accompany you every step of the way towards efficient, data-driven operational control.",
+        },
+      },
     ],
-    en: [
-      "digital transformation",
-      "SMEs",
-      "operational control",
-      "business efficiency",
+    related: [
+      {
+        slug: "automatizar-tareas-productividad",
+        title: {
+          es: "Cómo automatizar tareas repetitivas para mejorar la productividad",
+          en: "How to automate repetitive tasks to improve productivity",
+        },
+        reason: {
+          es: "Descubrí cómo la automatización puede liberar recursos y mejorar la eficiencia en tu pyme.",
+          en: "Discover how automation can free up resources and improve efficiency in your SME.",
+        },
+      },
+      {
+        slug: "optimizar-flujo-reducir-errores",
+        title: {
+          es: "Cómo optimizar el flujo de trabajo y reducir errores",
+          en: "How to optimize workflow and reduce errors",
+        },
+        reason: {
+          es: "Aprendé a diseñar flujos de trabajo digitales que minimicen errores y aumenten la eficiencia operativa.",
+          en: "Learn to design digital workflows that minimize errors and increase operational efficiency.",
+        },
+      },
     ],
-  },
-  sections: [
-    {
-      type: "intro",
-      content: {
-        es: "En un entorno empresarial cada vez más competitivo, las pymes enfrentan el desafío de tomar decisiones basadas en datos precisos en lugar de intuiciones. La transformación digital ofrece las herramientas necesarias para lograr un control operativo efectivo y sostenible.",
-        en: "In an increasingly competitive business environment, SMEs face the challenge of making decisions based on accurate data rather than intuition. Digital transformation offers the necessary tools to achieve effective and sustainable operational control.",
-      },
-    },
-    {
-      type: "highlight",
-      content: {
-        es: "La transformación digital permite a las pymes pasar de decisiones intuitivas a un control operativo basado en datos, mejorando la eficiencia y competitividad.",
-        en: "Digital transformation allows SMEs to move from intuitive decisions to data-driven operational control, improving efficiency and competitiveness.",
-      },
-    },
-    {
-      type: "problem",
-      title: {
-        es: "El desafío de la gestión intuitiva",
-        en: "The challenge of intuitive management",
-      },
-      content: {
-        es: "Muchas pymes toman decisiones basadas en la experiencia o intuición, lo que puede llevar a errores, ineficiencias y oportunidades perdidas. Sin sistemas adecuados, es difícil tener una visión clara y en tiempo real de las operaciones.",
-        en: "Many SMEs make decisions based on experience or intuition, which can lead to errors, inefficiencies, and missed opportunities. Without adequate systems, it's difficult to have a clear, real-time view of operations.",
-      },
-    },
-    {
-      type: "solution",
-      title: {
-        es: "Cómo lo resolvemos en Geome7ric",
-        en: "How we solve it at Geome7ric",
-      },
-      content: {
-        es: "En Geome7ric, implementamos soluciones digitales personalizadas que permiten a las pymes monitorizar sus operaciones en tiempo real, automatizar procesos y tomar decisiones informadas basadas en datos precisos y actualizados.",
-        en: "At Geome7ric, we implement custom digital solutions that allow SMEs to monitor their operations in real time, automate processes, and make informed decisions based on accurate and updated data.",
-      },
-    },
-    {
-      type: "benefits",
-      title: {
-        es: "Beneficios de la transformación digital",
-        en: "Benefits of digital transformation",
-      },
-      items: {
-        es: [
-          "Decisiones basadas en datos reales y actuales.",
-          "Automatización de procesos repetitivos, liberando recursos.",
-          "Mejora en la eficiencia y reducción de errores.",
-          "Mayor competitividad en el mercado.",
-        ],
-        en: [
-          "Decisions based on real and current data.",
-          "Automation of repetitive processes, freeing up resources.",
-          "Improved efficiency and error reduction.",
-          "Greater competitiveness in the market.",
-        ],
-      },
-    },
-    {
-      type: "testimonial",
-      quote: {
-        es: "Desde que implementamos las soluciones de Geome7ric, nuestras decisiones son más acertadas y hemos mejorado significativamente nuestra eficiencia operativa.",
-        en: "Since implementing Geome7ric's solutions, our decisions are more accurate, and we have significantly improved our operational efficiency.",
-      },
-      author: {
-        es: "Laura Martínez, Gerente General de PymeTech",
-        en: "Laura Martínez, General Manager of PymeTech",
-      },
-    },
-    {
-      type: "cta",
-      title: {
-        es: "¿Listo para transformar tu pyme?",
-        en: "Ready to transform your SME?",
-      },
-      buttonText: {
-        es: "Solicitá tu asesoría gratuita",
-        en: "Request your free consultation",
-      },
-      buttonLink: "/contacto",
-    },
-    {
-      type: "conclusion",
-      content: {
-        es: "La transformación digital no es una opción, es una necesidad para las pymes que buscan crecer y mantenerse competitivas. En Geome7ric, te acompañamos en cada paso hacia un control operativo eficiente y basado en datos.",
-        en: "Digital transformation is not an option; it's a necessity for SMEs looking to grow and stay competitive. At Geome7ric, we accompany you every step of the way towards efficient, data-driven operational control.",
-      },
-    },
-  ],
-  related: [
-    {
-      slug: "automatizar-tareas-productividad",
-      title: {
-        es: "Cómo automatizar tareas repetitivas para mejorar la productividad",
-        en: "How to automate repetitive tasks to improve productivity",
-      },
-      reason: {
-        es: "Descubrí cómo la automatización puede liberar recursos y mejorar la eficiencia en tu pyme.",
-        en: "Discover how automation can free up resources and improve efficiency in your SME.",
-      },
-    },
-    {
-      slug: "optimizar-flujo-reducir-errores",
-      title: {
-        es: "Cómo optimizar el flujo de trabajo y reducir errores",
-        en: "How to optimize workflow and reduce errors",
-      },
-      reason: {
-        es: "Aprendé a diseñar flujos de trabajo digitales que minimicen errores y aumenten la eficiencia operativa.",
-        en: "Learn to design digital workflows that minimize errors and increase operational efficiency.",
-      },
-    },
-  ],
-};
+  };
 
-export const blogsData: BlogProps[] = [
+export const blogsData: EnhancedBlogProps[] = [
   blogPostTecnologiaTransformacion,
   blogPostIaPartnerTi,
   blogPostOptimizarFlujoReducirErrores,

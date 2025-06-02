@@ -22,5 +22,10 @@
   "eslint.run": "onType",
   "eslint.lintTask.enable": true,
   "javascript.validate.enable": true,
-  "typescript.reportStyleChecksAsWarnings": true
+  "typescript.reportStyleChecksAsWarnings": true,
+  "github.copilot.chat.codeGeneration.instructions": [
+    {
+      "file": "CODE_ANALYSIS.md"
+    }
+  ]
 }
