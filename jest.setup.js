@@ -1,23 +1,23 @@
-import '@testing-library/jest-dom'
+import "@testing-library/jest-dom";
 // Add polyfills before any Next.js imports
-require('cross-fetch/polyfill');
+require("cross-fetch/polyfill");
 
 // Global type definitions for Jest
 global.jest = jest;
 
 // Polyfills for Next.js API routes
-import { TextEncoder, TextDecoder } from 'util'
-global.TextEncoder = TextEncoder
-global.TextDecoder = TextDecoder
+import { TextEncoder, TextDecoder } from "util";
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
 
 // Mock de next/router
-jest.mock('next/router', () => ({
+jest.mock("next/router", () => ({
   useRouter() {
     return {
-      route: '/',
-      pathname: '/',
-      query: '',
-      asPath: '/',
+      route: "/",
+      pathname: "/",
+      query: "",
+      asPath: "/",
       push: jest.fn(),
       pop: jest.fn(),
       reload: jest.fn(),
@@ -30,12 +30,12 @@ jest.mock('next/router', () => ({
         emit: jest.fn(),
       },
       isFallback: false,
-    }
+    };
   },
-}))
+}));
 
 // Mock de next/navigation
-jest.mock('next/navigation', () => ({
+jest.mock("next/navigation", () => ({
   useRouter() {
     return {
       push: jest.fn(),
@@ -44,27 +44,27 @@ jest.mock('next/navigation', () => ({
       back: jest.fn(),
       forward: jest.fn(),
       refresh: jest.fn(),
-    }
+    };
   },
   useSearchParams() {
-    return new URLSearchParams()
+    return new URLSearchParams();
   },
   usePathname() {
-    return '/'
+    return "/";
   },
-}))
+}));
 
 // Mock de next-intl
-jest.mock('next-intl', () => ({
+jest.mock("next-intl", () => ({
   useTranslations: jest.fn(() => (key) => key),
-  useLocale: jest.fn(() => 'en'),
-}))
+  useLocale: jest.fn(() => "en"),
+}));
 
 // Mock de window.gtag (Google Analytics)
-global.gtag = jest.fn()
+global.gtag = jest.fn();
 
 // Mock de fetch
-global.fetch = jest.fn()
+global.fetch = jest.fn();
 
 // Mock de IntersectionObserver
 global.IntersectionObserver = class IntersectionObserver {
@@ -72,7 +72,7 @@ global.IntersectionObserver = class IntersectionObserver {
   observe() {}
   disconnect() {}
   unobserve() {}
-}
+};
 
 // Mock de ResizeObserver
 global.ResizeObserver = class ResizeObserver {
@@ -80,10 +80,10 @@ global.ResizeObserver = class ResizeObserver {
   observe() {}
   disconnect() {}
   unobserve() {}
-}
+};
 
 // Mock NextResponse for API route testing
-jest.mock('next/server', () => ({
+jest.mock("next/server", () => ({
   NextResponse: {
     json: jest.fn((data, options = {}) => {
       const response = {
@@ -98,9 +98,9 @@ jest.mock('next/server', () => ({
 }));
 
 // Mock de window.matchMedia
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
   writable: true,
-  value: jest.fn().mockImplementation(query => ({
+  value: jest.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -110,4 +110,4 @@ Object.defineProperty(window, 'matchMedia', {
     removeEventListener: jest.fn(),
     dispatchEvent: jest.fn(),
   })),
-})
+});

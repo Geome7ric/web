@@ -11,10 +11,12 @@ This PR adds automated testing to our CI/CD workflows:
 ## Changes
 
 ### Added
+
 - E2E_TESTING_GUIDE.md - Detailed documentation for e2e tests
 - New npm scripts for test coverage and CI-specific testing
 
 ### Modified
+
 - Updated PR validation workflow to run tests
 - Updated TESTING_STATUS.md with CI integration info
 - Enhanced README.md with testing documentation
@@ -22,6 +24,7 @@ This PR adds automated testing to our CI/CD workflows:
 ## Testing Instructions
 
 1. Run the test suite locally to verify all tests pass:
+
    ```
    npm run test:ci
    ```
@@ -33,7 +36,8 @@ This PR adds automated testing to our CI/CD workflows:
 The deploy.yml workflow should be updated to include tests but there's a formatting issue. This will need to be fixed separately by manually editing the file in GitHub.
 
 ### PR Checklist
+
 - [x] Unit tests pass
-- [x] Integration tests pass 
+- [x] Integration tests pass
 - [x] Documentation updated
 - [ ] Deploy workflow needs manual fix

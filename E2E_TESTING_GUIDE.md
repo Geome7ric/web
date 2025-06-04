@@ -8,11 +8,11 @@ The E2E tests use [Playwright](https://playwright.dev/) to simulate user behavio
 
 ## Test Files
 
-| Test File | Description | Priority |
-|-----------|-------------|----------|
-| `calendly-integration.spec.ts` | Tests the Calendly scheduling functionality | High |
-| `contact-form.spec.ts` | Tests the contact form submission | High |
-| `main-functionality.spec.ts` | Tests core site functionality | Medium |
+| Test File                      | Description                                 | Priority |
+| ------------------------------ | ------------------------------------------- | -------- |
+| `calendly-integration.spec.ts` | Tests the Calendly scheduling functionality | High     |
+| `contact-form.spec.ts`         | Tests the contact form submission           | High     |
+| `main-functionality.spec.ts`   | Tests core site functionality               | Medium   |
 
 ## Running E2E Tests
 
@@ -73,6 +73,7 @@ Currently, the E2E tests verify functionality but not visual appearance. For vis
 ## Test Reports
 
 After running tests, reports are available at:
+
 - HTML report: `playwright-report/index.html`
 - Test results: `test-results/`
 
@@ -81,12 +82,14 @@ After running tests, reports are available at:
 ### Disk Space Problems
 
 If you encounter disk space errors:
+
 - Run `npx playwright install --with-deps chromium` to install only Chromium
 - Use `PLAYWRIGHT_BROWSERS_PATH` environment variable to specify an alternate location
 
 ### Slow Tests
 
 If tests are slow:
+
 - Reduce the number of browser configurations in `playwright.config.ts`
 - Run tests in parallel with more workers
 - Use `test.slow()` for tests that are legitimately slow

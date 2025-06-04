@@ -4,11 +4,11 @@
 
 This document provides the current status of automated tests in the Geome7ric Landing project.
 
-| Test Type | Status | Coverage | Issues |
-|-----------|--------|----------|--------|
-| Unit Tests | ✅ PASSING | 37/37 tests | None |
-| Integration Tests | ✅ PASSING | 13/13 tests | None |
-| E2E Tests | ⚠️ CONFIGURED | 9 tests | Unable to run due to disk space |
+| Test Type         | Status        | Coverage    | Issues                          |
+| ----------------- | ------------- | ----------- | ------------------------------- |
+| Unit Tests        | ✅ PASSING    | 37/37 tests | None                            |
+| Integration Tests | ✅ PASSING    | 13/13 tests | None                            |
+| E2E Tests         | ⚠️ CONFIGURED | 9 tests     | Unable to run due to disk space |
 
 ## Unit Tests
 
@@ -28,14 +28,15 @@ Playwright tests are properly configured but we're unable to run them due to dis
 
 ### E2E Tests Status
 
-| Test File | Tests | Status | Description |
-|-----------|-------|--------|-------------|
-| calendly-integration.spec.ts | 3 | ⚠️ UNTESTED | Tests for Calendly modal functionality |
-| contact-form.spec.ts | 3 | ⚠️ UNTESTED | Tests for contact form submission |
-| main-functionality.spec.ts | 5 | ⚠️ UNTESTED | Tests for core site functionality |
+| Test File                    | Tests | Status      | Description                            |
+| ---------------------------- | ----- | ----------- | -------------------------------------- |
+| calendly-integration.spec.ts | 3     | ⚠️ UNTESTED | Tests for Calendly modal functionality |
+| contact-form.spec.ts         | 3     | ⚠️ UNTESTED | Tests for contact form submission      |
+| main-functionality.spec.ts   | 5     | ⚠️ UNTESTED | Tests for core site functionality      |
 
 **Commands to run:**
-- Full E2E tests: `npm run test:e2e` 
+
+- Full E2E tests: `npm run test:e2e`
 - With UI: `npm run test:e2e:ui`
 - Headed mode: `npm run test:e2e:headed`
 
@@ -50,16 +51,19 @@ Playwright tests are properly configured but we're unable to run them due to dis
 Current test coverage focuses on:
 
 ### Unit Tests
+
 - Components behavior
 - Hook functionality
 - Utility functions
 
 ### Integration Tests
+
 - API routes
 - Email sending functionality
 - Server-side data handling
 
 ### E2E Tests
+
 - User flows
 - Calendly integration
 - Form submissions
@@ -70,6 +74,7 @@ Current test coverage focuses on:
 Tests have been integrated into the CI/CD pipeline:
 
 1. **PR Validation:**
+
    - All unit and integration tests run on pull requests
    - PRs with failing tests will be blocked from merging
 
@@ -80,11 +85,13 @@ Tests have been integrated into the CI/CD pipeline:
 ## Next Steps
 
 1. **E2E Test Execution:**
+
    - Free up disk space to run E2E tests
    - Validate E2E test results
    - Consider adding E2E tests to CI pipeline with selective runs
 
 2. **Test Coverage Improvements:**
+
    - Increase unit test coverage for components
    - Add more integration tests for locale handling
    - Add visual regression tests

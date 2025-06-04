@@ -1,7 +1,8 @@
 {
   "name": "geome7ric-landing",
   "version": "0.1.0",
-  "private": true,  "scripts": {
+  "private": true,
+  "scripts": {
     "dev": "next dev --turbopack --port 3001",
     "dev:check": "concurrently \"next dev --turbopack\" \"tsc --watch --preserveWatchOutput\"",
     "build": "next build",

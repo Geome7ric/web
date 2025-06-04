@@ -27,6 +27,7 @@ This project includes comprehensive testing at three levels:
 - **E2E Tests**: End-to-end user flow testing with Playwright
 
 For detailed testing status and information, see:
+
 - [TESTING_STATUS.md](./TESTING_STATUS.md) - Overview of all testing
 - [E2E_TESTING_GUIDE.md](./E2E_TESTING_GUIDE.md) - Guide for E2E testing
 
