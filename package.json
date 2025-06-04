@@ -1,15 +1,29 @@
 {
   "name": "geome7ric-landing",
   "version": "0.1.0",
-  "private": true,
-  "scripts": {
+  "private": true,  "scripts": {
     "dev": "next dev --turbopack --port 3001",
     "dev:check": "concurrently \"next dev --turbopack\" \"tsc --watch --preserveWatchOutput\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
-    "check-all": "npm run lint && npm run type-check"
+    "check-all": "npm run lint && npm run type-check",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest tests/unit",
+    "test:unit:coverage": "jest tests/unit --coverage",
+    "test:integration": "jest tests/integration",
+    "test:integration:coverage": "jest tests/integration --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:single": "playwright test",
+    "test:all": "npm run test:unit && npm run test:integration && npm run test:e2e",
+    "test:ci": "npm run test:unit && npm run test:integration",
+    "playwright:install": "playwright install",
+    "playwright:install-chromium": "playwright install chromium"
   },
   "dependencies": {
     "@next/third-parties": "^15.1.7",
@@ -30,14 +44,26 @@
     "zustand": "^5.0.4"
   },
   "devDependencies": {
+    "@edge-runtime/jest-environment": "^4.0.0",
     "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.52.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^29.5.14",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-fetch": "^4.1.0",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^30.0.0-beta.3",
+    "node-fetch": "^3.3.2",
     "postcss": "^8",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5"
+    "typescript": "^5",
+    "undici": "^7.10.0",
+    "whatwg-fetch": "^3.6.20"
   }
 }

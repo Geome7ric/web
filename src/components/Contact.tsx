@@ -79,9 +79,8 @@ const Contact = ({
           {/* Columna derecha: Formulario */}
           <div className="w-full lg:w-1/2">
             <form className="space-y-6 w-full" onSubmit={handleSubmit}>
-              <div className="rounded-md shadow-sm -space-y-px border-none">
-                <div className="py-1">
-                  <label className="text-base md:text-sm text-black dark:text-white">
+              <div className="rounded-md shadow-sm -space-y-px border-none">                <div className="py-1">
+                  <label htmlFor="name" className="text-base md:text-sm text-black dark:text-white">
                     {t("common.name")} *
                   </label>
                   <input
@@ -97,9 +96,8 @@ const Contact = ({
                     value={formData.name}
                     onChange={handleChange}
                   />
-                </div>
-                <div className="py-1">
-                  <label className="text-base md:text-sm text-black dark:text-white">
+                </div>                <div className="py-1">
+                  <label htmlFor="email" className="text-base md:text-sm text-black dark:text-white">
                     {t("common.email")} *
                   </label>
                   <input
@@ -116,9 +114,8 @@ const Contact = ({
                     value={formData.email}
                     onChange={handleChange}
                   />
-                </div>
-                <div className="py-1">
-                  <label className="text-black dark:text-white">
+                </div>                <div className="py-1">
+                  <label htmlFor="subject" className="text-black dark:text-white">
                     {t("common.subject")}
                   </label>
                   <input
@@ -135,10 +132,8 @@ const Contact = ({
                     value={formData.subject}
                     onChange={handleChange}
                   />
-                </div>
-
-                <div className="py-1">
-                  <label className="text-black dark:text-white">
+                </div>                <div className="py-1">
+                  <label htmlFor="message" className="text-black dark:text-white">
                     {t("Contact.form.message")} *
                   </label>
                   <textarea

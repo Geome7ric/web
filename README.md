@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Geome7ric Landing
+
+This is a [Next.js](https://nextjs.org) project for Geome7ric's landing page with full testing suite.
 
 ## Getting Started
 
@@ -16,7 +18,42 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Testing
+
+This project includes comprehensive testing at three levels:
+
+- **Unit Tests**: Component and utility function tests
+- **Integration Tests**: API routes and service integration
+- **E2E Tests**: End-to-end user flow testing with Playwright
+
+For detailed testing status and information, see:
+- [TESTING_STATUS.md](./TESTING_STATUS.md) - Overview of all testing
+- [E2E_TESTING_GUIDE.md](./E2E_TESTING_GUIDE.md) - Guide for E2E testing
+
+### Running Tests
+
+```bash
+# Run unit tests
+npm run test:unit
+
+# Run unit tests with coverage
+npm run test:unit:coverage
+
+# Run integration tests
+npm run test:integration
+
+# Run E2E tests (requires Playwright setup)
+npm run test:e2e
+
+# Run E2E tests with UI for debugging
+npm run test:e2e:ui
+
+# Run all tests
+npm run test:all
+
+# Run CI tests (unit + integration)
+npm run test:ci
+```
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
